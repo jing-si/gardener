@@ -21,6 +21,13 @@
 
 <update id="update">
 	UPDATE user
-	SET userId=#{}, userId=#{}, userId=#{}, userId=#{}, userId=#{}, userId=#{} 
+	SET userId=#{USER_ID}, userNick=#{USER_NICK}, userBirth=#{USER_BIRTH}, userGender=#{USER_GENDER}, stateId=#{STATE_ID}, userId=#{USER_ID}
+	WHERE userId=#{USER_ID} 
 </update>
+
+<delete id="delete">
+	DELETE FROM user
+	WHERE userId=#{USER_ID}
+</delete>
+
 </mapper>

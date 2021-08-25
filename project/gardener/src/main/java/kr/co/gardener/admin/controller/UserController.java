@@ -17,7 +17,7 @@ import kr.co.gardener.admin.service.UserService;
 @Controller
 @RequestMapping("/admin/user")
 public class UserController {
-	final String path = "user/";
+	final String path = "admin/user/";
 	
 	@Autowired
 	UserService service;
