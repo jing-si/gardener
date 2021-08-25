@@ -7,13 +7,13 @@
   	
   	
   	<typeAliases>
-  		<typeAlias type="kr.co.gardener.model.User" alias="User"/>
+  		
   	</typeAliases>
   
  
   		
   	<mappers>
-  			<mapper resource="mybatis/user.xml"/>
+  			
   	</mappers>
   	
   </configuration>
