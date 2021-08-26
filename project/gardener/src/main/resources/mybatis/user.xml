@@ -9,9 +9,15 @@
  	SELECT * FROM USER
  </select>
  
+<<<<<<< HEAD
  <select id="one" resultType="User">
  	SELECT * FROM USER 
  	WHERE USER_ID = #{userId}
+=======
+ <select id="person" resultType="User">
+ 	SELECT * FROM user 
+ 	WHERE userId =#{USER_ID}
+>>>>>>> 2347b888d2cd9907e2a0ba1feb333d5844d1eea0
  </select>
 
 <insert id="add">

@@ -26,7 +26,7 @@ public class UserController {
 	public String list(Model model) {
 		List<User> list = service.list();
 		model.addAttribute("list", list);
-		return path+"/list";
+		return path+"list";
 	}
 	
 	@GetMapping("/add")
