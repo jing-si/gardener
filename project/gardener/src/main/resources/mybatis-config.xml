@@ -8,12 +8,14 @@
   	
   	<typeAliases>
   		<typeAlias type="kr.co.gardener.admin.model.User" alias="User"/>
+  		<typeAlias type="kr.co.gardener.admin.model.Forest" alias="Forest"/>
   	</typeAliases>
   
  
   		
   	<mappers>
-  		<mapper resource="mybatis/user.xml"/>	
+  		<mapper resource="mybatis/user.xml"/>
+  		<mapper resource="mybatis/forest.xml"/>	
   	</mappers>
   	
   </configuration>
