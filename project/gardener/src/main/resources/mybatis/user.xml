@@ -9,7 +9,7 @@
  	SELECT * FROM user
  </select>
  
- <select id="list" resultType="User">
+ <select id="person" resultType="User">
  	SELECT * FROM user 
  	WHERE userId =#{USER_ID}
  </select>
