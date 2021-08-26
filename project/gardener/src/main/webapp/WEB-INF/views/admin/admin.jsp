@@ -9,7 +9,7 @@
 <body>
 	<div>
 		<ul>
-			<li><a href="/admin/product/">제품 관리</a></li>
+			<li><a href="/admin/object/">제품 관리</a></li>
 			<li><a href="/admin/user/">유저 관리</a></li>
 			<li><a href="/admin/message/">메시지 관리</a></li>
 			<li><a href="/admin/forest/">숲 관리</a></li>
