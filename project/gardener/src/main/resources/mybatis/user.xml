@@ -6,27 +6,27 @@
 <mapper namespace="user">
 
  <select id="list" resultType="User">
- 	SELECT * FROM user
+ 	SELECT * FROM USER
  </select>
  
- <select id="list" resultType="User">
- 	SELECT * FROM user 
- 	WHERE userId =#{USER_ID}
+ <select id="one" resultType="User">
+ 	SELECT * FROM USER 
+ 	WHERE USER_ID = #{userId}
  </select>
 
 <insert id="add">
-	INSERT INTO user
+	INSERT INTO USER
 	VALUES (#{USER_ID},#{USER_NICK},#{USER_BIRTH},#{USER_GENDER},#{STATE_ID},#{FOREST_ID})
 </insert>
 
 <update id="update">
-	UPDATE user
+	UPDATE USER
 	SET userId=#{USER_ID}, userNick=#{USER_NICK}, userBirth=#{USER_BIRTH}, userGender=#{USER_GENDER}, stateId=#{STATE_ID}, userId=#{USER_ID}
 	WHERE userId=#{USER_ID} 
 </update>
 
 <delete id="delete">
-	DELETE FROM user
+	DELETE FROM USER
 	WHERE userId=#{USER_ID}
 </delete>
 
