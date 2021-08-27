@@ -2,20 +2,24 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  <configuration>
-  	
-  	
-  	<typeAliases>
-  		<typeAlias type="kr.co.gardener.admin.model.User" alias="User"/>
-  		<typeAlias type="kr.co.gardener.admin.model.Classify" alias="Classify"/>
-  	</typeAliases>
-  
- 
-  		
-  	<mappers>
-  		<mapper resource="mybatis/user.xml"/>
-  		<mapper resource="mybatis/classify.xml"/>	
-  	</mappers>
-  	
-  </configuration>
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="kr.co.gardener.admin.model.User"
+			alias="User" />
+		<typeAlias type="kr.co.gardener.admin.model.Classify"
+			alias="Classify" />
+		<typeAlias type="kr.co.gardener.admin.model.Forest"
+			alias="Forest" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/user.xml" />
+		<mapper resource="mybatis/classify.xml" />
+		<mapper resource="mybatis/forest.xml" />
+	</mappers>
+</configuration>

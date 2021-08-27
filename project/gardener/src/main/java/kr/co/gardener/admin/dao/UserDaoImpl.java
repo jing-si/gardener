@@ -21,22 +21,22 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void add(User item) {
-		
+		sql.insert("user.add", item);
 	}
 
 	@Override
 	public User item(String userId) {
-		return null;
+		return sql.selectOne("user.item", userId);
 	}
 
 	@Override
 	public void update(User item) {
-		
+		sql.update("user.update", item);
 	}
 
 	@Override
 	public void delete(String userId) {
-		
+		sql.delete("user.delete", userId);
 	}
 
 }
