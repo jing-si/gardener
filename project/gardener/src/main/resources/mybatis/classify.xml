@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="classify">
+	
+	<!-- List -->
+	<select id="topClassList" resultType="Classify">
+		select
+		TOP_CLASS_ID as primaryId,
+		TOP_CLASS_NAME as name,
+		TOP_CLASS_CODE as code
+		from
+		TOP_CLASS
+
+	</select>
+
+	<select id="midClassList" resultType="Classify">
+		select
+		MID_CLASS_ID as primaryId,
+		TOP_CLASS_ID as foreginId,
+		MID_CLASS_NAME as name,
+		MID_CLASS_CODE as code
+		from
+		MID_CLASS
+	</select>
+
+	<select id="botClassList" resultType="Classify">
+		select
+		BOT_CLASS_ID as primaryId,
+		MID_CLASS_ID as foreginId,
+		BOT_CLASS_NAME as name,
+		BOT_CLASS_CODE as code
+		from
+		BOT_CLASS	
+	</select>
+	
+	
+	<!-- 생성 -->
+	<insert id="topClassInsert">
+		insert into TOP_CLASS
+		values(null,#{name},#{code})
+	</insert>
+	
+	<insert id="midClassInsert">
+		insert into MID_CLASS
+		values(null,#{foreginID},#{name},#{code})
+	</insert>
+	
+	<insert id="botClassInsert">
+		insert into BOT_CLASS
+		values(null,#{foreginID},#{name},#{code})
+	</insert>
+	
+	
+	<!-- 수정 -->
+	<update id="topClassUpdate">
+		update TOP_CLASS
+		set 
+		TOP_CLASS_NAME = #{name},
+		TOP_CLASS_CODE = #{code},
+		
+		where
+	</update>
+	
+	<update id="midClassUpdate">
+	
+	</update>
+	
+	<update id="botClassUpdate">
+	
+	</update>
+	
+	
+	<!-- 삭제 -->
+	<delete id="topClassDelete">
+	
+	</delete>
+	
+	<delete id="midClassDelete">
+	
+	</delete>
+	
+	<delete id="botClassDelete">
+	
+	</delete>
+</mapper>
