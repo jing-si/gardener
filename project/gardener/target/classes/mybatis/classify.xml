@@ -6,6 +6,33 @@
 <mapper namespace="classify">
 	
 	<!-- List -->
+	<select id="list" resultType="Classify">
+		select
+		TOP_CLASS_ID as "primaryId",
+		cast('0' as signed) as "foreginId",
+		TOP_CLASS_NAME as "name",
+		cast('1' as signed) as "table"
+		from
+		TOP_CLASS
+		union
+		select
+		MID_CLASS_ID as "primaryId",
+		TOP_CLASS_ID as "foreginId",
+		MID_CLASS_NAME as "name",
+		cast('2' as signed) as "table"
+		from        
+		MID_CLASS
+		union
+		select
+		BOT_CLASS_ID as "primaryId",
+		MID_CLASS_ID as "foreginId",
+		BOT_CLASS_NAME as "name",
+		cast('3' as signed) as "table"
+		from
+		BOT_CLASS;	
+		
+	</select>
+	
 	<select id="topClassList" resultType="Classify">
 		select
 		TOP_CLASS_ID as primaryId,
@@ -38,51 +65,60 @@
 	
 	
 	<!-- 생성 -->
-	<insert id="topClassInsert">
+	<insert id="topAdd">
 		insert into TOP_CLASS
-		values(null,#{name},#{code})
+		values(#{primaryId},#{name});
 	</insert>
 	
-	<insert id="midClassInsert">
+	<insert id="midAdd">
 		insert into MID_CLASS
-		values(null,#{foreginID},#{name},#{code})
+		values(#{primaryId},#{foreginId},#{name})
 	</insert>
 	
-	<insert id="botClassInsert">
+	<insert id="botAdd">
 		insert into BOT_CLASS
-		values(null,#{foreginID},#{name},#{code})
+		values(#{primaryId},#{foreginId},#{name})
 	</insert>
 	
 	
 	<!-- 수정 -->
-	<update id="topClassUpdate">
+	<update id="topUpdate">
 		update TOP_CLASS
 		set 
-		TOP_CLASS_NAME = #{name},
-		TOP_CLASS_CODE = #{code},
-		
-		where
+		TOP_CLASS_NAME = #{name}	
+		where TOP_CLASS_ID = #{primaryId}
 	</update>
 	
-	<update id="midClassUpdate">
-	
+	<update id="midUpdate">
+		update MID_CLASS
+		set
+		TOP_CLASS_ID = #{foreginId},
+		MID_CLASS_NAME = #{name}	
+		where MID_CLASS_ID = #{primaryId}
 	</update>
 	
-	<update id="botClassUpdate">
-	
+	<update id="botUpdate">
+		update BOT_CLASS
+		set
+		MID_CLASS_ID = #{foreginId},
+		BOT_CLASS_NAME = #{name}	
+		where BOT_CLASS_ID = #{primaryId}
 	</update>
 	
 	
 	<!-- 삭제 -->
-	<delete id="topClassDelete">
-	
+	<delete id="topDelete">
+		delete from TOP_CLASS
+		where TOP_CLASS_ID = #{primaryId}
 	</delete>
 	
-	<delete id="midClassDelete">
-	
+	<delete id="midDelete">
+		delete from MID_CLASS
+		where MID_CLASS_ID = #{primaryId}
 	</delete>
 	
-	<delete id="botClassDelete">
-	
+	<delete id="botDelete">
+		delete from BOT_CLASS
+		where BOT_CLASS_ID = #{primaryId}
 	</delete>
 </mapper>
