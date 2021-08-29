@@ -37,7 +37,7 @@
 					foreginId: "",
 					name: ""
 				};
-				const h2 = $("<h2>");
+				const h2 = $("<h2 id='inputBoxTitle'>");
 				const url = "/admin/object/classify/" + classify;
 				const inputBox = $("#inputBox");
 
@@ -134,16 +134,17 @@
 
 				switch (action) {
 					case "add":
-						console.log("add");
+						h2.text(h2.text() + " 신규 등록");
 						break;
 
 					case "update":
-						console.log("update");
+						h2.text(h2.text() + " 변경");
 						$("#primaryId").attr("value",selectedData.primaryId);
-						$("#primaryId").attr("readonly","true");
+						$("#primaryId").attr("readonly");
 						$("#foreginId").attr("value",selectedData.foreginId);
-						$("#foreginId").attr("readonly","true");
+						$("#foreginId").attr("readonly");
 						$("#className").attr("value",selectedData.name);
+						$("input[type='submit']").val("변경");
 						break;
 					case "delete":
 						inputBox.empty();
