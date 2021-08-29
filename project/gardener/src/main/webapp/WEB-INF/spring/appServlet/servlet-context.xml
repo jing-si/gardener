@@ -24,6 +24,5 @@
 	
 	<context:component-scan base-package="kr.co.gardener" />
 	
-
 	
 </beans:beans>
