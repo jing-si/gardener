@@ -9,14 +9,16 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="kr.co.gardener.admin.model.User" alias="User"/>
-		<typeAlias type="kr.co.gardener.admin.model.Classify" alias="Classify"/>
-		<typeAlias type="kr.co.gardener.admin.model.Forest" alias="Forest"/>
+		<typeAlias type="kr.co.gardener.admin.model.User" alias="User"/>		
+		<typeAlias type="kr.co.gardener.admin.model.Forest" alias="Forest"/>		
+		<typeAlias type="kr.co.gardener.admin.model.object.Classify" alias="Classify"/>
+		<typeAlias type="kr.co.gardener.admin.model.object.CertReason" alias="CertReason"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/user.xml"/>
 		<mapper resource="mybatis/classify.xml"/>
 		<mapper resource="mybatis/forest.xml"/>
+		<mapper resource="mybatis/certReason.xml"/>
 	</mappers>
 </configuration>

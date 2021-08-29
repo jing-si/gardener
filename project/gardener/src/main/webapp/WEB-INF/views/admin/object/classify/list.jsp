@@ -79,6 +79,7 @@
 						inputBox.empty();
 						inputBox.append(from);
 						break;
+						
 					case "mid":
 						h2.text("중분류");
 						codeDiv = $("<div>");
