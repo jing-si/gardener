@@ -15,18 +15,56 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	private SqlSession sql;
 
 	@Override
-	public List<Classify> getTopClassList() {
-		return sql.selectList("classify.topClass");
+	public List<Classify> getList() {
+		
+		return sql.selectList("classify.list");
 	}
 
 	@Override
-	public List<Classify> getMidClassList() {
-		return sql.selectList("classify.midClass");
+	public void topAdd(Classify item) {
+		sql.insert("classify.topAdd", item);
 	}
 
 	@Override
-	public List<Classify> getBotClassList() {
-		return sql.selectList("classify.botClass");
+	public void midAdd(Classify item) {
+		sql.insert("classify.midAdd", item);
+		
+	}
+
+	@Override
+	public void botAdd(Classify item) {
+		sql.insert("classify.botAdd", item);
+		
+	}
+
+	@Override
+	public void topUpdate(Classify item) {
+		sql.update("classify.topUpdate", item);
+	}
+
+	@Override
+	public void midUpdate(Classify item) {
+		sql.update("classify.midUpdate", item);		
+	}
+
+	@Override
+	public void botUpdate(Classify item) {
+		sql.update("classify.botUpdate", item);		
+	}
+
+	@Override
+	public void topDelete(int primaryId) {
+		sql.delete("classify.topDelete", primaryId);
+	}
+
+	@Override
+	public void midDelete(int primaryId) {
+		sql.delete("classify.midDelete", primaryId);
+	}
+
+	@Override
+	public void botDelete(int primaryId) {
+		sql.delete("classify.botDelete", primaryId);
 	}
 
 }

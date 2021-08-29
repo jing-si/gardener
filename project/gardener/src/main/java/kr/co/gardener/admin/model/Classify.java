@@ -4,8 +4,7 @@ public class Classify {
 	private int primaryId;
 	private int foreginId;
 	private String name;
-	private int code;
-	
+	private int table;
 	public int getPrimaryId() {
 		return primaryId;
 	}
@@ -24,12 +23,12 @@ public class Classify {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getCode() {
-		return code;
+	public int getTable() {
+		return table;
 	}
-	public void setCode(int code) {
-		this.code = code;
+	public void setTable(int table) {
+		this.table = table;
 	}
-	
+		
 	
 }
