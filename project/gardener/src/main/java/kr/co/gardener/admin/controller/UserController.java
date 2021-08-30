@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.service.UserService;
@@ -29,35 +30,34 @@ public class UserController {
 		return path+"list";
 	}
 	
-	@GetMapping("/add")
+	@RequestMapping(value="/add", method = RequestMethod.GET)
 	public String add() {
 		return path+"add";
 	}
 	
-	@PatchMapping("/add")
+	@RequestMapping(value="/add", method= RequestMethod.POST)
 	public String add(User item) {
 		service.add(item);
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{userId}")
-	public String update(@PathVariable String userId, Model model) {
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update(String userId, Model model) {
 		User item = service.item(userId);
 		model.addAttribute("item", item);
 		return path+"update";
 	}
 	
-	@PostMapping("/update/{userId}")
-	public String update(@PathVariable String userId, User item) {
-		item.setUserId(userId);
+	@RequestMapping(value="/update", method= RequestMethod.POST)
+	public String update(String userId, User item) {
 		service.update(item);
-		return "redirect:..";
+		return "redirect:list";
 	}
 	
-	@RequestMapping("/delete/{userId}")
-	public String delete(@PathVariable String userId) {
+	@RequestMapping("/delete")
+	public String delete(String userId) {
 		service.delete(userId);
-		return "redirect:..";
+		return "redirect:list";
 	}
 	
 }

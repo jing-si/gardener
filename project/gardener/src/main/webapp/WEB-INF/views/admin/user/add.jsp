@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>유저 등록</title>
 </head>
 <body>
 	<div>
-		<h3>유저정보 변경</h3>
-		<form method="POST">
+		<h3>유저정보 추가</h3>
+		<form method="post">
 			<div>
 				<label>유저이메일: </label>
 				<input type="text" name="userId" value="${item.userId}">
@@ -31,7 +31,7 @@
 				<input type="text" name="userGender" value="${item.userGender}">
 			</div>
 			<div>
-				<input type="submit" value="변경">
+				<input type="submit" value="추가">
 			</div>
 		</form>
 		<div>
