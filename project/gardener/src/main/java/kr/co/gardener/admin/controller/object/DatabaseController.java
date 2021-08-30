@@ -16,49 +16,45 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import kr.co.gardener.admin.model.object.Company;
+import kr.co.gardener.admin.model.object.CompanyA;
 import kr.co.gardener.admin.service.object.DatabaseService;
 
 @Controller
 @RequestMapping("/admin/object/database/")
 public class DatabaseController {
 	final String path = "admin/object/database/";
-	
+
 	@Autowired
 	DatabaseService service;
-	
-	@RequestMapping({"/","/list"})
+
+	@RequestMapping({ "/", "/list" })
 	public String list(Model model) {
-		String list =  service.list();
-//		model.addAttribute("list", list);
+		String str = service.list();
+		List<Company> list = new ArrayList<Company>();
 		try {
 
             JsonParser jsonParser = new JsonParser();
-            JsonObject jo = (JsonObject)jsonParser.parse(list);
+            JsonObject jo = (JsonObject)jsonParser.parse(str);
             JsonArray jsonArr = jo.getAsJsonArray("data");
-            //jsonArr.
-            Gson googleJson = new Gson();
-            ArrayList<?> jsonObjList = googleJson.fromJson(jsonArr, ArrayList.class);
-            System.out.println("List size is : "+jsonObjList.size());
-                    System.out.println("List Elements are  : "+jsonObjList.toString());
-
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            Gson gson = new Gson(); 
+            System.out.println(jsonArr.toString());
+            jsonArr.forEach(data->{
+            	Company com = gson.fromJson(data, Company.class);
+            	list.add(com);
+            });
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+		model.addAttribute("list", list);
 		
-		
-//		Company[] array = gson.fromJson(list, Company[].class); 
-//		List<Company> listA = Arrays.asList(array);
-//		
-//		model.addAttribute("listA", listA);
 		return path + "database";
 	}
-	
-	@RequestMapping({"/list/{start}/{end}"})
-	public String list(@PathVariable int start, @PathVariable int end ) {
+
+	@RequestMapping({ "/list/{start}/{end}" })
+	public String list(@PathVariable int start, @PathVariable int end) {
 		return path + "database";
 	}
-	
+
 }
