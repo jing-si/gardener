@@ -1,30 +1,27 @@
 package kr.co.gardener.admin.controller.object;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.gardener.admin.model.object.CertReason;
 import kr.co.gardener.admin.service.object.CertReasonService;
+import kr.co.gardener.util.FileUpload;
 
 @Controller
 @RequestMapping("/admin/object/reason/")
 public class CertReasonController {
 	final String path = "admin/object/reason/";
-	final String filePath = "/resources/certReason/";
 
 	@Autowired
 	CertReasonService service;
@@ -44,25 +41,11 @@ public class CertReasonController {
 	}
 
 	@PostMapping("/add")
+	@Transactional
 	public String add(CertReason item ,MultipartFile uploadFile) {
 		System.out.println("postAdd");
 		
-		MultipartFile file = uploadFile;
-		System.out.println(file.getOriginalFilename());
-		if (file != null && !file.isEmpty()) {
-
-			String fileName = file.getOriginalFilename();
-			System.out.println(fileName);
-			
-			try {
-				file.transferTo(new File(filePath + fileName));	
-				item.setCertReasonImage(filePath + fileName);
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-
-			}
-			
-		}
+		item.setCertReasonImage(FileUpload.Uploader(uploadFile, "certReason"));
 		
 		service.add(item);
 		return "redirect:../list";
