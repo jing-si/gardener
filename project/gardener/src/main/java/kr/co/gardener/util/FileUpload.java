@@ -38,8 +38,8 @@ public class FileUpload {
 		}	
 		
 		//파일 저장을 위한 경로 할당
-		String javaFilePath = pro.getProperty("java.fileUpload.path")+path;
-		String srcFilePath = pro.getProperty("spring.fileUpload.src")+path;
+		String javaFilePath = pro.getProperty("java.fileUpload.path")+path.replaceAll("/", "\\");
+		String srcFilePath = pro.getProperty("spring.fileUpload.src")+path.replaceAll("\\", "/");
 		String fileName = null;
 		
 		
