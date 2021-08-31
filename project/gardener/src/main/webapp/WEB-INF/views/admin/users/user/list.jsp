@@ -36,7 +36,7 @@
 							<td>${item.userPass}</td>
 							<td><fmt:formatDate value="${item.userBirth}" pattern="yyyyMMdd"/> </td>
 							<td>${item.userGender}</td>
-							<td><a href="delete?userId=${item.userId}">삭제</a><a href="update?userId=${item.userId}">변경</a></td>
+							<td><a href="delete/${item.userId}">삭제</a><a href="update/${item.userId}">변경</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -12,8 +12,7 @@
 		<h3>유저정보 변경</h3>
 		<form method="post">
 			<div>
-				<label>유저이메일: </label>
-				<input type="text" name="userId" value="${item.userId}">
+				<label>유저이메일: </label> ${item.userId}
 			</div>
 			<div>
 				<label>닉네임: </label>
@@ -36,7 +35,7 @@
 			</div>
 		</form>
 		<div>
-			<a href="list">유저 목록으로</a>
+			<a href="../">유저 목록으로</a>
 		</div>
 	</div>
 </body>
