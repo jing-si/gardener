@@ -15,10 +15,11 @@ window.onload = function () {
 }
 
 function newPage()  {
-    window.location.href = 'http://127.0.0.1:5500/005-01-01_move.html'
+    window.location.href = 'http://127.0.0.1:5500/005-01/005-01-01.html'
     
 }
 
 function forest_change()  {
-    window.location.href = 'http://127.0.0.1:5500/005-01-01_move.html'
+    window.location.href = 'http://127.0.0.1:5500/005-01/005-01-01.html'
 }
+
