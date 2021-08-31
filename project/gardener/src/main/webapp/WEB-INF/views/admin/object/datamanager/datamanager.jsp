@@ -20,7 +20,10 @@
 			overflow: auto;
 		}
 
-		#company_nav ul {}
+		#company_nav ul {
+			margin:0px;
+
+		}
 
 		#company_nav ul li {
 			display: inline-block;
@@ -151,7 +154,7 @@
 							class="input-group-text full"></label> 
 					<label class="col-4">조회 종료일<input type="number" name="startday" placeholder="YYYYMMDD" 
 							class="input-group-text full"></label>
-					<button id="company_but" type="button" class="btn btn-info col-2">검색</button>
+					<button id="company_but" data-sub="company" type="button" class="btn btn-info col-2">검색</button>
 				</form>
 
 			</div>
@@ -179,11 +182,11 @@
 			
 				<div id="product_api" class="full api"></div>
 				<form class="col-10 center" method="get">
-					<label class="col-4">조회 시작일<input type="number" name="startday" placeholder="YYYYMMDD"
+					<label class="col-4 vertical">조회 시작일<input type="number" name="startday" placeholder="YYYYMMDD"
 							class="input-group-text full"></label>
-					<label class="col-4">조회 종료일<input type="number" name="startday" placeholder="YYYYMMDD"
+					<label class="col-4 vertical">조회 종료일<input type="number" name="startday" placeholder="YYYYMMDD"
 							class="input-group-text full"></label>
-					<button id="company_but" type="button" class="btn btn-info col-2">검색</button>
+					<button id="product_but" data-sub="product" type="button" class="btn btn-info col-2 vertical">검색</button>
 				</form>
 
 			
