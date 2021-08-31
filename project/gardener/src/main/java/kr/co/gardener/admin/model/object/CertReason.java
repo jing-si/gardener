@@ -1,7 +1,5 @@
 package kr.co.gardener.admin.model.object;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class CertReason {
 	private int certReasonId;
 	private String certReasonName;

@@ -14,7 +14,7 @@
 			<li><a href="cert/">인증구분</a></li>
 			<li><a href="company/">기업</a></li>
 			<li><a href="product/">제품</a></li>
-			<li><a href="database/">database 작성</a></li>
+			<li><a href="datamanager/">database 작성</a></li>
 		</ul>
 	</div>
 </body>
