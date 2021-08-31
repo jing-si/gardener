@@ -1,0 +1,62 @@
+/* css/paint.css */
+ 
+/* 배경 색상 */
+.bg-green { background-color: lightgreen; }
+.bg-blue { background-color: lightblue; }
+.bg-pink { background-color: lightpink; }
+.bg-white { background-color: white; }
+.bg-black { background-color: black; }
+ 
+/* 폰트 색상 */
+.green { color: lightgreen; }
+.blue { color: lightblue; }
+.pink { color: lightpink; }
+.white { color: white; }
+.black { color: black; }
+ 
+/* 도형 모양 */
+.circle { border-radius: 50%; }
+
+ 
+/* 그림판 */
+#paint { width: 100%; height: 100%; }
+ 
+/* 도형 설정 */
+#palette { width: 20%; height: 100%; padding: 5px; box-sizing: border-box; border: 1px solid darkgray; border-right: none; }
+ 
+#palette dl { width: 100%; height: auto; margin-bottom: 10px; box-sizing: border-box; border: 1px dotted darkgray; padding: 3px; }
+#palette dt { background-color: lightgray; font-weight: bold; }
+#palette dd + dt { margin-top: 25px; }
+ 
+/* 도형 모양 옵션 */
+#palette .object-shape label { opacity: 30%; }
+#palette .object-shape label:hover { cursor: pointer; font-size: 1.2em; opacity: 80%;}
+#palette .object-shape input[type="radio"] { display: none; }
+#palette .object-shape input[type="radio"]:checked + label { font-size: 1.5em; font-weight: bold; opacity: 100%; }
+ 
+/* 도형 사이즈 옵션 */
+#palette .object-size input[type="text"] { width: 50px; }
+ 
+/* 도형 색상 옵션 */
+#palette .object-color label { border: 1px solid darkgray; }
+#palette .object-color label:hover { cursor: pointer; font-size: 1.2em; }
+#palette .object-color input[type="radio"] { display: none; }
+#palette .object-color input[type="radio"]:checked + label { font-size: 1.5em; font-weight: bold; }
+ 
+/* 도형 투명도 옵션 */
+#palette .object-opacity input:disabled { background-color: inherit; border: none; }
+#palette .object-opacity input[type="text"] { width: 32px }
+#palette .object-opacity input[type="range"] { width: 70%; }
+ 
+/* 도화지 설정 */
+#canvas { width: 80%; height: 100%; box-sizing: border-box; border: 1px solid darkgray; }
+#canvas > .wrapper { width: 100%; height: 100%; max-width: 100%; max-height: 100%; position: relative; overflow: hidden; }
+ 
+/* 도형이 텍스트인 경우 */
+#canvas input.text { border: none; }
+ 
+/* 도형의 위치를 절대값으로 적용하도록 설정 */
+#canvas .object { position: absolute; }
+ 
+/* 도형을 클릭했을 때, 그림자가 생기도록 설정 */
+#canvas .object:hover { box-shadow: 0 0 10px 0 darkgray; cursor: pointer; }
