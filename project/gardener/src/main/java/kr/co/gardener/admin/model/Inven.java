@@ -30,6 +30,4 @@ public class Inven {
 	public void setInvenAmount(int invenAmount) {
 		this.invenAmount = invenAmount;
 	}
-	
-	
 }
