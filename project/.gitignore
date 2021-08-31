@@ -1,6 +1,6 @@
 /.metadata/
 /Servers/
-/gardener/target/
+/gardener/target/*
 /gardener/.metadata/
 /gardener/.settings/
-/gardener/
+
