@@ -10,9 +10,9 @@
 	<div>
 		<ul>
 			<li><a href="/admin/object/">제품 관리</a></li>
-			<li><a href="/admin/user/">유저 관리</a></li>
+			<li><a href="/admin/users/">유저 관리</a></li>
 			<li><a href="/admin/message/">메시지 관리</a></li>
-			<li><a href="/admin/forest/">숲 관리</a></li>
+			<li><a href="/admin/forests/">숲 관리</a></li>
 		</ul>		
 	</div>
 </body>
