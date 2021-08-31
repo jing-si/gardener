@@ -1,39 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>숲 관리</title>
+<title>기록 관리</title>
 </head>
 <body>
 	<div>
-		<h3>숲 목록</h3>
+		<h3>기록 목록</h3>
 		<div>
 			<table>
 				<thead>
 					<tr>
-						<th>숲 ID</th>
-						<th>숲 이름</th>
-						<th>숲 이미지</th>
-						<th>숲 정보</th>
+						<th>기록 ID</th>
+						<th>이메일</th>
+						<th>제품코드</th>
+						<th>기록 날짜</th>
 						<th>관리</th>
+						<th>기록 코멘트</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="6">등록된 숲이 없습니다.</td>
+							<td colspan="6">등록된 기록이 없습니다.</td>
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${list}">
 						<tr>
-							<td>${item.forestId}</td>
-							<td>${item.forestName}</td>
-							<td>${item.forestImage}</td>
-							<td>${item.forestInfo}</td>
-							<td><a href="delete/${item.forestId}">삭제</a><a href="update/${item.userId}">변경</a>
+							<td>${item.historyId}</td>
+							<td>${item.userId}</td>
+							<td>${item.productId}</td>
+							<td><fmt:formatDate value="${item.historyDateTime}" pattern="yyyyMMdd"/> </td>
+							<td>${item.historyComment}</td>
+							<td><a href="delete/${item.historyId}">삭제</a><a href="update/${item.historyId}">변경</a>
 							</td>
 						</tr>
 					</c:forEach>

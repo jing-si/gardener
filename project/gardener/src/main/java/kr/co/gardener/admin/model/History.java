@@ -7,10 +7,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class History {
 	private int historyId;
 	private String userId;
-	private String ProductId;
+	private String productId;
 	@DateTimeFormat(pattern = "yyyyMMdd")
 	private Date historyDateTime;
 	private String historyComment;
+	
 	
 	public int getHistoryId() {
 		return historyId;
@@ -25,10 +26,10 @@ public class History {
 		this.userId = userId;
 	}
 	public String getProductId() {
-		return ProductId;
+		return productId;
 	}
 	public void setProductId(String productId) {
-		ProductId = productId;
+		this.productId = productId;
 	}
 	public Date getHistoryDateTime() {
 		return historyDateTime;
@@ -42,6 +43,7 @@ public class History {
 	public void setHistoryComment(String historyComment) {
 		this.historyComment = historyComment;
 	}
+	
 	
 	
 	
