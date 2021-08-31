@@ -5,9 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping({"/",""})
 public class MainController {	
-	final String path = "/main";
+	final String path = "main/";
 	
 	@RequestMapping({"/",""})
 	public String index(Model model) {
