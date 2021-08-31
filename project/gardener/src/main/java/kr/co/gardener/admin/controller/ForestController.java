@@ -24,27 +24,25 @@ public class ForestController {
 	@Autowired
 	ForestService service;
 
-	@RequestMapping({ "", "list" })
+	@RequestMapping({ "/", "list" })
 	public String list(Model model) {
 		List<Forest> list = service.list();
 		model.addAttribute("list", list);
 		return path + "list";
 	}
 
-	/* @RequestMapping(value = "/add", method = RequestMethod.GET) => @GetMapping*/
 	@GetMapping("/add")
 	public String add() {
 		return path + "add";
 	}
 	
-	/* @RequestMapping(value = "/add", method = RequestMethod.POST) => @PostMapping*/
 	/* 숲 이미지 파일 업로드 처리 */
 	@PostMapping("/add")
-	@Transactional
+	
 	public String add(Forest item, MultipartFile uploadFile) {
 		item.setForestImage(FileUpload.Uploader(uploadFile, "forest"));
 		service.add(item);
-		return "redirect:/list";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/update/{forestId}")
@@ -57,13 +55,13 @@ public class ForestController {
 	@PostMapping("/update")
 	public String update(Forest item) {
 		service.update(item);
-		return "redirect:/list";
+		return "redirect:../list";
 	}
 	
 	@GetMapping("/delete/{forestId}")
 	public String delete(@PathVariable int forestId) {
 		service.delete(forestId);
-		return "redirect:/list";
+		return "redirect:../list";
 	}
 	
 	

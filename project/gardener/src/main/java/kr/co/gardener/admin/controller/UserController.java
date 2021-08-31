@@ -30,34 +30,36 @@ public class UserController {
 		return path+"list";
 	}
 	
-	@RequestMapping(value="/add", method = RequestMethod.GET)
+	@GetMapping("/add")
 	public String add() {
 		return path+"add";
 	}
 	
-	@RequestMapping(value="/add", method= RequestMethod.POST)
+	@PostMapping("/add")
+//	@RequestMapping("/add")
 	public String add(User item) {
 		service.add(item);
 		return "redirect:list";
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(String userId, Model model) {
+	@GetMapping("/update/{userId}")
+	public String update(@PathVariable String userId, Model model) {
 		User item = service.item(userId);
 		model.addAttribute("item", item);
 		return path+"update";
 	}
 	
-	@RequestMapping(value="/update", method= RequestMethod.POST)
-	public String update(User item) {
+	@PostMapping("/update/{userId}")
+	public String update(@PathVariable String userId, User item) {
+		item.setUserId(userId);
 		service.update(item);
-		return "redirect:list";
+		return "redirect:../list";
 	}
 	
-	@RequestMapping("/delete")
-	public String delete(String userId) {
+	@RequestMapping("/delete/{userId}")
+	public String delete(@PathVariable String userId) {
 		service.delete(userId);
-		return "redirect:list";
+		return "redirect:../list";
 	}
 	
 }
