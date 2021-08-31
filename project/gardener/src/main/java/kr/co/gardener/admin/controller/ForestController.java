@@ -37,7 +37,6 @@ public class ForestController {
 	
 	/* �� �̹��� ���� ���ε� ó�� */
 	@PostMapping("/add")
-	
 	public String add(Forest item, MultipartFile uploadFile) {
 		item.setForestImage(FileUpload.Uploader(uploadFile, "forest"));
 		service.add(item);
@@ -51,8 +50,8 @@ public class ForestController {
 		return path + "update";
 	}
 	
-	@PostMapping("/update")
-	public String update(Forest item) {
+	@PostMapping("/update/{forestId}")
+	public String update(@PathVariable int forestId, Forest item) {
 		service.update(item);
 		return "redirect:../list";
 	}
