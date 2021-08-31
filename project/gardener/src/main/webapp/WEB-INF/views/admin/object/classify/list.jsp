@@ -43,11 +43,11 @@
 
 				//선택된 박스 정보
 				const selectedBox = $("#" + classify + "Class option:selected");
-				const selectedBoxText = selectedBox.text().split(" ");
+				
 
 				//선택된 데이터 정보값 가져오기
-				selectedData.primaryId = selectedBoxText[0].substr(1, selectedBoxText[0].length - 2);
-				selectedData.name = selectedBoxText[1];
+				selectedData.primaryId = selectedBox.data("primary");
+				selectedData.name = selectedBox.data("name");
 				selectedData.foreginId = selectedBox.data("foregin");
 
 				//동적 from 생성
@@ -141,9 +141,9 @@
 					case "update":
 						h2.text(h2.text() + " 변경");
 						$("#primaryId").attr("value",selectedData.primaryId);
-						$("#primaryId").attr("readonly");
+						$("#primaryId").attr("readonly","readonly");
 						$("#foreginId").attr("value",selectedData.foreginId);
-						$("#foreginId").attr("readonly");
+						$("#foreginId").attr("readonly","readonly");
 						$("#className").attr("value",selectedData.name);
 						$("input[type='submit']").val("변경");
 						break;
@@ -174,7 +174,7 @@
 			<h3>대분류</h3>
 			<select id="topClass" size=10 class="classify">
 				<c:forEach var="item" items="${topClass}">
-					<option data-foregin="${item.foreginId}">[${item.primaryId }] ${item.name }</option>
+					<option data-foregin="${item.foreginId}" data-primary="${item.primaryId }" data-name="${item.name }">[${item.primaryId }] ${item.name }</option>
 				</c:forEach>
 			</select>
 			
@@ -190,7 +190,7 @@
 			<h3>중분류</h3>
 			<select id="midClass" size=10 class="classify">
 		<c:forEach var="item" items="${midClass}">
-					<option data-foregin="${item.foreginId}">[${item.primaryId }] ${item.name }</option>
+					<option data-foregin="${item.foreginId}" data-primary="${item.primaryId }" data-name="${item.name }">[${item.primaryId }] ${item.name }</option>
 				</c:forEach>
 			</select>
 			<div>
@@ -204,7 +204,7 @@
 			<h3>소분류</h3>
 			<select id="botClass" size=10 class="classify">
 <c:forEach var="item" items="${botClass}">
-					<option data-foregin="${item.foreginId}">[${item.primaryId }] ${item.name }</option>
+					<option data-foregin="${item.foreginId}" data-primary="${item.primaryId }" data-name="${item.name }">[${item.primaryId }] ${item.name }</option>
 				</c:forEach>
 			</select>
 			<div>

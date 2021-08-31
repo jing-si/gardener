@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +35,7 @@ public class ForestController {
 		return path + "add";
 	}
 	
-	/* ½£ ÀÌ¹ÌÁö ÆÄÀÏ ¾÷·Îµå Ã³¸® */
+	/* ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ Ã³ï¿½ï¿½ */
 	@PostMapping("/add")
 	public String add(Forest item, MultipartFile uploadFile) {
 		item.setForestImage(FileUpload.Uploader(uploadFile, "forest"));
