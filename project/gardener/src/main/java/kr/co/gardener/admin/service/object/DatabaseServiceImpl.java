@@ -26,7 +26,7 @@ public class DatabaseServiceImpl implements DatabaseService{
 			url = new URIBuilder(url)
 					.addParameter("certKeyc","kW2He3CdhxZqoqV4Xca2ZHfw0BrO7YV/Eps1RzY5pd0XPwc7D5443vHWGHwJ1kCViv2Q5kebY14nqh/7X3Q==")
 					.addParameter("vendStdt","20210101")
-					.addParameter("vendEndt","20210825").build();
+					.addParameter("vendEndt","20210104").build();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -62,5 +62,6 @@ public class DatabaseServiceImpl implements DatabaseService{
 		return content;
 	}
 
+	
 		
 }
