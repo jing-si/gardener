@@ -16,9 +16,9 @@ import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.service.UserService;
 
 @Controller
-@RequestMapping("/admin/user")
+@RequestMapping("/admin/users/user")
 public class UserController {
-	final String path = "admin/user/";
+	final String path = "admin/users/user/";
 	
 	@Autowired
 	UserService service;
@@ -49,7 +49,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/update", method= RequestMethod.POST)
-	public String update(String userId, User item) {
+	public String update(User item) {
 		service.update(item);
 		return "redirect:list";
 	}

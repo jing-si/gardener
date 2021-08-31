@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 	<div>
 		<h3>유저정보 변경</h3>
-		<form method="POST">
+		<form method="post">
 			<div>
 				<label>유저이메일: </label>
 				<input type="text" name="userId" value="${item.userId}">
@@ -24,7 +25,7 @@
 			</div>
 			<div>
 				<label>생년월일: </label>
-				<input type="date" name="userBirth" value="${item.userBirth}">
+				<input type="date" name="userBirth" value="<fmt:formatDate value="${item.userBirth}" pattern="yyyyMMdd"/>">
 			</div>
 			<div>
 				<label>성별: </label>
@@ -35,7 +36,7 @@
 			</div>
 		</form>
 		<div>
-			<a href="list">목록</a>
+			<a href="list">유저 목록으로</a>
 		</div>
 	</div>
 </body>
