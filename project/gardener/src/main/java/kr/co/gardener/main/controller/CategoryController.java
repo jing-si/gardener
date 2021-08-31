@@ -7,11 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
-	final String path = "category/";
+	final String path = "main/category/";
 	
 	
 	@RequestMapping({"/",""})
 	public String category() {
-		return "category";
+		return path + "category-list";
+	}
+	
+	@RequestMapping("/product")
+	public String productlist() {
+		return path + "product-list";
+	}
+	
+	@RequestMapping("/product/detail")
+	public String productdetail() {
+		return path + "product-detail";
 	}
 }

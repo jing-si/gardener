@@ -9,36 +9,72 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/내정보수정_011-01-01.css">
     <script src="/resources/js/test.js"></script>
+    <link rel="stylesheet" href="/resources/css/카테고리_007.css">
+    <script src="/resources/js/jquery.min.js"></script>
+    <script src="/resources/js/indigo.min.js"></script>
 </head>
 <body>
-    <div id="header">
-        <a href="myinfo/"><svg id="back" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
-        <p>내 정보 수정</p>
-        <a href="내정보보기.html"><svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
-    </div>
-<div id="align">
-    <div id="email" class="info">
-        <p class="title">이메일</p>
-        <div><p>${userEmail}</p></div>
-        <p id="certification">계정이 인증되었습니다.</p>
-    </div>
-    <div id="nickName" class="info">
-        <p class="title">닉네임</p>
-        <div><p>${userNick}</p></div>
-    </div>
-    <div id="birth" class="info">
-        <p class="title">생년월일</p>
-        <div><p>${userBirth}</p></div>
-    </div>
-<div id="gender" class="info" class="tab_menu">
-    <div id="gender" class="info">
-        <p class="title">성별</p>
-        <div id="female"><p>여성</p></div><div id="male"><p>남성</p></div>
-    </div>
-    </div>
-</div>
+  <div id="title"><p>카테고리</p></div>
+    <div class="wrap">
+        <div class="tab_menu">
+          <ul class="list">
+
+            <li class="is_on">
+              <a href="#tab1" class="btn"><p class="btn-title">품목</p><span id="bar"></a>
+                <div id="tab3" class="cont">
+                <div id="product-body">
+                  <div id="product-subtitle" class="menu-toggle-btn">
+                      <p>Subtitle 1</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
+                  </div>
+                  <a href="product"><div id="product-subtitle-sub-box" class="gnb">
+                      <div class="product-subtitle-sub">전체</div>
+                  </div></a>
+                  </div>
+              </div>
+            
+
+
+            </li><li>
+              <a href="#tab2" class="btn"><p class="btn-title">브랜드</p><span id="bar"></a>
+                <div id="tab3" class="cont">
+                <div id="brand-body">
+                  <a href="brand"><div class="brand-subtitle">
+                      <p>Brand 1</p>
+                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg>        
+                  </div></a>
+              </div>
+              </div>
+            
+
+
+            </li><li>
+              <a href="#tab3" class="btn"><p class="btn-title">인증마크</p><span id="bar"></a>
+              <div id="tab3" class="cont">
+                <div id="mark-body">
+                  <a href="mark"><div class="mark">
+                      <div class="mark-img"></div>
+                      <div class="mark-name">mark 1</div>
+                  </div><a href="mark"><div class="mark">
+                      <div class="mark-img"></div>
+                      <div class="mark-name">mark 1</div>
+                  </div><a href="mark"><div class="mark">
+                      <div class="mark-img"></div>
+                      <div class="mark-name">mark 1</div>
+                  </div><a href="mark"><div class="mark">
+                      <div class="mark-img"></div>
+                      <div class="mark-name">mark 1</div>
+                  </div>
+          </div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+
     <nav class="sticky">
         <a href="/"><div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg><p id="home">홈</p>
         </div></a><a href="category/"><div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"/></svg><p>카테고리</p>
