@@ -145,7 +145,7 @@ class ServiceConfiguration {&#xD;
     <link rel="alternate" href="https://spring.io/blog/2021/08/19/spring-boot-2-5-4-available-now" />
     <category term="releases" label="Releases" />
     <author>
-      <name>St?phane Nicoll</name>
+      <name>StÃ©phane Nicoll</name>
     </author>
     <id>tag:spring.io,2021-08-19:4523</id>
     <updated>2021-08-19T13:12:05Z</updated>
@@ -287,7 +287,7 @@ class ServiceConfiguration {&#xD;
     <id>tag:spring.io,2021-08-17:4517</id>
     <updated>2021-08-17T10:00:00Z</updated>
     <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;We are very excited to announce that Spring Authorization Server has officially moved out of experimental status and into the &lt;a href="https://github.com/spring-projects/spring-authorization-server"&gt;Spring project¡¯s portfolio&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;We are very excited to announce that Spring Authorization Server has officially moved out of experimental status and into the &lt;a href="https://github.com/spring-projects/spring-authorization-server"&gt;Spring projectâ€™s portfolio&lt;/a&gt;!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;This move coincides with this week&amp;#8217;s 0.2.0 release, which is the first officially supported production-ready version backed by our new &lt;a href="https://github.com/spring-projects/spring-authorization-server#support-policy"&gt;support policy&lt;/a&gt;.&lt;/p&gt;
@@ -299,7 +299,7 @@ class ServiceConfiguration {&#xD;
 &lt;p&gt;On behalf of the team, I would like to thank everyone who has contributed and helped grow this project in this short time frame. We are confident in the base that we have built so far and are excited for the next phase of the project. We look forward to continuing this work together and ultimately making Spring Authorization Server the de facto framework for OAuth 2 Authorization Server support on the Java platform.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Let¡¯s get moving onto the next phase!&lt;/p&gt;
+&lt;p&gt;Letâ€™s get moving onto the next phase!&lt;/p&gt;
 &lt;/div&gt;
 &lt;!-- rendered by Sagan Renderer Service --&gt;</content>
   </entry>
@@ -312,7 +312,7 @@ class ServiceConfiguration {&#xD;
     </author>
     <id>tag:spring.io,2021-08-12:4516</id>
     <updated>2021-08-12T18:50:35Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I¡¯m pleased to announce the availability of the Spring Data &lt;code&gt;2021.1.0-M2&lt;/code&gt; milestone release.&lt;/p&gt;
+    <content type="html">&lt;p&gt;On behalf of the team, Iâ€™m pleased to announce the availability of the Spring Data &lt;code&gt;2021.1.0-M2&lt;/code&gt; milestone release.&lt;/p&gt;
 &lt;p&gt;The release is built on top of Spring Framework &lt;code&gt;5.3.9&lt;/code&gt;.&lt;br/&gt;For your convenience, you can consume this release through Spring Boot &lt;code&gt;2.6.0-M2&lt;/code&gt;, which our team mates on the Boot team will release in about a week.&lt;/p&gt;
 &lt;p&gt;To round things off, here are the links to the artifacts, changelogs, and documentation:&lt;/p&gt;
 &lt;ul&gt;
@@ -343,7 +343,7 @@ class ServiceConfiguration {&#xD;
     </author>
     <id>tag:spring.io,2021-08-12:4515</id>
     <updated>2021-08-12T18:50:20Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the team, I¡¯m pleased to announce the availability of the Spring Data&lt;code&gt;2021.0.4&lt;/code&gt; and &lt;code&gt;2020.0.12&lt;/code&gt; service releases.&lt;/p&gt;
+    <content type="html">&lt;p&gt;On behalf of the team, Iâ€™m pleased to announce the availability of the Spring Data&lt;code&gt;2021.0.4&lt;/code&gt; and &lt;code&gt;2020.0.12&lt;/code&gt; service releases.&lt;/p&gt;
 &lt;p&gt;Both releases are built on top of Spring Framework &lt;code&gt;5.3.9&lt;/code&gt;. For your convenience, you can consume these releases through Spring Boot &lt;code&gt;2.5.4&lt;/code&gt; and &lt;code&gt;2.4.10&lt;/code&gt;, respectively. Our teammates on the Boot team will release those in about a week.&lt;/p&gt;
 &lt;p&gt;The service releases ship with mostly bug fixes and dependency upgrades.&lt;/p&gt;
 &lt;p&gt;To round things off, here are the links to the artifacts, changelogs, and documentation:&lt;/p&gt;&lt;h2&gt;&lt;a href="#2021-0-4" class="anchor" name="2021-0-4"&gt;&lt;/a&gt;2021.0.4&lt;/h2&gt;
@@ -414,8 +414,8 @@ class ServiceConfiguration {&#xD;
   &lt;li&gt;Check out this &lt;a href="https://backpaper0.github.io/spring-graphql-introduction/"&gt;A Japanese-language introduction to Spring GraphQL&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://www.steadybit.com/blog/common-pitfall-using-spring-boots-rest-template"&gt;A common Pitfall of Spring Boot&amp;rsquo;s RestTemplate&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://jmhreif.com/blog/create-data-marvel-sdn/"&gt;Create a Data Marvel with Spring Data Neo4j&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://mobile.twitter.com/kaitoedter/status/1422480556802166825"&gt;Kai T?dter has released 1.0.0 of his HAL Explorer project: check it out&lt;/a&gt;!&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://dev.to/reliably/observing-the-reliability-of-your-java-apps-and-services-with-spring-boot-micrometer-prometheus-reliably-27od"&gt;Observing the Reliability of your Java Apps and Services with Spring Boot, Micrometer, Prometheus &amp;amp;?Reliably &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://mobile.twitter.com/kaitoedter/status/1422480556802166825"&gt;Kai TÃ¶dter has released 1.0.0 of his HAL Explorer project: check it out&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;&lt;a href="https://dev.to/reliably/observing-the-reliability-of-your-java-apps-and-services-with-spring-boot-micrometer-prometheus-reliably-27od"&gt;Observing the Reliability of your Java Apps and Services with Spring Boot, Micrometer, Prometheus &amp;amp;Â Reliably &lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://m.youtube.com/watch?v=1FuWFOWsgkk&amp;feature=youtu.be"&gt;The Java developer experience on Azure with Visual Studio Code&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://redmonk.com/sogrady/2021/08/05/language-rankings-6-21/"&gt;The RedMonk Programming Language Rankings: June 2021&lt;/a&gt; has a lot of good news for Java developers. Check it out!&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://twitter.com/tlberglund/status/1422950723222794243?s=21"&gt;Everybody, the completely rebooted Confluent Developer portal is now live!&lt;/a&gt; There are tons of great resources for Spring and Kafka developers.&lt;/li&gt;
