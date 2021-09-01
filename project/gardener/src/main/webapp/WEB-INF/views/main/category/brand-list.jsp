@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,10 +20,27 @@
     </div>
     <div id="body">
         <div id="align">
+        
+			<c:if test="${brandProductList.size()<1}">
+				<div class="brand">
+                <p class="brand-name">등록된 품목이 없습니다.</p>
+            </div></a>
+			</c:if>
+			
+			<c:forEach var="list" items="${brandProductList}">
+				<a href="product/${list.productId}"><div class="brand">
+                	<div class="brand-img">${list.productImg}</div>
+                	<p class="brand-name">${list.productName}</p>
+            	</div></a>
+			</c:forEach>
+        
+<!-- 완성시 이부분 지우기 -->
             <a href="product/${productId}"><div class="brand">
                 <div class="brand-img">${productImgList}</div>
                 <p class="brand-name">${productNameList}</p>
             </div></a>
+<!-- 여기까지 -->
+
         </div>
     </div>
 

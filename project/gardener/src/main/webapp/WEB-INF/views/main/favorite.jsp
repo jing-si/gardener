@@ -26,7 +26,7 @@
 
     <div id="body">
         <div id="align">
-            <a href="product/${productId}"><div class="brand">
+            <a href="/product/${productId}"><div class="brand">
                 <div class="brand-img">${favoriteImgList}</div>
                 <p class="brand-name">${favoriteNameList}</p>
                 <img src="/resources/images/즐겨찾기 등록 하트.png">

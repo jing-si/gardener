@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,26 +25,52 @@
               <a href="#tab1" class="btn"><p class="btn-title">품목</p><span id="bar"></a>
                 <div id="tab3" class="cont">
                 <div id="product-body">
-                  <div id="product-subtitle" class="menu-toggle-btn">
+                  
+                  	<c:forEach var="list" items="${productCategoryList}">
+                  		<div id="product-subtitle" class="menu-toggle-btn">
+                  			<p>${list.productCategoryName}</p>
+                  			<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
+                  		</div>
+                  		<c:forEach var="item" items="${subProductCategoryList}">
+                  			<a href="product/${item.productId}"><div id="product-subtitle-sub-box" class="gnb">
+                      		<div class="product-subtitle-sub">${item.subProductCategoryName}</div>
+                  			</div></a>
+                  		</c:forEach>
+                  	</c:forEach>
+
+<!-- 완성시 이부분 지우기 -->
+					<div id="product-subtitle" class="menu-toggle-btn">
                       <p>Subtitle 1</p>
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
                   </div>
+                  
                   <a href="product"><div id="product-subtitle-sub-box" class="gnb">
                       <div class="product-subtitle-sub">전체</div>
                   </div></a>
+<!-- 여기까지 -->                  
                   </div>
               </div>
-            
+           
 
 
             </li><li>
               <a href="#tab2" class="btn"><p class="btn-title">브랜드</p><span id="bar"></a>
                 <div id="tab3" class="cont">
                 <div id="brand-body">
+                	<c:forEach var="list" items="${brandList}">
+                		<a href="brand"><div class="brand-subtitle">
+                      		<p>${list.brandName}</p>
+                      		<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg>        
+                  		</div></a>
+                	</c:forEach>
+                	
+                	
+<!-- 완성시 이부분 지우기 -->
                   <a href="brand"><div class="brand-subtitle">
                       <p>Brand 1</p>
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg>        
                   </div></a>
+<!-- 여기까지 -->
               </div>
               </div>
             
