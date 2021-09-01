@@ -18,7 +18,7 @@
     </div>
     <div id="body">
         <div id="align">
-            <a href="product-detail"><div class="brand">
+            <a href="product/${productId}"><div class="brand">
                 <div class="brand-img"></div>
                 <p class="brand-name">Subtitle 1-4-1</p>
             </div></a>
