@@ -5,16 +5,16 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Bookmark {
-	private int bookmark;
+	private int bookmarkId;
 	private String userId;
-	@DateTimeFormat(pattern = "yyyyMMdd")
-	private Date bookmarkDateTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date bookmarkDatetime;
 	private int productId;
-	public int getBookmark() {
-		return bookmark;
+	public int getBookmarkId() {
+		return bookmarkId;
 	}
-	public void setBookmark(int bookmark) {
-		this.bookmark = bookmark;
+	public void setBookmarkId(int bookmarkId) {
+		this.bookmarkId = bookmarkId;
 	}
 	public String getUserId() {
 		return userId;
@@ -22,11 +22,11 @@ public class Bookmark {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public Date getBookmarkDateTime() {
-		return bookmarkDateTime;
+	public Date getBookmarkDatetime() {
+		return bookmarkDatetime;
 	}
-	public void setBookmarkDateTime(Date bookmarkDateTime) {
-		this.bookmarkDateTime = bookmarkDateTime;
+	public void setBookmarkDatetime(Date bookmarkDatetime) {
+		this.bookmarkDatetime = bookmarkDatetime;
 	}
 	public int getProductId() {
 		return productId;
@@ -34,5 +34,4 @@ public class Bookmark {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
-	
 }
