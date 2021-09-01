@@ -9,21 +9,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/공지사항 오픈_011-02.css">
+	<link rel="stylesheet" href="/resources/css/mark-list.css">
+	
 </head>
 <body>
     <div id="header">
-        <a href="/setting/"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
-        <p>공지사항</p>
+        <a href="카테고리_인증마크.html"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
+        <p>Mark 3</p>
     </div>
     <div id="body">
         <div id="align">
-        <!-- 이부분 자바스크립트 넣으면서 변경 예정 -->
-            <div class="list">
-                <div class="list-title">${noticeTitle}</div>
-                <div class="list-date">${noticeDate}</div>
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg></a>
-            </div>
+            <a href="제품상세페이지.html"><div class="brand">
+                <div class="brand-img"></div>
+                <p class="brand-name">Mark 3-1</p>
+            </div></a>
         </div>
     </div>
 

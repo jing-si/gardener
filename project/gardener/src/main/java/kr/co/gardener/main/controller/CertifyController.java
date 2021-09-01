@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CertifyController {
 	final String path = "certify/";
 	
+	//인증카메라
 	@RequestMapping("certify")
 	public String certify() {
 		return "certify";

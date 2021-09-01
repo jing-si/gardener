@@ -9,20 +9,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/공지사항 오픈_011-02.css">
+    <link rel="stylesheet" href="/resources/css/검색_009.css">
 </head>
 <body>
     <div id="header">
-        <a href="/setting/"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
-        <p>공지사항</p>
+        <div class="input">
+            <img src="/resources/images/검색창 돋보기.png">
+            <input placeholder="검색어를 입력하세요" type="text"></input>
+            <!-- <p>검색어를 입력하세요</p> -->
+        </div>
+
+       <div class="qr">
+        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M9.5,6.5v3h-3v-3H9.5 M11,5H5v6h6V5L11,5z M9.5,14.5v3h-3v-3H9.5 M11,13H5v6h6V13L11,13z M17.5,6.5v3h-3v-3H17.5 M19,5h-6v6 h6V5L19,5z M13,13h1.5v1.5H13V13z M14.5,14.5H16V16h-1.5V14.5z M16,13h1.5v1.5H16V13z M13,16h1.5v1.5H13V16z M14.5,17.5H16V19h-1.5 V17.5z M16,16h1.5v1.5H16V16z M17.5,14.5H19V16h-1.5V14.5z M17.5,17.5H19V19h-1.5V17.5z M22,7h-2V4h-3V2h5V7z M22,22v-5h-2v3h-3v2 H22z M2,22h5v-2H4v-3H2V22z M2,2v5h2V4h3V2H2z"/>
+        </svg><img src="/resources/images/QR-바코드 글씨.png">
+       </div>
     </div>
+
     <div id="body">
         <div id="align">
-        <!-- 이부분 자바스크립트 넣으면서 변경 예정 -->
-            <div class="list">
-                <div class="list-title">${noticeTitle}</div>
-                <div class="list-date">${noticeDate}</div>
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg></a>
+            <div id="latest-search-title">
+                <p id="latest-search">최근검색</p>
+                <p id="all-delete">전체삭제</p>
+            </div>
+            <div class="last-search-list">
+                <p>${latestProductNameList}</p>
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
             </div>
         </div>
     </div>

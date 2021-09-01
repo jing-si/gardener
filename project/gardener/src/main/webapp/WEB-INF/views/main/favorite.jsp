@@ -9,21 +9,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/공지사항 오픈_011-02.css">
+    <link rel="stylesheet" href="/resources/css/즐겨찾기_최신순_010.css">
 </head>
 <body>
     <div id="header">
-        <a href="/setting/"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
-        <p>공지사항</p>
+        <p id="title">즐겨찾기</p>
+       
     </div>
+
+    <div id="tab">
+        <ul>
+            <li class="tab-button" id="tab-latest"><p>최신순</p>
+            </li><a href="즐겨찾기_이름순.html"><li class="tab-button" id="tab-name"><p>이름순</p></a>
+        </ul>
+    </div>
+
     <div id="body">
         <div id="align">
-        <!-- 이부분 자바스크립트 넣으면서 변경 예정 -->
-            <div class="list">
-                <div class="list-title">${noticeTitle}</div>
-                <div class="list-date">${noticeDate}</div>
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg></a>
-            </div>
+            <a href="product/${productId}"><div class="brand">
+                <div class="brand-img">${favoriteImgList}</div>
+                <p class="brand-name">${favoriteNameList}</p>
+                <img src="/resources/images/즐겨찾기 등록 하트.png">
+            </div></a>
         </div>
     </div>
 
