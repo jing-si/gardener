@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="searchList">
+  
+  <select id="list" resultType="SearchList">
+  	SELECT * FROM SEARCH_LIST
+  </select>
+  
+  <select id="item" resultType="SearchList">
+  	SELECT * FROM SEARCH_LIST
+  	WHERE SEARCH_ID=#{searchId}
+  </select>
+  
+  <insert id="add">
+  	INSERT INTO SEARCH_LIST
+  	VALUES (#{userId}, {searchId}, null)
+  </insert>
+  
+  <update id="update">
+  	UPDATE SEARCH_LIST
+  	SET USER_ID=#{userId}, 
+  		SEARCH_ID=#{searchId}, 
+  		SEARCH_WORD=#{searchWord}
+  	WHERE SEARCH_LIST=#{searchList}
+  </update>
+  
+  <delete id="delete">
+  	DELETE FROM SEARCH_LIST
+  	WHERE SEARCH_ID=#{searchId}
+  </delete>
+  </mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="bookmark">
+
+	<select id="list" resultType="Bookmark">
+		SELECT * FROM BOOKMARK
+	</select>
+
+
+	<select id="item" resultType="Bookmark">
+		SELECT * FROM BOOKMARK
+		WHERE BOOK_ID =#{bookmarkId}
+	</select>
+
+	<insert id="add">
+		INSERT INTO USER
+		VALUES (#{bookmarkId},#{userId},
+		#{bookmarkDatetime},null)
+	</insert>
+
+	<update id="update">
+		UPDATE USER
+		SET BOOKMARK_ID=#{bookmarkId}, 
+			USER_ID=#{userId},
+			BOOKMARK_DATETIME=#{bookmarkDatetime},
+			PRODUCT_ID=#{productId}
+		WHERE BOOKMARK_ID=#{bookmarkId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM BOOKMARK
+		WHERE BOOKMARK_ID=#{bookmarkId}
+	</delete>
+
+</mapper>
