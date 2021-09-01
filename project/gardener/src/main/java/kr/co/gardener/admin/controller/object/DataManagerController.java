@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.service.object.DataManagerService;
@@ -26,10 +27,11 @@ public class DataManagerController {
 	}
 	
 	@RequestMapping({ "/list/{start}/{end}" })
-	public String list(@PathVariable int start, @PathVariable int end,Model model) {
+	@ResponseBody
+	public List<Company> list(@PathVariable int start, @PathVariable int end) {
 		List<Company> list = service.list(start,end);		
-		model.addAttribute("list", list);
-		return path + "datamanager";
+		
+		return list;
 	}
 
 }
