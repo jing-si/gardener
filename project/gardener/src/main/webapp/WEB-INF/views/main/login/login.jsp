@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +16,10 @@
     <div id="logo">
         <img src="/resources/images/login-logo.png">
       </div>
-    <input id="email" placeholder="���̵�" type="text"></input>
-    <input id="passWord" placeholder="��й�ȣ" type="password"></input>
-    <a href="/"><div id="login"><p>�α���</p></div></a>
-    <div id="pwRe"><a href="">��й�ȣ �缳��</a></div>
-    <div id="membership"><a href="membership/">ȸ������</a></div>
+    <input id="email" placeholder="아이디" type="text"></input>
+    <input id="passWord" placeholder="비밀번호" type="password"></input>
+    <a href="/"><div id="login"><p>로그인</p></div></a>
+    <div id="pwRe"><a href="">비밀번호 재설정</a></div>
+    <div id="membership"><a href="membership/">회원가입</a></div>
 </body>
 </html>

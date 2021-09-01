@@ -13,52 +13,81 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CategoryController {
 	final String path = "main/category/";
 	
-	//Ä«Å×°í¸®
+	//ì¹´í…Œê³ ë¦¬
 	@RequestMapping({"/",""})
 	public String category(Model model) {
-		//productCategoryName(Ç°¸ñº° Ä«Å×°í¸® ´ëºĞ·ù¸í),
-		//subProductCategoryList(productId(Ç°¸ñ¾ÆÀÌµğ)¿Í subProductCategoryName(ÁßºĞ·ù Ä«Å×°í¸®¸í)ÀÌ µé¾îÀÖ´Â ¸®½ºÆ®)
-		//ÀÌ µé¾îÀÖ´Â Ç°¸ñ ´ëºĞ·ù ¸®½ºÆ® ±¸ÇöÇØÁÖ¼¼¿ä.(¸®½ºÆ® ¾È¿¡ ¸®½ºÆ®°¡ µé¾îÀÖ´Â°Å ¸Â½À´Ï´Ù^^)
-		model.addAttribute("productCategoryList","productcategoryList");
+		//productCategoryName(í’ˆëª©ë³„ ì¹´í…Œê³ ë¦¬ ëŒ€ë¶„ë¥˜ëª…),
+		//subProductCategoryList(productId(í’ˆëª©ì•„ì´ë””)ì™€ subProductCategoryName(ì¤‘ë¶„ë¥˜ ì¹´í…Œê³ ë¦¬ëª…)ì´ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸)
+		//ì´ ë“¤ì–´ìˆëŠ” í’ˆëª© ëŒ€ë¶„ë¥˜ ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”.(ë¦¬ìŠ¤íŠ¸ ì•ˆì— ë¦¬ìŠ¤íŠ¸ê°€ ë“¤ì–´ìˆëŠ”ê±° ë§ìŠµë‹ˆë‹¤^^)
+		model.addAttribute("productCategoryList",new ArrayList<String>());
 		
-		//brandName(ºê·£µå¸í)ÀÌ µé¾îÀÖ´Â ¸®½ºÆ® ±¸ÇöÇØÁÖ¼¼¿ä.
-		model.addAttribute("brnadList","brandList");
+		//brandName(ë¸Œëœë“œëª…),brandId(ë¸Œëœë“œ ì•„ì´ë””)ê°€ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”.
+		model.addAttribute("brnadList",new ArrayList<String>());
+		
+		//markId(ì¸ì¦ë§ˆí¬ ì•„ì´ë””), markImg(ì¸ì¦ë§ˆí¬ ì´ë¯¸ì§€), markName(ì¸ì¦ë§ˆí¬ëª…)ì´ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸ êµ¬í˜•í•´ì£¼ì„¸ìš”.
+		model.addAttribute("markList",new ArrayList<String>());
 		return path + "category-list";
 	}
 	
-	//Ç°¸ñº° Ä«Å×°í¸®
+	//í’ˆëª©ë³„ ì¹´í…Œê³ ë¦¬
 	@RequestMapping("/product")
 	public String productlist(Model model) {
-		//productId(Ç°¸ñº° Á¦Ç°¾ÆÀÌµğ), productImg(Ç°¸ñº° Á¦Ç°ÀÌ¹ÌÁö), 
-		//productName(Ç°¸ñº° Á¦Ç°¸í)ÀÌ µé¾îÀÖ´Â ¸®½ºÆ® ±¸ÇöÇØÁÖ¼¼¿ä.
+		//í’ˆëª©ë³„ ì¹´í…Œê³ ë¦¬ì—ì„œ ì†Œë¶„ë¥˜ ì œëª©
+		model.addAttribute("productCategoryList","productCategoryList");
+		
+		//productId(í’ˆëª©ë³„ ì œí’ˆì•„ì´ë””), productImg(í’ˆëª©ë³„ ì œí’ˆì´ë¯¸ì§€), 
+		//productName(í’ˆëª©ë³„ ì œí’ˆëª…)ì´ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”.
 		model.addAttribute("productList",new ArrayList<String>());
 		return path + "product-list";
 	}
 	
-	//ÇØ´ç Á¦Ç°ÀÇ »ó¼¼ÆäÀÌÁö
+	//í•´ë‹¹ ì œí’ˆì˜ ìƒì„¸í˜ì´ì§€
 	@RequestMapping("/product/{productId}")
-	public String productdetail(@PathVariable int productId) {
+	public String productdetail(@PathVariable int productId, Model model) {
+		//urië¡œ ë°›ì€ productIdì— í•´ë‹¹í•˜ëŠ”
+		//ì œí’ˆì´ë¯¸ì§€
+		model.addAttribute("productImg","productImg");
+		//ì œí’ˆëª…
+		model.addAttribute("productName","productName");
+		//ì œí’ˆê·œê²©
+		model.addAttribute("productSize","productSize");
+		//ì œí’ˆ ì¸ì¦ê¸°ê°„
+		model.addAttribute("productCertifySection","productCertifySection");
+		//ì œí’ˆ ì¸ì¦ì‚¬ìœ 
+		model.addAttribute("productCertifyReason","productCertifyReason");
+		//í™˜ê²½í‘œì§€ ì¸ì¦ë²ˆí˜¸
+		model.addAttribute("markNumber","markNumber");
+		//í™˜ê²½í‘œì§€ ì¸ì¦ê¸°ê°„
+		model.addAttribute("markSession","markSession");
+		//ê¸°ì—…ëª…
+		model.addAttribute("companyName","companyName");
+		//ê¸°ì—… ì „í™”ë²ˆí˜¸
+		model.addAttribute("companyPhone","companyPhone");
+		
+		//urië¡œ ë°›ì€ productIdì— í•´ë‹¹í•˜ëŠ” productId(ë™ì¼ë¸Œëœë“œ ì œí’ˆì˜ ì•„ì´ë””) sameBrandImg(ë™ì¼ë¸Œëœë“œ ì œí’ˆì˜ ì´ë¯¸ì§€), sameBrandName(ë™ì¼ë¸Œëœë“œ ì œí’ˆëª…)
+		//ì´ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”.
+		model.addAttribute("sameBrandProductLIst",new ArrayList<String>());
 		return path + "product-detail";
 	}
 	
-	//ºê·£µåº° Ä«Å×°í¸®
+	//ë¸Œëœë“œë³„ ì¹´í…Œê³ ë¦¬
 	@RequestMapping("/brand")
 	public String brandList(Model model) {
-		//ºê·£µå ÀÌ¸§
+		//ë¸Œëœë“œ ì´ë¦„
 		model.addAttribute("brandName","brandName");
-		//productId(ºê·£µåº° Á¦Ç° ¾ÆÀÌµğ), productImg(ºê·£µåº° Á¦Ç°ÀÌ¹ÌÁö)
-		//productName(ºê·£µåº° Á¦Ç°¸í)ÀÌ µé¾îÀÖ´Â ¸®½ºÆ® ±¸ÇöÇØÁÖ¼¼¿ä.
+		//productId(ë¸Œëœë“œë³„ ì œí’ˆ ì•„ì´ë””), productImg(ë¸Œëœë“œë³„ ì œí’ˆì´ë¯¸ì§€)
+		//productName(ë¸Œëœë“œë³„ ì œí’ˆëª…)ì´ ë“¤ì–´ìˆëŠ” ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”.
 		model.addAttribute("brandProductList",new ArrayList<String>());
 		return path + "brand-list";
 	}
 	
-	//ÀÎÁõ¸¶Å©º° Ä«Å×°í¸®
+	//ì¸ì¦ë§ˆí¬ë³„ ì¹´í…Œê³ ë¦¬
 	@RequestMapping("/mark")
 	public String markList(Model model) {
-		//¸®½ºÆ® µÎ°³ ¸¸µé¾îÁÖ¼¼¿ä
-		//ÀÎÁõ¸¶Å© ÀÌ¹ÌÁö ¸®½ºÆ®
+		//ë¦¬ìŠ¤íŠ¸ ë‘ê°œ ë§Œë“¤ì–´ì£¼ì„¸ìš”
+		//ì¸ì¦ë§ˆí¬ ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("markImgList","markImgList");
-		//ÀÎÁõ¸¶Å© ÀÌ¸§ ¸®½ºÆ®
+		//ì¸ì¦ë§ˆí¬ ì´ë¦„ ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("markNameList","markNameList");
 		return path + "mark-list";
 	}

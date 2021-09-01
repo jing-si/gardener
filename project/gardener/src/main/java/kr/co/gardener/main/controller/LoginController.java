@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
 	final String path = "main/login/";
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	@RequestMapping({"","/"})
 	public String login() {
 		return path + "login";
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@RequestMapping("/membership")
 	public String membership() {
 		return path + "membership";

@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {	
 	final String path = "main/";
 	
-	//¸ŞÀÎÆäÀÌÁö
+	//ë©”ì¸í˜ì´ì§€
 	@RequestMapping({"/",""})
 	public String index(Model model) {
 		model.addAttribute("userNick","userNick");
 		return path + "home";
 	}
 	
-	//½ºÇÃ·¡½Ã(½ÃÀÛ´ë±âÈ­¸é)
+	//ìŠ¤í”Œë˜ì‹œ(ì‹œì‘ëŒ€ê¸°í™”ë©´)
 	@RequestMapping("/splash")
 	public String splash() {
 		return path + "splash";
 	}
 }
-	

@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SearchController {
 	final String path = "main/search/";
 	
-	//°Ë»ö
+	//ê²€ìƒ‰
 	@RequestMapping({"/",""})
 	public String search(Model model) {
-		//ÃÖ±Ù°Ë»ö Á¦Ç°¸í ¸®½ºÆ® ±¸ÇöÇØÁÖ¼¼¿ä
-		model.addAttribute("latestProductNameList","latestProductNameList");
+		//latestProduct(ìµœê·¼ê²€ìƒ‰ ì œí’ˆëª…) ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì„¸ìš”
+		model.addAttribute("latestProductList","latestProductList");
 		return path + "search";
 	}
 }
