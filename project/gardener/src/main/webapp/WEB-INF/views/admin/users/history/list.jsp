@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,8 +19,8 @@
 						<th>이메일</th>
 						<th>제품코드</th>
 						<th>기록 날짜</th>
-						<th>관리</th>
 						<th>기록 코멘트</th>
+						<th>관리</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,10 +34,11 @@
 							<td>${item.historyId}</td>
 							<td>${item.userId}</td>
 							<td>${item.productId}</td>
-							<td><fmt:formatDate value="${item.historyDateTime}" pattern="yyyyMMdd"/> </td>
+							<td><fmt:formatDate value="${item.historyDateTime}"
+									pattern="yyyyMMdd" /></td>
 							<td>${item.historyComment}</td>
-							<td><a href="delete/${item.historyId}">삭제</a><a href="update/${item.historyId}">변경</a>
-							</td>
+							<td><a href="delete/${item.historyId}">삭제</a><a
+								href="update/${item.historyId}">변경</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

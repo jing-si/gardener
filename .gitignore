@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-.metadata/*
-project/gardener/.metadata/
-project/gardener/target/
-=======
 .metadata/
-project/gardener/.metadata/.lock
 <<<<<<< HEAD
-/.metadata/
+project/gardener/.metadata/.lock
 =======
+project/gardener/.metadata/
+>>>>>>> 6f043c7caece1dc87e3fb2e76faeae04eb5e1efa
 project/gardener/target/
 project/gardener/target/m2e-wtp/web-resources/META-INF/
->>>>>>> a71f4b65c0657c90ee11bdf473b77f93c4751b53
->>>>>>> d7850e53e7242cdc9988e03e6dda9b6af647ec3b
+project/gardener/target/m2e-wtp/web-resources/META-INF/maven/kr.co/gardener/pom.properties
