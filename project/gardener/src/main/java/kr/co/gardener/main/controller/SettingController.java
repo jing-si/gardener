@@ -46,5 +46,5 @@ public class SettingController {
 		model.addAttribute("userBirth","userBirth");
 		model.addAttribute("userGender","userGender");
 		return path + "myinfoupdate";
-	}
+	} 
 }
