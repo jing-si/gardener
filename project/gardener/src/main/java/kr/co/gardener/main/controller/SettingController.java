@@ -1,5 +1,7 @@
 package kr.co.gardener.main.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +26,8 @@ public class SettingController {
 	//공지사항
 	@RequestMapping("/notice")
 	public String notice(Model model) {
-		//리스트 세개 구현해주세요
-		//공지사항 제목 리스트
-		model.addAttribute("noticeTitleList","noticeTitleList");
-		//공지사항 날짜 리스트
-		model.addAttribute("noticeDateList","noticeDateList");
-		//공지사항 내용 리스트
-		model.addAttribute("noticeContentList","noticeContentList");
+		//noticeTitle(공지사항제목), noticeDate(공지사항 날짜), noticeContent(공지사항 내용)이 들어있는 리스트 구현해주세요
+		model.addAttribute("noticeList",new ArrayList<String>());
 		return path + "notice";
 	}
 	
