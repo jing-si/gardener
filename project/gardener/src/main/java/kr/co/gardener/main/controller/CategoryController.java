@@ -33,7 +33,7 @@ public class CategoryController {
 	@RequestMapping("/product")
 	public String productlist(Model model) {
 		//품목별 카테고리에서 소분류 제목
-		model.addAttribute("productCategoryList","productCategoryList");
+		model.addAttribute("productCategoryList",new ArrayList<String>());
 		
 		//productId(품목별 제품아이디), productImg(품목별 제품이미지), 
 		//productName(품목별 제품명)이 들어있는 리스트 구현해주세요.
@@ -84,11 +84,9 @@ public class CategoryController {
 	//인증마크별 카테고리
 	@RequestMapping("/mark")
 	public String markList(Model model) {
-		//리스트 두개 만들어주세요
-		//인증마크 이미지 리스트
-		model.addAttribute("markImgList","markImgList");
-		//인증마크 이름 리스트
-		model.addAttribute("markNameList","markNameList");
+		//productId(해당 인증마크에 해당하는 제품 아이디), markProductImg(해당 인증마크에 해당하는 제품의 이미지), 
+		//markProductName(인증마크에 해당하는 제품의 이름)이 들어있는 리스트 구현해주세요
+		model.addAttribute("markProductList",new ArrayList<String>());
 		return path + "mark-list";
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,11 +27,29 @@
 
     <div id="body">
         <div id="align">
+        
+        <c:if test="${favoriteList.size()<1}">
+        	<div class="brand">
+                <p class="brand-name">즐겨찾기 목록이 없습니다.</p>
+            </div>
+        </c:if>
+        
+        <c:forEach var="list" items="${favoriteList}">
+        	<a href="/product/${list.productId}"><div class="brand">
+                <div class="brand-img">${list.favoriteImg}</div>
+                <p class="brand-name">${list.favoriteName}</p>
+                <img src="/resources/images/즐겨찾기 등록 하트.png">
+            </div></a>
+        </c:forEach>
+        
+<!-- 완성시 이부분 지우기 -->
             <a href="/product/${productId}"><div class="brand">
                 <div class="brand-img">${favoriteImgList}</div>
                 <p class="brand-name">${favoriteNameList}</p>
                 <img src="/resources/images/즐겨찾기 등록 하트.png">
             </div></a>
+<!-- 여기까지 -->
+
         </div>
     </div>
 

@@ -1,5 +1,7 @@
 package kr.co.gardener.main.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +14,9 @@ public class FavoriteController {
 	//즐겨찾기
 	@RequestMapping({"","/"})
 	public String favorite(Model model) {
-		//밑에 두개 리스트 구현해주십쇼
-		//즐겨찾기로 등록된 제품의 이미지 리스트
-		model.addAttribute("favoriteImgList","favoriteImgList");
-		//즐겨찾기로 등록된 제품의 이름 리스트
-		model.addAttribute("favoriteNameList","favoriteNameList");
+		//productId(즐겨찾기 선택된 제품의 아이디), favoriteImg(즐겨찾기 선택된 제품의 이미지), favoriteName(즐겨찾기 선택된 제품의 이름)
+		//가 들어있있는 리스트 구현해주세요
+		model.addAttribute("favoriteList",new ArrayList<String>());
 		return path + "favorite";
 	}
 }

@@ -25,10 +25,10 @@
                 	<p class="brand-name">등록된 제품이 없습니다.</p>
             	</div>
         	</c:if>
-        	<c:forEach var="list" items="${markList}">
+        	<c:forEach var="list" items="${markProductList}">
         		<a href="/product/${productId}"><div class="brand">
-                	<div class="brand-img">${list.markImg}</div>
-                	<p class="brand-name">${list.markName}</p>
+                	<div class="brand-img">${list.markProductImg}</div>
+                	<p class="brand-name">${list.markProductName}</p>
             	</div></a>
         	</c:forEach>
         
