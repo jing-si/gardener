@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8R"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +19,29 @@
     </div>
     <div id="body">
         <div id="align">
-        <!-- 이부분 자바스크립트 넣으면서 변경 예정 -->
+        
+        <c:if test="${noticeList.size.()<1}">
+        	<div class="list">
+                <div class="list-title">등록된 공지사항이 없습니다.</div>
+            </div>
+        </c:if>
+        
+        <c:forEach var="list" items="${noticeList}">
+        	<div class="list">
+                <div class="list-title">${list.noticeTitle}</div>
+                <div class="list-date">${list.noticeDate}</div>
+                <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg></a>
+            </div>
+        </c:forEach>
+        
+<!-- 완성시 이부분 지우기 -->
             <div class="list">
                 <div class="list-title">${noticeTitleList}</div>
                 <div class="list-date">${noticeDateList}</div>
                 <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg></a>
             </div>
+<!-- 여기까지 -->
+
         </div>
     </div>
 

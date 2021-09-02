@@ -16,28 +16,35 @@
     <div id="header">
         <a href="/setting/myinfo/"><svg id="back" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
         <p>내 정보 수정</p>
-        <a href="내정보보기.html"><svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
+        <svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
     </div>
+    
 <div id="align">
+<form method="post" id="user">
     <div id="email" class="info">
         <p class="title">이메일</p>
         <div><p>${userEmail}</p></div>
         <p id="certification">계정이 인증되었습니다.</p>
     </div>
+    
     <div id="nickName" class="info">
         <p class="title">닉네임</p>
-        <div><p>${userNick}</p></div>
+        <input placeholder="${userNick}" type="text" name="userNick">
     </div>
+    
     <div id="birth" class="info">
         <p class="title">생년월일</p>
-        <div><p>${userBirth}</p></div>
+        <input placeholder=""${userBirth} type="number" name="userBirth">
     </div>
+    
 <div id="gender" class="info" class="tab_menu">
     <div id="gender" class="info">
         <p class="title">성별</p>
         <div id="female"><p>여성</p></div><div id="male"><p>남성</p></div>
     </div>
     </div>
+</form>
+
 </div>
     <nav class="sticky">
         <a href="/"><div><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg><p id="home">홈</p>

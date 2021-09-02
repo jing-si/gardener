@@ -56,6 +56,11 @@ public class User {
 	public void setForestId(int forestId) {
 		this.forestId = forestId;
 	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userNick=" + userNick + ", userPass=" + userPass + ", userBirth="
+				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId + "]";
+	}
 	
 	
 }

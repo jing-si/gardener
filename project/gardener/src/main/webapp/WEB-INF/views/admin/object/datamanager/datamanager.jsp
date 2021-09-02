@@ -201,6 +201,7 @@
 					success: function (data) {
 						arr = data;
 						$("#company_api_tbody").empty()
+						
 						arr.forEach((value, index) => {
 							let tr = $('<tr class="selectRow">').data("index", index);
 							let th1 = $(
@@ -224,9 +225,28 @@
 				console.log("click 실행")
 				$(".selectRow").removeClass("colorbbb");
 				$(this).addClass('colorbbb');
+				let company = arr[$(this).data("index")]
+				console.log(company);
+				$("#companyId").val(company.companyId);
+				$("#companyName").val(company.companyName);
+				$("#companyHomepage").val(company.companyHomepage);
+				$("#companyAddress").val(company.companyAddress);
+				$("#companyTel").val(company.companyTel);
 
 			})
+			
+			$("#arrow").click(function(){
+				let companyId = $("#companyId").val()
+				console.log(companyId);
+				$.ajax({					
+					url:"/admin/object/datamanager/productlist/"+companyId,
+					success:function(data){
+						console.log(data);
+					}
+				})
 
+			})
+			
 
 		});
 	</script>
@@ -370,7 +390,7 @@
 						<input type="text" class="form-control" id="companyTel">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">주 소</span>
+						<span class="input-group-text col-4 textcenter overflow">주 소</span>
 						<input type="text" class="form-control" id="companyAddress">
 					</div>
 					<div class="input-group mb-4">

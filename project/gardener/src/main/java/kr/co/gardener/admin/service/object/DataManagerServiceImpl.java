@@ -13,6 +13,7 @@ import com.google.gson.JsonParser;
 
 import kr.co.gardener.admin.dao.object.DataManagerDao;
 import kr.co.gardener.admin.model.object.Company;
+import kr.co.gardener.admin.model.object.Product;
 
 @Service
 public class DataManagerServiceImpl implements DataManagerService {
@@ -48,6 +49,36 @@ public class DataManagerServiceImpl implements DataManagerService {
 		th.run();
 
 		return list;
+	}
+
+
+
+	@Override
+	public List<Product> productList(int companyId) {
+		String str = dao.productList(companyId);
+		List<Product> list = new ArrayList<>();
+		Thread th = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+
+					JsonParser jsonParser = new JsonParser();
+					JsonObject jo = (JsonObject) jsonParser.parse(str);
+					JsonArray jsonArr = jo.getAsJsonArray("data");
+					Gson gson = new Gson();
+					jsonArr.forEach(data -> {
+						Product com = gson.fromJson(data, Product.class);
+						list.add(com);
+					});
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
+		th.run();
+
+		return list;		
 	}
 
 }
