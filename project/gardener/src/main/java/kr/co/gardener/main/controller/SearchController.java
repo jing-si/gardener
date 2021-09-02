@@ -13,7 +13,7 @@ public class SearchController {
 	//검색
 	@RequestMapping({"/",""})
 	public String search(Model model) {
-		//latestProduct(최근검색 제품명) 리스트 구현해주세요
+		//latestProduct(최근검색    제품명) 리스트 구현해주세요
 		model.addAttribute("latestProductList","latestProductList");
 		return path + "search";
 	}
