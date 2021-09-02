@@ -16,10 +16,14 @@
     <div id="logo">
         <img src="/resources/images/login-logo.png">
       </div>
-    <input id="email" placeholder="아이디" type="text"></input>
-    <input id="passWord" placeholder="비밀번호" type="password"></input>
-    <a href="/"><div id="login"><p>로그인</p></div></a>
+      <form method="post">
+    <input id="email" placeholder="아이디" type="text" name="userId">
+    <input id="passWord" placeholder="비밀번호" type="password" name="userPass">
+    	<input type="submit" id="login" class="border" value="로그인"></input>
+    </form>
+    
     <div id="pwRe"><a href="">비밀번호 재설정</a></div>
     <div id="membership"><a href="membership/">회원가입</a></div>
+    </div>
 </body>
 </html>
