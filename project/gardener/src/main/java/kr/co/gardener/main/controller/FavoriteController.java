@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FavoriteController {
 	final String path = "main/";
 	
-	//Áñ°ÜÃ£±â
+	//ì¦ê²¨ì°¾ê¸°
 	@RequestMapping({"","/"})
 	public String favorite(Model model) {
-		//¹Ø¿¡ µÎ°³ ¸®½ºÆ® ±¸ÇöÇØÁÖ½Ê¼î
-		//Áñ°ÜÃ£±â·Î µî·ÏµÈ Á¦Ç°ÀÇ ÀÌ¹ÌÁö ¸®½ºÆ®
+		//ë°‘ì— ë‘ê°œ ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•´ì£¼ì‹­ì‡¼
+		//ì¦ê²¨ì°¾ê¸°ë¡œ ë“±ë¡ëœ ì œí’ˆì˜ ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("favoriteImgList","favoriteImgList");
-		//Áñ°ÜÃ£±â·Î µî·ÏµÈ Á¦Ç°ÀÇ ÀÌ¸§ ¸®½ºÆ®
+		//ì¦ê²¨ì°¾ê¸°ë¡œ ë“±ë¡ëœ ì œí’ˆì˜ ì´ë¦„ ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("favoriteNameList","favoriteNameList");
 		return path + "favorite";
 	}

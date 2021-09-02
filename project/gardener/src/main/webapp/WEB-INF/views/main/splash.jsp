@@ -1,20 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/½ºÇÃ·¡½Ã_001.css">
+    <link rel="stylesheet" href="/resources/css/ìŠ¤í”Œë˜ì‹œ_001.css">
 </head>
 <body>
     <div id="body">
     <div id="logo">
-      <img src="/resources/images/½ºÇÃ·¡½Ã ·Î°í.png">
+      <img src="/resources/images/ìŠ¤í”Œë˜ì‹œ ë¡œê³ .png">
       </div>
     </div>
 </body>

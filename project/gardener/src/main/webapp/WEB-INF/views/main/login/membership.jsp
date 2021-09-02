@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,48 +15,48 @@
 </head>
 <body>
     <a href="/login/"><div id="header"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></a>
-        <p>È¸¿ø°¡ÀÔ</p></div>
+        <p>íšŒì›ê°€ìž…</p></div>
 <div id="align">
     <div id="email" class="info">
-        <p class="title">ÀÌ¸ÞÀÏ</p>
-        <div><p>example@gmail.com</p></div>
-        <p id="certification">°èÁ¤ÀÌ ÀÎÁõµÇ¾ú½À´Ï´Ù.</p>
+        <p class="title">ì´ë©”ì¼</p>
+        <input placeholder="example@gmail.com" type="text"><!-- <p></p> --></input>
+        <!-- <p id="certification">ê³„ì •ì´ ì¸ì¦ë˜ì—ˆìŠµë‹ˆë‹¤.</p> -->
     </div>
     <div id="nickName" class="info">
-        <p class="title">´Ð³×ÀÓ</p>
-        <input placeholder="example@gmail.com" type="text">
+        <p class="title">ë‹‰ë„¤ìž„</p>
+        <input placeholder="NickName" type="text">
             <!-- <p>example@gmail.com</p> -->
         </input>
     </div>
     <div id="birth" class="info">
-        <p class="title">»ý³â¿ùÀÏ</p>
-        <input placeholder="»ý³â¿ùÀÏ(8ÀÚ¸®)" type="date" maxlength="8">
-            <!-- <p id="explain">»ý³â¿ùÀÏ(8ÀÚ¸®)</p> -->
+        <p class="title">ìƒë…„ì›”ì¼</p>
+        <input placeholder="ìƒë…„ì›”ì¼(8ìžë¦¬)" type="date" maxlength="8">
+            <!-- <p id="explain">ìƒë…„ì›”ì¼(8ìžë¦¬)</p> -->
         </input>
     </div>
     <!-- <div id="gender" class="info">
-        <p class="title">¼ºº°</p>
-        <div id="female"><p>¿©¼º</p>
-        </div><div id="male"><p>³²¼º</p></div>
+        <p class="title">ì„±ë³„</p>
+        <div id="female"><p>ì—¬ì„±</p>
+        </div><div id="male"><p>ë‚¨ì„±</p></div>
     </div> -->
     <div id="gender" class="info" class="tab_menu">
-        <p class="title">¼ºº°</p>
+        <p class="title">ì„±ë³„</p>
         <ul class="list">
             <li class="is_on">
-                <div id="female" class="btn"><p>¿©¼º</p></div>
-            </li><li><div id="male" class="btn"><p>³²¼º</p></div></li>
+                <div id="female" class="btn"><p>ì—¬ì„±</p></div>
+            </li><li><div id="male" class="btn"><p>ë‚¨ì„±</p></div></li>
         </ul>
     </div>
     <div id="agreement" class="info">
-        <p class="title">¾à°üµ¿ÀÇ</p>
+        <p class="title">ì•½ê´€ë™ì˜</p>
         <div id="agreeBox">
-            <div><p class="terms" id="terms_1">ÀÌ¿ë¾à°ü µ¿ÀÇ(ÇÊ¼ö)<a href=""><p class="fullText" id="fullText_1">Àü¹®º¸±â</p></a></div>
-            <div><p class="terms" id="terms_2">°³ÀÎÁ¤º¸ ¼öÁý ¹× ÀÌ¿ë µ¿ÀÇ(ÇÊ¼ö)<a href=""><p class="fullText" id="fullText_2">Àü¹®º¸±â</p></a></div>
+            <div><p class="terms" id="terms_1">ì´ìš©ì•½ê´€ ë™ì˜(í•„ìˆ˜)<a href=""><p class="fullText" id="fullText_1">ì „ë¬¸ë³´ê¸°</p></a></div>
+            <div><p class="terms" id="terms_2">ê°œì¸ì •ë³´ ìˆ˜ì§‘ ë° ì´ìš© ë™ì˜(í•„ìˆ˜)<a href=""><p class="fullText" id="fullText_2">ì „ë¬¸ë³´ê¸°</p></a></div>
         </div>
     </div>
 </div>
     <a href="/"><div id="submit">
-        <p>µ¿ÀÇÇÏ°í ¿Ï·á</p>
+        <p>ë™ì˜í•˜ê³  ì™„ë£Œ</p>
     </div></a>
 </body>
 </html>

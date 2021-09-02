@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CertifyController {
 	final String path = "certify/";
 	
-	//ÀÎÁõÄ«¸Ş¶ó
+	//ì¸ì¦ì¹´ë©”ë¼
 	@RequestMapping("certify")
 	public String certify() {
 		return "certify";

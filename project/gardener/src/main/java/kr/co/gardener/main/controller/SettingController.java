@@ -9,41 +9,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SettingController {
 	final String path = "main/setting/";
 	
-	//¼³Á¤
+	//ì„¤ì •
 	@RequestMapping({"","/"})
 	public String setting() {
 		return path + "setting";
 	}
 	
-	//³»Á¤º¸º¸±â
+	//ë‚´ì •ë³´ë³´ê¸°
 	@RequestMapping("/myinfo")
 	public String myinfo() {
 		return path + "myinfo";
 	}
 	
-	//°øÁö»çÇ×
+	//ê³µì§€ì‚¬í•­
 	@RequestMapping("/notice")
 	public String notice(Model model) {
-		//¸®½ºÆ® ¼¼°³ ±¸ÇöÇØÁÖ¼¼¿ä
-		//°øÁö»çÇ× Á¦¸ñ ¸®½ºÆ®
+		//ë¦¬ìŠ¤íŠ¸ ì„¸ê°œ êµ¬í˜„í•´ì£¼ì„¸ìš”
+		//ê³µì§€ì‚¬í•­ ì œëª© ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("noticeTitleList","noticeTitleList");
-		//°øÁö»çÇ× ³¯Â¥ ¸®½ºÆ®
+		//ê³µì§€ì‚¬í•­ ë‚ ì§œ ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("noticeDateList","noticeDateList");
-		//°øÁö»çÇ× ³»¿ë ¸®½ºÆ®
+		//ê³µì§€ì‚¬í•­ ë‚´ìš© ë¦¬ìŠ¤íŠ¸
 		model.addAttribute("noticeContentList","noticeContentList");
 		return path + "notice";
 	}
 	
-	//Ä£È¯°æÀÌ¾ß±â
+	//ì¹œí™˜ê²½ì´ì•¼ê¸°
 	@RequestMapping("/ecostory")
 	public String ecostory() {
 		return path + "ecostory";
 	}
 	
-	//³»Á¤º¸¼öÁ¤
+	//ë‚´ì •ë³´ìˆ˜ì •
 	@RequestMapping("/myinfo/update")
 	public String update(Model model){
-		//¼ø¼­´ë·Î À¯ÀúÀÌ¸ŞÀÏ, À¯Àú´Ğ³×ÀÓ, À¯Àú»ı³â¿ùÀÏ, À¯Àú¼ºº°ÀÔ´Ï´Ù.
+		//ìˆœì„œëŒ€ë¡œ ìœ ì €ì´ë©”ì¼, ìœ ì €ë‹‰ë„¤ì„, ìœ ì €ìƒë…„ì›”ì¼, ìœ ì €ì„±ë³„ì…ë‹ˆë‹¤.
 		model.addAttribute("userEmail","userEmail");
 		model.addAttribute("userNick","userNick");
 		model.addAttribute("userBirth","userBirth");
