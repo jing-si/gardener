@@ -1,9 +1,5 @@
 .metadata/
-<<<<<<< HEAD
-project/gardener/.metadata/.lock
-=======
 project/gardener/.metadata/
->>>>>>> 6f043c7caece1dc87e3fb2e76faeae04eb5e1efa
 project/gardener/target/
 project/gardener/target/m2e-wtp/web-resources/META-INF/
 project/gardener/target/m2e-wtp/web-resources/META-INF/maven/kr.co/gardener/pom.properties
