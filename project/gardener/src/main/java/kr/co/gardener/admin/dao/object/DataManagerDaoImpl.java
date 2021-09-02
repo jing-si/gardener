@@ -18,10 +18,14 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DataManagerDaoImpl implements DataManagerDao {
 	private URI companyUrl;
+	private URI productUrl;
+	private String certKeyc;
 	
 	public DataManagerDaoImpl() {
 		try {
 			companyUrl = new URI("http://data.greenproduct.go.kr/open-api/rest/CertifyVenderInformationInquiryService.do");
+			productUrl = new URI("http://data.greenproduct.go.kr/open-api/rest/GreenProductInformationInquiryService.do");
+			certKeyc = 	"kW2He3CdhxZqoqV4Xca2ZHfw0BrO7YV/Eps1RzY5pd0XPwc7D5443vHWGHwJ1kCViv2Q5kebY14nqh/7X3Q==";	
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -32,7 +36,7 @@ public class DataManagerDaoImpl implements DataManagerDao {
 		URI connUrl=null;
 		try {
 			 connUrl = new URIBuilder(companyUrl)
-					.addParameter("certKeyc","kW2He3CdhxZqoqV4Xca2ZHfw0BrO7YV/Eps1RzY5pd0XPwc7D5443vHWGHwJ1kCViv2Q5kebY14nqh/7X3Q==")
+					.addParameter("certKeyc",certKeyc)
 					.addParameter("vendStdt", String.valueOf(start)).addParameter("vendEndt", String.valueOf(end)).build();
 		} catch (URISyntaxException e1) {
 			e1.printStackTrace();
@@ -64,6 +68,46 @@ public class DataManagerDaoImpl implements DataManagerDao {
 
 		return content;
 		
+	}
+
+	@Override
+	public String productList(int companyId) {
+		
+		URI connUrl=null;
+		try {
+			 connUrl = new URIBuilder(productUrl)
+					.addParameter("certKeyc",certKeyc)
+					.addParameter("prodVcod", String.valueOf(companyId))
+					.build();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+
+		HttpClient httpClient = HttpClientBuilder.create().build();
+		HttpResponse response = null;
+
+		try {
+			response = httpClient.execute(new HttpGet(connUrl));
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// post 요청은 HttpPost()를 사용하면 된다.
+
+		HttpEntity entity = response.getEntity();
+		String content = "";
+
+		try {
+			content = EntityUtils.toString(entity);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return content;
 	}
 
 }
