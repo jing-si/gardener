@@ -18,7 +18,7 @@ import kr.co.gardener.util.FileUpload;
 @Controller
 @RequestMapping("/admin/forests/forest")
 public class ForestController {
-	final String path = "admin/forest/forest/";
+	final String path = "admin/forests/forest/";
 
 	@Autowired
 	ForestService service;
@@ -35,7 +35,6 @@ public class ForestController {
 		return path + "add";
 	}
 	
-	/* �� �̹��� ���� ���ε� ó�� */
 	@PostMapping("/add")
 	
 	public String add(Forest item, MultipartFile uploadFile) {

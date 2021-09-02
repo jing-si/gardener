@@ -7,7 +7,7 @@
 	
 	<select id="item" resultType="History">
 		SELECT * FROM HISTORY
-		WHEN HISTORY_ID = #{historyId}
+		WHERE HISTORY_ID = #{historyId}
 	</select>
 	
 	<insert id="add">
@@ -22,7 +22,7 @@
 			PRODUCT_ID=#{productId},
 			HISTORY_DATETIME=#{historyDateTime},
 			HISTORY_COMMENT=#{historyComment}
-		WHERE HISTORY_ID=#{HistoryId}
+		WHERE HISTORY_ID=#{historyId}
 	</update>
 	
 	<delete id="delete">
