@@ -4,7 +4,7 @@ public class Location {
 	private String userId;
 	private int locationId;
 	private int plantId;
-	private int locationSize;;
+	private int locationSize;
 	private int locationX;
 	private int locationY;
 	private int locationOrder;
