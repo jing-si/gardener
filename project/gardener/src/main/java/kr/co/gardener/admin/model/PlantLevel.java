@@ -1,15 +1,15 @@
 package kr.co.gardener.admin.model;
 
 public class PlantLevel {
-	private int plantLevel;
+	private int plantLevelId;
 	private int plantId;
-	private int plantImage;
+	private String plantImage;
 	
-	public int getPlantLevel() {
-		return plantLevel;
+	public int getPlantLevelId() {
+		return plantLevelId;
 	}
-	public void setPlantLevel(int plantLevel) {
-		this.plantLevel = plantLevel;
+	public void setPlantLevelId(int plantLevelId) {
+		this.plantLevelId = plantLevelId;
 	}
 	public int getPlantId() {
 		return plantId;
@@ -17,11 +17,11 @@ public class PlantLevel {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
-	public int getPlantImage() {
+	public String getPlantImage() {
 		return plantImage;
 	}
-	public void setPlantImage(int plantImage) {
+	public void setPlantImage(String plantImage) {
 		this.plantImage = plantImage;
-	}
+	}	
 
 }

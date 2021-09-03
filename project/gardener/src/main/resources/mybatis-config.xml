@@ -17,6 +17,7 @@
 		<typeAlias type="kr.co.gardener.admin.model.Location" alias="Location"/>
 		<typeAlias type="kr.co.gardener.admin.model.Forest" alias="Forest"/>	
 		<typeAlias type="kr.co.gardener.admin.model.Plant" alias="Plant"/>	
+		<typeAlias type="kr.co.gardener.admin.model.PlantLevel" alias="PlantLevel"/>	
 		<typeAlias type="kr.co.gardener.admin.model.object.Classify" alias="Classify"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.CertReason" alias="CertReason"/>
 	</typeAliases>
@@ -30,6 +31,7 @@
 		<mapper resource="mybatis/location.xml"/>
 		<mapper resource="mybatis/forest.xml"/>
 		<mapper resource="mybatis/plant.xml"/>
+		<mapper resource="mybatis/plantLevel.xml"/>
 		<mapper resource="mybatis/classify.xml"/>
 		<mapper resource="mybatis/certReason.xml"/>
 	</mappers>
