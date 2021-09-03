@@ -4,7 +4,9 @@ public interface DataManagerDao {
 
 	String list(int start, int end);
 
-	String productList(int companyId);
+	String productList(long companyId);
+
+	String eProductList(long companyId);
 	
 	
 }
