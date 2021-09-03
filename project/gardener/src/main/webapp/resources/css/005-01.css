@@ -39,7 +39,7 @@ body {
 }
 
 /* width: 360px; height: 640px; 기준 */
-#botton_setting {
+#button_setting {
     position: absolute;
     left: 82%;    /* left: 294px; */
     top: 80%;     /* top: 514px; */
@@ -48,7 +48,7 @@ body {
 }
 
 /* width: 360px; height: 640px; 기준 */
-#botton_item {
+#button_item {
     position: absolute;
     left: 82%;   /* left: 294px; */
     top: 90%;     /* top: 579px; */
@@ -102,10 +102,12 @@ body {
     margin: 10px 10px 0 10px;
 }
 
-.popup_head .popup_close {
+.popup_head #popup_close {
     position: absolute;
     left: 294px;
     top: 10px;
+    border: none;
+    background-color: transparent;
 }
 .popup_head .item_all {
     position: absolute;
