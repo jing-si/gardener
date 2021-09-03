@@ -13,28 +13,30 @@
     <script src="/resources/js/test.js"></script>
 </head>
 <body>
+<form method="post" id="user">
     <div id="header">
         <a href="/setting/myinfo/"><svg id="back" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
         <p>내 정보 수정</p>
-        <svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
-    </div>
+        <input type="image" src="/resources/images/검색창 돋보기.png" style="height:30px; width:30px"></button>
+<!--         <svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
+ -->    </div>
     
 <div id="align">
-<form method="post" id="user">
+
     <div id="email" class="info">
         <p class="title">이메일</p>
-        <div><p>${userEmail}</p></div>
+        <input value="${useriId}" readonly>
         <p id="certification">계정이 인증되었습니다.</p>
     </div>
     
     <div id="nickName" class="info">
         <p class="title">닉네임</p>
-        <input placeholder="${userNick}" type="text" name="userNick">
+        <input value="${userNick}" type="text" name="userNick">
     </div>
     
     <div id="birth" class="info">
         <p class="title">생년월일</p>
-        <input placeholder=""${userBirth} type="number" name="userBirth">
+        <input value="${userBirth}" type="text" name="userBirth" maxlength="8">
     </div>
     
 <div id="gender" class="info" class="tab_menu">

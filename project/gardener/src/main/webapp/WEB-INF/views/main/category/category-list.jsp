@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
     <script src="/resources/js/test.js"></script>
-    <link rel="stylesheet" href="/resources/css/카테고리_007.css">
+    <link rel="stylesheet" href="/resources/css/category.css">
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/js/indigo.min.js"></script>
 </head>

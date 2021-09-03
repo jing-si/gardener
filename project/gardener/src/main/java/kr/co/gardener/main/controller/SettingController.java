@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.co.gardener.admin.model.User;
 
 @Controller
 @RequestMapping("/setting")
@@ -38,8 +42,9 @@ public class SettingController {
 	}
 	
 	//내정보수정
-	@RequestMapping("/myinfo/update")
+	@GetMapping("/myinfo/update")
 	public String update(Model model){
+		
 		//순서대로 유저이메일, 유저닉네임, 유저생년월일, 유저성별입니다.
 		model.addAttribute("userEmail","userEmail");
 		model.addAttribute("userNick","userNick");
@@ -47,4 +52,12 @@ public class SettingController {
 		model.addAttribute("userGender","userGender");
 		return path + "myinfoupdate";
 	} 
+	
+	//내정보수정 폼
+	@PostMapping("/myinfo/update")
+	public String update(User user) {
+		//나중에 지우기
+		System.out.println(user.toString());
+		return "redirect:../myinfo";
+	}
 }
