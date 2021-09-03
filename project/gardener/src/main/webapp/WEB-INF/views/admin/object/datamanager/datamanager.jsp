@@ -237,7 +237,7 @@
 							let tr = $('<tr class="selectRow">').data("index", index);
 							let th1 = $(
 									'<th scope="row" class="col-1 textcenter overflow">')
-								.text(index)
+								.text(index+1)
 							let td2 = $('<td class="col-4 textcenter overflow">').text(
 								value.companyId)
 							let td3 = $('<td class="col-5 textcenter overflow">').text(
@@ -295,7 +295,7 @@
 				productArr.forEach((value, index) => {
 					let tr = $('<tr class="selectRow">').data("index", index);
 					let th1 = $('<th scope="row" class="col-1 textcenter overflow">')
-						.text(index)
+						.text(index+1)
 					let td2 = $('<td class="col-3 textcenter overflow">')
 						.text(value.productId)
 					let td3 = $('<td class="col-4 textcenter overflow">')
