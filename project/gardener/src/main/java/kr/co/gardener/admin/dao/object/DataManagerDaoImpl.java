@@ -42,6 +42,13 @@ public class DataManagerDaoImpl implements DataManagerDao {
 			e1.printStackTrace();
 		}
 
+
+		return context(connUrl);
+		
+	}
+	
+	private String context(URI connUrl) {		
+
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpResponse response = null;
 
@@ -69,7 +76,7 @@ public class DataManagerDaoImpl implements DataManagerDao {
 		return content;
 		
 	}
-
+	
 	@Override
 	public String productList(long companyId) {
 		
@@ -83,37 +90,52 @@ public class DataManagerDaoImpl implements DataManagerDao {
 			e1.printStackTrace();
 		}
 
-		HttpClient httpClient = HttpClientBuilder.create().build();
-		HttpResponse response = null;
-
-		try {
-			response = httpClient.execute(new HttpGet(connUrl));
-		} catch (ClientProtocolException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		// post 요청은 HttpPost()를 사용하면 된다.
-
-		HttpEntity entity = response.getEntity();
-		String content = "";
-
-		try {
-			content = EntityUtils.toString(entity);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return content;
+		return context(connUrl);
 	}
 
 	@Override
 	public String eProductList(long companyId) {
-		// TODO Auto-generated method stub
-		return null;
+		URI connUrl=null;
+		try {
+			 connUrl = new URIBuilder(productUrl)
+					.addParameter("certKeyc",certKeyc)
+					.addParameter("epdpVcod", String.valueOf(companyId))
+					.build();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+
+		return context(connUrl);
+	}
+
+	@Override
+	public String productList(int start, int end) {
+		URI connUrl=null;
+		try {
+			 connUrl = new URIBuilder(productUrl)
+					.addParameter("certKeyc",certKeyc)
+					.addParameter("prodStdt", String.valueOf(start)).addParameter("prodEndt", String.valueOf(end)).build();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+
+
+		return context(connUrl);
+	}
+	
+	@Override
+	public String eproductList(int start, int end) {
+		URI connUrl=null;
+		try {
+			 connUrl = new URIBuilder(companyUrl)
+					.addParameter("certKeyc",certKeyc)
+					.addParameter("vendStdt", String.valueOf(start)).addParameter("vendEndt", String.valueOf(end)).build();
+		} catch (URISyntaxException e1) {
+			e1.printStackTrace();
+		}
+
+
+		return context(connUrl);
 	}
 	
 	

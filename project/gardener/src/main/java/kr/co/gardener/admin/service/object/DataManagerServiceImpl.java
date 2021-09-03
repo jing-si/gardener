@@ -72,4 +72,14 @@ public class DataManagerServiceImpl implements DataManagerService {
 		return list;
 	}
 
+
+
+	@Override
+	public List<Product> productList(int start, int end) {
+		String str = dao.productList(start, end);
+		List<Product> list = paser(str,Product.class);
+		return list;
+		
+	}
+
 }
