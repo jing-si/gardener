@@ -37,9 +37,10 @@ public class DataManagerController {
 	
 	@RequestMapping("/productlist/{companyId}")
 	@ResponseBody
-	public List<Product> productList(@PathVariable int companyId){
+	public List<Product> productList(@PathVariable long companyId){
 		System.out.println(companyId);
 			List<Product> list = service.productList(companyId);
+			List<Product> elist = service.eProductList(companyId);
 		return list;
 	}
 

@@ -71,7 +71,7 @@ public class DataManagerDaoImpl implements DataManagerDao {
 	}
 
 	@Override
-	public String productList(int companyId) {
+	public String productList(long companyId) {
 		
 		URI connUrl=null;
 		try {
@@ -109,5 +109,13 @@ public class DataManagerDaoImpl implements DataManagerDao {
 
 		return content;
 	}
+
+	@Override
+	public String eProductList(long companyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }
