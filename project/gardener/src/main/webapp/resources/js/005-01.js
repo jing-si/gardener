@@ -1,4 +1,4 @@
-window.onload = function () {
+/*document.onload = function () {
 
     function onClick() {
         document.querySelector('.popup_wrap').style.display = 'block';
@@ -9,17 +9,29 @@ window.onload = function () {
         document.querySelector('.popup').style.display = 'none';
     }
 
-    document.getElementById('botton_item').addEventListener('click', onClick);
+    document.getElementById('#botton_item').addEventListener('click', onClick);
     document.querySelector('.popup_close').addEventListener('click', offClick);
 
-}
+};
+*/
 
-function newPage()  {
-    window.location.href = 'http://127.0.0.1:5500/005-01/005-01-01.html'
+/*$(document).ready(function( $ ){     
+    $(".openPopup").on("click", function(event) {  //팝업오픈 버튼 누르면
+    $(".popup").show();   //팝업 오픈
+    $(".popup_wrap").show(); //뒷배경 생성
+    });
     
-}
+    $("body").on("click", function(event) { 
+        if(event.target.className == 'popup_close' || event.target.className == 'popup_wrap'){
+            $(".popup").hide(); //close버튼 이거나 뒷배경 클릭시 팝업 삭제
+              $(".popup_wrap").hide();
+        }
+	});
 
-function forest_change()  {
-    window.location.href = 'http://127.0.0.1:5500/005-01/005-01-01.html'
-}
+});
+*/
 
+    
+
+
+    
