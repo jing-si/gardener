@@ -4,10 +4,12 @@
 
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Database 관리</title>
 	<script src="/resources/jq/jquery.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -148,38 +150,61 @@
 			display: inline-block;
 			margin: auto;
 		}
-		.detail h2{
-			padding:10px 20px;
+
+		.detail h2 {
+			padding: 10px 20px;
 			height: full;
-			border-bottom:1px solid #ccc;
+			border-bottom: 1px solid #ccc;
 			margin-bottom: 20px;
 		}
 
 		#product_ditail {
 			float: right;
+			position: relative;
 		}
 
+		#product_ditail>div:first-of-type {
+			background-color: red;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 89%;
+		}
+
+		#product_ditail>div:last-child {
+			background-color: green;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 89%;
+		}
+		#product_ditail>div div{
+			margin:15px;
+			position: relative;		
+			width: auto;
+		}
 		#company_ditail {}
-		
-		footer{
-		margin-top:120px;
-			height :100px;
+
+		footer {
+			margin-top: 120px;
+			height: 100px;
 			background-color: rgb(82, 63, 70);
-			color : #fff;
+			color: #fff;
 			text-align: center;
-			
+
 		}
-		#company_ditail div div{
-			margin-left: 30px;			
+
+		#company_ditail div div {
+			margin-left: 30px;
 		}
-		
 	</style>
 
 	<script>
-		let arr;
+		let companyArr = new Array();
+		let productArr = new Array();
 
 		$().ready(() => {
-			let arr = new Array();
+			//api, db 버튼의 행동
 			$(".nav_icon").click(function () {
 				event.preventDefault
 				$(this).parent().children().children().removeClass("black");
@@ -189,24 +214,30 @@
 				$("#" + $(this).data("sub") + $(this).data("kind") + "Form").removeClass("hide");
 			})
 
+			//회사 api 날짜 기준 검색
 			$("#company_api_but").click(() => {
-				const start = $("#startDay").val();
-				const end = $("#endDay").val();
+				const start = $("#company_start_day").val();
+				const end = $("#company_end_day").val();
 				let url = "/admin/object/datamanager/list";
 				url += "/" + start;
 				url += "/" + end;
-				console.log(url);
+				
+				$("#company_api_tbody").empty()
+				let tr = $('<tr class="selectRow">');
+					let th1 = $('<th scope="row" class="full textcenter overflow">')
+						.text("제품 검색을 시작합니다.")
+					tr.append(th1);
+					$("#company_api_tbody").append(tr)
 				$.ajax({
 					url: url,
 					success: function (data) {
-						arr = data;
+						companyArr = data;
 						$("#company_api_tbody").empty()
-						
-						arr.forEach((value, index) => {
+						companyArr.forEach((value, index) => {
 							let tr = $('<tr class="selectRow">').data("index", index);
 							let th1 = $(
 									'<th scope="row" class="col-1 textcenter overflow">')
-								.text(index)
+								.text(index+1)
 							let td2 = $('<td class="col-4 textcenter overflow">').text(
 								value.companyId)
 							let td3 = $('<td class="col-5 textcenter overflow">').text(
@@ -221,12 +252,70 @@
 
 			});
 
+			//product api 날짜 기준 검색
+			$("#product_api_but").click(() => {
+				const start = $("#product_start_day").val();
+				const end = $("#product_end_day").val();
+				let url = "/admin/object/datamanager/productlist";
+				url += "/" + start;
+				url += "/" + end;
+				console.log(url);
+				$("#product_api_tbody").empty()
+				let tr = $('<tr class="selectRow">');
+				let th1 = $('<th scope="row" class="full textcenter overflow">')
+					.text("제품 검색을 시작합니다.")
+				tr.append(th1);
+				$("#product_api_tbody").append(tr)
+				$.ajax({
+					url: url,
+					success: function (data) {
+						productArr = data;
+						makeProductList();
+
+					},
+					error: function (data) {
+						console.log(data);
+						productArr = new Array();
+						makeProductList();
+					}
+				});
+
+			});
+
+			//제품의 행을 뿌려주는 함수
+			function makeProductList() {
+				$("#product_api_tbody").empty()
+				if (productArr.length === 0) {
+					let tr = $('<tr class="selectRow">');
+					let th1 = $('<th scope="row" class="full textcenter overflow">')
+						.text("검색 되는 제품이 하나도 없습니다.")
+					tr.append(th1);
+					$("#product_api_tbody").append(tr)
+				}
+				productArr.forEach((value, index) => {
+					let tr = $('<tr class="selectRow">').data("index", index);
+					let th1 = $('<th scope="row" class="col-1 textcenter overflow">')
+						.text(index+1)
+					let td2 = $('<td class="col-3 textcenter overflow">')
+						.text(value.productId)
+					let td3 = $('<td class="col-4 textcenter overflow">')
+						.text(value.productName)
+					let td4 = $('<td class="col-3 textcenter overflow">')
+						.text(value.certId)
+					let td5 = $('<td class="col-1 textcenter overflow">')
+					tr.append(th1).append(td2).append(td3).append(td4).append(td5);
+					$("#product_api_tbody").append(tr)
+
+				});
+
+			}
+
+
+			//회사 선택시 행동
 			$("#company_api_tbody").on("click", ".selectRow", function () {
-				console.log("click 실행")
 				$(".selectRow").removeClass("colorbbb");
 				$(this).addClass('colorbbb');
-				let company = arr[$(this).data("index")]
-				console.log(company);
+				let company = companyArr[$(this).data("index")]
 				$("#companyId").val(company.companyId);
 				$("#companyName").val(company.companyName);
 				$("#companyHomepage").val(company.companyHomepage);
@@ -234,19 +323,25 @@
 				$("#companyTel").val(company.companyTel);
 
 			})
-			
-			$("#arrow").click(function(){
+
+			//중간 녹색 화살표
+			$("#arrow").click(function () {
 				let companyId = $("#companyId").val()
-				console.log(companyId);
-				$.ajax({					
-					url:"/admin/object/datamanager/productlist/"+companyId,
-					success:function(data){
+				$.ajax({
+					url: "/admin/object/datamanager/productlist/" + companyId,
+					success: function (data) {
+						productArr = data;
+						makeProductList();
+					},
+					error: function (data) {
 						console.log(data);
+						productArr = new Array();
+						makeProductList();
 					}
 				})
 
 			})
-			
+
 
 		});
 	</script>
@@ -279,8 +374,8 @@
 					<table class="table tabTH" border="1">
 						<thead>
 							<tr>
-								<th scope="col" class="col-1 textcenter">1</th>
-								<th scope="col" class="col-4 textcenter">번호</th>
+								<th scope="col" class="col-1 textcenter">#</th>
+								<th scope="col" class="col-4 textcenter">사업자 번호</th>
 								<th scope="col" class="col-5 textcenter">상호</th>
 								<th scope="col" class="col-2 textcenter">상태</th>
 							</tr>
@@ -295,9 +390,9 @@
 					</div>
 				</div>
 				<form class="col-10 center" id="company_api_form">
-					<label class="col-4">조회 시작일<input type="number" id="startDay" placeholder="YYYYMMDD"
+					<label class="col-4">조회 시작일<input type="number" id="company_start_day" placeholder="YYYYMMDD"
 							class="input-group-text full"></label>
-					<label class="col-4">조회 종료일<input type="number" id="endDay" placeholder="YYYYMMDD"
+					<label class="col-4">조회 종료일<input type="number" id="company_end_day" placeholder="YYYYMMDD"
 							class="input-group-text full"></label>
 					<button id="company_api_but" data-sub="company" type="button"
 						class="btn btn-info col-2 company_but">검색</button>
@@ -338,20 +433,46 @@
 				</ul>
 			</div>
 
+			<!-- 제품 API -->
 			<div id="productApiForm" class="productForm">
-				<div id="product_api" class="full api"></div>
+
+				<div id="product_api" class="full api">
+					<table class="table tabTH" border="1">
+						<thead>
+							<tr>
+								<th scope="col" class="col-1 textcenter">#</th>
+								<th scope="col" class="col-3 textcenter">제품번호</th>
+								<th scope="col" class="col-4 textcenter">제품명</th>
+								<th scope="col" class="col-3 textcenter">인증정보</th>
+								<th scope="col" class="col-1 textcenter">상태</th>
+							</tr>
+						</thead>
+					</table>
+					<div id="product_api_data" class="overflow">
+						<table class="table" border="1">
+							<tbody id="product_api_tbody">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+
 				<form class="col-10 center">
-					<label class="col-4 vertical">조회 시작일<input type="number" name="startday" placeholder="YYYYMMDD"
+					<label class="col-4 vertical">조회 시작일<input type="number" id="product_start_day"
+							placeholder="YYYYMMDD" class="input-group-text full"></label>
+					<label class="col-4 vertical">조회 종료일<input type="number" id="product_end_day" placeholder="YYYYMMDD"
 							class="input-group-text full"></label>
-					<label class="col-4 vertical">조회 종료일<input type="number" name="startday" placeholder="YYYYMMDD"
-							class="input-group-text full"></label>
-					<button id="product_but" data-sub="product" type="button"
+					<button id="product_api_but" data-sub="product" type="button"
 						class="btn btn-info col-2 vertical">검색</button>
 				</form>
 			</div>
 
+			<!-- 제품 DB -->
 			<div id="productDbForm" class="productForm hide">
-				<div id="product_api" class="full api"></div>
+				<div id="product_api" class="full api">
+
+
+				</div>
 				<form class="col-10 center" method="get">
 
 				</form>
@@ -375,7 +496,7 @@
 			<!-- 회사 상세 페이지-->
 			<div id="company_ditail" class="detail col-4">
 				<h2>기업 상세 정보</h2>
-				
+
 				<div class="col-10">
 					<div class="input-group mb-4">
 						<span class="input-group-text col-4">사업자 번호</span>
@@ -398,14 +519,62 @@
 						<input type="text" class="form-control" id="companyHomepage">
 					</div>
 				</div>
-			</div><!-- 제품 상세 페이지-->
-
-			<div id="product_ditail" class="detail col-6">
-				<h2>제품 상세 정보</h2>
-		
 			</div>
 
+			<!-- 제품 상세 페이지-->
+			<div id="product_ditail" class="detail col-6">
+				<h2>제품 상세 정보</h2>
+				<div class="col-6">
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4">사업자 번호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">상 호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">전화번호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter overflow">주 소</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">홈페이지</span>
+						<input type="text" class="form-control" id="">
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4">사업자 번호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">상 호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">전화번호</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter overflow">주 소</span>
+						<input type="text" class="form-control" id="">
+					</div>
+					<div class="input-group mb-4">
+						<span class="input-group-text col-4 textcenter">홈페이지</span>
+						<input type="text" class="form-control" id="">
+					</div>
+				</div>
+			</div>
+
+
+
 		</div>
+
+
 		<footer>
 			지구를 지켜 주세요.
 		</footer>

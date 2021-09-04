@@ -13,4 +13,6 @@ public interface DataManagerService {
 
 	List<Product> eProductList(long companyId);
 
+	List<Product> productList(int start, int end);
+
 }
