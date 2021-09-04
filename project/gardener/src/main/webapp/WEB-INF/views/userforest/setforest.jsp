@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +30,10 @@
         	<img id="test" src="/resources/images/tree_01.png" width= "300" height= "382">
         </div>
         
+        <c:forEach var="list" items="${plantList}">
+        	<img src="/resources/images/${list.plantImg}">
+        </c:forEach>
+             
         <div class="footer">
             <div class="footer_btn"><img class="btn" id="btn_front" src="/resources/images/btn_front.png" width="45" height="45">
             </div><div class="footer_btn"><img class="btn" id="btn_back" src="/resources/images/btn_back.png" width="45" height="45">
@@ -57,10 +62,19 @@
         var p = $('#test').last();
         var offset = p.offset();
         console.log("left: " + offset.left + " top: " + offset.top);
-        
-        
     </script>
     <!-- 이미지 확대 축소 -->
+    
+    <!-- 이미지 우선순위 -->
+    <script>
+    	$('#btn_front').click(function () { 
+    		
+    	});
+    
+    
+    </script>
+    <!-- 이미지 우선순위 -->
+    
     
     
     
