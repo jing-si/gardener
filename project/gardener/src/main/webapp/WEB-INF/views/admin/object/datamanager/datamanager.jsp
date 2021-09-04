@@ -164,7 +164,6 @@
 		}
 
 		#product_ditail>div:first-of-type {
-			background-color: red;
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -172,17 +171,18 @@
 		}
 
 		#product_ditail>div:last-child {
-			background-color: green;
 			position: absolute;
 			bottom: 0;
 			right: 0;
 			height: 89%;
 		}
-		#product_ditail>div div{
-			margin:15px;
-			position: relative;		
+
+		#product_ditail>div div {
+			margin: 15px;
+			position: relative;
 			width: auto;
 		}
+
 		#company_ditail {}
 
 		footer {
@@ -221,13 +221,14 @@
 				let url = "/admin/object/datamanager/list";
 				url += "/" + start;
 				url += "/" + end;
-				
+
 				$("#company_api_tbody").empty()
 				let tr = $('<tr class="selectRow">');
-					let th1 = $('<th scope="row" class="full textcenter overflow">')
-						.text("제품 검색을 시작합니다.")
-					tr.append(th1);
-					$("#company_api_tbody").append(tr)
+				let th1 = $('<th scope="row" class="full textcenter overflow">')
+					.text("제품 검색을 시작합니다.")
+				tr.append(th1);
+				$("#company_api_tbody").append(tr)
+
 				$.ajax({
 					url: url,
 					success: function (data) {
@@ -237,7 +238,7 @@
 							let tr = $('<tr class="selectRow">').data("index", index);
 							let th1 = $(
 									'<th scope="row" class="col-1 textcenter overflow">')
-								.text(index+1)
+								.text(index + 1)
 							let td2 = $('<td class="col-4 textcenter overflow">').text(
 								value.companyId)
 							let td3 = $('<td class="col-5 textcenter overflow">').text(
@@ -259,12 +260,13 @@
 				let url = "/admin/object/datamanager/productlist";
 				url += "/" + start;
 				url += "/" + end;
-				console.log(url);
+				
 				$("#product_api_tbody").empty()
 				let tr = $('<tr class="selectRow">');
 				let th1 = $('<th scope="row" class="full textcenter overflow">')
 					.text("제품 검색을 시작합니다.")
 				tr.append(th1);
+				
 				$("#product_api_tbody").append(tr)
 				$.ajax({
 					url: url,
@@ -282,33 +284,7 @@
 
 			});
 
-			//제품의 행을 뿌려주는 함수
-			function makeProductList() {
-				$("#product_api_tbody").empty()
-				if (productArr.length === 0) {
-					let tr = $('<tr class="selectRow">');
-					let th1 = $('<th scope="row" class="full textcenter overflow">')
-						.text("검색 되는 제품이 하나도 없습니다.")
-					tr.append(th1);
-					$("#product_api_tbody").append(tr)
-				}
-				productArr.forEach((value, index) => {
-					let tr = $('<tr class="selectRow">').data("index", index);
-					let th1 = $('<th scope="row" class="col-1 textcenter overflow">')
-						.text(index+1)
-					let td2 = $('<td class="col-3 textcenter overflow">')
-						.text(value.productId)
-					let td3 = $('<td class="col-4 textcenter overflow">')
-						.text(value.productName)
-					let td4 = $('<td class="col-3 textcenter overflow">')
-						.text(value.certId)
-					let td5 = $('<td class="col-1 textcenter overflow">')
-					tr.append(th1).append(td2).append(td3).append(td4).append(td5);
-					$("#product_api_tbody").append(tr)
 
-				});
-
-			}
 
 
 			//회사 선택시 행동
@@ -323,18 +299,33 @@
 				$("#companyTel").val(company.companyTel);
 
 			})
+		
+			//제품 선택시 행동
+			$("#product_api_tbody").on("click", ".selectRow", function () {
+				$(".selectRow").removeClass("colorbbb");
+				$(this).addClass('colorbbb');
+				let product = productArr[$(this).data("index")]
+				makeProductDetail(product)
+
+			})
 
 			//중간 녹색 화살표
 			$("#arrow").click(function () {
 				let companyId = $("#companyId").val()
+				
+				$("#product_api_tbody").empty()
+				let tr = $('<tr class="selectRow">');
+				let th1 = $('<th scope="row" class="full textcenter overflow">')
+					.text("제품 검색을 시작합니다.")
+				tr.append(th1);
+				
 				$.ajax({
 					url: "/admin/object/datamanager/productlist/" + companyId,
 					success: function (data) {
 						productArr = data;
 						makeProductList();
 					},
-					error: function (data) {
-						console.log(data);
+					error: function (data) {				
 						productArr = new Array();
 						makeProductList();
 					}
@@ -343,7 +334,58 @@
 			})
 
 
-		});
+
+
+		}); //window on ready 끝
+
+		//제품의 행을 뿌려주는 함수
+		function makeProductList() {
+			$("#product_api_tbody").empty()
+			if (productArr.length === 0) {
+				let tr = $('<tr class="selectRow">');
+				let th1 = $('<th scope="row" class="full textcenter overflow">')
+					.text("검색 되는 제품이 하나도 없습니다.")
+				tr.append(th1);
+				$("#product_api_tbody").append(tr)
+			}
+			productArr.forEach((value, index) => {
+				let tr = $('<tr class="selectRow">').data("index", index);
+				let th1 = $('<th scope="row" class="col-1 textcenter overflow">')
+					.text(index + 1)
+				let td2 = $('<td class="col-3 textcenter overflow">')
+					.text(value.productId)
+				let td3 = $('<td class="col-4 textcenter overflow">')
+					.text(value.productName)
+				let td4 = $('<td class="col-3 textcenter overflow">')
+					.text(value.certId)
+				let td5 = $('<td class="col-1 textcenter overflow">')
+				tr.append(th1).append(td2).append(td3).append(td4).append(td5);
+				$("#product_api_tbody").append(tr)
+
+			});
+		}
+
+		//제품 상세정보 뿌려주는 함수
+		function makeProductDetail(product){
+				console.log(product);
+				let url = "http://data.greenproduct.go.kr/openProductImage.do?prodProd="+product.productId +"&prod_img_size=250"
+				console.log(url);
+				$("#productName").val(product.productName);
+				$("#productSize").val(product.productSize);
+				$("#certId").val(product.certId);
+				$("#productCertId").val(product.productCertId);
+				$("elId").val(product.elId);
+				$("#productImage").attr("src",product.productImage);
+
+				$("#productId").val(product.productId);
+				$("#productCompanyId").val(product.companyId);
+				$("#productStartDate").val(product.productStartDate);
+				$("#productEndDate").val(product.productEndDate);
+				$("#productImage").val(product.productImage);
+				$("#productImageWeb").attr("src",url);
+				
+		}
+
 	</script>
 </head>
 
@@ -526,46 +568,53 @@
 				<h2>제품 상세 정보</h2>
 				<div class="col-6">
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4">사업자 번호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4">제품명</span>
+						<input type="text" class="form-control" id="productName">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">상 호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">규격</span>
+						<input type="text" class="form-control" id="productsize">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">전화번호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">인증현황</span>
+						<input type="text" class="form-control" id="certId">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter overflow">주 소</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">인증사유</span>
+						<input type="text" class="form-control" id="productCertId">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">홈페이지</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">EL번호</span>
+						<input type="text" class="form-control" id="elId">
+					</div>
+					<div class="input-group mb-4">
+						
+						<img alt="" src="" id="productImage">
 					</div>
 				</div>
 				<div class="col-6">
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4">사업자 번호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4">제품 번호</span>
+						<input type="text" class="form-control" id="productId">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">상 호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">사업자 번호</span>
+						<input type="text" class="form-control" id="productCompanyId">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">전화번호</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">인증시작일</span>
+						<input type="text" class="form-control" id="productStartDate">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter overflow">주 소</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">인증만료일</span>
+						<input type="text" class="form-control" id="productEndDate">
 					</div>
 					<div class="input-group mb-4">
-						<span class="input-group-text col-4 textcenter">홈페이지</span>
-						<input type="text" class="form-control" id="">
+						<span class="input-group-text col-4 textcenter">제품 이미지</span>
+						<input type="text" class="form-control" id="productImage">
+					</div>
+					<div class="input-group mb-4">						
+						<img alt="" src="" id="productImageWeb">
 					</div>
 				</div>
 			</div>
