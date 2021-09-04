@@ -42,11 +42,18 @@
     </div> -->
     <div id="gender" class="info" class="tab_menu">
         <p class="title">성별</p>
-        <ul class="list">
+        
+        <div>
+    		<div><input type="radio" name="${userGender}" value="f">여성</div>
+    		<div><input type="radio" name="${userGender}" value="m">남성</div>
+    	</div>
+        
+        
+<!--         <ul class="list">
             <li class="is_on">
                 <div id="female" class="btn"><p>여성</p></div>
             </li><li><div id="male" class="btn"><p>남성</p></div></li>
-        </ul>
+        </ul> -->
     </div>
     <div id="agreement" class="info">
         <p class="title">약관동의</p>
