@@ -31,7 +31,7 @@ public class LoginController {
 	//회원가입
 	@GetMapping("/membership")
 	public String membership() {
-		return path + "membership";
+		return path + "membership2";
 	}
 	
 	@PostMapping("/membership")
@@ -39,5 +39,10 @@ public class LoginController {
 		//나중에 지우기
 		System.out.println(user.toString());
 		return "redirect:..";
+	}
+	
+	@RequestMapping("/pwupdate")
+	public String pwupdate() {
+		return path + "pwupdate";
 	}
 }

@@ -17,7 +17,7 @@
     <div id="header">
         <a href="/setting/myinfo/"><svg id="back" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
         <p>내 정보 수정</p>
-        <input type="image" src="/resources/images/search-glass.png" style="height:30px; width:30px"></button>
+        <input type="image" src="/resources/images/check-icon.png" style="width: 14px;height: 14px;" id="check">
 <!--         <svg id="check" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></a>
  -->    </div>
     
@@ -39,10 +39,11 @@
         <input value="${userBirth}" type="text" name="userBirth" maxlength="8">
     </div>
     
-    <div>
-    <div><input type="radio" name="${userGender}" value="f">여성</div>
-    <div><input type="radio" name="${userGender}" value="m">남성</div>
-    </div>
+        <div class="select info">
+        <p class="title">성별</p>
+            <input type="radio" id="select" name="userGender" value="여"><label for="select">여성
+            </label><input type="radio" id="select2" name="userGender" value="남"><label for="select2">남성</label>
+       </div>
     
 <!-- <div id="gender" class="info" class="tab_menu">
     <div id="gender" class="info">

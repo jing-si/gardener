@@ -19,24 +19,25 @@
 <div id="align">
 <form method="post">
     <div id="email" class="info">
-        <p class="title">이메일</p>
-        <input placeholder="example@gmail.com" type="text" name="userId"><!-- <p></p> --></input>
+        <input placeholder="이메일" type="text" name="userId"><!-- <p></p> --></input>
         <!-- <p id="certification">계정이 인증되었습니다.</p> -->
     </div>
     <div id="nickName" class="info">
-        <p class="title">닉네임</p>
-        <input placeholder="NickName" type="text" name="userNick">
+        <input placeholder="닉네임" type="text" name="userNick">
             <!-- <p>example@gmail.com</p> -->
         </input>
     </div>
     <div id="birth" class="info">
-        <p class="title">비밀번호</p>
         <input placeholder="비밀번호(4자리)" type="text" maxlength="4" name="userPass">
             <!-- <p id="explain">생년월일(8자리)</p> -->
         </input>
     </div>
     <div id="birth" class="info">
-        <p class="title">생년월일</p>
+        <input placeholder="비밀번호 확인" type="text" maxlength="4" name="userPass">
+            <!-- <p id="explain">생년월일(8자리)</p> -->
+        </input>
+    </div>
+    <div id="birth" class="info">
         <input placeholder="생년월일(8자리)" type="text" maxlength="8" name="userBirth">
             <!-- <p id="explain">생년월일(8자리)</p> -->
         </input>
@@ -47,7 +48,6 @@
         </div><div id="male"><p>남성</p></div>
     </div> -->
     <div id="gender" class="info" class="tab_menu">
-        <p class="title">성별</p>
         
         <div class="select">
             <input type="radio" id="select" name="userGender" value="여"><label for="select">여성

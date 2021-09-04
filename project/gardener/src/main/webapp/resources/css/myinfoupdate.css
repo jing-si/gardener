@@ -8,7 +8,7 @@
 #align{
     width: 328px;
     height: calc(100vh - 56px - 40.5px - 31.5px);
-    /* 전체 - 공통메뉴바 - 헤더 - 탑마진 */
+    /* �쟾泥� - 怨듯넻硫붾돱諛� - �뿤�뜑 - �깙留덉쭊 */
     margin: 0 auto;
     position: relative;
 }
@@ -33,11 +33,11 @@
 }
 #header #check{
     position: absolute;
-    top: 9px;
-    right: 9px;
+    top: 15px;
+    right: 14px;
 }
 
-/* info들 공통사항 */
+/* info�뱾 怨듯넻�궗�빆 */
 .info{
     width: 100%;
     margin-bottom: 18px;
@@ -56,6 +56,8 @@
     position: relative;
     background-color: rgb(243, 243, 243);
     border-radius: 4px;
+    border : 0px;
+    padding : 10px
 }
 .info div p{
     width: 80%;
@@ -65,7 +67,7 @@
     top: 25%;
 }
 
-/* info들 개별사항 */
+/* info�뱾 媛쒕퀎�궗�빆 */
 #email{margin-top: 31.5px;}
 #email #certification{
     color: #66bb6a;
@@ -73,7 +75,7 @@
 }
 #gender div{
     display: inline-block;
-    width: 164px; /*나중에 지우기 164로*/
+    width: 164px; /*�굹以묒뿉 吏��슦湲� 164濡�*/
     height: 40px;
     position: relative;
 }
@@ -88,7 +90,7 @@
     color: #66bb6a;
 }
 
-/* 공통메뉴바 */
+/* 怨듯넻硫붾돱諛� */
 .sticky{
     position: fixed;
     bottom: 0;
@@ -117,4 +119,37 @@
     margin: auto 0;
     /* margin-top: 28.3px; */
     margin-top: 0px;
+}
+
+.info .select{
+            background-color: #fff;
+        }
+
+.select {
+    padding-right: 0px;
+    padding-left: 0px; 
+}
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    display: inline-block;
+    cursor: pointer;
+    height: 40px;
+    width: 50%;
+    border: 1px solid #333;
+    line-height: 40px;
+    text-align: center;
+    /* font-weight:bold; */
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: #f5f5f5;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #f5f5f5;
+}
+.select input[type=radio]:checked+label{
+    background-color: #66bb6a;
+    color: #fff;
 }
