@@ -13,6 +13,9 @@
 <script type="text/javascript" href="/resources/js/005-01.js"></script>
 </head>
 <body>
+
+	<input type="image" id="image-container" />
+	
 	<div class="main_container">
 		<a href="/"><button type="button" id="button_close">
 				<img src="/resources/images/btn_close.png" width="50" height="50">
