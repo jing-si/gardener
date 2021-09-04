@@ -15,6 +15,7 @@
 			<li><a href="company/">기업</a></li>
 			<li><a href="product/">제품</a></li>
 			<li><a href="datamanager/">database 작성</a></li>
+			<li><a href="test/">test</a></li>
 		</ul>
 	</div>
 </body>
