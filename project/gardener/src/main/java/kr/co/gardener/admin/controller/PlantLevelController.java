@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.co.gardener.admin.model.Plant;
-import kr.co.gardener.admin.service.PlantService;
+import kr.co.gardener.admin.model.PlantLevel;
+import kr.co.gardener.admin.service.PlantLevelService;
 
 @Controller
-@RequestMapping("/admin/forests/plants/plant")
-public class PlantController {
-	final String path = "admin/forests/plants/plant/";
+@RequestMapping("/admin/forests/plants/plantLevel")
+public class PlantLevelController {
+	final String path = "admin/forests/plants/plantLevel/";
 	
 	@Autowired
-	PlantService service;
+	PlantLevelService service;
 	
-	@RequestMapping({"/","list"})
+	@RequestMapping({"/","/list"})
 	public String list(Model model) {
-		List<Plant> list = service.list();
+		System.out.println("list");
+		List<PlantLevel> list = service.list();
 		model.addAttribute("list", list);
 		return path + "list";
 	}
@@ -34,28 +35,28 @@ public class PlantController {
 	}
 	
 	@PostMapping("/add")
-	public String add(Plant item) {
+	public String add(PlantLevel item) {
 		service.add(item);
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{plantId}")
-	public String update(@PathVariable int plantId, Model model) {
-		Plant item = service.item(plantId);
+	@GetMapping("/update/{plantLevelId}")
+	public String update(@PathVariable int plantLevelId, Model model) {
+		PlantLevel item = service.item(plantLevelId);
 		model.addAttribute("item", item);
-		return path + "update";	
+		return path + "update";
 	}
 	
-	@PostMapping("/update/{plantId}")
-	public String update(@PathVariable int plantId, Plant item) {
-		item.setPlantId(plantId);
+	@PostMapping("/update")
+	public String update(PlantLevel item) {
 		service.update(item);
 		return "redirect:../list";
 	}
 	
-	@RequestMapping("/delete/{plantId}")
-	public String delete(@PathVariable int plantId) {
-		service.delete(plantId);
+	@PostMapping("/delete/{plantLevelId}")
+	public String delete(@PathVariable int plantLevelId) {
+		service.delete(plantLevelId);
 		return "redirect:../list";
 	}
+		
 }

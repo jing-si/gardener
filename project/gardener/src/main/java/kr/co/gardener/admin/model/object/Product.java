@@ -454,7 +454,16 @@ public class Product {
 	//certId -> 인증ID //여기서 저탄소와 환경표지등
 	
 	public String getCertId() {
-		return certId;
+		
+		if(!StringUtils.isEmpty(prodProd)) {
+			return "환경표지";
+		}
+		
+		if(!StringUtils.isEmpty(epdpPrid)) {
+			return "저탄소";
+		}
+		
+		return null;
 	}
 	public void setCertId(String certId) {
 		this.certId = certId;

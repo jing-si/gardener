@@ -30,7 +30,7 @@ public class LocationController {
 	
 	@GetMapping ("/add")
 	public String add() {
-		return "/add";
+		return path + "/add";
 	}
 	
 	@PostMapping("/add")
@@ -43,7 +43,7 @@ public class LocationController {
 	public String update(@PathVariable int locationId, Model model) {
 		Location item = service.item(locationId);
 		model.addAttribute("item", item);
-		return "update";
+		return path + "update";
 	}
 	
 	@PostMapping("/update")

@@ -26,38 +26,22 @@ public class DataManagerServiceImpl implements DataManagerService {
 	@Override
 	public List<Company> list(int start, int end) {
 		String str = dao.list(start, end);
-		List<Company> list = new ArrayList<Company>();
-		Thread th = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				try {
-
-					JsonParser jsonParser = new JsonParser();
-					JsonObject jo = (JsonObject) jsonParser.parse(str);
-					JsonArray jsonArr = jo.getAsJsonArray("data");
-					Gson gson = new Gson();
-					jsonArr.forEach(data -> {
-						Company com = gson.fromJson(data, Company.class);
-						list.add(com);
-					});
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-		});
-		th.run();
-
+		List<Company> list = paser(str,Company.class);
 		return list;
 	}
 
 
 
 	@Override
-	public List<Product> productList(int companyId) {
+	public List<Product> productList(long companyId) {
 		String str = dao.productList(companyId);
-		List<Product> list = new ArrayList<>();
-		Thread th = new Thread(new Runnable() {
+		List<Product> list = paser(str,Product.class);	
+		return list;		
+	}
+
+	private <T> List<T> paser(String str,Class<T> classType){
+		List<T> list = new ArrayList<>();
+		Thread th = new Thread(new Runnable() {		
 			@Override
 			public void run() {
 				try {
@@ -66,9 +50,9 @@ public class DataManagerServiceImpl implements DataManagerService {
 					JsonObject jo = (JsonObject) jsonParser.parse(str);
 					JsonArray jsonArr = jo.getAsJsonArray("data");
 					Gson gson = new Gson();
-					jsonArr.forEach(data -> {
-						Product com = gson.fromJson(data, Product.class);
-						list.add(com);
+					jsonArr.forEach(data -> {						
+						T item = gson.fromJson(data,classType);
+						list.add(item);
 					});
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -77,8 +61,25 @@ public class DataManagerServiceImpl implements DataManagerService {
 			}
 		});
 		th.run();
-
+		
 		return list;		
+	}
+
+	@Override
+	public List<Product> eProductList(long companyId) {
+		String str = dao.eProductList(companyId);
+		List<Product> list = paser(str,Product.class);	
+		return list;
+	}
+
+
+
+	@Override
+	public List<Product> productList(int start, int end) {
+		String str = dao.productList(start, end);
+		List<Product> list = paser(str,Product.class);
+		return list;
+		
 	}
 
 }
