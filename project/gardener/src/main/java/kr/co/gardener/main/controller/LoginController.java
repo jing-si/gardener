@@ -1,6 +1,7 @@
 package kr.co.gardener.main.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class LoginController {
 	
 	//로그인 폼
 	@PostMapping({"","/"})
-	public String login(User user) {
+	public String login(User user, Model model) {
 		//userId, userPass
 		//나중에 지우기
 		System.out.println(user.toString());
@@ -34,7 +35,7 @@ public class LoginController {
 	}
 	
 	@PostMapping("/membership")
-	public String membership(User user) {
+	public String membership(Model model, User user) {
 		//나중에 지우기
 		System.out.println(user.toString());
 		return "redirect:..";
