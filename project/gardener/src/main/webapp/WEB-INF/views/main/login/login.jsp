@@ -22,7 +22,7 @@
     	<input type="submit" id="login" class="border" value="로그인"></input>
     </form>
     
-    <div id="pwRe"><a href="">비밀번호 재설정</a></div>
+    <div id="pwRe"><a href="pwupdate">비밀번호 재설정</a></div>
     <div id="membership"><a href="membership/">회원가입</a></div>
     </div>
 </body>

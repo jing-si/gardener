@@ -471,7 +471,7 @@ public class Product {
 	
 	//productCertId -> 제품 마크 인증 번호
 	public String getProductCertId() {
-		if(!StringUtils.isEmpty(prodRsid)) {
+		if(!StringUtils.isEmpty(prodInrs)) {
 			return prodRsid;
 		}
 		
@@ -483,7 +483,7 @@ public class Product {
 	
 	//productStartDate -> 인증 시작일
 	public String getProductStartDate() {
-		if(!StringUtils.isEmpty(prodGsdt)) {
+		if(!StringUtils.isEmpty(prodRsdt)) {
 			return prodGsdt;
 		}
 		
@@ -495,7 +495,7 @@ public class Product {
 	
 	//productEndDate -> 인증 만료일
 	public String getProductEndDate() {
-		if(!StringUtils.isEmpty(prodGedt)) {
+		if(!StringUtils.isEmpty(prodRedt)) {
 			return prodGedt;
 		}
 		
@@ -516,8 +516,12 @@ public class Product {
 		return null;
 	}
 	//G2BId -> G2B ID
-	
+	public String getG2bId() {
+		return prodG2bd;
+	}
 	//ELId -> EL ID
-	
+	public String getElId() {
+		return prodElcd;
+	}
 	
 }

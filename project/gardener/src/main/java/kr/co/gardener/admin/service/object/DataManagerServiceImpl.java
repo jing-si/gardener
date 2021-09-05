@@ -26,7 +26,7 @@ public class DataManagerServiceImpl implements DataManagerService {
 	@Override
 	public List<Company> list(int start, int end) {
 		String str = dao.list(start, end);
-		List<Company> list = paser(str,Company.class);
+		List<Company> list = paser(str,Company.class,"data");
 		return list;
 	}
 
@@ -35,11 +35,11 @@ public class DataManagerServiceImpl implements DataManagerService {
 	@Override
 	public List<Product> productList(long companyId) {
 		String str = dao.productList(companyId);
-		List<Product> list = paser(str,Product.class);	
+		List<Product> list = paser(str,Product.class,"data");	
 		return list;		
 	}
 
-	private <T> List<T> paser(String str,Class<T> classType){
+	private <T> List<T> paser(String str,Class<T> classType,String value){
 		List<T> list = new ArrayList<>();
 		Thread th = new Thread(new Runnable() {		
 			@Override
@@ -48,7 +48,7 @@ public class DataManagerServiceImpl implements DataManagerService {
 
 					JsonParser jsonParser = new JsonParser();
 					JsonObject jo = (JsonObject) jsonParser.parse(str);
-					JsonArray jsonArr = jo.getAsJsonArray("data");
+					JsonArray jsonArr = jo.getAsJsonArray(value);
 					Gson gson = new Gson();
 					jsonArr.forEach(data -> {						
 						T item = gson.fromJson(data,classType);
@@ -68,7 +68,7 @@ public class DataManagerServiceImpl implements DataManagerService {
 	@Override
 	public List<Product> eProductList(long companyId) {
 		String str = dao.eProductList(companyId);
-		List<Product> list = paser(str,Product.class);	
+		List<Product> list = paser(str,Product.class,"dataEpdp");	
 		return list;
 	}
 
@@ -77,7 +77,7 @@ public class DataManagerServiceImpl implements DataManagerService {
 	@Override
 	public List<Product> productList(int start, int end) {
 		String str = dao.productList(start, end);
-		List<Product> list = paser(str,Product.class);
+		List<Product> list = paser(str,Product.class,"data");
 		return list;
 		
 	}

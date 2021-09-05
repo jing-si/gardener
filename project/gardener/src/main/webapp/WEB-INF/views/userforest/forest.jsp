@@ -10,9 +10,58 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap"
 	rel="stylesheet">
-<script type="text/javascript" href="/resources/js/005-01.js"></script>
+<script type="text/javascript" src="/resources/js/005-01.js"></script>
+<script src="/resources/jq/jquery.js"></script>
+<script>
+	let arr = new Array();
+	$().ready(()=>{
+	$.ajax({
+		url:"/userforest/init",
+		success:function(data){
+			arr = data;
+			console.log(data);
+			arr.forEach((value,index)=>{
+				let img = $("<img>");
+				//img.data("index",index);
+
+				img.css("width",value.plantWidth);
+				img.css("height",value.plantHeight);
+				img.attr("src",value.plantImage);
+				img.css("z-index",value.locationOrder);
+				img.css("left",value.locationX);
+				img.css("top",value.locationY);
+				
+				//let item = arr[img.data("index")];
+				//item.locationX = currentlocation;
+
+				$("#image-container").append(img);
+			})
+
+		}
+	})
+});
+</script>
+
+<style>
+img{
+	position: absolute;
+}
+#image-container{
+	position: relative;
+}
+/* 유저가 저장한 나무 이미지 CSS 생성공간 */
+</style>
+
 </head>
 <body>
+
+	<div id="image-container">
+		<div>
+			아야어여오요
+		</div>
+		<!-- 유저가 저장한 나무 이미지 생성공간 -->
+	</div>
+
 	<div class="main_container">
 		<a href="/"><button type="button" id="button_close">
 				<img src="/resources/images/btn_close.png" width="50" height="50">
@@ -174,13 +223,20 @@
 
 
 	<script type="text/javascript">
-document.getElementById("button_item").onclick = function() {
-	document.getElementById("popup").style.display="block";
-}
+		// 모달창 클릭 이벤트
+		document.getElementById("button_item").onclick = function() {
+			document.getElementById("popup").style.display="block";
+		}
 
-document.getElementById("popup_close").onclick = function() {
-	document.getElementById("popup").style.display="none";
-}
+		document.getElementById("popup_close").onclick = function() {
+			document.getElementById("popup").style.display="none";
+		}
+		
+		// 유저 숲 저장 데이터 가져오기
+		 
+
+
+
 </script>
 </body>
 </html>

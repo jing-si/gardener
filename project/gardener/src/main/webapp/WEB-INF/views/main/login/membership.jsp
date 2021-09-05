@@ -30,8 +30,14 @@
         </input>
     </div>
     <div id="birth" class="info">
+        <p class="title">비밀번호</p>
+        <input placeholder="비밀번호(4자리)" type="text" maxlength="4" name="userPass">
+            <!-- <p id="explain">생년월일(8자리)</p> -->
+        </input>
+    </div>
+    <div id="birth" class="info">
         <p class="title">생년월일</p>
-        <input placeholder="생년월일(8자리)" type="date" maxlength="8" name="userBirth">
+        <input placeholder="생년월일(8자리)" type="text" maxlength="8" name="userBirth">
             <!-- <p id="explain">생년월일(8자리)</p> -->
         </input>
     </div>
@@ -42,12 +48,20 @@
     </div> -->
     <div id="gender" class="info" class="tab_menu">
         <p class="title">성별</p>
-        <ul class="list">
+        
+        <div class="select">
+            <input type="radio" id="select" name="userGender" value="여"><label for="select">여성
+            </label><input type="radio" id="select2" name="userGender" value="남"><label for="select2">남성</label>
+       </div>
+        
+        
+<!--         <ul class="list">
             <li class="is_on">
                 <div id="female" class="btn"><p>여성</p></div>
             </li><li><div id="male" class="btn"><p>남성</p></div></li>
-        </ul>
+        </ul> -->
     </div>
+
     <div id="agreement" class="info">
         <p class="title">약관동의</p>
         <div id="agreeBox">

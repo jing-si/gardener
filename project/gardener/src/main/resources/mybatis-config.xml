@@ -24,6 +24,7 @@
 
 	<mappers>
 		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/login.xml"/>
 		<mapper resource="mybatis/history.xml"/>
 		<mapper resource="mybatis/searchList.xml"/>
 		<mapper resource="mybatis/bookmark.xml"/>

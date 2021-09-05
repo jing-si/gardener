@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/스플래시_001.css">
+    <link rel="stylesheet" href="/resources/css/splash.css">
 </head>
 <body>
     <div id="body">
     <div id="logo">
-      <img src="/resources/images/스플래시 로고.png">
+      <img src="/resources/images/splash-logo.png">
       </div>
     </div>
 </body>

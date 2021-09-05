@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/즐겨찾기_최신순_010.css">
+    <link rel="stylesheet" href="/resources/css/favorite.css">
 </head>
 <body>
     <div id="header">
@@ -38,7 +38,7 @@
         	<a href="/product/${list.productId}"><div class="brand">
                 <div class="brand-img">${list.favoriteImg}</div>
                 <p class="brand-name">${list.favoriteName}</p>
-                <img src="/resources/images/즐겨찾기 등록 하트.png">
+                <img src="/resources/images/favorite-heart.png">
             </div></a>
         </c:forEach>
         
@@ -46,7 +46,7 @@
             <a href="/product/${productId}"><div class="brand">
                 <div class="brand-img">${favoriteImgList}</div>
                 <p class="brand-name">${favoriteNameList}</p>
-                <img src="/resources/images/즐겨찾기 등록 하트.png">
+                <img src="/resources/images/favorite-heart.png">
             </div></a>
 <!-- 여기까지 -->
 
