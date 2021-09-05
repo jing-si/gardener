@@ -64,12 +64,12 @@ public class SettingController {
    //로그아웃
    @RequestMapping("/logout")
    public String logout() {
-	   return "redirect:../login";
+	   return "redirect:../login/";
    }
    
    //탈퇴
    @RequestMapping("/out")
    public String out() {
-	   return "redirect:../login";
+	   return "redirect:../login/";
    }
 }
