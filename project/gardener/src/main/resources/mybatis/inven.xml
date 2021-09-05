@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="inven">
+
+	<select id="list" resultType="Inven">
+		SELECT * FROM INVEN
+	</select>
+
+
+	<select id="item" resultType="Inven">
+		SELECT * FROM INVEN
+		WHERE INVEN_ID =#{invenId}
+	</select>
+
+	<insert id="add">
+		INSERT INTO INVEN
+		VALUES (#{invenId},#{userId},
+		null,#{invenAmount})
+	</insert>
+
+	<update id="update">
+		UPDATE INVEN
+		SET INVEN_ID=#{invenId}, 
+			USER_ID=#{userId},
+			PLANT_ID=#{plantId},
+			INVEN_AMOUNT=#{plantAmount}
+		WHERE INVEN_ID=#{invenId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM INVEN
+		WHERE INVEN_ID=#{invenId}
+	</delete>
+
+</mapper>

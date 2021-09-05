@@ -1,13 +1,19 @@
 package kr.co.gardener.admin.model;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
 	private String userId;
 	private String userNick;
-	private String userBirth;
+	private String userPass;
+	
+	@DateTimeFormat(pattern = "yyyyMMdd")
+	private Date userBirth;
+	
 	private String userGender;
 	private int stateId;
 	private int forestId;
-	
 	public String getUserId() {
 		return userId;
 	}
@@ -20,10 +26,16 @@ public class User {
 	public void setUserNick(String userNick) {
 		this.userNick = userNick;
 	}
-	public String getUserBirth() {
+	public String getUserPass() {
+		return userPass;
+	}
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
+	}
+	public Date getUserBirth() {
 		return userBirth;
 	}
-	public void setUserBirth(String userBirth) {
+	public void setUserBirth(Date userBirth) {
 		this.userBirth = userBirth;
 	}
 	public String getUserGender() {
@@ -44,7 +56,11 @@ public class User {
 	public void setForestId(int forestId) {
 		this.forestId = forestId;
 	}
-	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userNick=" + userNick + ", userPass=" + userPass + ", userBirth="
+				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId + "]";
+	}
 	
 	
 }

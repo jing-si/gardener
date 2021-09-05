@@ -5,30 +5,35 @@
 
 <mapper namespace="user">
 
- <select id="list" resultType="User">
- 	SELECT * FROM USER
- </select>
- 
+	<select id="list" resultType="User">
+		SELECT * FROM USER
+	</select>
 
- <select id="item" resultType="User">
- 	SELECT * FROM USER 
- 	WHERE USER_ID =#{userId}
- </select>
 
-<insert id="add">
-	INSERT INTO USER
-	VALUES (#{userID},#{userNick},#{userBirth},#{userGender},#{stateId},#{forestId})
-</insert>
+	<select id="item" resultType="User">
+		SELECT * FROM USER
+		WHERE USER_ID =#{userId}
+	</select>
 
-<update id="update">
-	UPDATE USER
-	SET USER_ID=#{userId}, USER_NICK=#{userNick}, USER_BIRTH=#{userBirth}, USER_GARDENER=#{userGardener}, STATE_ID=#{stateId}, USER_ID=#{userId}
-	WHERE USER_ID=#{userId} 
-</update>
+	<insert id="add">
+		INSERT INTO USER
+		VALUES (#{userId},#{userNick},
+		#{userPass},#{userBirth},#{userGender},null,null)
+	</insert>
 
-<delete id="delete">
-	DELETE FROM USER
-	WHERE USER_ID=#{userId}
-</delete>
+	<update id="update">
+		UPDATE USER
+		SET USER_ID=#{userId}, 
+			USER_NICK=#{userNick},
+			USER_PASS=#{userPass},
+			USER_BIRTH=#{userBirth},
+			USER_GENDER=#{userGender}
+		WHERE USER_ID=#{userId}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM USER
+		WHERE USER_ID=#{userId}
+	</delete>
 
 </mapper>
