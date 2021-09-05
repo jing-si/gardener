@@ -53,7 +53,7 @@ a{
     opacity: 0.5;
 }
 
-/* 공통메뉴바 */
+/* 怨듯넻硫붾돱諛� */
 .sticky{
     position: fixed;
     bottom: 0;
@@ -82,4 +82,86 @@ a{
     margin: auto 0;
     /* margin-top: 28.3px; */
     margin-top: 0px;
+}
+
+
+
+
+
+
+
+
+.title{
+    width : 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: NotoSansKR;
+    font-size: 14px;
+    color: #666;
+    padding: 17px;
+}
+.check{
+    font-family: NotoSansKR;
+    font-size: 14px;
+    text-align: center;
+    color: #1377e7;
+    width: 50%;
+    display: inline-block;
+    padding-top: 10px;
+}
+.cancel{
+    font-family: NotoSansKR;
+    font-size: 14px;
+    text-align: center;
+    width: 50%;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+
+
+#popup01{
+    display: none;
+}
+#popup02{
+    display: none;
+}
+#popup01{
+width: 90%;
+height: 106px;
+position: absolute;
+top: 80%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+z-index: 2;
+    }
+    #popup02{
+width: 90%;
+height: 106px;
+position: absolute;
+top: 80%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+z-index: 2;
+    }
+.backon{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #00000054;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.close{
+  position:absolute;
+  top:-25px;
+  right: 0;
+  cursor:pointer;
+}
+.openPopup{
+  cursor:pointer;
 }
