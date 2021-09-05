@@ -11,12 +11,13 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap"
 	rel="stylesheet">
 <script type="text/javascript" src="/resources/js/005-01.js"></script>
-<style type="text/css" id="css_container">
-</style>
+<style></style>
 </head>
 <body>
 
-	<input type="image" id="image-container" />
+	<div id="image-container">
+		<!-- 유저가 저장한 나무 이미지 생성공간 -->
+	</div>
 
 	<div class="main_container">
 		<a href="/"><button type="button" id="button_close">
@@ -226,7 +227,7 @@
         		$imageContainer.append(imgDOM);
     		
         	// css컨테이너에 생성한 코드 추가
-    		var $cssContainer = $("#css_container");
+    		var $cssContainer = $("style");
         		$cssContainer.append(cssDOM);
 		}
 
