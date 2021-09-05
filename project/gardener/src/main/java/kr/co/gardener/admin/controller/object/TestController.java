@@ -29,27 +29,7 @@ public class TestController {
 		public String test(Model model) {
 			
 			SeleniumCrawler sc = new SeleniumCrawler();
-			
-//			List<String> list = new ArrayList<>();
-//			
-//			try {
-//				Response response = Jsoup.connect(url)
-//						.method(Method.GET)	
-//						.execute();
-//				
-//				
-//				Document doc = response.parse();
-//				
-//				Elements items = doc.getAllElements();
-//				list = items.eachAttr("src");
-//				String str = items.html();
-//				model.addAttribute("list", list);
 				model.addAttribute("list", sc.activateBot("스파크"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-			
-			
 			
 			return path + "test";
 		}
