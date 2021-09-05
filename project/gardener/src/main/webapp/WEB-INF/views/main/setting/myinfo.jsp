@@ -39,17 +39,17 @@
     
        
 	<div id="popup01">
-    	<div class="close">close</div>
+    	
     	<div>
         	<div class="title">로그아웃 하시겠습니까?</div>
-        	<div class="check">확인</div><div class="cancel">취소</div>
+        	<a href="logout"><div class="check">확인</div></a><div class="cancel">취소</div>
     	</div>
 	</div>
-	<div id="popup02">
-    	<div class="close">close</div>
+	<div id="popup02" class="popup02">
+    	
     	<div>
         	<div class="title">탈퇴 하시겠습니까?</div>
-        	<div class="check">확인</div><div class="cancel">취소</div>
+        	<a href="out"><div class="check">확인</div></a><div class="cancel">취소</div>
     	</div>
 	</div>
 
@@ -76,14 +76,14 @@
 
 
 <script>
-$(document).ready(function( $ ){     
+ $(document).ready(function( $ ){     
     $(".open1").on("click", function(event) { 
     $("#popup01").show();  
     $("body").append('<div class="backon"></div>');
     });
     
     $("body").on("click", function(event) { 
-        if(event.target.className == 'close' || event.target.className == 'backon'){
+        if(event.target.className == 'cancel' || event.target.className == 'backon'){
             $("#popup01").hide();
       	    $(".backon").hide();
         }
@@ -99,11 +99,14 @@ $(document).ready(function( $ ){
     });
     
     $("body").on("click", function(event) { 
-        if(event.target.className == 'close' || event.target.className == 'backon'){
+        if(event.target.className == 'cancel' || event.target.className == 'backon'){
             $("#popup02").hide();
-      	    $(".backon").hide();
-        }
+      	  $(".backon").hide();
+        }  
       });
 
-  });
+  }); 
+
+  
+	
 </script>
