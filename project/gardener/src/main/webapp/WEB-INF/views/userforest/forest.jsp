@@ -208,15 +208,15 @@
     		var strDOM = "";
 
     		for (var i = 0; i<userForest.length; i++) {
-        		var object = userForest[i];
+        		var value = userForest[i];
 				
         		// 저장한 식물 이미지 태그 
         		imgDOM += '<img id="' + value.locationId + '" src="' + value.plantID + '">';
         
         		// 저장한 식물 이미지에 적용할 css
         		cssDOM += value.locationId + '{';
-       			cssDOM += 'left: ' + value.locationX + ';';
-        		cssDOM += 'top: ' + value.locationY + ';';
+       			cssDOM += 'left: ' + value.locationX + 'px;';
+        		cssDOM += 'top: ' + value.locationY + 'px;';
         		cssDOM += 'transform:scale(' + value.locationSize + ');';
         		cssDOM += 'z-index: ' + value.locationZ + ';';
        		 	cssDOM += '}';
