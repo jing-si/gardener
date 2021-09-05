@@ -11,11 +11,54 @@
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap"
 	rel="stylesheet">
 <script type="text/javascript" src="/resources/js/005-01.js"></script>
-<style></style>
+<script src="/resources/jq/jquery.js"></script>
+<script>
+	let arr = new Array();
+	$().ready(()=>{
+	$.ajax({
+		url:"/userforest/init",
+		success:function(data){
+			arr = data;
+			console.log(data);
+			arr.forEach((value,index)=>{
+				let img = $("<img>");
+				//img.data("index",index);
+
+				img.css("width",value.plantWidth);
+				img.css("height",value.plantHeight);
+				img.attr("src",value.plantImage);
+				img.css("z-index",value.locationOrder);
+				img.css("left",value.locationX);
+				img.css("top",value.locationY);
+				
+				//let item = arr[img.data("index")];
+				//item.locationX = currentlocation;
+
+				$("#image-container").append(img);
+			})
+
+		}
+	})
+});
+</script>
+
+<style>
+img{
+	position: absolute;
+}
+#image-container{
+	position: relative;
+}
+/* 유저가 저장한 나무 이미지 CSS 생성공간 */
+</style>
+
 </head>
 <body>
 
 	<div id="image-container">
+		<div>
+			아야어여오요
+		</div>
 		<!-- 유저가 저장한 나무 이미지 생성공간 -->
 	</div>
 
@@ -190,46 +233,7 @@
 		}
 		
 		// 유저 숲 저장 데이터 가져오기
-		window.onload = function () {
-    		startLoadData();
-		};
-
-		function startLoadData () {
-    		$.ajax({
-        		url: url,
-        		success: function(data) {
-            	makeForestList(date)
-        		}
-    		});
-		}
-
-		function makeForestList(userForestInfo) {
-    		var userForest = userForestInfo.userID
-    		var strDOM = "";
-
-    		for (var i = 0; i<userForest.length; i++) {
-        		var value = userForest[i];
-				
-        		// 저장한 식물 이미지 태그 
-        		imgDOM += '<img id="' + value.locationId + '" src="' + value.plantID + '">';
-        
-        		// 저장한 식물 이미지에 적용할 css
-        		cssDOM += value.locationId + '{';
-       			cssDOM += 'left: ' + value.locationX + 'px;';
-        		cssDOM += 'top: ' + value.locationY + 'px;';
-        		cssDOM += 'transform:scale(' + value.locationSize + ');';
-        		cssDOM += 'z-index: ' + value.locationZ + ';';
-       		 	cssDOM += '}';
-    		}
-	
-    		// 이미지 컨테이너에 생성한 이미지 추가
-    		var $imageContainer = $("#image_container"); 
-        		$imageContainer.append(imgDOM);
-    		
-        	// css컨테이너에 생성한 코드 추가
-    		var $cssContainer = $("style");
-        		$cssContainer.append(cssDOM);
-		}
+		 
 
 
 

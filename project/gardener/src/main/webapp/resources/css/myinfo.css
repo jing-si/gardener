@@ -116,6 +116,7 @@ a{
     width: 50%;
     display: inline-block;
     padding-top: 10px;
+    cursor:pointer;
 }
 
 
