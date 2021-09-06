@@ -13,6 +13,61 @@
     <script src="/resources/jq/jquery.js"></script>
     
     <script>
+    let arr = new Array();
+    $().ready(()=>{
+    	$.ajax({
+    		url : "/init",
+    		success : function(data){
+    			arr = data;
+    			console.log(data);
+    			if(${value.statusId}==0){
+    	    		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
+    	    		
+    	    		
+    	    		$(".screen-img").on('click',"#seed",function(){
+    	    			$(".screen-img").empty();
+    	    			$(".screen-img").append("<div id='cards'>");
+    	    			arr.forEach((value,index)=>{
+    	    				let img = $("<img>");
+    	    				
+    	    				img.attr("src",value.plantImage);
+    	    				img.attr("id","card"+${status.number});
+    	    				img.attr("class","card");
+    	    				
+    	    				
+    	    				
+    						/* $(".screen-img").append("<img class='card' id='card+${status.number}' src=${value.PlantImage}>"); */
+    						
+    						$("image-container").append(img);
+    						
+    	    			})
+    					/* $('plantList plantImg').each(function(index,item){
+    						$(".screen-img").append("<img class='card' id='card+${status.number}' src=${item.randomPlantImg}>");
+    					}) */
+    	    			/* $(".screen-img").append("</div>"); */
+    	    		});
+    	    		
+    	    		
+    	    		$(".screen-img").on('click',".card",function(){
+    	    			//카드의 id값을 컨트롤러로 보낸다
+    	    			//컨트롤러에서는 메인화면을 갱신
+    	    		});
+    	    	}
+    			
+    			
+    	    	else{
+    						let img = $("<img>");
+    				
+    						img.attr("src",plantImg);
+    						img.attr("id","plant");
+    				
+    						$(".screen-img").append(img);
+    						}
+    					})
+    				}
+    		}
+    	})
+    })
     $(function){
     	if(${statusId}==0){
     		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
@@ -34,19 +89,7 @@
     		});
     	}
     	
-    	else{
-			$.ajax({
-				url : "/login/",
-				success : function(result){
-					let img = $("<img>");
-			
-					img.attr("src",plantImg);
-					img.attr("id","plant");
-			
-					$(".screen-img").append(img);
-				}
-			})
-	}
+
     }
     
 
