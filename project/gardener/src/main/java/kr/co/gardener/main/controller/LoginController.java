@@ -13,7 +13,7 @@ import kr.co.gardener.admin.model.User;
 import kr.co.gardener.main.service.LoginService;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping({"/",""})
 public class LoginController {
 	final String path = "main/login/";
 	

@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/search")
+@RequestMapping("/login/search")
 public class SearchController {
 	final String path = "main/search/";
 	
