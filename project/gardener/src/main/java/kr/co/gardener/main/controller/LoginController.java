@@ -36,7 +36,7 @@ public class LoginController {
 			
 			if(userId.equals(item.getUserId()) && userPass.equals(item.getUserPass())) {
 				session.setAttribute("user", user);
-				return  path + "../home";
+				return  "redirect:../";
 			}
 			
 			return path + "login";
