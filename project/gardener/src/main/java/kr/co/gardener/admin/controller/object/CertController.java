@@ -38,8 +38,8 @@ public class CertController {
 	
 	@PostMapping("/add")
 	public String add(Cert item,MultipartFile uploadFile) {
-		service.add(item);
 		item.setCertImage(FileUpload.Uploader(uploadFile, "cert"));
+		service.add(item);		
 		return "redirect:list";
 	}
 	

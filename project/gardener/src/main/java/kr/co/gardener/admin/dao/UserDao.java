@@ -16,4 +16,6 @@ public interface UserDao {
 
 	void delete(String userId);
 
+	String imgSrc(User user);
+
 }

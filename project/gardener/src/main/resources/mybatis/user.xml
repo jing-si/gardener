@@ -11,16 +11,28 @@
 
 
 	<select id="item" resultType="User">
-		SELECT * FROM USER
-		WHERE USER_ID =#{userId}
+		select *, 
+		(select PLANT_IMAGE 
+		from PLANT_LEVEL P 
+		WHERE P.PLANT_LEVEL_ID = 5 AND P.PLANT_ID = U.PLANT_ID) 
+		PLANT 
+		from USER U
+		where U.USER_ID = #{userId} <!-- 알리아스 주의 -->
 	</select>
 
 	<insert id="add">
 		INSERT INTO USER
 		VALUES (#{userId},#{userNick},
-		#{userPass},#{userBirth},#{userGender},#{stateId},#{forestId},#{plantId})
+		#{userPass},#{userBirth},#{userGender},0,1,null)
 	</insert>
-
+	
+	<select id="imgSrc" resultType="String">
+		SELECT PLANT_IMAGE
+		FROM PLANT_LEVEL
+		WHERE PLANT_ID=#{plantId} and PLANT_LEVEL_ID=5
+	</select>
+	
+	
 	<update id="update">
 		UPDATE USER
 		SET USER_ID=#{userId}, 

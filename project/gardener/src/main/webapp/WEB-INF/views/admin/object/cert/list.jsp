@@ -9,8 +9,15 @@
 <title>사업자 관리</title>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script type="text/javascript">
+
 	
 </script>
+<style type="text/css">
+	img{
+		max-width: 80px;
+		max-height: 80px;
+	}
+</style>
 </head>
 <body>
 	<div>

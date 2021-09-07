@@ -17,7 +17,7 @@
 				<label>식물 ID: </label> <input type="number" name="plantId" value="${item.plantId}">
 			</div>
 			<div>
-				<label>식물이미지: </label> <input type="file" name="plantImage" value="${item.plantImage}">
+				<label>식물이미지: </label> <input type="file" name="uploadFile" value="${item.plantImage}">
 			</div>
 			<div>
 				<input type="submit" value="추가">
