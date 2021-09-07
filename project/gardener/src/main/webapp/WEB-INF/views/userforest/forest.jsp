@@ -16,25 +16,28 @@
 	let arr = new Array();
 	$().ready(()=>{
 	$.ajax({
-		url:"/userforest/init",
+		url:"../userforest/init",
 		success:function(data){
 			arr = data;
 			console.log(data);
 			arr.forEach((value,index)=>{
-				let img = $("<img>");
+				let div = $("<div class="test">");
 				//img.data("index",index);
 
-				img.css("width",value.plantWidth);
-				img.css("height",value.plantHeight);
-				img.attr("src",value.plantImage);
-				img.css("z-index",value.locationOrder);
-				img.css("left",value.locationX);
-				img.css("top",value.locationY);
+				div.css("width",value.plantWidth);
+				div.css("height",value.plantHeight);
+				div.attr("src",value.plantImage);
+				div.attr("id",value.PlantId);
+				div.css("z-index",value.locationOrder);
+				div.css("left",value.locationX);
+				div.css("top",value.locationY);
 				
-				//let item = arr[img.data("index")];
+				//let item = arr[div.data("index")];
 				//item.locationX = currentlocation;
 
-				$("#image-container").append(img);
+				$("#image-container").append(div);
+				
+				
 			})
 
 		}
@@ -65,7 +68,7 @@ img{
 	<div class="main_container">
 		<a href="/"><button type="button" id="button_close">
 				<img src="/resources/images/btn_close.png" width="50" height="50">
-			</button></a> <a href="/userforest/setforest/"><button type="button"
+			</button></a> <a href="/login/userforest/setforest/"><button type="button"
 				id="button_setting">
 				<img src="/resources/images/button_setting_2.png" width="50"
 					height="50">

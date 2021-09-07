@@ -1,5 +1,6 @@
 package kr.co.gardener.admin.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,8 +25,15 @@ public class InvenDaoImpl implements InvenDao {
 	}
 
 	@Override
-	public Inven item(int invenId) {
-		return sql.selectOne("inven.item", invenId);
+	public Inven item(int userId, int plantId) {
+	
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("userId", userId);
+		map.put("plantId", plantId);
+		
+		return sql.selectOne("inven.item", map);
+		
 	}
 
 	@Override
@@ -34,8 +42,14 @@ public class InvenDaoImpl implements InvenDao {
 	}
 
 	@Override
-	public void delete(int invenId) {
-		sql.delete("inven.delete", invenId);
+	public void delete(int userId, int plantId) {
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		map.put("userId", userId);
+		map.put("plantId", plantId);
+				
+		sql.delete("inven.delete", map);
 	}
 
 }

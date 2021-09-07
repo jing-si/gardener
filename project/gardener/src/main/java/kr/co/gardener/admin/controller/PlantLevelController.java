@@ -4,14 +4,18 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.gardener.admin.model.PlantLevel;
+import kr.co.gardener.admin.model.object.CertReason;
 import kr.co.gardener.admin.service.PlantLevelService;
+import kr.co.gardener.util.FileUpload;
 
 @Controller
 @RequestMapping("/admin/forests/plants/plantLevel")
@@ -34,8 +38,10 @@ public class PlantLevelController {
 		return path + "add";
 	}
 	
+	
 	@PostMapping("/add")
-	public String add(PlantLevel item) {
+	public String add(PlantLevel item, MultipartFile uploadFile) {
+		item.setPlantImage(FileUpload.Uploader(uploadFile, "plant"));
 		service.add(item);
 		return "redirect:list";
 	}

@@ -4,13 +4,13 @@ public class Location {
 	private String userId;
 	private int locationId;
 	private int plantId;
-	private int locationSize;
+	private float locationSize;
 	private int locationX;
 	private int locationY;
 	private int locationOrder;
+	
 	private String plantImage; //식물 이미지(join으로 PlantLevel에서 가지고올것)
-	private int plantWidth; //식물 가로(join으로 Plant에서 가지고올것)
-	private int plantHeight; //식물 세로(join으로 Plant에서 가지고올것)
+	private int plantShadow; //식물 실루엣(join으로 Plant에서 가지고 올것)
 	
 	
 	
@@ -20,20 +20,13 @@ public class Location {
 	public void setPlantImage(String plantImage) {
 		this.plantImage = plantImage;
 	}
-	public int getPlantWidth() {
-		return plantWidth;
-	}
-	public void setPlantWidth(int plantWidth) {
-		this.plantWidth = plantWidth;
-	}
-	public int getPlantHeight() {
-		return plantHeight;
-	}
-	public void setPlantHeight(int plantHeight) {
-		this.plantHeight = plantHeight;
-	}
 	
-	
+	public int getPlantShadow() {
+		return plantShadow;
+	}
+	public void setPlantShadow(int plantShadow) {
+		this.plantShadow = plantShadow;
+	}
 	
 	
 	public String getUserId() {
@@ -54,10 +47,13 @@ public class Location {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
-	public int getLocationSize() {
+	
+	
+	
+	public float getLocationSize() {
 		return locationSize;
 	}
-	public void setLocationSize(int locationSize) {
+	public void setLocationSize(float locationSize) {
 		this.locationSize = locationSize;
 	}
 	public int getLocationX() {

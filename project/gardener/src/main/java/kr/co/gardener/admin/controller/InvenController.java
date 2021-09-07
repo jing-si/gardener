@@ -39,23 +39,24 @@ public class InvenController {
 		return "redirect:list";
 	}
 	
-	@GetMapping("/update/{invenId}")
-	public String update(@PathVariable int invenId, Model model) {
-		Inven item = service.item(invenId);
+	@GetMapping("/update/{userId}/{plantId}")
+	public String update(@PathVariable int invenId, @PathVariable int plantId, Model model) {
+		Inven item = service.item(invenId,plantId);
 		model.addAttribute("item", item);
 		return path + "update";
 	}
 	
-	@PostMapping("/update/{invenId}")
-	public String update(@PathVariable int invenId, Inven item) {
+	@PostMapping("/update/{userId}/{plantId}")
+	public String update(@PathVariable int invenId, @PathVariable int plantId, Inven item) {
 		item.setInvenId(invenId);
+		item.setPlantId(plantId);
 		service.update(item);
 		return "redirect:../list";
 	}
 	
-	@GetMapping("/delete/{invenId}")
-	public String delete(@PathVariable int invenId) {
-		service.delete(invenId);
+	@GetMapping("/delete/{userId}/{plantId}")
+	public String delete(@PathVariable int invenId, @PathVariable int userId) {
+		service.delete(invenId, userId);
 		return "redirect:../list";
 	}
 	

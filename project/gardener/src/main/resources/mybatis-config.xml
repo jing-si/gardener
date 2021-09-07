@@ -20,10 +20,14 @@
 		<typeAlias type="kr.co.gardener.admin.model.PlantLevel" alias="PlantLevel"/>	
 		<typeAlias type="kr.co.gardener.admin.model.object.Classify" alias="Classify"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.CertReason" alias="CertReason"/>
+		<typeAlias type="kr.co.gardener.admin.model.object.Company" alias="Company"/>
+		<typeAlias type="kr.co.gardener.admin.model.object.Cert" alias="Cert"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="mybatis/user.xml"/>
+		<mapper resource="mybatis/login.xml"/>
+		<mapper resource="mybatis/setting.xml"/>
 		<mapper resource="mybatis/history.xml"/>
 		<mapper resource="mybatis/searchList.xml"/>
 		<mapper resource="mybatis/bookmark.xml"/>
@@ -34,5 +38,7 @@
 		<mapper resource="mybatis/plantLevel.xml"/>
 		<mapper resource="mybatis/classify.xml"/>
 		<mapper resource="mybatis/certReason.xml"/>
+		<mapper resource="mybatis/company.xml"/>
+		<mapper resource="mybatis/cert.xml"/>			
 	</mappers>
 </configuration>

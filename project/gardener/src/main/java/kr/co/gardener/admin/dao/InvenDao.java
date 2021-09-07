@@ -10,10 +10,10 @@ public interface InvenDao {
 
 	void add(Inven item);
 
-	Inven item(int invenId);
+	Inven item(int userId, int plantId);
 
 	void update(Inven item);
 
-	void delete(int invenId);
+	void delete(int userId, int plantId);
 
 }

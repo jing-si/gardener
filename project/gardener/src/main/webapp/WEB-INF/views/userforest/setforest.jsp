@@ -14,26 +14,153 @@
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script>
-        $( document ).ready(function() { $('#test').draggable(); });
-    </script>
-    
+    let arr = new Array();
+    let item ;
+	$().ready(()=>{
+	$.ajax({
+		url:"../userforest/setforest/init2",
+		success:function(data){
+			arr = data;
+			console.log(data);
+			arr.forEach((value,index)=>{
+				let div1 = $("<div class='userPlant'>");				
+				let img = $("<img>");
+				// img.data("index",index);
+				
+				div1.attr("id", 'userPlant'+value.plantId);
+				div1.data("index",index);
+				
+				img.attr("id", value.PlantId);
+				img.attr("src",value.plantImage);
+								
+				div1.css("z-index",value.locationOrder);
+				img.css("scale",value.locationSize);
+				
+				
+				
+				//item.locationX = currentlocation;
+  
+				$("#image-container").append(div1);
+				div1.append(img);
+				div1.css("left",value.locationX);
+				div1.css("top",value.locationY);				
+				
+				/* 아래와 같이 넣어주고자 함
+				<div id="userPlant01" class="userPlant">
+					<img src="/resources/images/tree_01.png"></div>
+				</div> 
+				*/
+				
+			})
+		}
+	})
+	
+	$("#image-container").on("click", ".userPlant",function(data){
+		item = $(this);
+		$('.userPlant').removeClass('imgBox');
+		$(this).addClass('imgBox');	
+		console.log(item);
+		
+	})
+	
+	$("#image-container").on("mouseover", ".userPlant",function(data){
+		$(this).draggable();
+		
+	})
+	
+	
+	$('#zoom-in').click(function(){
+		let zoomLevel = arr[$(this).data("index")].locationSize;	
+		updateZoom(0.1)
+		var updateZoom = function(zoom) {
+		zoomLevel += zoom;
+
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+		} 
+		
+	
+	}
+	
+	$('#zoom-out').click(function(){
+		let zoomLevel = arr[$(this).data("index")].locationSize;
+		updateZoom(-0.1)
+		var updateZoom = function(zoom) {
+			zoomLevel += zoom;
+
+			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+				$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+			} 
+			
+		}
+		
+	
+});			
+	
+		$(document).ready(function(){
+		$(document).on("click",".userPlantImg",function(data){
+		// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
+
+		$('#zoom-in').click(function() { updateZoom(0.1); } );
+		$('#zoom-out').click(function() { updateZoom(-0.1);} );
+
+		let zoomLevel = arr[item.data("index")].locationSize;
+		var updateZoom = function(zoom) {
+		zoomLevel += zoom;
+
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+		} 
+		} 
+		}); 
+		});
+ </script>
+
+
+<style>
+
+.userPlant:hover {
+	border: 1px solid grey;
+}
+
+.imgBox {
+    border: 2px solid blue;
+    padding: 0;
+}
+
+#userPlant1 {
+	 zoom: 1.5;
+	 
+}
+.userPlant > img{
+	width: 150px;
+	height: 180px;
+}
+
+
+
+#image-container{
+	width:100%;
+	height: 100%;
+	position: relative;	
+}
+.userPlant{
+	position: absolute;
+}
+
+</style>
+
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
             <p class="header_text">숲 꾸미기</p>
-            <a href="/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a>
-            <a href="/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
+            <a href="/login/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a>
+            <a href="/login/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
         </div>
         
-        <div class="main_content">
-        	<img id="test" src="/resources/images/tree_01.png" width= "300" height= "382">
-        </div>
-        
-        <c:forEach var="list" items="${plantList}">
-        	<img src="/resources/images/${list.plantImg}">
-        </c:forEach>
-             
+        <div id="image-container">
+    	</div>
         <div class="footer">
             <div class="footer_btn"><img class="btn" id="btn_front" src="/resources/images/btn_front.png" width="45" height="45">
             </div><div class="footer_btn"><img class="btn" id="btn_back" src="/resources/images/btn_back.png" width="45" height="45">
@@ -45,34 +172,41 @@
     </div>
     
     <!-- 이미지 확대 축소 -->
-    <script>
-        $('#zoom-in').click(function() { updateZoom(0.1); } );
-        $('#zoom-out').click(function() { updateZoom(-0.1);} );
-        
-        zoomLevel = 1;
-        var updateZoom = function(zoom) {
-        zoomLevel += zoom;
-        
-        if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-        	 $('#test').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-        }
-        }
-        
-        
-        var p = $('#test').last();
-        var offset = p.offset();
-        console.log("left: " + offset.left + " top: " + offset.top);
-    </script>
+   <!--  <script>
+    $(document).ready(function(){
+		    	$(document).on("click",".userPlantImg",function(event){
+		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
+		    	
+		        	$('#zoom-in').click(function() { updateZoom(0.1); } );
+		            $('#zoom-out').click(function() { updateZoom(-0.1);} );
+		            
+		            zoomLevel = 1;
+		            var updateZoom = function(zoom) {
+		            zoomLevel += zoom;
+		            
+		            if(zoomLevel > 0.5 && zoomLevel < 1.6) {
+		            	 $(this).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+		            }
+		            }
+		            
+		            
+		            var p = $(this).last();
+		            var offset = p.offset();
+		            console.log("left: " + offset.left + " top: " + offset.top);
+		    	});
+	});
+		 
+	</script> -->
     <!-- 이미지 확대 축소 -->
     
     <!-- 이미지 우선순위 -->
-    <script>
+    <!-- <script>
     	$('#btn_front').click(function () { 
     		
     	});
     
     
-    </script>
+    </script> -->
     <!-- 이미지 우선순위 -->
     
     

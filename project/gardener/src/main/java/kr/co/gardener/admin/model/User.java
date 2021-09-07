@@ -7,13 +7,17 @@ public class User {
 	private String userId;
 	private String userNick;
 	private String userPass;
-	
-	@DateTimeFormat(pattern = "yyyyMMdd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date userBirth;
-	
 	private String userGender;
 	private int stateId;
 	private int forestId;
+	private int plantId; 
+	/*
+	 * Plant table의 plantId 외래키 추가
+	 */
+
+
 	public String getUserId() {
 		return userId;
 	}
@@ -56,11 +60,20 @@ public class User {
 	public void setForestId(int forestId) {
 		this.forestId = forestId;
 	}
+	
+	public int getPlantId() {
+		return plantId;
+	}
+	public void setPlantId(int plantId) {
+		this.plantId = plantId;
+	}
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userNick=" + userNick + ", userPass=" + userPass + ", userBirth="
-				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId + "]";
+				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId+ ", plnantId=" + plantId+ "]";
 	}
+	
+	
 	
 	
 }

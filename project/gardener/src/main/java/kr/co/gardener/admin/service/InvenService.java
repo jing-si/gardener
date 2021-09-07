@@ -10,11 +10,10 @@ public interface InvenService {
 
 	void add(Inven item);
 
-	Inven item(int invenId);
+	Inven item(int invenId, int plantId);
 
 	void update(Inven item);
 
-	void delete(int invenId);
-
+	void delete(int invenId, int userId);
 
 }

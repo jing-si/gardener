@@ -12,27 +12,27 @@
 
 	<select id="item" resultType="Inven">
 		SELECT * FROM INVEN
-		WHERE INVEN_ID =#{invenId}
+		WHERE USER_ID =#{userId} and PLANT_ID=#{plantId} 
 	</select>
 
 	<insert id="add">
 		INSERT INTO INVEN
-		VALUES (#{invenId},#{userId},
-		null,#{invenAmount})
+		VALUES (#{userId},
+				#{plantId},
+				#{invenAmount})
 	</insert>
 
 	<update id="update">
 		UPDATE INVEN
-		SET INVEN_ID=#{invenId}, 
-			USER_ID=#{userId},
+		SET USER_ID=#{userId}, 
 			PLANT_ID=#{plantId},
 			INVEN_AMOUNT=#{plantAmount}
-		WHERE INVEN_ID=#{invenId}
+		WHERE USER_ID =#{userId} and PLANT_ID=#{plantId}
 	</update>
 
 	<delete id="delete">
 		DELETE FROM INVEN
-		WHERE INVEN_ID=#{invenId}
+		WHERE USER_ID =#{userId} and PLANT_ID=#{plantId} 
 	</delete>
 
 </mapper>
