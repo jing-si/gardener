@@ -34,5 +34,9 @@
 	<property name="maxUploadSize" value = "14496160"></property>
 	</bean>
 	
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+	</bean>
+    
+    
 	
 </beans>

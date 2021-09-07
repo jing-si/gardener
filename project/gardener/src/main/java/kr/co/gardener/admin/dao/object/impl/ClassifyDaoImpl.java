@@ -1,4 +1,4 @@
-package kr.co.gardener.admin.dao.object;
+package kr.co.gardener.admin.dao.object.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.gardener.admin.dao.object.ClassifyDao;
 import kr.co.gardener.admin.model.object.Classify;
 
 @Repository

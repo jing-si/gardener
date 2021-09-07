@@ -1,4 +1,4 @@
-package kr.co.gardener.admin.service.object;
+package kr.co.gardener.admin.service.object.impl;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.gardener.admin.dao.object.ClassifyDao;
 import kr.co.gardener.admin.model.object.Classify;
 import kr.co.gardener.admin.model.object.ClassifyList;
+import kr.co.gardener.admin.service.object.ClassifyService;
 
 @Service
 public class ClassifyServiceImpl implements ClassifyService {

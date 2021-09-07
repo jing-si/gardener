@@ -29,12 +29,13 @@ public class SeleniumCrawler {
         
 		driver = new ChromeDriver(options);
 		
-		url = "https://www.google.co.kr/imghp?hl=ko&tab=ri&authuser=0&ogbl";
+		
 		
 		
 	}
 	
-	public List<String> activateBot(String search) {
+	public List<String> imageSearch(String search) {
+		url = "https://www.google.co.kr/imghp?hl=ko&tab=ri&authuser=0&ogbl";
 		List<String> list = new ArrayList<>();
 		try {
 			
@@ -44,7 +45,7 @@ public class SeleniumCrawler {
 				elem.submit();				
 			
 			
-			// 4. 로그인 버튼 클릭
+			// img.rg_i 태그 가져오기.
 			element = driver.findElements(By.cssSelector("img.rg_i"));		
 			
 			
