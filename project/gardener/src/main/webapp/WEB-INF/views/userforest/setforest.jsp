@@ -83,7 +83,7 @@
 		console.log(imgZoom);
 		console.log(userPlantId);
 		
-		var imgZoom;
+		
 		var zoomLevel = imgZoom;
 		
 		console.log(zoomLevel);
@@ -112,9 +112,9 @@
 		console.log(imgInfo.locationSize);
 		console.log('userPlant'+imgInfo.plantId);
 		console.log(imgZoom);
-		console.log(userPlantId);s
+		console.log(userPlantId);
 		
-		var imgZoom;
+		
 		var zoomLevel = imgZoom;
 		
 		console.log(zoomLevel);
