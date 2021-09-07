@@ -34,7 +34,8 @@
                         </c:if>
                         
                         <c:forEach var="list" items="${favoriteList}">
-                            <a href="/product/${list.productId}"><div class="brand">
+                            <a href="/product/${list.productId}">
+                            <div class="brand">
                                 <div class="brand-img">${list.favoriteImg}</div>
                                 <p class="brand-name">${list.favoriteName}</p>
                                 <img src="/resources/images/favorite-heart.png">

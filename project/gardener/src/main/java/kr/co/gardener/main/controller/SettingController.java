@@ -32,6 +32,11 @@ public class SettingController {
    //공지사항
    @RequestMapping("/notice")
    public String notice(Model model) {
+	   //여기서부터 가상 데이터
+	   //List<>
+	   //여기까지 가상데이터
+	   
+	   
       //noticeTitle(공지사항제목), noticeDate(공지사항 날짜), noticeContent(공지사항 내용)이 들어있는 리스트 구현해주세요
       model.addAttribute("noticeList",new ArrayList<String>());
       return path + "notice";
