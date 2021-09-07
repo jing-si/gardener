@@ -35,8 +35,7 @@ public class UserForestController {
 		l1.setLocationY(500);
 		l1.setPlantId(1);
 		l1.setPlantImage("/resources/images/tree_01.png");
-		l1.setPlantHeight(150);
-		l1.setPlantWidth(100);
+		
 		list.add(l1);
 		
 		Location l2 = new Location();
@@ -47,8 +46,7 @@ public class UserForestController {
 		l2.setLocationY(500);
 		l2.setPlantId(1);
 		l2.setPlantImage("/resources/images/tree_02.png");
-		l2.setPlantHeight(150);
-		l2.setPlantWidth(100);
+		
 		list.add(l2);
 		
 		Location l3 = new Location();
@@ -59,8 +57,7 @@ public class UserForestController {
 		l3.setLocationY(500);
 		l3.setPlantId(1);
 		l3.setPlantImage("/resources/images/tree_03.png");
-		l3.setPlantHeight(150);
-		l3.setPlantWidth(100);
+		
 		list.add(l3);
 		
 		return list;
