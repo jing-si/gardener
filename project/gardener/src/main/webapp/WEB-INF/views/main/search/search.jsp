@@ -36,27 +36,34 @@
         <c:if test="${latestProductList.size()>0}">
         	<div id="latest-search-title">
                 <p id="latest-search">최근검색</p>
-                <p id="all-delete">전체삭제</p>
+                <a href="delete/${latestProductList}">
+                	<p id="all-delete">전체삭제</p>
+                </a>
             </div>
         </c:if>
         
         <c:forEach var="list" items="${latestProductList}">
         	
             <div class="last-search-list">
-                <p>${list.latestProductName}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+                <p>${list.searchWord}</p>
+                <a href="delete/${list.searchId}">
+                	<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+            	</a>
             </div>
+            
         </c:forEach>
         
 <!-- 완성시 이부분 지우기 -->
-            <div id="latest-search-title">
+<%--             <div id="latest-search-title">
                 <p id="latest-search">최근검색</p>
                 <p id="all-delete">전체삭제</p>
             </div>
             <div class="last-search-list">
                 <p>${latestProductNameList}</p>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-            </div>
+                <a href="delete/${latesProductName}">
+                	<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+            	</a>
+            </div> --%>
 <!-- 여기까지 -->
 
         </div>
