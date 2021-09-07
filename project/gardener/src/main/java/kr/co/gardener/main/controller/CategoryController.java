@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/login/category")
 public class CategoryController {
 	final String path = "main/category/";
 	
