@@ -64,7 +64,6 @@
 		$('.userPlant').removeClass('imgBox');
 		$(this).addClass('imgBox');	
 		console.log(item);
-		
 	})
 	
 	$("#image-container").on("mouseover", ".userPlant",function(data){
@@ -84,6 +83,73 @@
 		console.log(imgZoom);
 		console.log(userPlantId);
 		
+		
+		var zoomLevel = imgZoom;
+		
+		console.log(zoomLevel);
+		
+		var updateZoom = function(zoom) {
+	        zoomLevel += zoom;
+	        console.log(zoomLevel);
+	       
+
+	        $("#"+userPlantId).css('zoom', zoomLevel);
+	        
+	        console.log(userPlantId);
+	     }
+	         
+	    	updateZoom(0.1); 
+		
+	});
+	
+	$('#zoom-out').click(function() { 
+		
+		let imgInfo = arr[$(item).data("index")];	
+		let imgZoom = imgInfo.locationSize;
+		let userPlantId = 'userPlant'+imgInfo.plantId
+		
+		console.log(imgInfo);
+		console.log(imgInfo.locationSize);
+		console.log('userPlant'+imgInfo.plantId);
+		console.log(imgZoom);
+		console.log(userPlantId);
+		
+		
+		var zoomLevel = imgZoom;
+		
+		console.log(zoomLevel);
+		
+		var updateZoom = function(zoom) {
+	        zoomLevel += zoom;
+	        console.log(zoomLevel);
+	        console.log(userPlantId);
+
+	        $("#"+userPlantId).css('zoom', zoomLevel);
+	        
+	        console.log(userPlantId);
+	     }
+	         
+	    	updateZoom(-0.1); 
+		
+	});
+	
+	});
+    
+	$('#btn_front').click(function() { 
+		
+		let imgInfo = arr[$(item).data("index")];	
+		let imgZindex = imgInfo.locationOrder;
+		let userPlantId = 'userPlant'+imgInfo.plantId
+		
+		console.log(imgInfo);
+		console.log(imgInfo.locationOrder);
+		console.log('userPlant'+imgInfo.plantId);
+		console.log(imgZindex);
+		console.log(userPlantId);
+		
+		
+		
+		
 		var zoomLevel = imgZoom;
 		
 		console.log(zoomLevel);
@@ -98,147 +164,65 @@
 	        console.log(userPlantId);
 	     }
 	         
-	         updateZoom(0.1); 
+	    	updateZoom(-0.1); 
 		
 	});
 	
-	
-        
-	
-    $('#zoom-out').click(function() { updateZoom(-0.1);} );
-            
-	});
-    
 
 	
 	
-	
-	
-	/* $('#zoom-in').click(function(){
-		let imgInfo = arr[$(item).data("index")];	
-		let imgZoom = imgInfo.locationSize;
-		let userPlantId = 'userPlant'+imgInfo.plantId
-		console.log(imgInfo);
-		console.log(imgInfo.locationSize);
-		console.log('userPlant'+imgInfo.plantId);
-		console.log(imgZoom);
-		console.log(userPlantId);
-		
-		zoomLevel = imgZoom;
-		
-		
-		
-		
-		
-		
-		var updateZoom = function(zoom) {
-			   zoomLevel += zoom;
-			   $(userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-		}
-		
-		updateZoom(0.1);
-		
-		
-		console.log(zoomLevel);
-		
-	}) */
-		
-		
-		
-		/* if(zoomLevel > 0.5 && zoomLevel < 1.6) {
+		/* 	if(zoomLevel > 0.5 && zoomLevel < 1.6) {
 			zoomLevel += updateZoom;
 			console.log(zoomLevel);
 			$(userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-		} */
+			}
 		
-		/* var updateZoom = function(zoom) {
+			var updateZoom = function(zoom) {
 			zoomLevel += zoom;
 			console.log(zoomLevel);
 			
 			if(zoomLevel > 0.5 && zoomLevel < 1.6){	
 				$('userPlant'+imgInfo.plantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
 			}
-		}
-		 */
-	
-	
+			}
 		
-		
-		/* var updateZoom = function() {
-			imgZoom += zoom;
-			
-			console.log(imgZoom);
-		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			var updateZoom = function() {
+				imgZoom += zoom;
+				console.log(imgZoom);
+			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
 			$(imgInfo.plantId).css({ zoom: imgZoom, '-moz-transform' : 'scale(' + imgZoom + ')'}); 
-		}	
+			}	
 			
 			
-		}  */
+			}
 		
-		/* var updateZoom = function(zoom) {
-		zoomLevel += zoom;
+			var updateZoom = function(zoom) {
+			zoomLevel += zoom;
 		
-		console.log(zoomLevel);
-		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
-		}
+			console.log(zoomLevel);
+			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+				$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+			}
 		
-		}
-	})
-	 */
-	/* $('#zoom-out').mouseover(function(){
-		let zoomLevel = arr[$(item).data("index")];	
+			}
+			})
+	 
+	 		$('#zoom-out').mouseover(function(){
+			let zoomLevel = arr[$(item).data("index")];	
 		
-		console.log(zoomLevel);
-		/* console.log(zoomLevel.locationSize);
+			console.log(zoomLevel);
+			console.log(zoomLevel.locationSize);
 		
-		
-		
-		var updateZoom = function(zoom) {
-		zoomLevel += zoom;
+			var updateZoom = function(zoom) {
+			zoomLevel += zoom;
 
-		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
 			$(zoomLevel.plantId).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
-		} 
-		
-		}
-
+			} 
+			}
+			}); */
 	
-	}); */
-	
-	/* let imgInfo = arr[$(item).data("index")];	
-	let imgZoom = imgInfo.locationSize;
-	let userPlantId = 'userPlant'+imgInfo.plantId
-	console.log(imgInfo);
-	console.log(imgInfo.locationSize);
-	console.log('userPlant'+imgInfo.plantId);
-	console.log(imgZoom);
-	console.log(userPlantId);
-	
-	$(document).ready(function(){
-    	$(document).on("click",".userPlantImg",function(event){
-    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-    	
-    	
-    	
-        	$('#zoom-in').click(function() { updateZoom(0.1); } );
-            $('#zoom-out').click(function() { updateZoom(-0.1);} );
-            
-            zoomLevel = imgZoom;
-            
-            var updateZoom = function(zoom) {
-            zoomLevel += zoom;
-            
-            if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-            	 $(this).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-            }
-            }
-            
-          
-    	});
-}); */
-	
- </script>
+</script>
 
 
 <style>
@@ -251,14 +235,6 @@
 	padding: 0;
 }
 
-#userPlant1 {
-	zoom: 1.5;
-}
-
-.userPlant>img {
-	width: 150px;
-	height: 180px;
-}
 
 #image-container {
 	width: 100%;

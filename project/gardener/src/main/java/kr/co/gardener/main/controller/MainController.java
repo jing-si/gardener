@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.gardener.admin.model.Plant;
 import kr.co.gardener.admin.model.PlantLevel;
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.service.UserService;
@@ -57,13 +58,25 @@ public class MainController {
 	
 	@RequestMapping("/init")
 	@ResponseBody
-	public List<PlantLevel> init(){
+	public List<PlantLevel> init(Model model){
+		
+		model.addAttribute("stateId",0);
+		
 		List<PlantLevel> list = new ArrayList<PlantLevel>();
 		PlantLevel l1 = new PlantLevel();
-		l1.setPlantLevelId(5);
-		l1.setPlantImage("/resources/images/tree_01.png");
 		l1.setPlantId(1);
+		l1.setPlantImage("/resources/images/tree_01.png");
 		list.add(l1);
+		
+		PlantLevel l2 = new PlantLevel();
+		l2.setPlantId(2);
+		l2.setPlantImage("/resources/images/tree_02.png");
+		list.add(l2);
+		
+		PlantLevel l3 = new PlantLevel();
+		l3.setPlantId(3);
+		l3.setPlantImage("/resources/images/tree_03.png");
+		list.add(l3);
 		
 		return list;
 	}

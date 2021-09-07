@@ -59,7 +59,7 @@ public class PlantLevelController {
 		return "redirect:../list";
 	}
 	
-	@PostMapping("/delete/{plantLevelId}")
+	@GetMapping("/delete/{plantLevelId}")
 	public String delete(@PathVariable int plantLevelId) {
 		service.delete(plantLevelId);
 		return "redirect:../list";

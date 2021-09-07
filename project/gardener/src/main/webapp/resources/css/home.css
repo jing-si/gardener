@@ -137,3 +137,55 @@ a{
     margin: auto 0;
     margin-top: 0px;
 }
+
+
+        #cards{
+            width: 90%;
+            height: 150px;
+            border: 1px solid blue;
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative;
+            display: none;
+        }
+        #cards .card{
+            /* position: absolute;
+            width: 60px;
+            top: 50%;
+            transform: translate(0,-50%);
+            left: 12px; */
+            width: 60px;
+            margin: 11px;
+        }
+        /* #cards #card2{
+            left: 101px;
+        }
+        #cards #card3{
+            left: 188px;
+        } */
+
+
+
+        #seed{
+            width: 127px;
+            height: 127px;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 1px solid blue;
+            /* display: none; */
+        }
+
+
+
+        #plant{display: none;}
+        #plant img{
+            height: 180px;
+            width: 180px;
+            border: 1px solid blue;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%);
+        }
