@@ -23,7 +23,7 @@ public class UserForestController {
 		return path + "forest";
 	}
 	
-	@RequestMapping("/init")
+	@RequestMapping("userforest/init")
 	@ResponseBody
 	public List<Location> init() {
 		List<Location> list = new ArrayList<Location>();
@@ -71,7 +71,7 @@ public class UserForestController {
 		return path + "/setforest";
 	}
 	
-	@RequestMapping("setforest/init2")
+	@RequestMapping("userforest/setforest/init2")
 	@ResponseBody
 	public List<Location> init2() {
 		List<Location> list = new ArrayList<Location>();

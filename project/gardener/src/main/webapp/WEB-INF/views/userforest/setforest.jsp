@@ -17,14 +17,14 @@
     let arr = new Array();
 	$().ready(()=>{
 	$.ajax({
-		url:"../setforest/init2",
+		url:"../userforest/setforest/init2",
 		success:function(data){
 			arr = data;
 			console.log(data);
 			arr.forEach((value,index)=>{
 				let div1 = $("<div class='userPlant'>");
 				let div2 = $("<div class='userPlantImg'>");
-				let img = $("<img>");
+				let img = $("<img class='hover'>");
 				// img.data("index",index);
 				
 				div1.attr("id", 'userPlant'+value.plantId);
@@ -58,18 +58,54 @@
     
 			
 			$(document).ready(function(){
-		    	$(document).on("mouseover",".userPlantImg",function(event){
-		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-		        	$(this).draggable();
-		        	
-		    		if
-		    	
+		    	$(document).on("mouseover",".hover",function(event){
+		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
+		    		
+		    		$(".hover").hover(function() {
+			        	$(this).css({ "border": "Solid red 2px" });
+					}, function() {
+			          $(this).css({ "border": "" });
+			          
+					});
+		    	});
+		    });
+			
+			$(document).ready(function(){
+		    	$(document).on("click",".hover",function(event){
+		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
+		    		$('.hover').not(this).off("imgBox");
+		    		$(this).toggleClass( 'imgBox' );
+		    		$('.hover').not(this).off("imgBox");
+		    		/* $('.hover').not(this).css({ "border": "0" }); */
+		    		$(this).draggable();
+		    		
 		    		var p = $(this).last();
 		            var offset = p.offset();
 		            console.log("left: " + offset.left + " top: " + offset.top);
-		    	
 		    	});
 		    });
+			
+			
+			/* $( document ).ready( function() {
+		        $( 'p' ).click( function() {
+		          $( this ).toggleClass( 'jbBox' );
+		        } );
+		      } ); */
+			
+			
+			
+			/* $(document).ready(function() {
+				$(document).on("mouseover",".userPlantImg",function(event){
+				
+				$(".hover").hover(function() {
+		        	$(this).css({ "border": "Solid red 1px" });
+				}, function() {
+		          $(this).css({ "border": "" });
+		          
+				});
+				});
+			}); */
+			
 
 			$(document).ready(function(){
 		    	$(document).on("mouseover",".userPlantImg",function(event){
@@ -86,7 +122,14 @@
             	}
             	}	
 		    	
-		    		
+            	$(function () {
+            		$('userPlantImg').click(function(){
+            			$('userPlantImg').css(border, "none");
+            			$(this).css(border, "5px solid blue");
+            			
+            		});
+            	});
+            	
 		        /* 	
 		    		var p = $(this).last();
 		            var size = p.scale();
@@ -124,14 +167,24 @@
       
 	
     </script>
-    
+
+<style>
+.hover{
+	width: auto;
+}
+.imgBox {
+        border: 5px solid blue;
+        padding: 20px;
+      }
+</style>
+
 </head>
 <body>
     <div class="wrapper">
         <div class="header">
             <p class="header_text">숲 꾸미기</p>
-            <a href="/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a>
-            <a href="/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
+            <a href="/login/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a>
+            <a href="/login/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
         </div>
         
         <div id="image-container">
@@ -147,7 +200,7 @@
     </div>
     
     <!-- 이미지 확대 축소 -->
-    <script>
+   <!--  <script>
     $(document).ready(function(){
 		    	$(document).on("click",".userPlantImg",function(event){
 		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
@@ -169,9 +222,9 @@
 		            var offset = p.offset();
 		            console.log("left: " + offset.left + " top: " + offset.top);
 		    	});
-		    	});
-		    });
-	</script>
+	});
+		 
+	</script> -->
     <!-- 이미지 확대 축소 -->
     
     <!-- 이미지 우선순위 -->
