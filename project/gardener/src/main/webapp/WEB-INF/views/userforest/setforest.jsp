@@ -15,6 +15,7 @@
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script>
     let arr = new Array();
+    let item ;
 	$().ready(()=>{
 	$.ajax({
 		url:"../userforest/setforest/init2",
@@ -22,160 +23,131 @@
 			arr = data;
 			console.log(data);
 			arr.forEach((value,index)=>{
-				let div1 = $("<div class='userPlant'>");
-				let div2 = $("<div class='userPlantImg'>");
-				let img = $("<img class='hover'>");
+				let div1 = $("<div class='userPlant'>");				
+				let img = $("<img>");
 				// img.data("index",index);
 				
 				div1.attr("id", 'userPlant'+value.plantId);
-				div2.attr("id", 'userPlant'+value.plantId+'Img');
+				div1.data("index",index);
+				
 				img.attr("id", value.PlantId);
 				img.attr("src",value.plantImage);
+								
+				div1.css("z-index",value.locationOrder);
+				img.css("scale",value.locationSize);
 				
-				img.css("width",value.plantWidth);
-				img.css("height",value.plantHeight);
-				img.css("z-index",value.locationOrder);
-				img.css("left",value.locationX);
-				img.css("top",value.locationY);
 				
-				//let item = arr[img.data("index")];
+				
 				//item.locationX = currentlocation;
   
 				$("#image-container").append(div1);
-				div1.append(div2);
-				div2.append(img);
+				div1.append(img);
+				div1.css("left",value.locationX);
+				div1.css("top",value.locationY);				
 				
 				/* 아래와 같이 넣어주고자 함
 				<div id="userPlant01" class="userPlant">
-					<div id="userPlant01Img" class="userPlantImg"><img src="/resources/images/tree_01.png"></div>
+					<img src="/resources/images/tree_01.png"></div>
 				</div> 
 				*/
 				
 			})
 		}
 	})
-});
-    
-			
-			$(document).ready(function(){
-		    	$(document).on("mouseover",".hover",function(event){
-		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
-		    		
-		    		$(".hover").hover(function() {
-			        	$(this).css({ "border": "Solid red 2px" });
-					}, function() {
-			          $(this).css({ "border": "" });
-			          
-					});
-		    	});
-		    });
-			
-			$(document).ready(function(){
-		    	$(document).on("click",".hover",function(event){
-		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
-		    		$('.hover').not(this).off("imgBox");
-		    		$(this).toggleClass( 'imgBox' );
-		    		$('.hover').not(this).off("imgBox");
-		    		/* $('.hover').not(this).css({ "border": "0" }); */
-		    		$(this).draggable();
-		    		
-		    		var p = $(this).last();
-		            var offset = p.offset();
-		            console.log("left: " + offset.left + " top: " + offset.top);
-		    	});
-		    });
-			
-			
-			/* $( document ).ready( function() {
-		        $( 'p' ).click( function() {
-		          $( this ).toggleClass( 'jbBox' );
-		        } );
-		      } ); */
-			
-			
-			
-			/* $(document).ready(function() {
-				$(document).on("mouseover",".userPlantImg",function(event){
-				
-				$(".hover").hover(function() {
-		        	$(this).css({ "border": "Solid red 1px" });
-				}, function() {
-		          $(this).css({ "border": "" });
-		          
-				});
-				});
-			}); */
-			
-
-			$(document).ready(function(){
-		    	$(document).on("mouseover",".userPlantImg",function(event){
-		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-		        $('#zoom-in').click(function() { updateZoom(0.1); } );
-            	$('#zoom-out').click(function() { updateZoom(-0.1);} );
-            
-            	zoomLevel = 1;
-            	var updateZoom = function(zoom) {
-            	zoomLevel += zoom;
-            
-            	if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-            		$('#image-container img').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-            	}
-            	}	
-		    	
-            	$(function () {
-            		$('userPlantImg').click(function(){
-            			$('userPlantImg').css(border, "none");
-            			$(this).css(border, "5px solid blue");
-            			
-            		});
-            	});
-            	
-		        /* 	
-		    		var p = $(this).last();
-		            var size = p.scale();
-		            console.log("scale: " + p.scale ); */
-		    	
-		    	});
-		    });
-			
-    			
-    			
-    		/* $('#image-container img').draggable();
-    		
-    		$('#zoom-in').click(function() { updateZoom(0.1); } );
-            $('#zoom-out').click(function() { updateZoom(-0.1);} );
-            
-            zoomLevel = 1;
-            var updateZoom = function(zoom) {
-            zoomLevel += zoom;
-            
-            if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-            	 $('#image-container img').css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-            }
-            }
-            
-            
-            
-            
-            var p = $('#image-container img').last();
-            var offset = p.offset();
-            console.log("left: " + offset.left + " top: " + offset.top);
-    	});  */
-
-        /* $( document ).ready(function() { $('#test').draggable; }); */
-        
-      
 	
-    </script>
+	$("#image-container").on("click", ".userPlant",function(data){
+		item = $(this);
+		$('.userPlant').removeClass('imgBox');
+		$(this).addClass('imgBox');	
+		console.log(item);
+		
+	})
+	
+	$("#image-container").on("mouseover", ".userPlant",function(data){
+		$(this).draggable();
+		
+	})
+	
+	
+	$('#zoom-in').click(function(){
+		let zoomLevel = arr[$(this).data("index")].locationSize;	
+		updateZoom(0.1)
+		var updateZoom = function(zoom) {
+		zoomLevel += zoom;
+
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+		} 
+		
+	
+	}
+	
+	$('#zoom-out').click(function(){
+		let zoomLevel = arr[$(this).data("index")].locationSize;
+		updateZoom(-0.1)
+		var updateZoom = function(zoom) {
+			zoomLevel += zoom;
+
+			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+				$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+			} 
+			
+		}
+		
+	
+});			
+	
+		$(document).ready(function(){
+		$(document).on("click",".userPlantImg",function(data){
+		// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다
+
+		$('#zoom-in').click(function() { updateZoom(0.1); } );
+		$('#zoom-out').click(function() { updateZoom(-0.1);} );
+
+		let zoomLevel = arr[item.data("index")].locationSize;
+		var updateZoom = function(zoom) {
+		zoomLevel += zoom;
+
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+		} 
+		} 
+		}); 
+		});
+ </script>
+
 
 <style>
-.hover{
-	width: auto;
+
+.userPlant:hover {
+	border: 1px solid grey;
 }
+
 .imgBox {
-        border: 5px solid blue;
-        padding: 20px;
-      }
+    border: 2px solid blue;
+    padding: 0;
+}
+
+#userPlant1 {
+	 zoom: 1.5;
+	 
+}
+.userPlant > img{
+	width: 150px;
+	height: 180px;
+}
+
+
+
+#image-container{
+	width:100%;
+	height: 100%;
+	position: relative;	
+}
+.userPlant{
+	position: absolute;
+}
+
 </style>
 
 </head>
