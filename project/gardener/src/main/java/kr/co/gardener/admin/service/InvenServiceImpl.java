@@ -24,8 +24,8 @@ public class InvenServiceImpl implements InvenService {
 	}
 
 	@Override
-	public Inven item(int invenId) {
-		return dao.item(invenId);
+	public Inven item(int userId, int plantId) {
+		return dao.item(userId, plantId);
 	}
 
 	@Override
@@ -34,8 +34,11 @@ public class InvenServiceImpl implements InvenService {
 	}
 
 	@Override
-	public void delete(int invenId) {
-		dao.delete(invenId);
+	public void delete(int userId, int plantId) {
+		dao.delete(userId,plantId);
+		
 	}
+
+
 
 }

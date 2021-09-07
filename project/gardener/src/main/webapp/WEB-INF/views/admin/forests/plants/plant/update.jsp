@@ -7,41 +7,33 @@
 <title>배치 관리</title>
 </head>
 <body>
-	<div>
-		<h3>배치 변경</h3>
+	<div>							
+		<h3>식물 변경</h3>
 		<form method="post">
 			<div>
-				<label>이메일: </label> ${item.userId}
+				<label>식물ID: </label> ${item.plantId}
 			</div>
 			<div>
-				<label>배치 ID: </label> ${item.locationId}
+				<label>식물이름: </label> 
+				<input type="text" name="plantName" value="${item.plantName}">
 			</div>
 			<div>
-				<label>식물 ID: </label> 
-				<input type="number" name="plantId" value="${item.plantId}">
+				<label>구분: </label> 
+				<input type="text" name="plantCategory" value="${item.plantCategory}">
 			</div>
 			<div>
-				<label>사이즈: </label> 
-				<input type="number" name="locationSize" value="${item.locationSize}">
+				<label>설명: </label> 
+				<input type="text" name="plantInfo" value="${item.plantInfo}">
 			</div>
 			<div>
-				<label>X 좌표: </label> 
-				<input type="number" name="locationX" value="${item.locationX}">
-			</div>
-			<div>
-				<label>Y 좌표: </label> 
-				<input type="number" name="locationY" value="${item.locationY}">
-			</div>
-			<div>
-				<label>순서: </label> 
-				<input type="number" name="locationOrder" value="${item.locationOrder}">
-			</div>
+				<label>식물실루엣: </label> 
+				<input type="text" name="plantShadow" value="${item.plantShadow}">
 			<div>
 				<input type="submit" value="변경">
 			</div>
 		</form>
 		<div>
-			<a href="../">검색리스트 목록으로</a>
+			<a href="../"> 식물 목록으로</a>
 		</div>
  	</div>
 </body>

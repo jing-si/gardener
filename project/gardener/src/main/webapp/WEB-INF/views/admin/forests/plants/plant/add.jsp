@@ -23,6 +23,9 @@
 				<label>설명: </label> <input type="text" name="plantInfo" value="${item.plantInfo}">
 			</div>
 			<div>
+				<label>식물 실루엣: </label> <input type="text" name="plantShadow" value="${item.plantShadow}">
+			</div>
+			<div>
 				<input type="submit" value="추가">
 			</div>
 		</form>

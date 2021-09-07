@@ -7,17 +7,16 @@ public class User {
 	private String userId;
 	private String userNick;
 	private String userPass;
-	@DateTimeFormat(pattern = "yyyyMMdd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date userBirth;
 	private String userGender;
 	private int stateId;
 	private int forestId;
 	private int plantId; 
-	
 	/*
-	 * Plant table의 plantId 추가
+	 * Plant table의 plantId 외래키 추가
 	 */
-	
+
 
 	public String getUserId() {
 		return userId;

@@ -5,26 +5,23 @@ public class Plant {
 	private String plantName;
 	private String plantCategory;
 	private String plantInfo;
+	private String plantShadow;
 	
-	private int plantWidth; //DB에 추가해야 합니다.
-	private int plantHeight; //DB에 추가해야 합니다.
+	/*
+	 * plantShadow 필드 추가
+	 */
 	
+	public String getPlantShadow() {
+		return plantShadow;
+	}
+	public void setPlantShadow(String plantShadow) {
+		this.plantShadow = plantShadow;
+	}
 	
-	public int getPlantWidth() {
-		return plantWidth;
-	}
-	public void setPlantWidth(int plantWidth) {
-		this.plantWidth = plantWidth;
-	}
-	public int getPlantHeight() {
-		return plantHeight;
-	}
-	public void setPlantHeight(int plantHeight) {
-		this.plantHeight = plantHeight;
-	}
 	public int getPlantId() {
 		return plantId;
 	}
+
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}

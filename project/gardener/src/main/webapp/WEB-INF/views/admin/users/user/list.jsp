@@ -20,13 +20,16 @@
 						<th>비밀번호</th>
 						<th>생년월일</th>
 						<th>성별</th>
+						<th>상태ID</th>
+						<th>숲ID</th>
+						<th>식물ID</th>
 						<th>관리</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<td colspan="6">등록된 유저가 없습니다.</td>
+							<td colspan="9">등록된 유저가 없습니다.</td>
 						</tr>
 					</c:if>
 					<c:forEach var="item" items="${list}">
@@ -36,6 +39,9 @@
 							<td>${item.userPass}</td>
 							<td><fmt:formatDate value="${item.userBirth}" pattern="yyyyMMdd"/> </td>
 							<td>${item.userGender}</td>
+							<td>${item.stateId}</td>
+							<td>${item.forestId}</td>
+							<td>${item.plantId}</td>
 							<td><a href="delete/${item.userId}">삭제</a><a href="update/${item.userId}">변경</a></td>
 						</tr>
 					</c:forEach>
