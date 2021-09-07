@@ -57,10 +57,9 @@ public class FileUpload {
 				file.transferTo(new File(javaFilePath +"\\"+ fileName));	
 				srcFilePath +="/"+ fileName;
 			} catch (Exception e) {
+				System.out.println("오류발생");
 				return null; 
-
 			}
-			
 		}
 		
 		return srcFilePath;

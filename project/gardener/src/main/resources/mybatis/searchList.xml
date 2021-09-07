@@ -30,4 +30,16 @@
   	DELETE FROM SEARCH_LIST
   	WHERE SEARCH_ID=#{searchId}
   </delete>
+
+<!-- searchWord(최근검색 제품명),searchId(최근검색 제품아이디) 리스트 구현해주세요
+	model.addAttribute("latestProductList",new ArrayList<String>());
+ -->
+  <select id="search">
+	SELECT SEARCH_WORD, SEARCH_ID
+  	FROM SEARCH_LIST
+  	WHERE USER_ID=#{userId}
+  	ORDER BY SEARCH_ID DESC
+ 	<!-- 검색 날짜 필요? -->
+  </select>
+  
   </mapper>

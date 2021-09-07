@@ -98,12 +98,7 @@ public class CategoryController {
 	@RequestMapping("/mark")
 	public String markList(Model model) {
 		//여기서부터 가상데이터
-		/*
-		 * List<Classify> list = new ArrayList<Classify>(); Classify l1 = new
-		 * Classify(); l1.set
-		 */
-		//여기까지 가상데이터
-		
+
 		
 		
 		

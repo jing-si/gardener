@@ -12,12 +12,22 @@ public class User {
 	private String userGender;
 	private int stateId;
 	private int forestId;
-	private int plantId; 
+	private int plantId;
+	private String plant;
+	
+	
+
 	/*
 	 * Plant table의 plantId 외래키 추가
 	 */
 
 
+	public String getPlant() {
+		return plant;
+	}
+	public void setPlant(String plant) {
+		this.plant = plant;
+	}
 	public String getUserId() {
 		return userId;
 	}
