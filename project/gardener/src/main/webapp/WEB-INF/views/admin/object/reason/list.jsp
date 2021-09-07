@@ -18,10 +18,10 @@
 			<table>
 				<thead>
 					<tr>
+						<th>인증사유 마크</th>
 						<th>인증사유 ID</th>
 						<th>인증사유 이름</th>
-						<th>인증사유 이미지 경로</th>
-						<th>인증사유 이미지</th>
+						<th>마크  경로</th>						
 						<th>인증사유 정보</th>
 						<th>인증사유 관리</th>
 					</tr>
@@ -29,10 +29,10 @@
 				<tbody>
 					<c:forEach var="item" items="${list}">
 						<tr>
+							<td><img src="${item.certReasonImage}"> </td>
 							<td>${item.certReasonId }</td>
 							<td>${item.certReasonName }</td>
-							<td>${item.certReasonImage }</td>
-							<td><img src="${item.certReasonImage}"> </td>
+							<td>${item.certReasonImage }</td>							
 							<td>${item.certReasonInfo }</td>
 							<td>
 							<a href="update/${item.certReasonId }">수정</a> 

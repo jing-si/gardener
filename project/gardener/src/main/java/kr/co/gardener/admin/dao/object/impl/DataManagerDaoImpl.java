@@ -1,4 +1,4 @@
-package kr.co.gardener.admin.dao.object;
+package kr.co.gardener.admin.dao.object.impl;
 
 import java.io.IOException;
 import java.net.URI;
@@ -14,6 +14,8 @@ import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Repository;
+
+import kr.co.gardener.admin.dao.object.DataManagerDao;
 
 @Repository
 public class DataManagerDaoImpl implements DataManagerDao {

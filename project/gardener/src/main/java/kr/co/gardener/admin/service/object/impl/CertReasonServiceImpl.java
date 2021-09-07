@@ -1,4 +1,4 @@
-package kr.co.gardener.admin.service.object;
+package kr.co.gardener.admin.service.object.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.gardener.admin.dao.object.CertReasonDao;
 import kr.co.gardener.admin.model.object.CertReason;
+import kr.co.gardener.admin.service.object.CertReasonService;
 
 @Service
 public class CertReasonServiceImpl implements CertReasonService{

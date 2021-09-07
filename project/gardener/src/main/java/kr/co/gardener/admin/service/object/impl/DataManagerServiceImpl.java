@@ -1,4 +1,4 @@
-package kr.co.gardener.admin.service.object;
+package kr.co.gardener.admin.service.object.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +14,7 @@ import com.google.gson.JsonParser;
 import kr.co.gardener.admin.dao.object.DataManagerDao;
 import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.object.DataManagerService;
 
 @Service
 public class DataManagerServiceImpl implements DataManagerService {

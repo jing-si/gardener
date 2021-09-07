@@ -44,10 +44,11 @@ public class FileUpload {
 		Properties pro = makeProp();
 		
 		//파일 저장을 위한 경로 할당
-		String javaFilePath = pro.getProperty("java.fileUpload.path")+path.replaceAll("/", "\\");
-		String srcFilePath = pro.getProperty("spring.fileUpload.src")+path.replaceAll("\\", "/");
+		String javaFilePath = pro.getProperty("java.fileUpload.path")+path.replaceAll("/", "\\\\");
+		String srcFilePath = pro.getProperty("spring.fileUpload.src")+path.replaceAll("\\\\", "/");
 		String fileName = null;
-		
+		System.out.println("javaFilePath : " + javaFilePath);
+		System.out.println("srcFilePath : " + srcFilePath);
 		
 		if (file != null && !file.isEmpty()) {
 			fileName = file.getOriginalFilename();		
