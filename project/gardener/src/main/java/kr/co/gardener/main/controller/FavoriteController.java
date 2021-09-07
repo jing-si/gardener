@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/favorite")
+@RequestMapping("/login/favorite")
 public class FavoriteController {
 	final String path = "main/";
 	

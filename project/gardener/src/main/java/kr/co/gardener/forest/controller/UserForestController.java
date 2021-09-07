@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.co.gardener.admin.model.Location;
 
 @Controller
-@RequestMapping("/userforest")
+@RequestMapping("/login/userforest")
 public class UserForestController {
 	final String path = "userforest/";
 	

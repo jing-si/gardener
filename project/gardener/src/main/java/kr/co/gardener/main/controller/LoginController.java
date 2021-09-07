@@ -13,7 +13,7 @@ import kr.co.gardener.admin.model.User;
 import kr.co.gardener.main.service.LoginService;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping({"/",""})
 public class LoginController {
 	final String path = "main/login/";
 	
@@ -51,6 +51,7 @@ public class LoginController {
 		return path + "membership2";
 	}
 	
+	//회원가입 폼
 	@PostMapping("/membership")
 	public String membership(Model model, User user) {
 		//나중에 지우기
@@ -58,8 +59,15 @@ public class LoginController {
 		return "redirect:..";
 	}
 	
+	//비밀번호 재설정
 	@RequestMapping("/pwupdate")
 	public String pwupdate() {
 		return path + "pwupdate";
 	}
+	
+	//스플래시(시작대기화면)
+		@RequestMapping("/splash")
+		public String splash() {
+			return path + "splash";
+		}
 }
