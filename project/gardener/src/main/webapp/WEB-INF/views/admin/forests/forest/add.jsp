@@ -11,16 +11,13 @@
 		<h3>숲 추가</h3>
 		<form method="post" enctype="multipart/form-data">
 			<div>
-				<label>숲 ID: </label> <input type="text" name="userId" value="${item.userId}">
-			</div>
-			<div>
-				<label>숲 이름: </label> <input type="number" name="locationId" value="${item.forestName}">
+				<label>숲 이름: </label> <input type="text" name="forestName">
 			</div>
 			<div>
 				<label>숲 이미지: </label> <input type="file" name="uploadFile">
 			</div>
 			<div>
-				<label>숲 정보: </label> <input type="text" name="plantId" value="${item.forestInfo}">
+				<label>숲 정보: </label> <input type="text" name="forestInfo">
 			</div>
 			<div>
 				<input type="submit" value="추가">

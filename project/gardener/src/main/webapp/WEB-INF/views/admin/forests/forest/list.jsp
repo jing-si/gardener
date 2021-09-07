@@ -33,7 +33,7 @@
 							<td>${item.forestName}</td>
 							<td>${item.forestImage}</td>
 							<td>${item.forestInfo}</td>
-							<td><a href="delete/${item.forestId}">삭제</a><a href="update/${item.userId}">변경</a>
+							<td><a href="delete/${item.forestId}">삭제</a><a href="update/${item.forestId}">변경</a>
 							</td>
 						</tr>
 					</c:forEach>

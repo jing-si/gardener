@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.gardener.admin.model.User;
+import kr.co.gardener.admin.service.UserService;
 import kr.co.gardener.main.service.LoginService;
 
 @Controller
@@ -19,6 +20,9 @@ public class LoginController {
 	
 	@Autowired
 	LoginService loginService;
+	
+	@Autowired
+	UserService service;
 	
 	//로그인
 	@GetMapping({"","/"})
@@ -36,7 +40,7 @@ public class LoginController {
 			
 			if(userId.equals(item.getUserId()) && userPass.equals(item.getUserPass())) {
 				session.setAttribute("user", user);
-				return  "redirect:../";
+				return  "redirect:/login/";
 			}
 			
 			return path + "login";
@@ -53,15 +57,17 @@ public class LoginController {
 	
 	//회원가입 폼
 	@PostMapping("/membership")
-	public String membership(Model model, User user) {
+	public String membership(User user) {
 		//나중에 지우기
-		System.out.println(user.toString());
+		service.add(user);
 		return "redirect:..";
 	}
 	
 	//비밀번호 재설정
+	//당장 구현 불가
 	@RequestMapping("/pwupdate")
-	public String pwupdate() {
+	public String pwupdate(User user) {
+		
 		return path + "pwupdate";
 	}
 	

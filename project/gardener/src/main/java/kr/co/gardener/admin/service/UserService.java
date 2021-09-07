@@ -16,4 +16,6 @@ public interface UserService {
 
 	void delete(String userId);
 
+	String imgSrc(User user);
+
 }

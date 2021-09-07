@@ -39,4 +39,9 @@ public class UserDaoImpl implements UserDao {
 		sql.delete("user.delete", userId);
 	}
 
+	@Override
+	public String imgSrc(User user) {
+		return sql.selectOne("user.imgSrc", user);
+	}
+
 }
