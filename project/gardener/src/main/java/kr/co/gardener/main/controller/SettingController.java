@@ -2,6 +2,8 @@ package kr.co.gardener.main.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import kr.co.gardener.admin.model.User;
 
 @Controller
-@RequestMapping("/setting")
+@RequestMapping("/login/setting")
 public class SettingController {
    final String path = "main/setting/";
    
@@ -63,7 +65,8 @@ public class SettingController {
    
    //로그아웃
    @RequestMapping("/logout")
-   public String logout() {
+   public String logout(HttpSession session) {
+		session.invalidate();
 	   return "redirect:../login/";
    }
    

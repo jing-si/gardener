@@ -1,11 +1,17 @@
 package kr.co.gardener.main.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import kr.co.gardener.admin.model.PlantLevel;
 
 @Controller
-@RequestMapping({"/",""})
+@RequestMapping("/login")
 public class MainController {	
 	final String path = "main/";
 	
@@ -13,12 +19,21 @@ public class MainController {
 	@RequestMapping({"/",""})
 	public String index(Model model) {
 		model.addAttribute("userNick","userNick");
-		return path + "home";
+		model.addAttribute("plantId","1");
+		model.addAttribute("stateId","0");
+		return path + "home2";
 	}
 	
-	//스플래시(시작대기화면)
-	@RequestMapping("/splash")
-	public String splash() {
-		return path + "splash";
+	@RequestMapping("/init")
+	@ResponseBody
+	public List<PlantLevel> init(){
+		List<PlantLevel> list = new ArrayList<PlantLevel>();
+		PlantLevel l1 = new PlantLevel();
+		l1.setPlantLevelId(5);
+		l1.setPlantImage("/resources/images/tree_01.png");
+		l1.setPlantId(1);
+		list.add(l1);
+		
+		return list;
 	}
 }

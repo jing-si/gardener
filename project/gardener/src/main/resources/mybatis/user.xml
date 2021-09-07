@@ -18,7 +18,7 @@
 	<insert id="add">
 		INSERT INTO USER
 		VALUES (#{userId},#{userNick},
-		#{userPass},#{userBirth},#{userGender},null,null)
+		#{userPass},#{userBirth},#{userGender},null,null,null)
 	</insert>
 
 	<update id="update">

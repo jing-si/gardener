@@ -1,6 +1,7 @@
 package kr.co.gardener.main.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.gardener.admin.model.object.Product;
+
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/login/category")
 public class CategoryController {
 	final String path = "main/category/";
 	
@@ -26,6 +29,7 @@ public class CategoryController {
 		
 		//markId(인증마크 아이디), markImg(인증마크 이미지), markName(인증마크명)이 들어있는 리스트 구형해주세요.
 		model.addAttribute("markList",new ArrayList<String>());
+		
 		return path + "category-list";
 	}
 	
@@ -73,10 +77,19 @@ public class CategoryController {
 	//브랜드별 카테고리
 	@RequestMapping("/brand")
 	public String brandList(Model model) {
+		
 		//브랜드 이름
 		model.addAttribute("brandName","brandName");
 		//productId(브랜드별 제품 아이디), productImg(브랜드별 제품이미지)
 		//productName(브랜드별 제품명)이 들어있는 리스트 구현해주세요.
+		  model.addAttribute("brandProductList",new ArrayList<String>());
+		 
+		
+		//가상데이터
+		/*
+		 * model.addAttribute("brandName","브랜드1"); List<Product> list = new
+		 * ArrayList<Product>(); Product l1 = new Product(); l1.set
+		 */
 		model.addAttribute("brandProductList",new ArrayList<String>());
 		return path + "brand-list";
 	}
