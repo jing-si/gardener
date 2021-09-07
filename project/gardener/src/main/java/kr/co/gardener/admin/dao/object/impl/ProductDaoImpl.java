@@ -41,8 +41,7 @@ public class ProductDaoImpl implements ProductDao {
 		return sql.selectList("product.list", pager);
 	}
 	@Override
-	public float total() {
-		
+	public float total() {		
 		return sql.selectOne("product.total");
 	}
 

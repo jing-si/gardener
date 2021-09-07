@@ -3,22 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cert">
+<mapper namespace="product">
 	
-	<!-- List -->
-	<select id="list" resultType="Cert">
-		select * from CERT
+	<select id="total" resultType="float">
+		select count(*) from PRODUCT
 	</select>
 	
-	<select id="item" resultType="Cert">
-		select * from CERT
-		where CERT_ID = #{certId}
+	<!-- List -->
+	<select id="list" resultType="Product">
+		select * from PRODUCT
+	</select>
+	
+	<select id="item" resultType="Product">
+		select * from PRODUCT
+		where PRODUCT_ID = #{productId}
 	</select>
 
 	<!-- 생성 -->
 	<insert id="add">
-		insert into CERT
-		values(null,#{certName},#{certImage},#{certInfo});
+		insert into PRODUCT
+		values(
+		#{productId},
+		#{productName},
+		#{productSize},
+		#{productImage},
+		#{certId},
+		#{productCertId},
+		#{productStartDate},
+		#{productEndDate},
+		#{companyId},
+		#{g2bId},
+		#{elId}
+		);
 	</insert>
 	
 	<!-- 수정 -->
@@ -34,8 +50,8 @@
 	
 	<!-- 삭제 -->
 	<delete id="delete">
-		delete from CERT
-		where CERT_ID = #{certId}
+		delete from PRODUCT
+		where PRODUCT_ID = #{productId}
 	</delete>
 	
 </mapper>
