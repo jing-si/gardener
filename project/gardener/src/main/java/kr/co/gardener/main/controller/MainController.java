@@ -19,6 +19,8 @@ public class MainController {
 	@RequestMapping({"/",""})
 	public String index(Model model) {
 		model.addAttribute("userNick","userNick");
+		model.addAttribute("plantId","1");
+		model.addAttribute("stateId","0");
 		return path + "home2";
 	}
 	
