@@ -21,20 +21,23 @@
 			arr = data;
 			console.log(data);
 			arr.forEach((value,index)=>{
-				let img = $("<img>");
+				let div = $("<div class="test">");
 				//img.data("index",index);
 
-				img.css("width",value.plantWidth);
-				img.css("height",value.plantHeight);
-				img.attr("src",value.plantImage);
-				img.css("z-index",value.locationOrder);
-				img.css("left",value.locationX);
-				img.css("top",value.locationY);
+				div.css("width",value.plantWidth);
+				div.css("height",value.plantHeight);
+				div.attr("src",value.plantImage);
+				div.attr("id",value.PlantId);
+				div.css("z-index",value.locationOrder);
+				div.css("left",value.locationX);
+				div.css("top",value.locationY);
 				
-				//let item = arr[img.data("index")];
+				//let item = arr[div.data("index")];
 				//item.locationX = currentlocation;
 
-				$("#image-container").append(img);
+				$("#image-container").append(div);
+				
+				
 			})
 
 		}
