@@ -20,11 +20,11 @@
     		success : function(data){
     			arr = data;
     			console.log(data);
-    			if(${value.statusId}==0){
+    			if(${stateId}==0){
     	    		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
     	    		
     	    		
-    	    		$(".screen-img").on('click',"#seed",function(){
+/*     	    		$(".screen-img").on('click',"#seed",function(){
     	    			$(".screen-img").empty();
     	    			$(".screen-img").append("<div id='cards'>");
     	    			arr.forEach((value,index)=>{
@@ -32,23 +32,23 @@
     	    				
     	    				img.attr("src",value.plantImage);
     	    				img.attr("id","card"+${status.number});
-    	    				img.attr("class","card");
+    	    				img.attr("class","card"); */
     	    				
     	    				
     	    				
     						/* $(".screen-img").append("<img class='card' id='card+${status.number}' src=${value.PlantImage}>"); */
     						
-    						$("image-container").append(img);
+/*     						$("image-container").append(img); */
     						
-    	    			})
+    	    			/* }) */
     					/* $('plantList plantImg').each(function(index,item){
     						$(".screen-img").append("<img class='card' id='card+${status.number}' src=${item.randomPlantImg}>");
     					}) */
     	    			/* $(".screen-img").append("</div>"); */
-    	    		});
+    	    		/* }); */
     	    		
     	    		
-    	    		$(".screen-img").on('click',".card",function(){
+/*     	    		$(".screen-img").on('click',".card",function(){ */
     	    			//카드의 id값을 컨트롤러로 보낸다
     	    			//컨트롤러에서는 메인화면을 갱신
     	    		});
@@ -56,6 +56,9 @@
     			
     			
     	    	else{
+    	    		$(".screen-img").empty();
+    	    		
+    	    		
     						let img = $("<img>");
     				
     						img.attr("src",plantImg);
@@ -68,7 +71,7 @@
     		}
     	})
     })
-    $(function){
+/*     $(function){
     	if(${statusId}==0){
     		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
     		
@@ -90,7 +93,7 @@
     	}
     	
 
-    }
+    } */
     
 
     </script>
@@ -101,15 +104,17 @@
         <div class="title">
             <p>${userNick} 님, 반가워요!</p>
             <p style="font-weight: bold;">새로운 씨앗을 심어보세요 :)</p>
-            <a href="admin/"><p style="color:red; font-weight:bold; font-size:2em;">관리자 야호!</p></a>
-            <a href="/"><p style="font-size: 5px;">로그인 확인</p></a>
-            <a href="splash/"><p style="font-size: 5px;">스플래시 확인</p></a>
+            <a href="/"><p style="font-size: 2em;">로그인 확인</p></a>
         </div>
 
         <div class="home-screen">
                 <div class="screen-bg">
                     <img src="/resources/images/home-screen-bg.png" id="screen-bg-img">
-                    <img src="/resources/images/씨앗심기 버튼.png" id="seed">
+                            <div class="screen-img">
+                            <div id="cards">
+                            <!-- <img src="images\랜덤카드배경.png"> -->
+                            <%-- <img class="card" id="card+${status.number}" src=${item.plant_image1}> --%>
+                        </div></div>
                     <div class="process"><img src="/resources/images/home-screen-process.png"></div>
                 </div>
         </div>

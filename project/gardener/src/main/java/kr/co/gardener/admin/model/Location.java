@@ -4,7 +4,7 @@ public class Location {
 	private String userId;
 	private int locationId;
 	private int plantId;
-	private int locationSize;
+	private float locationSize;
 	private int locationX;
 	private int locationY;
 	private int locationOrder;
@@ -47,10 +47,13 @@ public class Location {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
-	public int getLocationSize() {
+	
+	
+	
+	public float getLocationSize() {
 		return locationSize;
 	}
-	public void setLocationSize(int locationSize) {
+	public void setLocationSize(float locationSize) {
 		this.locationSize = locationSize;
 	}
 	public int getLocationX() {
