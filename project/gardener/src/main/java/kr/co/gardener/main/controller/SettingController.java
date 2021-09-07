@@ -2,6 +2,8 @@ package kr.co.gardener.main.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,7 +65,8 @@ public class SettingController {
    
    //로그아웃
    @RequestMapping("/logout")
-   public String logout() {
+   public String logout(HttpSession session) {
+		session.invalidate();
 	   return "redirect:../login/";
    }
    
