@@ -102,12 +102,14 @@
     			arr = data;
     			console.log(data);
     			arr.forEach((value,index)=>{
-    				let card = $("<img class='card'>")
-    				
-    				card.attr("src",value.PlantImage);
-    				
-    				$("#cards").append(card);
-    			})
+    	               
+    	                let img = $("<img class='card'>");
+    	                
+    	                img.attr("id",value.PlantId);
+    	                img.attr("src",value.PlantImage);
+    	                
+    	                $("#cards").append(img);
+    	             })
     		}
     	})
     	
