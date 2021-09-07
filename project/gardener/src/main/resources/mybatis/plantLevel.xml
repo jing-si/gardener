@@ -12,8 +12,7 @@
   
   <insert id="add">
   	INSERT INTO PLANT_LEVEL
-  	VALUES (#{plantLevelId}, null, #{plantImage})
-  	WHERE PLANT_LEVEL_ID=#{plantLevelId}
+  	VALUES (#{plantLevelId}, #{plantId}, #{plantImage})
   </insert>
   
   <update id="update">

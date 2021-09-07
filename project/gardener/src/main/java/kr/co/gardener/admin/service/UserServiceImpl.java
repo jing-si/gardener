@@ -39,4 +39,9 @@ public class UserServiceImpl implements UserService {
 		dao.delete(userId);
 	}
 
+	@Override
+	public String imgSrc(User user) {
+		return dao.imgSrc(user);
+	}
+
 }
