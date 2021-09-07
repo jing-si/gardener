@@ -59,58 +59,185 @@
 	})
 	
 	
-	
-	
-	
-	$("#image-container").on("click mouseover", ".userPlant",function(data){
-		
+	$("#image-container").on("click", ".userPlant",function(data){
 		item = $(this);
-		let imgInfo = arr[$(this).data("index")];
-		
-		console.log(item);
-		console.log(imgInfo.locationSize);
-		
-		$(this).draggable();
-		
 		$('.userPlant').removeClass('imgBox');
 		$(this).addClass('imgBox');	
+		console.log(item);
 		
 	})
 	
+	$("#image-container").on("mouseover", ".userPlant",function(data){
+		$(this).draggable();
+		
+	})
+	
+	$('#zoom-in').click(function() { 
+		
+		let imgInfo = arr[$(item).data("index")];	
+		let imgZoom = imgInfo.locationSize;
+		let userPlantId = 'userPlant'+imgInfo.plantId
+		
+		console.log(imgInfo);
+		console.log(imgInfo.locationSize);
+		console.log('userPlant'+imgInfo.plantId);
+		console.log(imgZoom);
+		console.log(userPlantId);
+		
+		var zoomLevel = imgZoom;
+		
+		console.log(zoomLevel);
+		
+		var updateZoom = function(zoom) {
+	        zoomLevel += zoom;
+	        console.log(zoomLevel);
+	        console.log(userPlantId);
+
+	        userPlantId.css('zoom', 'zoomLevel');
+	        
+	        console.log(userPlantId);
+	     }
+	         
+	         updateZoom(0.1); 
+		
+	});
+	
+	
+        
+	
+    $('#zoom-out').click(function() { updateZoom(-0.1);} );
+            
+	});
+    
 
 	
-	$('#zoom-in').click(function(){
-		let zoomLevel = imgInfo.locationSize;
-		updateZoom(0.1)
+	
+	
+	
+	/* $('#zoom-in').click(function(){
+		let imgInfo = arr[$(item).data("index")];	
+		let imgZoom = imgInfo.locationSize;
+		let userPlantId = 'userPlant'+imgInfo.plantId
+		console.log(imgInfo);
+		console.log(imgInfo.locationSize);
+		console.log('userPlant'+imgInfo.plantId);
+		console.log(imgZoom);
+		console.log(userPlantId);
+		
+		zoomLevel = imgZoom;
+		
+		
+		
+		
+		
+		
+		var updateZoom = function(zoom) {
+			   zoomLevel += zoom;
+			   $(userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+		}
+		
+		updateZoom(0.1);
+		
+		
+		console.log(zoomLevel);
+		
+	}) */
+		
+		
+		
+		/* if(zoomLevel > 0.5 && zoomLevel < 1.6) {
+			zoomLevel += updateZoom;
+			console.log(zoomLevel);
+			$(userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+		} */
+		
+		/* var updateZoom = function(zoom) {
+			zoomLevel += zoom;
+			console.log(zoomLevel);
+			
+			if(zoomLevel > 0.5 && zoomLevel < 1.6){	
+				$('userPlant'+imgInfo.plantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+			}
+		}
+		 */
+	
+	
+		
+		
+		/* var updateZoom = function() {
+			imgZoom += zoom;
+			
+			console.log(imgZoom);
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(imgInfo.plantId).css({ zoom: imgZoom, '-moz-transform' : 'scale(' + imgZoom + ')'}); 
+		}	
+			
+			
+		}  */
+		
+		/* var updateZoom = function(zoom) {
+		zoomLevel += zoom;
+		
+		console.log(zoomLevel);
+		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
+			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+		}
+		
+		}
+	})
+	 */
+	/* $('#zoom-out').mouseover(function(){
+		let zoomLevel = arr[$(item).data("index")];	
+		
+		console.log(zoomLevel);
+		/* console.log(zoomLevel.locationSize);
+		
+		
+		
 		var updateZoom = function(zoom) {
 		zoomLevel += zoom;
 
 		if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-			$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
+			$(zoomLevel.plantId).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
 		} 
 		
-	
-	}
-	
-	$('#zoom-out').click(function(){
-		let imgInfo = arr[$(this).data("index")];
-		let zoomLevel = imgInfo.locationSize;
-		updateZoom(-0.1)
-		var updateZoom = function(zoom) {
-			zoomLevel += zoom;
-
-			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-				$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
-			} 
-			
 		}
-		
+
 	
-	});
+	}); */
 	
-	});
+	/* let imgInfo = arr[$(item).data("index")];	
+	let imgZoom = imgInfo.locationSize;
+	let userPlantId = 'userPlant'+imgInfo.plantId
+	console.log(imgInfo);
+	console.log(imgInfo.locationSize);
+	console.log('userPlant'+imgInfo.plantId);
+	console.log(imgZoom);
+	console.log(userPlantId);
 	
-	});
+	$(document).ready(function(){
+    	$(document).on("click",".userPlantImg",function(event){
+    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
+    	
+    	
+    	
+        	$('#zoom-in').click(function() { updateZoom(0.1); } );
+            $('#zoom-out').click(function() { updateZoom(-0.1);} );
+            
+            zoomLevel = imgZoom;
+            
+            var updateZoom = function(zoom) {
+            zoomLevel += zoom;
+            
+            if(zoomLevel > 0.5 && zoomLevel < 1.6) {
+            	 $(this).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+            }
+            }
+            
+          
+    	});
+}); */
+	
  </script>
 
 
@@ -149,37 +276,17 @@
 	<div class="wrapper">
 		<div class="header">
 			<p class="header_text">숲 꾸미기</p>
-			<a href="/login/userforest/"><p class="close_btn">
-					<img src="/resources/images/icon_close.png" width="18" height="18">
-				</p></a> <a href="/login/userforest/"><p class="save_btn">
-					<img src="/resources/images/icon_save.png" width="24" height="24">
-				</p></a>
+			<a href="/login/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a> 
+			<a href="/login/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
 		</div>
 
 		<div id="image-container"></div>
 		<div class="footer">
-			<div class="footer_btn">
-				<img class="btn" id="btn_front"
-					src="/resources/images/btn_front.png" width="45" height="45">
-			</div>
-			<div class="footer_btn">
-				<img class="btn" id="btn_back" src="/resources/images/btn_back.png"
-					width="45" height="45">
-			</div>
-			<div class="footer_btn">
-				<img class="btn_delete" id="btn_delete"
-					src="/resources/images/btn_delete.png" width="60" height="60">
-			</div>
-			<div class="footer_btn">
-				<img class="btn" id="zoom-in" src="/resources/images/btn_plus.png"
-					width="45" height="45">
-			</div>
-			<div class="footer_btn">
-				<img class="btn" id="zoom-out" src="/resources/images/btn_minus.png"
-					width="45" height="45">
-			</div>
-		</div>
-	</div>
+			<div class="footer_btn"><img class="btn" id="btn_front"src="/resources/images/btn_front.png" width="45" height="45">
+			</div><div class="footer_btn"><img class="btn" id="btn_back" src="/resources/images/btn_back.png" width="45" height="45">
+			</div><div class="footer_btn"><img class="btn_delete" id="btn_delete" src="/resources/images/btn_delete.png" width="60" height="60">
+			</div><div class="footer_btn"><img class="btn" id="zoom-in" src="/resources/images/btn_plus.png" width="45" height="45">
+			</div><div class="footer_btn"><img class="btn" id="zoom-out" src="/resources/images/btn_minus.png" width="45" height="45"></div></div></div>
 
 	<!-- 이미지 확대 축소 -->
 	<!--  <script>
