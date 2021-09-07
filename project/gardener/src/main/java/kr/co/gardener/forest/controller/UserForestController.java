@@ -35,6 +35,7 @@ public class UserForestController {
 		l1.setLocationY(500);
 		l1.setPlantId(1);
 		l1.setPlantImage("/resources/images/tree_01.png");
+
 		list.add(l1);
 		
 		Location l2 = new Location();
