@@ -3,13 +3,19 @@ package kr.co.gardener.forest.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.gardener.admin.model.Inven;
 import kr.co.gardener.admin.model.Location;
+import kr.co.gardener.admin.model.User;
+import kr.co.gardener.admin.model.object.Product;
 
 @Controller
 @RequestMapping("/login/userforest")
@@ -18,10 +24,45 @@ public class UserForestController {
 	
 	@GetMapping({"","/"})
 	public String forest() {
-		
-		
+
 		return path + "forest";
 	}
+	
+	@RequestMapping("/setforest")
+	public String setforest() {
+		return path + "/setforest";
+	}
+	
+	/*
+	 * // 유저가 저장한 숲 데이터 가져오기
+	 * 
+	 * @RequestMapping({"/userforest/init", "/userforest/setforest/init"})
+	 * 
+	 * @ResponseBody public List<Location> locationList() { User user =
+	 * (User)session.getAttribute("user"); List<Location> list =
+	 * service.locationList();
+	 * 
+	 * return list; }
+	 * 
+	 * // 유저가 숲 꾸미기를 완료하고 저장한 데이터를 DB에 업로드
+	 * 
+	 * @RequestMapping("/save")
+	 * 
+	 * @ResponseBody public String save(Location item, HttpSession session) {
+	 * Location location = (Location)session.getAttribute("location");
+	 * location.save(item); service.update(location); return "저장완료"; }
+	 * 
+	 * // 유저 인벤 데이터 가져오기
+	 * 
+	 * @RequestMapping({"/userforest/inven"})
+	 * 
+	 * @ResponseBody public List<Inven> invenList() { List<Inven> list =
+	 * service.invenList();
+	 * 
+	 * return list; }
+	 */
+	
+	
 	
 	@RequestMapping("userforest/init")
 	@ResponseBody
@@ -63,10 +104,51 @@ public class UserForestController {
 		return list;
 	}
 	
-	@RequestMapping("/setforest")
-	public String setforest() {
-		return path + "/setforest";
+	@RequestMapping("userforest/inven")
+	@ResponseBody
+	public List<Inven> inven() {
+		List<Inven> list = new ArrayList<Inven>();
+		Inven l1 = new Inven();
+		l1.setInvenId(1);
+		l1.setPlantId(100);
+		l1.setInvenAmount(150);
+		list.add(l1);
+		
+		Inven l2 = new Inven();
+		l2.setInvenId(2);
+		l2.setPlantId(101);
+		l2.setInvenAmount(50);
+		list.add(l2);
+		
+		Inven l3 = new Inven();
+		l3.setInvenId(3);
+		l3.setPlantId(102);
+		l3.setInvenAmount(150);
+		list.add(l3);
+		
+		Inven l4 = new Inven();
+		l4.setInvenId(4);
+		l4.setPlantId(100);
+		l4.setInvenAmount(150);
+		list.add(l4);
+		
+		Inven l5 = new Inven();
+		l5.setInvenId(5);
+		l5.setPlantId(101);
+		l5.setInvenAmount(50);
+		list.add(l5);
+		
+		Inven l6 = new Inven();
+		l6.setInvenId(6);
+		l6.setPlantId(102);
+		l6.setInvenAmount(150);
+		list.add(l6);
+		
+		return list;
 	}
+	
+	
+	
 	
 	@RequestMapping("userforest/setforest/init2")
 	@ResponseBody
@@ -115,13 +197,3 @@ public class UserForestController {
 	
 	
 }
-
-
-//유저가 숲을 꾸미고 저장해놓은 데이터 리스트
-	//LOCATION 테이블 데이터 필요?
-	//@RequestMapping({"", "/", "/list"})s
-	//public String list(Model model) {
-		//List<Userforest> list = service.list();      
-		//model.addAttribute("list", list);
-		//return path + "list";
-	//}
