@@ -38,6 +38,7 @@
 				<label>순서: </label> 
 				<input type="number" name="locationOrder" value="${item.locationOrder}">
 			</div>
+
 			<div>
 				<input type="submit" value="변경">
 			</div>

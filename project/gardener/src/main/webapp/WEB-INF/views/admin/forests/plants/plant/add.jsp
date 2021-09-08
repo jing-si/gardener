@@ -9,7 +9,7 @@
 <body>
 	<div>
 		<h3>나무 추가</h3>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<div>
 				<label>식물 ID: </label> <input type="number" name="plantId" value="${item.plantId}">
 			</div>

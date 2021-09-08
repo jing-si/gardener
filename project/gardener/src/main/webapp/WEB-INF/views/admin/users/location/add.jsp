@@ -31,6 +31,7 @@
 			<div>
 				<label>순서: </label> <input type="number" name="locationOrder" value="${item.locationOrder}">
 			</div>
+
 			<div>
 				<input type="submit" value="추가">
 			</div>

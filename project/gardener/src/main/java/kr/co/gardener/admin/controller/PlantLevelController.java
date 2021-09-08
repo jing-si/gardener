@@ -41,7 +41,7 @@ public class PlantLevelController {
 	
 	@PostMapping("/add")
 	public String add(PlantLevel item, MultipartFile uploadFile) {
-		item.setPlantImage(FileUpload.Uploader(uploadFile, "plant"));
+		item.setPlantImage(FileUpload.Uploader(uploadFile, "shadow"));
 		service.add(item);
 		return "redirect:list";
 	}

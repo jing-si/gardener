@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.gardener.admin.model.Plant;
+
 import kr.co.gardener.admin.model.PlantLevel;
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.service.UserService;
@@ -81,11 +81,11 @@ public class MainController {
 		return list;
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/update") //홈에서 카드선택해서 심었을때
 	@ResponseBody
 	public String update(User item, HttpSession session) {
 		User user = (User)session.getAttribute("user");
-		user.update(item);
+		user.update(item); //유저모델에서 검증해서 두개값만 update되게함
 		service.update(user);		
 		return "수정완료";
 	}

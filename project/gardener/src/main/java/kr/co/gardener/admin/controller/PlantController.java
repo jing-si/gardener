@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.gardener.admin.model.Plant;
 import kr.co.gardener.admin.service.PlantService;
+import kr.co.gardener.util.FileUpload;
 
 @Controller
 @RequestMapping("/admin/forests/plants/plant")
@@ -34,7 +36,8 @@ public class PlantController {
 	}
 	
 	@PostMapping("/add")
-	public String add(Plant item) {
+	public String add(Plant item, MultipartFile uploadFile) {
+		item.setPlantShadow(FileUpload.Uploader(uploadFile, "plantShadow"));
 		service.add(item);
 		return "redirect:list";
 	}

@@ -58,16 +58,14 @@ public class LoginController {
 	//회원가입 폼
 	@PostMapping("/membership")
 	public String membership(User user) {
-		//나중에 지우기
 		service.add(user);
 		return "redirect:..";
 	}
 	
-	//비밀번호 재설정
+	//비밀번호 재설정 메일발송
 	//당장 구현 불가
 	@RequestMapping("/pwupdate")
 	public String pwupdate(User user) {
-		
 		return path + "pwupdate";
 	}
 	
