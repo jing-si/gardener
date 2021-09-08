@@ -27,7 +27,7 @@
 			</div>
 			<div>
 				<label>식물실루엣: </label> 
-				<input type="text" name="plantShadow" value="${item.plantShadow}">
+				<input type="file" name="plantShadow" value="${item.plantShadow}">
 			<div>
 				<input type="submit" value="변경">
 			</div>

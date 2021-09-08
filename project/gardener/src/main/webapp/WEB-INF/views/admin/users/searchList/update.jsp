@@ -11,7 +11,8 @@
 		<h3>검색리스트 변경</h3>
 		<form method="post">
 			<div>
-				<label>이메일: </label> ${item.userId}
+				<label>이메일: </label> 
+				<input type="text" name="userId" value="${item.userId}" readonly>
 			</div>
 			<div>
 				<label>검색 ID: </label>
