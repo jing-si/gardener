@@ -190,6 +190,21 @@ if(localStorage.getItem('img')){
 	})
 	
 	
+	/* $.ajax({
+		type: 'GET',
+		url: "",
+		data: {"id", id},
+		success: function (data) {
+			if(data){
+				console.log("성공");
+			} else {
+				console.log("실패");
+			}
+			
+		}
+	}) */
+	
+	
 	});
 	
 </script>

@@ -98,20 +98,10 @@ img{
 				<div class="popup">
 					<!-- 상단 버튼 영역 -->
 					<div class="popup_head">
-						<button type="button" id="popup_close">
-							<img src="/resources/images/icon_close.png" width="18"
-								height="18">
-						</button>
-						<div class="item_all">
-							<img src="/resources/images/item_all.png" width="45" height="30">
-						</div>
-						<div class="item_tree">
-							<img src="/resources/images/item_tree_disable.png" width="45"
-								height="30">
-						</div>
-						<div class="item_flower">
-							<img src="/resources/images/item_flower_disable.png" width="45"
-								height="30">
+						<button type="button" id="popup_close"><img src="/resources/images/icon_close.png" width="18" height="18">
+						</button><div class="item_all"><img src="/resources/images/item_all.png" width="45" height="30">
+						</div><div class="item_tree"><img src="/resources/images/item_tree_disable.png" width="45" height="30">
+						</div><div class="item_flower"><img src="/resources/images/item_flower_disable.png" width="45" height="30">
 						</div>
 					</div>
 					<!-- 하단 빈공간 -->
@@ -129,10 +119,10 @@ img{
 											<p class="text_left">보관중인 나무 :</p>
 											<p class="text_right">그루</p>
 											<p class="text_amount">${list.invenAmount}</p>
-											<!-- <a href="../userforest/setforest/">
+											<!-- <a href="../userforest/setforest/"> -->
 												<p class="planting_btn"></p>
 												<p class="planting_btn_text">나무 심기</p>
-											 </a> -->
+											<!-- </a> -->
 										</div>
 									</c:if>
 									<c:if test="${list.invenAmount > 0}">
