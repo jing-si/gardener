@@ -1,6 +1,7 @@
 package kr.co.gardener.admin.model;
 import java.util.Date;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
@@ -105,7 +106,14 @@ public class User {
 		if(user.getForestId() != 0) {
 			forestId = user.getForestId();
 		}
-		
+	}
+	
+	//비밀번호 일치여부 검증
+	public boolean pwcheck(String userPass) {
+		if(this.userPass.equals(userPass)) {
+			return true;
+		}
+		return false;
 	}
 	
 	

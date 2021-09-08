@@ -50,4 +50,5 @@
 		WHERE USER_ID=#{userId}
 	</delete>
 
+
 </mapper>
