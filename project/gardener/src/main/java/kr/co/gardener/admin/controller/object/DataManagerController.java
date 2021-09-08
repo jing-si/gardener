@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.object.CompanyService;
 import kr.co.gardener.admin.service.object.DataManagerService;
 
 @Controller
@@ -20,6 +21,9 @@ public class DataManagerController {
 
 	@Autowired
 	DataManagerService service;
+	
+	@Autowired
+	CompanyService companyService;
 	
 	@RequestMapping("/")
 	public String list() {
@@ -51,5 +55,21 @@ public class DataManagerController {
 		List<Product> list = service.productList(start,end);		
 		
 		return list;
+	}
+	
+	@RequestMapping("/companylist/db")
+	@ResponseBody
+	public List<Company> companylist(){
+		List<Company> list = companyService.list();
+		
+		return list;
+	}
+	
+	@RequestMapping("product/bulkupdate")
+	@ResponseBody
+	public String bulkUpdate(List<Product> list) {
+		service.bulkUpdate(list);
+		
+		return "성공";
 	}
 }

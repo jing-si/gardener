@@ -51,7 +51,7 @@ public class CertReasonController {
 		item.setCertReasonImage(FileUpload.Uploader(uploadFile, "certReason"));
 		
 		service.add(item);
-		return "redirect:/list";
+		return "redirect:list";
 	}
 
 	@GetMapping("/update/{certReasonId}")
@@ -64,12 +64,12 @@ public class CertReasonController {
 	@PostMapping("/update")
 	public String update(CertReason item) {
 		service.update(item);
-		return "redirect:/list";
+		return "redirect:list";
 	}
 
 	@GetMapping("/delete/{certReasonId}")
 	public String delete(@PathVariable int certReasonId) {
 		service.delete(certReasonId);
-		return "redirect:/list";
+		return "redirect:list";
 	}
 }
