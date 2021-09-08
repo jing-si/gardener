@@ -29,7 +29,7 @@ public class UserForestController {
 		List<Location> list = new ArrayList<Location>();
 		Location l1 = new Location();
 		l1.setLocationId(1);
-		l1.setLocationOrder(1);
+		l1.setLocationOrder(100);
 		l1.setLocationSize(150);
 		l1.setLocationX(200);
 		l1.setLocationY(500);
@@ -40,7 +40,7 @@ public class UserForestController {
 		
 		Location l2 = new Location();
 		l2.setLocationId(1);
-		l2.setLocationOrder(2);
+		l2.setLocationOrder(101);
 		l2.setLocationSize(50);
 		l2.setLocationX(400);
 		l2.setLocationY(500);
@@ -51,7 +51,7 @@ public class UserForestController {
 		
 		Location l3 = new Location();
 		l3.setLocationId(1);
-		l3.setLocationOrder(1);
+		l3.setLocationOrder(102);
 		l3.setLocationSize(150);
 		l3.setLocationX(600);
 		l3.setLocationY(500);
@@ -74,8 +74,8 @@ public class UserForestController {
 		List<Location> list = new ArrayList<Location>();
 		Location l1 = new Location();
 		l1.setLocationId(1);
-		l1.setLocationOrder(1);
-		l1.setLocationSize(1);
+		l1.setLocationOrder(10);
+		l1.setLocationSize(1.5f);
 		l1.setLocationX(40);
 		l1.setLocationY(300);
 		l1.setPlantId(1);
@@ -84,8 +84,8 @@ public class UserForestController {
 		
 		Location l2 = new Location();
 		l2.setLocationId(2);
-		l2.setLocationOrder(2);
-		l2.setLocationSize(0.6f);
+		l2.setLocationOrder(11);
+		l2.setLocationSize(1.7f);
 		l2.setLocationX(140);
 		l2.setLocationY(300);
 		l2.setPlantId(2);
@@ -94,8 +94,8 @@ public class UserForestController {
 		
 		Location l3 = new Location();
 		l3.setLocationId(3);
-		l3.setLocationOrder(1);
-		l3.setLocationSize(0.8f);
+		l3.setLocationOrder(12);
+		l3.setLocationSize(1);
 		l3.setLocationX(100);
 		l3.setLocationY(300);
 		l3.setPlantId(3);
