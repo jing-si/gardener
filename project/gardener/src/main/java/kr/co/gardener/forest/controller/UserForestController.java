@@ -64,7 +64,7 @@ public class UserForestController {
 	
 	
 	
-	@RequestMapping("userforest/init")
+	@RequestMapping("../userforest/init")
 	@ResponseBody
 	public List<Location> init() {
 		List<Location> list = new ArrayList<Location>();
@@ -72,7 +72,7 @@ public class UserForestController {
 		l1.setLocationId(1);
 		l1.setLocationOrder(100);
 		l1.setLocationSize(150);
-		l1.setLocationX(200);
+		l1.setLocationX(300);
 		l1.setLocationY(500);
 		l1.setPlantId(1);
 		l1.setPlantImage("/resources/images/tree_01.png");
@@ -83,7 +83,7 @@ public class UserForestController {
 		l2.setLocationId(1);
 		l2.setLocationOrder(101);
 		l2.setLocationSize(50);
-		l2.setLocationX(400);
+		l2.setLocationX(100);
 		l2.setLocationY(500);
 		l2.setPlantId(1);
 		l2.setPlantImage("/resources/images/tree_02.png");
@@ -94,8 +94,8 @@ public class UserForestController {
 		l3.setLocationId(1);
 		l3.setLocationOrder(102);
 		l3.setLocationSize(150);
-		l3.setLocationX(600);
-		l3.setLocationY(500);
+		l3.setLocationX(20);
+		l3.setLocationY(300);
 		l3.setPlantId(1);
 		l3.setPlantImage("/resources/images/tree_03.png");
 
@@ -110,38 +110,38 @@ public class UserForestController {
 		List<Inven> list = new ArrayList<Inven>();
 		Inven l1 = new Inven();
 		l1.setInvenId(1);
-		l1.setPlantId(100);
-		l1.setInvenAmount(150);
+		l1.setPlantId(1);
+		l1.setInvenAmount(1);
 		list.add(l1);
 		
 		Inven l2 = new Inven();
 		l2.setInvenId(2);
-		l2.setPlantId(101);
-		l2.setInvenAmount(50);
+		l2.setPlantId(2);
+		l2.setInvenAmount(0);
 		list.add(l2);
 		
 		Inven l3 = new Inven();
 		l3.setInvenId(3);
-		l3.setPlantId(102);
-		l3.setInvenAmount(150);
+		l3.setPlantId(3);
+		l3.setInvenAmount(0);
 		list.add(l3);
 		
 		Inven l4 = new Inven();
 		l4.setInvenId(4);
-		l4.setPlantId(100);
-		l4.setInvenAmount(150);
+		l4.setPlantId(4);
+		l4.setInvenAmount(0);
 		list.add(l4);
 		
 		Inven l5 = new Inven();
 		l5.setInvenId(5);
-		l5.setPlantId(101);
-		l5.setInvenAmount(50);
+		l5.setPlantId(5);
+		l5.setInvenAmount(0);
 		list.add(l5);
 		
 		Inven l6 = new Inven();
 		l6.setInvenId(6);
-		l6.setPlantId(102);
-		l6.setInvenAmount(150);
+		l6.setPlantId(6);
+		l6.setInvenAmount(0);
 		list.add(l6);
 		
 		return list;
