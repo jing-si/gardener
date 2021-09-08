@@ -94,25 +94,12 @@
     	
 
     } */
+    
     let arr = new Array();
     $().ready(()=>{
-    	$.ajax({
-    		url : "/login/init",
-    		success : function(data){
-    			arr = data;
-    			console.log(data);
-    			arr.forEach((value,index)=>{
-    	               
-    	                let img = $("<img class='card'>");
-    	                
-    	                img.attr("id",value.PlantId);
-    	                img.attr("src",value.PlantImage);
-    	                
-    	                $("#cards").append(img);
-    	             })
-    		}
-    	})
     	
+    	
+    		if(${stateId}===0){
     	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
 /*     	${".screen-img"}.on("click","#plantButton",function(){
     		 $('#plantButton').css({"display" : "none"});
@@ -124,13 +111,89 @@
     		
             $('#plantButton').css('display', 'none');
             $('#cards').css('display', 'block');
+            
+            $.ajax({
+        		url : "/login/init",
+        		success : function(data){
+        			arr = data;
+        			console.log(data);
+        			arr.forEach((value,index)=>{
+        	               
+        	                let img = $("<img class='card'>");        	                
+        	                img.attr("id",value.plantId);
+        	                img.attr("src",value.plantImage);
+        	                
+        	                $("#cards").append(img);
+        	             })
+        		}
+        	})
+            
         });
+    	
+    	$('#cards').on("click",".card",function(data){  		
+    		
+    		$(".card").fadeOut();
+    		$(".card").empty();
+            
+            $.ajax({
+            	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
+            	success : function(data){
+            		location.replace("/login/home")
+
+            	},		
+            	error: function(data){
+                    console.log(data);
+                }
+            	
+            })         
+    		
+    		
+    	})}
+    	else if(${stateId}!==0){
+    		$('#plantButton').css('display', 'none');
+				let certData = "인증"
+				let img = $("<img class='tree'>"); 	                
+                
+                img.attr("src",${sessionScope.user.plant});
+                
+                $(".plant").append(img);
+                
+                
+                $.ajax({
+            		url : "/login/dlswmd",
+            		data: certData,
+            		success : function(data){
+            			if(data === "인증성공"){
+            			console.log(data);
+            			location.replace("/login/home")            		
+            			}else{
+            				$("#id").text("인증실패입니다.")
+            			}
+            			
+            	})
+            }) 
+	
+    	}
+    	
+    	
     	
     })
 
     </script>
     
     <style>
+    
+    	
+		.screen-img{
+		    border: 1px solid red;
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%,-50%);
+		    width: 90%;
+		    height: 200px;
+		}
+    	
     #cards{
             width: 90%;
             height: 150px;
@@ -181,6 +244,22 @@
             left: 50%;
             transform: translate(-50%);
         }
+        .screen-bg{
+        background-image: url("/resources/images/home-screen-bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        }
+        .screen-img{
+        	position: relative;
+        }
+        
+        #cards,#plantButtion,#plant{
+            margin: auto auto;
+        	
+        
+          
+        }
     </style>
 
 </head>
@@ -188,13 +267,13 @@
     <div id="align">
         <div class="title">
             <p>${userNick} 님, 반가워요!</p>
-            <p style="font-weight: bold;">새로운 씨앗을 심어보세요 :)</p>
+            <p style="font-weight: bold;" id="hi">새로운 씨앗을 심어보세요 :)</p>
             <a href="/"><p style="font-size: 2em;">로그인 확인</p></a>
         </div>
 
         <div class="home-screen">
                 <div class="screen-bg">
-                    <img src="/resources/images/home-screen-bg.png" id="screen-bg-img">
+                   <!--  <img src="/resources/images/home-screen-bg.png" id="screen-bg-img"> -->
                             <div class="screen-img">
                             
                             	<div id="cards">

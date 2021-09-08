@@ -25,9 +25,10 @@
 		success:function(data){
 			arr = data;
 			console.log(data);
+			
 			arr.forEach((value,index)=>{
 				let div1 = $("<div class='userPlant'>");				
-				let img = $("<img>");
+				let img = $("<img class='userPlantImg'>");
 				// img.data("index",index);
 				
 				div1.attr("id", 'userPlant'+value.plantId);
@@ -47,6 +48,8 @@
 				div1.append(img);
 				div1.css("left",value.locationX);
 				div1.css("top",value.locationY);				
+				
+				console.log(arr);
 				
 				/* 아래와 같이 넣어주고자 함
 				<div id="userPlant01" class="userPlant">
@@ -92,15 +95,15 @@
 	        zoomLevel += zoom;
 	        console.log(zoomLevel);
 	       
-
-	        $("#"+userPlantId).css('zoom', zoomLevel);
+	        $("#"+userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+	        /* $("#"+userPlantId).css('zoom', zoomLevel); */
 	        
 	        console.log(userPlantId);
 	     }
 	         
 	    	updateZoom(0.1); 
 		
-	});
+	})
 	
 	$('#zoom-out').click(function() { 
 		
@@ -123,54 +126,85 @@
 	        zoomLevel += zoom;
 	        console.log(zoomLevel);
 	        console.log(userPlantId);
-
-	        $("#"+userPlantId).css('zoom', zoomLevel);
+			
+	        
+	        $("#"+userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
+	        /* $("#"+userPlantId).css('zoom', zoomLevel); */
 	        
 	        console.log(userPlantId);
 	     }
 	         
 	    	updateZoom(-0.1); 
 		
-	});
+	})
 	
-	});
+	
     
-	$('#btn_front').click(function() { 
+	$('#btn-front').click(function() { 
 		
-		let imgInfo = arr[$(item).data("index")];	
-		let imgZindex = imgInfo.locationOrder;
-		let userPlantId = 'userPlant'+imgInfo.plantId
-		
+		let imgInfo = arr[$(item).data("index")];
+		let imgZindex = imgInfo.locationOrder
 		console.log(imgInfo);
-		console.log(imgInfo.locationOrder);
-		console.log('userPlant'+imgInfo.plantId);
-		console.log(imgZindex);
-		console.log(userPlantId);
+		console.log('arr.lengrh: ' + arr.length);
+		console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+		
+		for(let i=0; i<=arr.length; i++) {
+			if(arr[i].locationOrder == imgZindex.locationOrder+1) {
+				let temp = imgZindex.locationOrder;
+				imgZindex.locationOrder = arr[i].locationOrder;
+				arr[i].locationOrder = temp;
+				
+				console.log('arr[i].locationOrder: ' + arr[i].locationOrder);
+				console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+				
+				$("#"+userPlantId).css({Zindex: imgZindex.locationOrder});
+				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
+			}
+			else {
+				continue;
+			}
+		}
+		
+	})
+	
+	
+	$('#btn-back').click(function() { 
+		
+		let imgInfo = arr[$(item).data("index")];
+		let imgZindex = imgInfo.locationOrder
+		console.log(imgInfo);
+		console.log('arr.lengrh: ' + arr.length);
+		console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+		
+		for(let i=0; i<=arr.length; i++) {
+			if(arr[i].locationOrder == imgZindex.locationOrder-1) {
+				let temp = imgZindex.locationOrder;
+				imgZindex.locationOrder = arr[i].locationOrder;
+				arr[i].locationOrder = temp;
+				
+				console.log('arr[i].locationOrder: ' + arr[i].locationOrder);
+				console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+				
+				$("#"+userPlantId).css({Zindex: imgZindex.locationOrder});
+				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
+			}
+			else {
+				continue;
+			}
+		}
+		
+	})
+	
+	$('#btn-delete').click(function() { 
+	
+		let imgInfo = arr[$(item).data("index")];	
+		let imgZoom = imgInfo.locationSize;
 		
 		
-		
-		
-		var zoomLevel = imgZoom;
-		
-		console.log(zoomLevel);
-		
-		var updateZoom = function(zoom) {
-	        zoomLevel += zoom;
-	        console.log(zoomLevel);
-	        console.log(userPlantId);
-
-	        userPlantId.css('zoom', 'zoomLevel');
-	        
-	        console.log(userPlantId);
-	     }
-	         
-	    	updateZoom(-0.1); 
-		
+	})
+	
+	
 	});
-	
-
-	
-	
 		/* 	if(zoomLevel > 0.5 && zoomLevel < 1.6) {
 			zoomLevel += updateZoom;
 			console.log(zoomLevel);
@@ -245,6 +279,11 @@
 .userPlant {
 	position: absolute;
 }
+
+.userPlantImg {
+	width: 200px;
+	height: 230px;
+}
 </style>
 
 </head>
@@ -258,9 +297,9 @@
 
 		<div id="image-container"></div>
 		<div class="footer">
-			<div class="footer_btn"><img class="btn" id="btn_front"src="/resources/images/btn_front.png" width="45" height="45">
-			</div><div class="footer_btn"><img class="btn" id="btn_back" src="/resources/images/btn_back.png" width="45" height="45">
-			</div><div class="footer_btn"><img class="btn_delete" id="btn_delete" src="/resources/images/btn_delete.png" width="60" height="60">
+			<div class="footer_btn"><img class="btn" id="btn-front"src="/resources/images/btn_front.png" width="45" height="45">
+			</div><div class="footer_btn"><img class="btn" id="btn-back" src="/resources/images/btn_back.png" width="45" height="45">
+			</div><div class="footer_btn"><img class="btn_delete" id="btn-delete" src="/resources/images/btn_delete.png" width="60" height="60">
 			</div><div class="footer_btn"><img class="btn" id="zoom-in" src="/resources/images/btn_plus.png" width="45" height="45">
 			</div><div class="footer_btn"><img class="btn" id="zoom-out" src="/resources/images/btn_minus.png" width="45" height="45"></div></div></div>
 

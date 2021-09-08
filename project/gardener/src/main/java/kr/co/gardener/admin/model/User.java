@@ -13,7 +13,7 @@ public class User {
 	private int stateId;
 	private int forestId;
 	private int plantId;
-	private String plant;
+	private String plant; //이미지
 	
 	
 
@@ -83,7 +83,30 @@ public class User {
 				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId+ ", plnantId=" + plantId+ "]";
 	}
 	
-	
+	public void update(User user) {
+		if(user.getUserNick() != null) {
+			userNick = user.getUserNick();
+		}
+		if(user.getUserPass() != null) {
+			userPass = user.getUserPass();
+		}
+		if(user.getUserGender() != null) {
+			userGender = user.getUserGender();
+		}
+		if(user.getUserBirth() != null) {
+			userBirth = user.getUserBirth();
+		}
+		if(user.getStateId() != 0) {
+			stateId = user.getStateId();
+		}
+		if(user.getPlantId() != 0) {
+			plantId = user.getPlantId();
+		}
+		if(user.getForestId() != 0) {
+			forestId = user.getForestId();
+		}
+		
+	}
 	
 	
 }
