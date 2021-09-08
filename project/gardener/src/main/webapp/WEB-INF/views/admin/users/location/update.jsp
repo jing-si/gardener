@@ -12,9 +12,11 @@
 		<form method="post">
 			<div>
 				<label>이메일: </label> ${item.userId}
+				<input type="text" name="userId" value="${item.userId}" readonly>
 			</div>
 			<div>
 				<label>배치 ID: </label> ${item.locationId}
+				<input type="number" name="locationId" value="${item.locationId}" readonly>
 			</div>
 			<div>
 				<label>식물 ID: </label> 

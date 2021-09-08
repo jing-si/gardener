@@ -97,19 +97,25 @@ public class SettingController {
 	}
 
 	@RequestMapping(value = "/out", method = RequestMethod.POST)
-	public String out(HttpSession session) {
+	public String out(String userId) {
+		service.delete(userId);
+		
+		return "redirect:/";
+	}
+	
+		/*public String out(HttpSession session) {
 
 		User user = (User) session.getAttribute("user");
 
 		String sessionPass = user.getUserPass();
 
-		String itemPass = item.getUserPass();
-
+		String itemPass = item.getUserPass();*/
+		
 		/*
 		 * if (!(sessionPass.equals(itemPass))) { rttr.addFlashAttribute("msg", false);
 		 * return "redirect:../login/"; } service.out(item); session.invalidate();
 		 */
-		return "redirect:/";
-	}
+	/*	return "redirect:/";
+	}*/
 
 }
