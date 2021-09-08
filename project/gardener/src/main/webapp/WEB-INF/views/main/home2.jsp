@@ -13,7 +13,7 @@
     <script src="/resources/jq/jquery.js"></script>
     
     <script>
-    let arr = new Array();
+/*     let arr = new Array();
     $().ready(()=>{
     	$.ajax({
     		url : "/init",
@@ -21,7 +21,7 @@
     			arr = data;
     			console.log(data);
     			if(${stateId}==0){
-    	    		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
+    	    		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>"); */
     	    		
     	    		
 /*     	    		$(".screen-img").on('click',"#seed",function(){
@@ -51,7 +51,7 @@
 /*     	    		$(".screen-img").on('click',".card",function(){ */
     	    			//카드의 id값을 컨트롤러로 보낸다
     	    			//컨트롤러에서는 메인화면을 갱신
-    	    		});
+/*     	    		});
     	    	}
     			
     			
@@ -70,7 +70,7 @@
     				}
     		}
     	})
-    })
+    }) */
 /*     $(function){
     	if(${statusId}==0){
     		$(".screen-img").append("<img src='/resources/images/씨앗심기 버튼.png' id='seed'>");
@@ -94,9 +94,94 @@
     	
 
     } */
-    
+    let arr = new Array();
+    $().ready(()=>{
+    	$.ajax({
+    		url : "/login/init",
+    		success : function(data){
+    			arr = data;
+    			console.log(data);
+    			arr.forEach((value,index)=>{
+    	               
+    	                let img = $("<img class='card'>");
+    	                
+    	                img.attr("id",value.PlantId);
+    	                img.attr("src",value.PlantImage);
+    	                
+    	                $("#cards").append(img);
+    	             })
+    		}
+    	})
+    	
+    	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
+/*     	${".screen-img"}.on("click","#plantButton",function(){
+    		 $('#plantButton').css({"display" : "none"});
+    		 $('#cards').css({"display" : "block"});
+    	}) */
+    	
+    	$('#plantButton').click(function(){
+    		
+    		
+            $('#plantButton').css('display', 'none');
+            $('#cards').css('display', 'block');
+        });
+    	
+    })
 
     </script>
+    
+    <style>
+    #cards{
+            width: 90%;
+            height: 150px;
+            border: 1px solid blue;
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative;
+            display: none;
+        }
+        #cards .card{
+            /* position: absolute;
+            width: 60px;
+            top: 50%;
+            transform: translate(0,-50%);
+            left: 12px; */
+            width: 60px;
+            margin: 11px;
+        }
+        /* #cards #card2{
+            left: 101px;
+        }
+        #cards #card3{
+            left: 188px;
+        } */
+
+
+
+        #seed{
+            width: 127px;
+            height: 127px;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 1px solid blue;
+            /* display: none; */
+        }
+
+
+
+        #plant{display: none;}
+        #plant img{
+            height: 180px;
+            width: 180px;
+            border: 1px solid blue;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+    </style>
 
 </head>
 <body>
@@ -111,10 +196,20 @@
                 <div class="screen-bg">
                     <img src="/resources/images/home-screen-bg.png" id="screen-bg-img">
                             <div class="screen-img">
-                            <div id="cards">
-                            <!-- <img src="images\랜덤카드배경.png"> -->
-                            <%-- <img class="card" id="card+${status.number}" src=${item.plant_image1}> --%>
-                        </div></div>
+                            
+                            	<div id="cards">
+                            
+                        		</div>
+
+                        		<div id="plantButton">
+                            		<img src="/resources/images/씨앗심기 버튼.png" id="seed">
+                        		</div>
+
+                        		<div id="plant">
+                            		
+                        		</div>
+                        	
+                        	</div>
                     <div class="process"><img src="/resources/images/home-screen-process.png"></div>
                 </div>
         </div>

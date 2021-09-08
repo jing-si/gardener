@@ -98,18 +98,14 @@ public class CategoryController {
 	@RequestMapping("/mark")
 	public String markList(Model model) {
 		//여기서부터 가상데이터
-		List<Classify> list = new ArrayList<Classify>();
-		Classify l1 = new Classify();
-		l1.set
-		//여기까지 가상데이터
+
 		
 		
 		
-		/*
 		//productId(해당 인증마크에 해당하는 제품 아이디), markProductImg(해당 인증마크에 해당하는 제품의 이미지), 
 		//markProductName(인증마크에 해당하는 제품의 이름)이 들어있는 리스트 구현해주세요
 		model.addAttribute("markProductList",new ArrayList<String>());
-		*/
+		
 		return path + "mark-list";
 	}
 }

@@ -372,8 +372,8 @@
 				$("#productName").val(product.productName);
 				$("#productSize").val(product.productSize);
 				$("#certId").val(product.certId);
-				$("#productCertId").val(product.productCertId);
-				$("elId").val(product.elId);
+				$("#prodInrs").val(product.prodInrs);
+				$("#elId").val(product.elId);
 				$("#productImage").attr("src",product.productImage);
 
 				$("#productId").val(product.productId);
@@ -580,7 +580,7 @@
 					</div>
 					<div class="input-group mb-4">
 						<span class="input-group-text col-4 textcenter">인증사유</span>
-						<input type="text" class="form-control" id="productCertId">
+						<input type="text" class="form-control" id="prodInrs">
 					</div>
 					<div class="input-group mb-4">
 						<span class="input-group-text col-4 textcenter">EL번호</span>

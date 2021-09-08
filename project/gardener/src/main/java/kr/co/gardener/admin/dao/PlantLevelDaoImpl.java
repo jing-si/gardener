@@ -35,7 +35,7 @@ public class PlantLevelDaoImpl implements PlantLevelDao {
 
 	@Override
 	public void delete(int plantLevelId) {
-		sql.delete("plantLevel", plantLevelId);
+		sql.delete("plantLevel.delete", plantLevelId);
 	}
 
 }

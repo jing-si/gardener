@@ -38,7 +38,7 @@
         </input>
     </div>
     <div id="birth" class="info">
-        <input placeholder="생년월일(8자리)" type="text" maxlength="8" name="userBirth">
+        <input placeholder="생년월일(8자리)" type="date" maxlength="8" name="userBirth">
             <!-- <p id="explain">생년월일(8자리)</p> -->
         </input>
     </div>

@@ -12,7 +12,6 @@
   <insert id="add">
   	INSERT INTO FOREST
   	VALUES (#{forestId}, #{forestName}, #{forestImage}, #{forestInfo})
-  	WHERE FOREST_ID=#{forestId}
   </insert>
   
   <update id="update">
