@@ -158,6 +158,16 @@ a{text-decoration:none; color:#333;}
 
 
 
+.gnb{
+	display : none;
+}
+
+/* #product-body a{
+	display : none;
+} */
+
+
+
 
 
 /* 공통메뉴바 */
