@@ -80,4 +80,13 @@ public class MainController {
 		
 		return list;
 	}
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String update(User item, HttpSession session) {
+		User user = (User)session.getAttribute("user");
+		user.update(item);
+		service.update(user);		
+		return "수정완료";
+	}
 }

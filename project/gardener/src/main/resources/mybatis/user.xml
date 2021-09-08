@@ -35,8 +35,7 @@
 	
 	<update id="update">
 		UPDATE USER
-		SET USER_ID=#{userId}, 
-			USER_NICK=#{userNick},
+		SET USER_NICK=#{userNick},
 			USER_PASS=#{userPass},
 			USER_BIRTH=#{userBirth},
 			USER_GENDER=#{userGender},
