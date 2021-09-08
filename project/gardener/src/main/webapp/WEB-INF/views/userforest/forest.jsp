@@ -13,36 +13,49 @@
 <script type="text/javascript" src="/resources/js/005-01.js"></script>
 <script src="/resources/jq/jquery.js"></script>
 <script>
-	let arr = new Array();
-	$().ready(()=>{
-	$.ajax({
-		url:"../userforest/init",
-		success:function(data){
-			arr = data;
-			console.log(data);
-			arr.forEach((value,index)=>{
-				let div = $("<div class="test">");
-				//img.data("index",index);
+let arr = new Array();
+let item ;
+$().ready(()=>{
+$.ajax({
+	url:"../init",
+	success:function(data){
+		arr = data;
+		console.log(data);
+		
+		arr.forEach((value,index)=>{
+			let div1 = $("<div class='userPlant'>");				
+			let img = $("<img class='userPlantImg'>");
+			// img.data("index",index);
+			
+			div1.attr("id", 'userPlant'+value.plantId);
+			div1.data("index",index);
+			
+			img.attr("id", value.PlantId);
+			img.attr("src",value.plantImage);
+							
+			div1.css("z-index",value.locationOrder);
+			div1.css("transform : scale", value.locationSize);
+		
+			
+			
+			//item.locationX = currentlocation;
 
-				div.css("width",value.plantWidth);
-				div.css("height",value.plantHeight);
-				div.attr("src",value.plantImage);
-				div.attr("id",value.PlantId);
-				div.css("z-index",value.locationOrder);
-				div.css("left",value.locationX);
-				div.css("top",value.locationY);
-				
-				//let item = arr[div.data("index")];
-				//item.locationX = currentlocation;
-
-				$("#image-container").append(div);
-				
-				
-			})
-
-		}
-	})
-});
+			$("#image-container").append(div1);
+			div1.append(img);
+			div1.css("left",value.locationX);
+			div1.css("top",value.locationY);				
+			
+			/* 아래와 같이 넣어주고자 함
+			<div id="userPlant01" class="userPlant">
+				<img src="/resources/images/tree_01.png"></div>
+			</div> 
+			*/
+			
+		})
+	}
+})
+})
+	
 </script>
 
 <style>
@@ -59,10 +72,7 @@ img{
 <body>
 
 	<div id="image-container">
-		<div>
-			아야어여오요
-		</div>
-		<!-- 유저가 저장한 나무 이미지 생성공간 -->
+		
 	</div>
 
 	<div class="main_container">
