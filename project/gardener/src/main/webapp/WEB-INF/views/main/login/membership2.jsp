@@ -33,7 +33,7 @@
         </input>
     </div>
     <div id="birth" class="info">
-        <input placeholder="비밀번호 확인" type="text" maxlength="4" name="userPass">
+        <input placeholder="비밀번호 확인" type="text" maxlength="4">
             <!-- <p id="explain">생년월일(8자리)</p> -->
         </input>
     </div>

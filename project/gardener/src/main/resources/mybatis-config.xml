@@ -24,6 +24,7 @@
 		<typeAlias type="kr.co.gardener.admin.model.object.Cert" alias="Cert"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.Product" alias="Product"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.productCategoryList" alias="productCategoryList"/>
+		<typeAlias type="kr.co.gardener.admin.model.Notice" alias="Notice"/>	
 	</typeAliases>
 
 	<mappers>
@@ -42,6 +43,7 @@
 		<mapper resource="mybatis/certReason.xml"/>
 		<mapper resource="mybatis/company.xml"/>
 		<mapper resource="mybatis/cert.xml"/>
-		<mapper resource="mybatis/product.xml"/>			
+		<mapper resource="mybatis/product.xml"/>	
+		<mapper resource="mybatis/notice.xml"/>		
 	</mappers>
 </configuration>

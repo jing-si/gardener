@@ -96,15 +96,65 @@
     } */
     
     let arr = new Array();
+    
+    console.log(arr);
     $().ready(()=>{
     	
+    	$(function(){
+        	if(${sessionScope.user.stateId} === 0)
+        		
+     			$('#plantButton').css('display', 'none');
+                $('#cards').css('display', 'block');
+                
+                $.ajax({
+            		url : "/login/init",
+            		success : function(data){
+            			arr = data;
+            			console.log(data);
+            			arr.forEach((value,index)=>{
+            	               
+            	                let img = $("<img class='card'>");        	                
+            	                img.attr("id",value.plantId);
+            	                img.attr("src",value.plantImage);
+            	                
+            	                $("#cards").append(img);
+            	             })
+            		}
+            	})
+                
+            });
+        	
+        	$('#cards').on("click",".card",function(data){  		
+        		
+        		$(".card").fadeOut();            
+                
+                $.ajax({
+                	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
+                	success : function(data){
+                		location.replace("/login/home")
+
+                	},		
+                	error: function(data){
+                        console.log(data);
+                    }
+                	
+                })         
+        		
+        		
+        	})
+        	})
+        	
+        })
+    	
+    	
+    	/*  
     	//키우고 있는 나무가 없을 떄
-    		if(${stateId}===0){
+    		if(stateId == 0){
     	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
 /*     	${".screen-img"}.on("click","#plantButton",function(){
     		 $('#plantButton').css({"display" : "none"});
     		 $('#cards').css({"display" : "block"});
-    	}) */
+    	}) 
     	
     	$('#plantButton').click(function(){
     		
@@ -150,41 +200,41 @@
     		
     	})}
     		//키우고 있는 나무가 있을때
-    	else if(${stateId}!==0){
+    	else if(stateId > 0){
     		$('#plantButton').css('display', 'none');
 				let certData = "인증"
-				let img = $("<img class='tree'>"); 	                
+				let img = $("<img class='tree'>");            
                 
                 img.attr("src",${sessionScope.user.plant});
                 
                 $(".plant").append(img);
                 
                 //나무가 1단계일떄
-                if(${stateId}===1){
+                if(stateId===1){
                 	$("#gauge").css('width','0px');
                 	$("#heart").css('display','block');
                 	$("#heart").css('left','9px');
                 }
               	//나무가 2단계일떄
-              	else if(${stateId}===2){
+              	else if(stateId===2){
                 	$("#gauge").css('width','50px');
                 	$("#heart").css('display','block');
                 	$("#heart").css('left','59px');
                 }
               	//나무가 3단계일떄
-              	else if(${stateId}===3){
+              	else if(stateId===3){
                 	$("#gauge").css('width','100px');
                 	$("#heart").css('display','block');
                 	$("#heart").css('left','109px');
                 }
               	//나무가 4단계일떄
-              	else if(${stateId}===4){
+              	else if(stateId===4){
                 	$("#gauge").css('width','150px');
                 	$("#heart").css('display','block');
                 	$("#heart").css('left','159px');
                 }
               	//나무가 5단계일떄
-              	else if(${stateId}===5){
+              	else if(stateId===5){
                 	$("#gauge").css('width','200px');
                 	$("#heart").css('display','block');
                 	$("#heart").css('left','209px');
@@ -202,14 +252,14 @@
             				$("#id").text("인증실패입니다.")
             			}
             			
-            	})
-            }) 
+            	}
+            })
 	
     	}
     	
     	
     	
-    })
+    }) */
 
     </script>
     

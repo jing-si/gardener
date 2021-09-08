@@ -58,13 +58,12 @@ public class LoginController {
 	//회원가입 폼
 	@PostMapping("/membership")
 	public String membership(User user) {
-		//나중에 지우기
 		service.add(user);
 		return "redirect:..";
 	}
 	
 	//비밀번호 재설정
-	//당장 구현 불가
+	//미구현. 인증번호 담은 인증메일 발송 후 코드입력 후 비밀번호 재설정 가능
 	@RequestMapping("/pwupdate")
 	public String pwupdate(User user) {
 		

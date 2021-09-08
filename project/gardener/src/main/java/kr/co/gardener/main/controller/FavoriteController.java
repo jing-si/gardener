@@ -39,6 +39,8 @@ public class FavoriteController {
 		//가 들어있있는 리스트 구현해주세요
 		model.addAttribute("favoriteList",new ArrayList<String>());
 		*/
+		
+		//제품 순 
 		return path + "favorite";
 	}
 }

@@ -16,6 +16,20 @@
     <script src="/resources/js/indigo.min.js"></script>
 </head>
 <body>
+<script>
+
+$().ready(()=>{
+	$(".menu-toggle-btn").click(function(){
+		$(".gnb").addClass("hide");
+		$(".i"+$(this).data("index")).removeClass("hide")
+	})
+})
+</script>
+<style>
+.hide{
+	display:none;
+}
+</style>
   <div id="title"><p>카테고리</p></div>
     <div class="wrap">
         <div class="tab_menu">
@@ -27,27 +41,18 @@
                 <div id="product-body">
                   
                   	<c:forEach var="list" items="${productCategoryList}">
-                  		<div id="product-subtitle" class="menu-toggle-btn">
+                  	<div id="categoryBundle">
+                  		<div id="product-subtitle" class="menu-toggle-btn" data-index="${list.productCategoryId}">
                   			<p>${list.productCategoryName}</p>
                   			<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
                   		</div>
                   		<c:forEach var="item" items="${list.midList}">
-                  			<a href="product/${item.primaryId}"><div id="product-subtitle-sub-box" class="gnb">
+                  			<a href="product/${item.primaryId}"><div id="product-subtitle-sub-box" class="gnb hide i${list.productCategoryId }">
                       		<div class="product-subtitle-sub">${item.name}</div>
                   			</div></a>
                   		</c:forEach>
                   	</c:forEach>
-
-<!-- 완성시 이부분 지우기 -->
-					<div id="product-subtitle" class="menu-toggle-btn">
-                      <p>Subtitle 1</p>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
-                  </div>
-                  
-                  <a href="product"><div id="product-subtitle-sub-box" class="gnb">
-                      <div class="product-subtitle-sub">전체</div>
-                  </div></a>
-<!-- 여기까지 -->                  
+               		</div>
                   </div>
               </div>
            

@@ -14,8 +14,13 @@
   </select>
   
   <insert id="add">
-  	INSERT INTO SEARCH_LIST
-  	VALUES (#{userId}, {searchId}, null)
+  <!-- 	INSERT INTO SEARCH_LIST
+  	VALUES (#{userId}, {searchId}, null) -->
+  	
+  	INSERT INTO SEARCH_LIST (#{userId}, #{searchId}, #{searchWord})
+	VALUES (#{userId},
+	 		(SELECT IFNULL(MAX(#{searchId}) + 1, 1) FROM SEARCH_LIST S),
+	 		 #{searchWord})
   </insert>
   
   <update id="update">

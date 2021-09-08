@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>식물단계 관리</title>
+<Style>
+img{
+max-height: 80px;
+max-width: 80px;
+}
+</Style>
 </head>
 <body>
 	<div>
@@ -14,6 +20,7 @@
 			<table>
 				<thead>
 					<tr>
+						<th>식물단계 이미지</th>
 						<th>식물단계 ID</th>
 						<th>식물 ID</th>
 						<th>식물이미지</th>
@@ -28,6 +35,7 @@
 					</c:if>
 					<c:forEach var="item" items="${list}">
 						<tr>
+							<td><img alt="" src="${item.plantImage }"></td>
 							<td>${item.plantLevelId}</td>
 							<td>${item.plantId}</td>
 							<td>${item.plantImage}</td>
