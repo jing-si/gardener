@@ -48,7 +48,7 @@ public class CategoryController {
 	}
 	
 	//품목별 카테고리
-	@RequestMapping("/product")
+	@RequestMapping("/{productId}")
 	public String productlist(Model model) {
 		//품목별 카테고리에서 소분류 제목
 		model.addAttribute("productCategoryList",new ArrayList<String>());
@@ -89,7 +89,7 @@ public class CategoryController {
 	}
 	
 	//브랜드별 카테고리
-	@RequestMapping("/brand/companyId")
+	@RequestMapping("/brand/{companyId}")
 	public String brandList(Model model,@PathVariable int companyId) {
 		
 		//브랜드 이름
@@ -107,7 +107,6 @@ public class CategoryController {
 		model.addAttribute("brandProductList",new ArrayList<String>());
 		return path + "brand-list";
 	}
-	
 	
 	
 	

@@ -1,51 +1,49 @@
-package kr.co.gardener.admin.service.object.impl;
+package kr.co.gardener.admin.dao.object.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import kr.co.gardener.admin.dao.object.ProductCertReasonDao;
 import kr.co.gardener.admin.model.object.ProductCertReason;
-import kr.co.gardener.admin.service.object.ProductCertReasonService;
 import kr.co.gardener.util.Pager;
 
-@Service
-public class ProductCertReasonServiceImpl implements ProductCertReasonService{
+@Repository
+public class ProductCertReasonDaoImpl implements ProductCertReasonDao{
 	
 	@Autowired
-	ProductCertReasonDao dao;
+	SqlSession sql;
 	
 	@Override
 	public void list(Pager pager) {
-		dao.list(pager);
+		sql.selectList("productCertReason.list_pager",pager);
 	}
 
 	@Override
 	public void add(ProductCertReason item) {
-		dao.add(item);
+		sql.insert("productCertReason.add", item);
 	}
 
 	@Override
 	public void item(int productCertReasonId) {
-		dao.item(productCertReasonId);
+		sql.selectOne("productCertReason.item", productCertReasonId);
 	}
 
 	@Override
 	public void update(ProductCertReason item) {
-		dao.update(item);
+		sql.update("productCertReason.update", item);
 	}
 
 	@Override
 	public void delete(int productCertReasonId) {
-		dao.delete(productCertReasonId);
+		sql.delete("productCertReason.delete", productCertReasonId);
 	}
 
-	
 	@Override
 	public void checkAdd(ProductCertReason r) {
-		dao.checkAdd(r);
-		
+		sql.insert("productcertReason.bulkAdd", r);
 	}
 
 }

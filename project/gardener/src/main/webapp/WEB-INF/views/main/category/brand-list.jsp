@@ -35,7 +35,7 @@
 			</c:forEach>
         
 <!-- 완성시 이부분 지우기 -->
-            <a href="product/${productId}"><div class="brand">
+            <a href="/login/category/product/${productId}"><div class="brand">
                 <div class="brand-img">${productImgList}</div>
                 <p class="brand-name">${productNameList}</p>
             </div></a>

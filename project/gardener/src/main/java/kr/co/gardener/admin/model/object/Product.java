@@ -7,7 +7,15 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Product {
+	
+	
+	public Product() {
+		super();
+	}
+
 	private String prodProd; // 환경표지 제품ID(PK)
 	private String prodPrnm; // 제품명
 	private String prodEcos; // 일반분류코드(미사용)
@@ -71,8 +79,11 @@ public class Product {
 	private String productImage;
 	private int certId;
 	private int productCertId;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")	
 	private Date productStartDate;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date productEndDate;
 	private String companyId;
