@@ -101,8 +101,9 @@
     $().ready(()=>{
     	
     	$(function(){
-        	if(${state})
-     $('#plantButton').css('display', 'none');
+        	if(${sessionScope.user.stateId} === 0)
+        		
+     			$('#plantButton').css('display', 'none');
                 $('#cards').css('display', 'block');
                 
                 $.ajax({
