@@ -50,8 +50,7 @@ public class SeleniumCrawler {
 			
 			
 			for(WebElement item : element) {
-				list.add(item.getAttribute("src"));
-				
+				list.add(item.getAttribute("src"));				
 			}
 			return list;
 			

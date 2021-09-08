@@ -87,4 +87,11 @@ public class ClassifyServiceImpl implements ClassifyService {
 		classifyDao.botDelete(primaryId);
 	}
 
+	@Override
+	public List<kr.co.gardener.admin.model.object.productCategoryList> productCategoryList() {
+		
+		return classifyDao.productCategoryList();
+	}
+
+	
 }

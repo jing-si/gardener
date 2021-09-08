@@ -68,4 +68,10 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		sql.delete("classify.botDelete", primaryId);
 	}
 
+	@Override
+	public List<kr.co.gardener.admin.model.object.productCategoryList> productCategoryList() {
+		
+		return sql.selectList("classify.category");
+	}
+
 }

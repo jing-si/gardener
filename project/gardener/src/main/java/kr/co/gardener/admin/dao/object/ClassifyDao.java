@@ -3,6 +3,7 @@ package kr.co.gardener.admin.dao.object;
 import java.util.List;
 
 import kr.co.gardener.admin.model.object.Classify;
+import kr.co.gardener.admin.model.object.productCategoryList;
 
 public interface ClassifyDao {
 
@@ -25,6 +26,8 @@ public interface ClassifyDao {
 	void midDelete(int primaryId);
 
 	void botDelete(int primaryId);
+
+	List<productCategoryList> productCategoryList();
 
 	
 }
