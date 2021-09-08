@@ -97,8 +97,9 @@
     
     let arr = new Array();
     $().ready(()=>{
-    	$(function(){
-    	if(${state})
+    	
+    	
+    		if(${stateId}===0){
     	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
 /*     	${".screen-img"}.on("click","#plantButton",function(){
     		 $('#plantButton').css({"display" : "none"});
@@ -131,7 +132,8 @@
     	
     	$('#cards').on("click",".card",function(data){  		
     		
-    		$(".card").fadeOut();            
+    		$(".card").fadeOut();
+    		$(".card").empty();
             
             $.ajax({
             	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
@@ -146,8 +148,34 @@
             })         
     		
     		
-    	})
-    	})
+    	})}
+    	else if(${stateId}!==0){
+    		$('#plantButton').css('display', 'none');
+				let certData = "인증"
+				let img = $("<img class='tree'>"); 	                
+                
+                img.attr("src",${sessionScope.user.plant});
+                
+                $(".plant").append(img);
+                
+                
+                $.ajax({
+            		url : "/login/dlswmd",
+            		data: certData,
+            		success : function(data){
+            			if(data === "인증성공"){
+            			console.log(data);
+            			location.replace("/login/home")            		
+            			}else{
+            				$("#id").text("인증실패입니다.")
+            			}
+            			
+            	})
+            }) 
+	
+    	}
+    	
+    	
     	
     })
 
@@ -239,7 +267,7 @@
     <div id="align">
         <div class="title">
             <p>${userNick} 님, 반가워요!</p>
-            <p style="font-weight: bold;">새로운 씨앗을 심어보세요 :)</p>
+            <p style="font-weight: bold;" id="hi">새로운 씨앗을 심어보세요 :)</p>
             <a href="/"><p style="font-size: 2em;">로그인 확인</p></a>
         </div>
 

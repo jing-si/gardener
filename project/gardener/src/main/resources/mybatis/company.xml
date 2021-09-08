@@ -56,4 +56,17 @@
 	<select id="total" resultType="float">
 		select count(*) from COMPANY
 	</select>
+	
+	<select id="include_product" resultMap="icProdMap">
+		select * from COMPANY C
+		join PRODUCT P on C.COMPANY_ID = P.COMPANY_ID
+		WHERE C.COMPANY_ID = #{companyId}		
+	</select>
+	
+	<resultMap type="Company" id="icProdMap" autoMapping="true">
+		<id property="companyId" column="company_id"/>
+		<collection property="list" ofType="Product" column="PRODUCT_ID" javaType="ArrayList" autoMapping="true">
+		<id property="productId" column="PRODUCT_ID"/>
+		</collection>
+	</resultMap>
 </mapper>

@@ -5,13 +5,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.co.gardener.admin.model.Plant;
 import kr.co.gardener.admin.model.PlantLevel;
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.service.UserService;
@@ -88,5 +88,18 @@ public class MainController {
 		user.update(item);
 		service.update(user);		
 		return "수정완료";
+	}
+	
+	@RequestMapping("/dlswmd")
+	@ResponseBody
+	public String dlswmd(String data, HttpSession session) {
+		if(!StringUtils.isEmpty(data)) {
+			User user = (User)session.getAttribute("user");
+			user.setStateId(user.getStateId()+1);
+			return "인증성공";
+		}else {
+			return "인증실패";
+		}
+		
 	}
 }
