@@ -7,15 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>인증사유</title>
-
+<jsp:include page="../include/header.jsp"></jsp:include>
+<style>
+img{
+	max-height: 80px;
+	max-width: 80px;
+}
+</style>
 </head>
 <body>
-	<div>
+	<div class="container">
 		<div>
 			<h2>인증사유</h2>
 		</div>
 		<div>
-			<table>
+			<table class="table">
 				<thead>
 					<tr>
 						<th>인증사유 마크</th>
