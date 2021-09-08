@@ -15,4 +15,6 @@ public interface DataManagerService {
 
 	List<Product> productList(int start, int end);
 
+	void bulkUpdate(List<Product> list);
+
 }

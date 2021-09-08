@@ -7,13 +7,7 @@
 <html lang="ko">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
-	<script src="/resources/jq/jquery.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-	<link href="/resources/css/init.css" rel="stylesheet">
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<title>Database 관리</title>
 	<style type="text/css">
 		#tab {
@@ -232,25 +226,25 @@
 					url: url,
 					success: function (data) {
 						companyArr = data;
-						$("#company_api_tbody").empty()
-						companyArr.forEach((value, index) => {
-							let tr = $('<tr class="selectRow">').data("index", index);
-							let th1 = $(
-									'<th scope="row" class="col-1 textcenter overflow">')
-								.text(index + 1)
-							let td2 = $('<td class="col-4 textcenter overflow">').text(
-								value.companyId)
-							let td3 = $('<td class="col-5 textcenter overflow">').text(
-								value.companyName)
-							let td4 = $('<td class="col-2 textcenter overflow">')
-							tr.append(th1).append(td2).append(td3).append(td4)
-							$("#company_api_tbody").append(tr)
-
-						});
+						makeCompanyList("api");
 					}
 				});
 
 			});
+			
+			//db검색 버튼
+			$("#company_db_but").click(()=>{
+				$.ajax({
+					url: "/admin/object/datamanager/companylist/db",
+					success:function(data){
+						companyArr = data;
+						makeCompanyList("db");
+					}
+				})
+				
+			})
+			
+			
 
 			//product api 날짜 기준 검색
 			$("#product_api_but").click(() => {
@@ -287,7 +281,7 @@
 
 
 			//회사 선택시 행동
-			$("#company_api_tbody").on("click", ".selectRow", function () {
+			$(".company_tbody").on("click", ".selectRow", function () {
 				$(".selectRow").removeClass("colorbbb");
 				$(this).addClass('colorbbb');
 				let company = companyArr[$(this).data("index")]
@@ -332,11 +326,47 @@
 
 			})
 
-
+			//제품 대량 등록
+			$("#bulk_product_update").click(()=>{
+				$.ajax({
+					url:"/admin/object/datamanager/product/bulkupdate",
+					data:productArr,
+					success: function(data){
+						$("#product_api_tbody").empty()
+						let tr = $('<tr class="selectRow">');
+						let th1 = $('<th scope="row" class="full textcenter overflow">')
+								.text("등록이 완료 되었습니다.")
+						tr.append(th1);
+						$("#product_api_tbody").append(tr)
+					}
+				})
+				
+			})
 
 
 		}); //window on ready 끝
+		
+		
+		//회사 행을 뿌려주는 함수
+		function makeCompanyList(point){	
+			
+			$("#company_"+point+"_tbody").empty()
+			companyArr.forEach((value, index) => {
+				let tr = $('<tr class="selectRow">').data("index", index);
+				let th1 = $(
+						'<th scope="row" class="col-1 textcenter overflow">')
+					.text(index + 1)
+				let td2 = $('<td class="col-4 textcenter overflow">').text(
+					value.companyId)
+				let td3 = $('<td class="col-5 textcenter overflow">').text(
+					value.companyName)
+				let td4 = $('<td class="col-2 textcenter overflow">')
+				tr.append(th1).append(td2).append(td3).append(td4)
+				$("#company_"+point+"_tbody").append(tr)
 
+			});
+			
+		}
 		//제품의 행을 뿌려주는 함수
 		function makeProductList() {
 			$("#product_api_tbody").empty()
@@ -394,7 +424,7 @@
 			<h2>Database 관리자</h2>
 		</header>
 		<!-- 회사-->
-
+	
 		<div id="company" class="col-4 company">
 			<div id="company_nav">
 				<ul class="full">
@@ -409,6 +439,7 @@
 
 				</ul>
 			</div>
+			
 			<!-- 회사 api -->
 			<div id="companyApiForm" class="companyForm">
 				<div id="company_api" class="full api">
@@ -424,7 +455,7 @@
 					</table>
 					<div id="api_data" class="overflow">
 						<table class="table" border="1">
-							<tbody id="company_api_tbody">
+							<tbody id="company_api_tbody" class="company_tbody">
 
 							</tbody>
 						</table>
@@ -442,9 +473,29 @@
 
 			<!-- 회사 db -->
 			<div id="companyDbForm" class="companyForm hide">
-				<div id="company_db" class="full api"></div>
-				<form class="col-10 center" method="get">
+				<div id="company_db" class="full api">
+				<table class="table tabTH" border="1">
+						<thead>
+							<tr>
+								<th scope="col" class="col-1 textcenter">#</th>
+								<th scope="col" class="col-4 textcenter">사업자 번호</th>
+								<th scope="col" class="col-5 textcenter">상호</th>
+								<th scope="col" class="col-2 textcenter">상태</th>
+							</tr>
+						</thead>
+					</table>
+					<div id="db_data" class="overflow">
+						<table class="table" border="1">
+							<tbody id="company_db_tbody" class="company_tbody">
 
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<form class="col-10 center" method="get">
+				<button id="company_db_but" data-sub="company" type="button"
+						class="btn btn-info col-2 company_but">검색</button>
+									
 				</form>
 			</div>
 		</div>
@@ -514,20 +565,22 @@
 
 
 				</div>
-				<form class="col-10 center" method="get">
-
+				<form class="col-10 center" method="get">				
+						
 				</form>
 			</div>
 
 		</div>
 
 		<!-- 중앙 기능 버튼 -->
-		<div id="function_btn" class="">
-			<div class="col-6 inlineBlock">
-
+		<div id="function_btn" class="row">
+			<div class="col-5 ">
+				<button id="bulk_update">대량 등록</button>
 			</div>
-			<div class="black col-6 inlineBlock">
-
+			<div class="col-6 row">
+				<div >
+				<button id="bulk_product_update">제품 대량 등록</button>
+				</div>
 			</div>
 
 		</div>

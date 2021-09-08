@@ -7,10 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>인증사유</title>
-
+<jsp:include page="../include/header.jsp"></jsp:include>
 </head>
 <body>
-	<div>
+	<div class="container">
 		<div>
 			<h2>인증 사유 등록</h2>
 		</div>

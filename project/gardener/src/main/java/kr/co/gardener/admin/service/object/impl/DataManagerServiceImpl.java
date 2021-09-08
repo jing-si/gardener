@@ -11,6 +11,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import kr.co.gardener.admin.dao.object.CertDao;
+import kr.co.gardener.admin.dao.object.CertReasonDao;
 import kr.co.gardener.admin.dao.object.DataManagerDao;
 import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.model.object.Product;
@@ -21,7 +23,13 @@ public class DataManagerServiceImpl implements DataManagerService {
 
 	@Autowired
 	DataManagerDao dao;
-
+	
+	@Autowired
+	CertReasonDao reasonDao;
+	
+	@Autowired
+	CertDao certDao;
+	
 	
 
 	@Override
@@ -80,6 +88,13 @@ public class DataManagerServiceImpl implements DataManagerService {
 		String str = dao.productList(start, end);
 		List<Product> list = paser(str,Product.class,"data");
 		return list;
+		
+	}
+
+
+
+	@Override
+	public void bulkUpdate(List<Product> list) {
 		
 	}
 
