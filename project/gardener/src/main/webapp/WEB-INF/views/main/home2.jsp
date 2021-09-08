@@ -98,7 +98,7 @@
     let arr = new Array();
     $().ready(()=>{
     	
-    	
+    	//키우고 있는 나무가 없을 떄
     		if(${stateId}===0){
     	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
 /*     	${".screen-img"}.on("click","#plantButton",function(){
@@ -149,6 +149,7 @@
     		
     		
     	})}
+    		//키우고 있는 나무가 있을때
     	else if(${stateId}!==0){
     		$('#plantButton').css('display', 'none');
 				let certData = "인증"
@@ -157,6 +158,37 @@
                 img.attr("src",${sessionScope.user.plant});
                 
                 $(".plant").append(img);
+                
+                //나무가 1단계일떄
+                if(${stateId}===1){
+                	$("#gauge").css('width','0px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','9px');
+                }
+              	//나무가 2단계일떄
+              	else if(${stateId}===2){
+                	$("#gauge").css('width','50px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','59px');
+                }
+              	//나무가 3단계일떄
+              	else if(${stateId}===3){
+                	$("#gauge").css('width','100px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','109px');
+                }
+              	//나무가 4단계일떄
+              	else if(${stateId}===4){
+                	$("#gauge").css('width','150px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','159px');
+                }
+              	//나무가 5단계일떄
+              	else if(${stateId}===5){
+                	$("#gauge").css('width','200px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','209px');
+                }
                 
                 
                 $.ajax({
@@ -249,6 +281,7 @@
 			position: absolute;
 			top: 0;
 		}
+		
     </style>
 
 </head>
@@ -278,13 +311,17 @@
                         		</div>
                         	
                         	</div>
-                    <div class="process"><img src="/resources/images/home-screen-process.png"></div>
+                    <div class="process">
+                    <img src="/resources/images/home-screen-process.png">
+                    <div id="gauge"></div>
+                    </div>
                 </div>
         </div>
 
         <div class="home-button">
             <a href="certify"></a><div class="go-certify">친환경 소비 인증하기
             </div></a><a href="userforest"><div class="go-forest">숲으로 가기</div></a>
+        	<img src="/resources/images/heart.png" id="heart">
         </div>
     </div>
 
