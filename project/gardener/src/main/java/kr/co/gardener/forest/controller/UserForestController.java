@@ -75,7 +75,7 @@ public class UserForestController {
 		l1.setLocationX(300);
 		l1.setLocationY(500);
 		l1.setPlantId(1);
-		l1.setPlantImage("/resources/images/tree_01.png");
+		l1.setPlantImage("/resources/images/tree1.png");
 
 		list.add(l1);
 		
@@ -86,7 +86,7 @@ public class UserForestController {
 		l2.setLocationX(100);
 		l2.setLocationY(500);
 		l2.setPlantId(1);
-		l2.setPlantImage("/resources/images/tree_02.png");
+		l2.setPlantImage("/resources/images/tree2.png");
 
 		list.add(l2);
 		
@@ -97,16 +97,16 @@ public class UserForestController {
 		l3.setLocationX(20);
 		l3.setLocationY(300);
 		l3.setPlantId(1);
-		l3.setPlantImage("/resources/images/tree_03.png");
+		l3.setPlantImage("/resources/images/tree3.png");
 
 		list.add(l3);
 		
 		return list;
 	}
 	
-	@RequestMapping("userforest/inven")
-	@ResponseBody
-	public List<Inven> inven() {
+	@RequestMapping({"/", ""})
+	public String inven(Model model) {
+		
 		List<Inven> list = new ArrayList<Inven>();
 		Inven l1 = new Inven();
 		l1.setInvenId(1);
@@ -144,7 +144,9 @@ public class UserForestController {
 		l6.setInvenAmount(0);
 		list.add(l6);
 		
-		return list;
+		model.addAttribute("list",list);
+		
+		return path + "forest";
 	}
 	
 	
@@ -161,7 +163,7 @@ public class UserForestController {
 		l1.setLocationX(40);
 		l1.setLocationY(300);
 		l1.setPlantId(1);
-		l1.setPlantImage("/resources/images/tree_01.png");
+		l1.setPlantImage("/resources/images/tree1.png");
 		list.add(l1);
 		
 		Location l2 = new Location();
@@ -171,7 +173,7 @@ public class UserForestController {
 		l2.setLocationX(140);
 		l2.setLocationY(300);
 		l2.setPlantId(2);
-		l2.setPlantImage("/resources/images/tree_02.png");
+		l2.setPlantImage("/resources/images/tree2.png");
 		list.add(l2);
 		
 		Location l3 = new Location();
@@ -181,7 +183,7 @@ public class UserForestController {
 		l3.setLocationX(100);
 		l3.setLocationY(300);
 		l3.setPlantId(3);
-		l3.setPlantImage("/resources/images/tree_03.png");
+		l3.setPlantImage("/resources/images/tree3.png");
 		list.add(l3);
 		
 		return list;
