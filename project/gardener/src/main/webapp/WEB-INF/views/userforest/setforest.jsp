@@ -208,10 +208,10 @@
 	position: absolute;
 }
 
-.userPlantImg {
+/* .userPlantImg {
 	width: 200px;
 	height: 230px;
-}
+} */
 </style>
 
 </head>
