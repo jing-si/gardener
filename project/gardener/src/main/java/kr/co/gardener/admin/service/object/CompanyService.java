@@ -21,4 +21,6 @@ public interface CompanyService {
 
 	void autoUpdate(List<String> companyIds);
 
+	List<Company> list();
+
 }

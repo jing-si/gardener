@@ -13,36 +13,49 @@
 <script type="text/javascript" src="/resources/js/005-01.js"></script>
 <script src="/resources/jq/jquery.js"></script>
 <script>
-	let arr = new Array();
-	$().ready(()=>{
-	$.ajax({
-		url:"../userforest/init",
-		success:function(data){
-			arr = data;
-			console.log(data);
-			arr.forEach((value,index)=>{
-				let div = $("<div class="test">");
-				//img.data("index",index);
+let arr = new Array();
+let item ;
+$().ready(()=>{
+$.ajax({
+	url:"../init",
+	success:function(data){
+		arr = data;
+		console.log(data);
+		
+		arr.forEach((value,index)=>{
+			let div1 = $("<div class='userPlant'>");				
+			let img = $("<img class='userPlantImg'>");
+			// img.data("index",index);
+			
+			div1.attr("id", 'userPlant'+value.plantId);
+			div1.data("index",index);
+			
+			img.attr("id", value.PlantId);
+			img.attr("src",value.plantImage);
+							
+			div1.css("z-index",value.locationOrder);
+			div1.css("transform : scale", value.locationSize);
+		
+			
+			
+			//item.locationX = currentlocation;
 
-				div.css("width",value.plantWidth);
-				div.css("height",value.plantHeight);
-				div.attr("src",value.plantImage);
-				div.attr("id",value.PlantId);
-				div.css("z-index",value.locationOrder);
-				div.css("left",value.locationX);
-				div.css("top",value.locationY);
-				
-				//let item = arr[div.data("index")];
-				//item.locationX = currentlocation;
-
-				$("#image-container").append(div);
-				
-				
-			})
-
-		}
-	})
-});
+			$("#image-container").append(div1);
+			div1.append(img);
+			div1.css("left",value.locationX);
+			div1.css("top",value.locationY);				
+			
+			/* 아래와 같이 넣어주고자 함
+			<div id="userPlant01" class="userPlant">
+				<img src="/resources/images/tree_01.png"></div>
+			</div> 
+			*/
+			
+		})
+	}
+})
+})
+	
 </script>
 
 <style>
@@ -59,10 +72,7 @@ img{
 <body>
 
 	<div id="image-container">
-		<div>
-			아야어여오요
-		</div>
-		<!-- 유저가 저장한 나무 이미지 생성공간 -->
+		
 	</div>
 
 	<div class="main_container">
@@ -110,26 +120,26 @@ img{
 						<div class="scroll_container">
 							<div class="scroll_wrap">
 
-								<c:forEach var="list" items="${plantList}">
-									<c:if test="${list.treeCount.size()<1}">
+								<c:forEach var="list" items="${list}">
+									<c:if test="${list.invenAmount < 1}"> <!-- 특정 나무의 보유 수량이 0이면, 백그라운드 카드 이미지 노출 -->
 										<div class="item_card" id="plant_01">
 											<img class="item_bg"
-												src="/resources/images/${list.plantBg}.png">
+												src="/resources/images/treeBg${list.plantId}.png">
 											<p class="text_left">보관중인 나무 :</p>
 											<p class="text_right">그루</p>
-											<p class="text_amount">${plantCount}</p>
-											<a href="/userforest/setforest/">
+											<p class="text_amount">${list.invenAmount}</p>
+											<a href="../userforest/setforest/">
 												<p class="planting_btn"></p>
 												<p class="planting_btn_text">나무 심기</p>
 											</a>
 										</div>
 									</c:if>
-									<div class="item_card" id="plant_01">
-										<img class="item_bg"
-											src="/resources/images/${list.plantImg}.png">
+									<div class="item_card" id="plant_01"> <!-- 특정 나무의 보유 수량이 1개 이상 이면, 백그라운드 카드 이미지 노출 -->
+										<img class="item_bg" 
+											src="/resources/images/treecd${list.plantId}.png">
 										<p class="text_left">보관중인 나무 :</p>
 										<p class="text_right">그루</p>
-										<p class="text_amount">${plantCount}</p>
+										<p class="text_amount">${list.invenAmount}</p>
 										<a href="/userforest/setforest/">
 											<p class="planting_btn"></p>
 											<p class="planting_btn_text">나무 심기</p>
@@ -137,84 +147,18 @@ img{
 									</div>
 								</c:forEach>
 
-
+<!-- 
 								<div class="item_card" id="plant_02">
 									<img class="item_bg" src="/resources/images/tree01_bg.png">
 									<p class="text_left">보관중인 나무 :</p>
 									<p class="text_right">그루</p>
 									<p class="text_amount">1</p>
-									<a href="/userforest/setforest/">
+									<a href="../userforest/setforest/">
 										<p class="planting_btn"></p>
 										<p class="planting_btn_text">나무 심기</p>
 									</a>
-								</div>
+								</div> -->
 
-								<!--  
-                                <div class="item_card" id="plant_03">
-                                    <img class="item_bg" src="images/tree02_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_04">
-                                    <img class="item_bg" src="images/tree02_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_05">
-                                    <img class="item_bg" src="images/tree03_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_06">
-                                    <img class="item_bg" src="images/tree03_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_07">
-                                    <img class="item_bg" src="images/tree04_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_08">
-                                    <img class="item_bg" src="images/tree04_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_09">
-                                    <img class="item_bg" src="images/tree05_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                <div class="item_card" id="plant_10">
-                                    <img class="item_bg" src="images/tree05_bg.png">
-                                    <p class="text_left">보관중인 나무 :</p>
-                                    <p class="text_right">그루</p>
-                                    <p class="text_amount">${plantCount}</p>
-                                    <p class="planting_btn"></p>
-                                    <p class="planting_btn_text">나무 심기</p>
-                                </div>
-                                -->
 							</div>
 						</div>
 					</div>

@@ -38,8 +38,8 @@
 				img.attr("src",value.plantImage);
 								
 				div1.css("z-index",value.locationOrder);
-				img.css("scale",value.locationSize);
-				
+				div1.css("transform : scale", value.locationSize);
+			
 				
 				
 				//item.locationX = currentlocation;
@@ -78,64 +78,34 @@
 		
 		let imgInfo = arr[$(item).data("index")];	
 		let imgZoom = imgInfo.locationSize;
-		let userPlantId = 'userPlant'+imgInfo.plantId
-		
-		console.log(imgInfo);
-		console.log(imgInfo.locationSize);
-		console.log('userPlant'+imgInfo.plantId);
+		let userPlantId = 'userPlant'+imgInfo.plantId;
+		let zoomLevel = 0.1;
+				 
+		imgZoom += zoomLevel;
 		console.log(imgZoom);
-		console.log(userPlantId);
 		
+		if( imgZoom > 0.6 && imgZoom < 1.6){
+		$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
+		}
 		
-		var zoomLevel = imgZoom;
-		
-		console.log(zoomLevel);
-		
-		var updateZoom = function(zoom) {
-	        zoomLevel += zoom;
-	        console.log(zoomLevel);
-	       
-	        $("#"+userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-	        /* $("#"+userPlantId).css('zoom', zoomLevel); */
-	        
-	        console.log(userPlantId);
-	     }
-	         
-	    	updateZoom(0.1); 
-		
+		imgInfo.locationSize = imgZoom;
 	})
 	
 	$('#zoom-out').click(function() { 
 		
 		let imgInfo = arr[$(item).data("index")];	
 		let imgZoom = imgInfo.locationSize;
-		let userPlantId = 'userPlant'+imgInfo.plantId
+		let userPlantId = 'userPlant'+imgInfo.plantId;
+		let zoomLevel = 0.1;
 		
-		console.log(imgInfo);
-		console.log(imgInfo.locationSize);
-		console.log('userPlant'+imgInfo.plantId);
+		imgZoom -= zoomLevel;
 		console.log(imgZoom);
-		console.log(userPlantId);
 		
+		if( imgZoom > 0.6 && imgZoom < 1.6){
+			$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
+		}
 		
-		var zoomLevel = imgZoom;
-		
-		console.log(zoomLevel);
-		
-		var updateZoom = function(zoom) {
-	        zoomLevel += zoom;
-	        console.log(zoomLevel);
-	        console.log(userPlantId);
-			
-	        
-	        $("#"+userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-	        /* $("#"+userPlantId).css('zoom', zoomLevel); */
-	        
-	        console.log(userPlantId);
-	     }
-	         
-	    	updateZoom(-0.1); 
-		
+		imgInfo.locationSize = imgZoom;
 	})
 	
 	
@@ -143,27 +113,33 @@
 	$('#btn-front').click(function() { 
 		
 		let imgInfo = arr[$(item).data("index")];
-		let imgZindex = imgInfo.locationOrder
-		console.log(imgInfo);
+		let imgZindex = imgInfo.locationOrder;
+		let userPlantId = 'userPlant'+imgInfo.plantId;
+		
+		/* console.log(imgInfo);
 		console.log('arr.lengrh: ' + arr.length);
-		console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+		console.log('imgZindex: ' + imgInfo.locationOrder);
+		console.log(userPlantId); */
 		
 		for(let i=0; i<=arr.length; i++) {
-			if(arr[i].locationOrder == imgZindex.locationOrder+1) {
-				let temp = imgZindex.locationOrder;
-				imgZindex.locationOrder = arr[i].locationOrder;
+			
+			
+			
+			if(arr[i].locationOrder == (imgZindex-1)) {
+				
+				let temp = imgZindex;
+				imgZindex = arr[i].locationOrder;
 				arr[i].locationOrder = temp;
 				
-				console.log('arr[i].locationOrder: ' + arr[i].locationOrder);
-				console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
-				
-				$("#"+userPlantId).css({Zindex: imgZindex.locationOrder});
+				$("#"+userPlantId).css({Zindex: imgZindex});
 				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
 			}
 			else {
 				continue;
 			}
 		}
+		
+		imgInfo.locationOrder = imgZindex;
 		
 	})
 	
@@ -171,21 +147,25 @@
 	$('#btn-back').click(function() { 
 		
 		let imgInfo = arr[$(item).data("index")];
-		let imgZindex = imgInfo.locationOrder
-		console.log(imgInfo);
+		let imgZindex = imgInfo.locationOrder;
+		let userPlantId = 'userPlant'+imgInfo.plantId;
+		
+		/* console.log(imgInfo);
 		console.log('arr.lengrh: ' + arr.length);
-		console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+		console.log('imgZindex: ' + imgInfo.locationOrder);
+		console.log(userPlantId); */
 		
 		for(let i=0; i<=arr.length; i++) {
-			if(arr[i].locationOrder == imgZindex.locationOrder-1) {
-				let temp = imgZindex.locationOrder;
-				imgZindex.locationOrder = arr[i].locationOrder;
+			if((arr[i].locationOrder) === (imgZindex - 1)) {
+				let temp = imgZindex;
+				imgZindex = arr[i].locationOrder;
 				arr[i].locationOrder = temp;
 				
+				/* console.log(i);
 				console.log('arr[i].locationOrder: ' + arr[i].locationOrder);
-				console.log('imgZindex.locationOrder: ' + imgZindex.locationOrder);
+				console.log('imgZindex: ' + imgZindex); */
 				
-				$("#"+userPlantId).css({Zindex: imgZindex.locationOrder});
+				$("#"+userPlantId).css({Zindex: imgZindex});
 				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
 			}
 			else {
@@ -193,68 +173,16 @@
 			}
 		}
 		
+		imgInfo.locationOrder = imgZindex;
+		
 	})
 	
 	$('#btn-delete').click(function() { 
-	
-		let imgInfo = arr[$(item).data("index")];	
-		let imgZoom = imgInfo.locationSize;
-		
-		
+		$(item).remove();
 	})
 	
 	
 	});
-		/* 	if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-			zoomLevel += updateZoom;
-			console.log(zoomLevel);
-			$(userPlantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-			}
-		
-			var updateZoom = function(zoom) {
-			zoomLevel += zoom;
-			console.log(zoomLevel);
-			
-			if(zoomLevel > 0.5 && zoomLevel < 1.6){	
-				$('userPlant'+imgInfo.plantId).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-			}
-			}
-		
-			var updateZoom = function() {
-				imgZoom += zoom;
-				console.log(imgZoom);
-			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-			$(imgInfo.plantId).css({ zoom: imgZoom, '-moz-transform' : 'scale(' + imgZoom + ')'}); 
-			}	
-			
-			
-			}
-		
-			var updateZoom = function(zoom) {
-			zoomLevel += zoom;
-		
-			console.log(zoomLevel);
-			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-				$(item).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
-			}
-		
-			}
-			})
-	 
-	 		$('#zoom-out').mouseover(function(){
-			let zoomLevel = arr[$(item).data("index")];	
-		
-			console.log(zoomLevel);
-			console.log(zoomLevel.locationSize);
-		
-			var updateZoom = function(zoom) {
-			zoomLevel += zoom;
-
-			if(zoomLevel > 0.5 && zoomLevel < 1.6) { 
-			$(zoomLevel.plantId).css({ zoom: zoomLevel, '-moz-transform' : 'scale(' + zoomLevel + ')'}); 
-			} 
-			}
-			}); */
 	
 </script>
 
@@ -280,10 +208,10 @@
 	position: absolute;
 }
 
-.userPlantImg {
+/* .userPlantImg {
 	width: 200px;
 	height: 230px;
-}
+} */
 </style>
 
 </head>
@@ -296,54 +224,13 @@
 		</div>
 
 		<div id="image-container"></div>
+		
 		<div class="footer">
 			<div class="footer_btn"><img class="btn" id="btn-front"src="/resources/images/btn_front.png" width="45" height="45">
 			</div><div class="footer_btn"><img class="btn" id="btn-back" src="/resources/images/btn_back.png" width="45" height="45">
 			</div><div class="footer_btn"><img class="btn_delete" id="btn-delete" src="/resources/images/btn_delete.png" width="60" height="60">
 			</div><div class="footer_btn"><img class="btn" id="zoom-in" src="/resources/images/btn_plus.png" width="45" height="45">
 			</div><div class="footer_btn"><img class="btn" id="zoom-out" src="/resources/images/btn_minus.png" width="45" height="45"></div></div></div>
-
-	<!-- 이미지 확대 축소 -->
-	<!--  <script>
-    $(document).ready(function(){
-		    	$(document).on("click",".userPlantImg",function(event){
-		    	// 동적으로 여러 태그가 생성된 경우라면 이런식으로 클릭된 객체를 this 키워드를 이용해서 잡아올 수 있다.
-		    	
-		        	$('#zoom-in').click(function() { updateZoom(0.1); } );
-		            $('#zoom-out').click(function() { updateZoom(-0.1);} );
-		            
-		            zoomLevel = 1;
-		            var updateZoom = function(zoom) {
-		            zoomLevel += zoom;
-		            
-		            if(zoomLevel > 0.5 && zoomLevel < 1.6) {
-		            	 $(this).css({ zoom: zoomLevel, '-moz-transform': 'scale(' + zoomLevel + ')' });
-		            }
-		            }
-		            
-		            
-		            var p = $(this).last();
-		            var offset = p.offset();
-		            console.log("left: " + offset.left + " top: " + offset.top);
-		    	});
-	});
-		 
-	</script> -->
-	<!-- 이미지 확대 축소 -->
-
-	<!-- 이미지 우선순위 -->
-	<!-- <script>
-    	$('#btn_front').click(function () { 
-    		
-    	});
-    
-    
-    </script> -->
-	<!-- 이미지 우선순위 -->
-
-
-
-
 
 </body>
 </html>

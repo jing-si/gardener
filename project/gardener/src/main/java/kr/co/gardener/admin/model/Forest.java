@@ -3,7 +3,7 @@ package kr.co.gardener.admin.model;
 public class Forest {
 	private int forestId;
 	private String forestName;
-	private String forestImage;
+	private String forestImage; 
 	private String forestInfo;
 	
 	public int getForestId() {

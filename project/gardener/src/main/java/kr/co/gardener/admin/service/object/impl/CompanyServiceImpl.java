@@ -69,6 +69,11 @@ public class CompanyServiceImpl implements CompanyService {
 		
 		dao.update(list);
 	}
+
+	@Override
+	public List<Company> list() {
+		return dao.list();
+	}
 	
 	
 }
