@@ -124,28 +124,27 @@
                 
             });
         	
-        	$('#cards').on("click",".card",function(data){  		
-        		
-        		$(".card").fadeOut();            
-                
-                $.ajax({
-                	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
-                	success : function(data){
-                		location.replace("/login/home")
+    	$('#cards').on("click",".card",function(data){  		
+    		
+    		$(".card").fadeOut();            
+            
+            $.ajax({
+            	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
+            	success : function(data){
+            		location.replace("/login/home")
 
-                	},		
-                	error: function(data){
-                        console.log(data);
-                    }
-                	
-                })         
-        		
-        		
-        	})
-        	})
+            	},		
+            	error: function(data){
+                    console.log(data);
+                }
+            	
+            })         
+    		
+    		
+    	})
         	
-        })
-    	
+        	})
+    
     	
     	/*  
     	//키우고 있는 나무가 없을 떄
