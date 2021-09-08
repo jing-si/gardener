@@ -28,7 +28,7 @@ a{text-decoration:none; color:#333;}
     padding-bottom: 9px;
 }
 .tab_menu .list .btn{font-size:13px;}
-.tab_menu .list .cont{display:none; position:absolute; left:0;}
+.tab_menu .list .cont{display:none; position:absolute; left:0; width:100%;}
 .tab_menu .list li.is_on .btn{font-weight:bold; color:green;}
 .tab_menu .list li.is_on .cont{display:block;}
 .tab_menu .list li.is_on span{
