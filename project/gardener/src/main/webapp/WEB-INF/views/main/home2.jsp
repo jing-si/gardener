@@ -186,7 +186,7 @@
     	
 		.screen-img{
 		    border: 1px solid red;
-		    position: absolute;
+		    position: relative;
 		    top: 50%;
 		    left: 50%;
 		    transform: translate(-50%,-50%);
@@ -221,19 +221,6 @@
 
 
 
-        #seed{
-            width: 127px;
-            height: 127px;
-            position: absolute;
-            top: 60px;
-            left: 50%;
-            transform: translate(-50%);
-            border: 1px solid blue;
-            /* display: none; */
-        }
-
-
-
         #plant{display: none;}
         #plant img{
             height: 180px;
@@ -254,12 +241,14 @@
         	position: relative;
         }
         
-        #cards,#plantButtion,#plant{
+/*         #cards,#plantButtion,#plant{
             margin: auto auto;
-        	
-        
-          
-        }
+        } */
+
+		#plantButton{
+			position: absolute;
+			top: 0;
+		}
     </style>
 
 </head>
