@@ -23,6 +23,7 @@
 		<typeAlias type="kr.co.gardener.admin.model.object.Company" alias="Company"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.Cert" alias="Cert"/>
 		<typeAlias type="kr.co.gardener.admin.model.object.Product" alias="Product"/>
+		<typeAlias type="kr.co.gardener.admin.model.object.productCategoryList" alias="productCategoryList"/>
 	</typeAliases>
 
 	<mappers>

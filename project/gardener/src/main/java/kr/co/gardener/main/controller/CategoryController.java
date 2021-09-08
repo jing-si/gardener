@@ -9,12 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.model.object.productCategoryList;
+import kr.co.gardener.admin.service.object.ClassifyService;
+import kr.co.gardener.admin.service.object.CompanyService;
+import kr.co.gardener.util.Pager;
 
 @Controller
 @RequestMapping("/login/category")
 public class CategoryController {
 	final String path = "main/category/";
+	
+	@Autowired
+	ClassifyService cs;
+	
+	@Autowired
+	CompanyService company;
 	
 	//카테고리
 	@RequestMapping({"/",""})
@@ -22,10 +33,13 @@ public class CategoryController {
 		//productCategoryName(품목별 카테고리 대분류명),
 		//subProductCategoryList(productId(품목아이디)와 subProductCategoryName(중분류 카테고리명)이 들어있는 리스트)
 		//이 들어있는 품목 대분류 리스트 구현해주세요.(리스트 안에 리스트가 들어있는거 맞습니다^^)
-		model.addAttribute("productCategoryList",new ArrayList<String>());
+		List<productCategoryList> list = cs.productCategoryList();
 		
-		//brandName(브랜드명),brandId(브랜드 아이디)가 들어있는 리스트 구현해주세요.
-		model.addAttribute("brnadList",new ArrayList<String>());
+		model.addAttribute("productCategoryList",list);
+		
+		//brandName(브랜드명),brandId(브랜드 아이디)가 들어있는 리스트 구현해주세요.		 
+		List<Company> companyList = company.list(new Pager()); 
+		model.addAttribute("brandList",companyList);
 		
 		//markId(인증마크 아이디), markImg(인증마크 이미지), markName(인증마크명)이 들어있는 리스트 구형해주세요.
 		model.addAttribute("markList",new ArrayList<String>());
