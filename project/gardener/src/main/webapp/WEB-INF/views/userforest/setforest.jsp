@@ -17,6 +17,14 @@
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script>
+
+if(localStorage.getItem('img')){
+	var lastData = localStorage.getItem('img');
+	console.log(lastData);
+	document.write("<img src=/resources/images/tree" + lastData + ">");
+}
+
+
     let arr = new Array();
     let item ;
 	$().ready(()=>{
@@ -84,8 +92,8 @@
 		imgZoom += zoomLevel;
 		console.log(imgZoom);
 		
-		if( imgZoom > 0.6 && imgZoom < 1.6){
-		$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
+		if( imgZoom > 0.6 && imgZoom < 1.5 ){
+			$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
 		}
 		
 		imgInfo.locationSize = imgZoom;
@@ -101,9 +109,9 @@
 		imgZoom -= zoomLevel;
 		console.log(imgZoom);
 		
-		if( imgZoom > 0.6 && imgZoom < 1.6){
+		if( imgZoom > 0.6 && imgZoom < 1.5 ){
 			$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
-		}
+		} 
 		
 		imgInfo.locationSize = imgZoom;
 	})

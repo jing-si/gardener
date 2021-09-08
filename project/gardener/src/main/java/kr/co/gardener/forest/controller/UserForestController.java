@@ -61,6 +61,30 @@ public class UserForestController {
 		l6.setInvenAmount(0);
 		list.add(l6);
 		
+		Inven l7 = new Inven();
+		l7.setInvenId(7);
+		l7.setPlantId(7);
+		l7.setInvenAmount(0);
+		list.add(l7);
+		
+		Inven l8 = new Inven();
+		l8.setInvenId(8);
+		l8.setPlantId(8);
+		l8.setInvenAmount(0);
+		list.add(l8);
+		
+		Inven l9 = new Inven();
+		l9.setInvenId(9);
+		l9.setPlantId(9);
+		l9.setInvenAmount(0);
+		list.add(l9);
+		
+		Inven l10 = new Inven();
+		l10.setInvenId(10);
+		l10.setPlantId(10);
+		l10.setInvenAmount(0);
+		list.add(l10);
+		
 		model.addAttribute("list",list);
 		
 		return path + "forest";
@@ -204,7 +228,7 @@ public class UserForestController {
 		Location l2 = new Location();
 		l2.setLocationId(2);
 		l2.setLocationOrder(11);
-		l2.setLocationSize(1.7f);
+		l2.setLocationSize(0.7f);
 		l2.setLocationX(140);
 		l2.setLocationY(300);
 		l2.setPlantId(2);

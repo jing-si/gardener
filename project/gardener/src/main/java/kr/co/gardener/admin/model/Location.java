@@ -13,7 +13,6 @@ public class Location {
 	private int plantShadow; //식물 실루엣(join으로 Plant에서 가지고 올것)
 	
 	
-	
 	public String getPlantImage() {
 		return plantImage;
 	}
