@@ -103,7 +103,7 @@ public class UserForestController {
 	 * 
 	 * @ResponseBody public List<Location> locationList() { User user =
 	 * (User)session.getAttribute("user"); List<Location> list =
-	 * service.locationList();
+	 * service.locationList();  
 	 * 
 	 * return list; }
 	 * 
