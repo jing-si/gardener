@@ -99,51 +99,58 @@
     
     console.log(arr);
     $().ready(()=>{
-    	
-    	$(function(){
-        	if(${sessionScope.user.stateId} === 0)
-        		
-     			$('#plantButton').css('display', 'none');
-                $('#cards').css('display', 'block');
-                
-                $.ajax({
-            		url : "/login/init",
-            		success : function(data){
-            			arr = data;
-            			console.log(data);
-            			arr.forEach((value,index)=>{
-            	               
-            	                let img = $("<img class='card'>");        	                
-            	                img.attr("id",value.plantId);
-            	                img.attr("src",value.plantImage);
-            	                
-            	                $("#cards").append(img);
-            	             })
-            		}
-            	})
-                
-            });
-        	
-    	$('#cards').on("click",".card",function(data){  		
-    		
-    		$(".card").fadeOut();            
-            
-            $.ajax({
-            	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
-            	success : function(data){
-            		location.replace("/login/home")
+    	//버튼 클릭 이벤트
+			$('#plantButton').click(function(){
+				console.log("plantButton 클릭 이벤트 실행")
+				$.ajax({
+					url : "/login/init",
+					success : function(data){
+						arr = data;
+						console.log(data);
+						arr.forEach((value,index)=>{								
+							let img = $("<img class='card'>");        	                
+							img.attr("id",value.plantId);
+							img.attr("src",value.plantImage);							
+							$("#cards").append(img);							
+						})
+						$("#plantButton").addClass("hide");
+						$("#cards").removeClass("hide");
+					}
+				})
+			})
+			
+		//카드 클릭 이벤트 	
+		$('#cards').on("click",".card",function(data){  		
+	
+		$(".card").fadeOut();            
+			
+			$.ajax({
+				url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
+				success : function(data){
+					location.replace("/login/home")
+	
+				},		
+				error: function(data){
+					console.log(data);
+				}
+				
+			})         
+			
+		
+		})
 
-            	},		
-            	error: function(data){
-                    console.log(data);
-                }
-            	
-            })         
-    		
-    		
-    	})
-        	
-        	})
+    	//상태값이 0일때 행동
+		if(${sessionScope.user.stateId} === 0){
+			
+			$('#plantButton');
+			$('#cards').addClass("hide");
+			        
+		}//상태 0 끝
+
+
+
+		
+	})//onreday 끝
     
     	
     	/*  
@@ -275,15 +282,15 @@
 		    height: 200px;
 		}
     	
-    #cards{
+    	#cards{
             width: 90%;
             height: 150px;
             border: 1px solid blue;
             margin: 0 auto;
             margin-top: 50px;
-            position: relative;
-            display: none;
+            position: relative;           
         }
+		
         #cards .card{
             /* position: absolute;
             width: 60px;
@@ -330,6 +337,9 @@
 			position: absolute;
 			top: 0;
 		}
+		.hide{
+			display:none;
+		}
 		
     </style>
 
@@ -347,7 +357,7 @@
                    <!--  <img src="/resources/images/home-screen-bg.png" id="screen-bg-img"> -->
                             <div class="screen-img">
                             
-                            	<div id="cards">
+                            	<div id="cards" class="">
                             
                         		</div>
 
