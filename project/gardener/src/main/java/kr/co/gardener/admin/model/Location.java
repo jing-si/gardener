@@ -67,13 +67,13 @@ public class Location {
 	public void setLocationY(int locationY) {
 		this.locationY = locationY;
 	}
+	
 	public int getLocationOrder() {
 		return locationOrder;
 	}
 	public void setLocationOrder(int locationOrder) {
 		this.locationOrder = locationOrder;
 	}
-	
 	// 서버에 데이터 보낼때 사용?
 	// plantImage는 어디서 가져오는건지?
 	// float 타입은 != 0 이 부분을 어떻게 표기하는지?
@@ -98,4 +98,12 @@ public class Location {
 		}
 			
 	}
+	@Override
+	public String toString() {
+		return "Location [userId=" + userId + ", locationId=" + locationId + ", plantId=" + plantId + ", locationSize="
+				+ locationSize + ", locationX=" + locationX + ", locationY=" + locationY + ", locationOrder="
+				+ locationOrder + ", plantImage=" + plantImage + ", plantShadow=" + plantShadow + "]";
+	}
+	
+	
 }

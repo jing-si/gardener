@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,11 +17,15 @@ import kr.co.gardener.admin.model.Inven;
 import kr.co.gardener.admin.model.Location;
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.LocationService;
 
 @Controller
 @RequestMapping("/login/userforest")
 public class UserForestController {
 	final String path = "userforest/";
+	
+	@Autowired
+	LocationService lService;
 	
 	@GetMapping({"","/"})
 	public String forest(Model model) {
@@ -216,42 +221,22 @@ public class UserForestController {
 	
 	@RequestMapping("userforest/setforest/init2")
 	@ResponseBody
-	public List<Location> init2() {
-		List<Location> list = new ArrayList<Location>();
-		Location l1 = new Location();
-		l1.setLocationId(1);
-		l1.setLocationOrder(10);
-		l1.setLocationSize(1.5f);
-		l1.setLocationX(40);
-		l1.setLocationY(300);
-		l1.setPlantId(1);
-		l1.setPlantImage("/resources/images/tree1.png");
-		list.add(l1);
-		
-		Location l2 = new Location();
-		l2.setLocationId(2);
-		l2.setLocationOrder(11);
-		l2.setLocationSize(0.7f);
-		l2.setLocationX(140);
-		l2.setLocationY(300);
-		l2.setPlantId(2);
-		l2.setPlantImage("/resources/images/tree2.png");
-		list.add(l2);
-		
-		Location l3 = new Location();
-		l3.setLocationId(3);
-		l3.setLocationOrder(12);
-		l3.setLocationSize(1);
-		l3.setLocationX(100);
-		l3.setLocationY(300);
-		l3.setPlantId(3);
-		l3.setPlantImage("/resources/images/tree3.png");
-		list.add(l3);
-		
+	public List<Location> init2(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		List<Location> list = lService.list(user.getUserId());		
+		list.forEach((data)->{
+			System.out.println(data.toString());
+		});
 		return list;
 	}
 	
-	
+	@RequestMapping("userforest/setforest/update")
+	@ResponseBody
+	public List<Location> update(List<Location> data){
+		System.out.println(data.size());
+		
+		return data;
+	}
 	
 	
 	
