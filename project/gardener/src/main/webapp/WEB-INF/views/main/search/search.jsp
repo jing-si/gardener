@@ -57,12 +57,13 @@
         
         <c:forEach var="list" items="${list}">
         	
-            <div class="search-list">
+        	<a href="/login/category/product/${list.productId}">
+            <div class="search-list" >
                 <p><img alt="" src="${list.productImage }"></p>                
-                <p><h3>${list.productName }</h3></p>
+                <p><h3>${list.productName}</h3></p>
                 
             </div>
-            
+            </a>
         </c:forEach>
         
 <!-- 완성시 이부분 지우기 -->

@@ -335,7 +335,7 @@ a{
     top : 60px;
     left: 145px;
     transform: translate(-50%);
-    border : 1px solid blue;
+    /* border : 1px solid blue; */
 }
 .home-screen .process{
     position: absolute;
@@ -485,7 +485,7 @@ a{
     	
     	
 		.screen-img{
-		    border: 1px solid red;
+		    /* border: 1px solid red; */
 		    position: relative;
 		    top: 50%;
 		    left: 50%;
@@ -497,13 +497,14 @@ a{
     	#cards{
             width: 80%;
             height: 130px;
-            border: 1px solid blue;
+            /* border: 1px solid blue; */
             margin: 0 auto;
             margin-top: 50px;
             position: relative; 
             background-image: url('/resources/images/cards-bg2.png');  
             background-size : contain; 
-            background-repeat : no-repeat;       
+            background-repeat : no-repeat; 
+            display : none;      
         }
 		
         #cards .card{
@@ -563,9 +564,8 @@ a{
 <body>
     <div id="align">
         <div class="title">
-            <p>${userNick} 님, 반가워요!</p>
+            <p>${sessionScope.user.userNick} 님, 반가워요!</p>
             <p style="font-weight: bold;" id="hi">새로운 씨앗을 심어보세요 :)</p>
-            <a href="/"><p style="font-size: 2em;">로그인 확인</p></a>
         </div>
 
         <div class="home-screen">

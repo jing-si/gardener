@@ -74,6 +74,7 @@ body{
    background-color: #e6e6e6;
    border-radius: 8px; 
    margin: 0 auto;
+   position : relative;
 }
 #product-title #product-name{
     width: 100;
@@ -177,6 +178,7 @@ body{
     opacity: 0.35;
     border-radius: 8px;
     background-color: #e6e6e6;
+    position : relative;
 }
 .same-brand-name{
     padding-top: 3px;
@@ -226,6 +228,17 @@ body{
     /* margin-top: 28.3px; */
     margin-top: 0px;
 }
+
+
+
+
+
+.img{
+	height : 100%;
+	position : absolute;
+	left : 50%;
+	transform : translate(-50%);
+}
     </style>
     
 </head>
@@ -246,7 +259,7 @@ body{
     <div id="align">
 
         <div id="product-title">
-            <div id="product-img"><img alt="" src="${item.productImage}"> </div>
+            <div id="product-img"><img alt="" src="${item.productImage}" class="img"> </div>
             <p id="product-name">${item.productName}</p>
         </div>
 
@@ -308,7 +321,7 @@ body{
                 	
                 	<c:forEach var="list" items="${company.list}">
                 		<li>
-                       		<div class="same-brand-img"><img alt="" src="${list.productImage}"> </div>
+                       		<div class="same-brand-img"><img alt="" src="${list.productImage}" class="img"> </div>
                        		<a href="product/${list.productId}"><p class="same-brand-name">${list.productName}</p></a>
                     	</li>
                 	</c:forEach>
