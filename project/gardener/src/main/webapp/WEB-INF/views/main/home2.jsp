@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="/resources/css/home.css">
+    <!-- <link rel="stylesheet" href="/resources/css/home.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -270,7 +270,219 @@
     </script>
     
     <style>
+    	*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#align{
+    width: 328px;
+    height: calc(100vh - 56px - 35px);
+    /* 100 - 하단메뉴바 - 타이틀 상단 마진*/
+    margin: 0 auto;
+}
+
+
+.title{
+    width: 100%;
+    height: 51px;
+    margin-top: 35px;
+    margin-bottom: 44px;
+    /* border: 1px solid red; */
+}
+.title p{
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.53px;
+}
+
+
+/* .home-screen{
+    width: 328px;
+    height: 320.54px;
+    background-color: blue;
+    margin: 0 auto;
+} */
+.home-screen .screen-bg{
+    width: 100%;
+    height: 292.44px;
+    /* border: 1px solid red; */
+    position: relative;
+}
+.home-screen .screen-bg img{
+    width: 100%;
+}
+.home-screen #seed{
+    width: 127px;
+    height: 127px;
+    /* background-color: #b1eab2; */
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
+    /* border-radius: 50%; */
+    /* position: relative; */
+    /* margin: 0 auto; */
+    /* padding-top: 20px; */
+    position: absolute;
+    /* top: 100px; */
+    top : 60px;
+    left: 145px;
+    transform: translate(-50%);
+    border : 1px solid blue;
+}
+.home-screen .process{
+    position: absolute;
+    top: 255px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 232.9px;
+    height: 28.1px;
     
+}
+
+.home-button{
+    width: 193px;
+    height: 82px;
+    margin: 0 auto;
+    margin-top: 16.6px;
+}
+.home-button .go-certify{
+    width: 100%;
+    height: 38px;
+    padding: 9px;
+    text-align: center;
+    background-color: #94d3ac;
+    border-radius: 20px;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #fff;
+}
+.home-button .go-forest{
+    width: 100%;
+    height: 38px;
+    padding: 9px;
+    margin-top: 6px;
+    text-align: center;
+    background-color: #085955;
+    border-radius: 20px;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #fff;
+}
+
+
+/* 공통메뉴바 */
+.sticky{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #66bb6a;
+}
+.sticky div{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+}
+.sticky svg{
+    margin: auto 0;
+    margin-top: 6.3px;
+}
+.sticky p{
+    margin: auto 0;
+    margin-top: 0px;
+}
+
+
+/*         #cards{
+            width: 90%;
+            height: 150px;
+            border: 1px solid blue;
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative;
+            
+        } */
+        #cards .card{
+            /* position: absolute;
+            width: 60px;
+            top: 50%;
+            transform: translate(0,-50%);
+            left: 12px; */
+            width: 60px;
+            margin: 11px;
+        }
+        /* #cards #card2{
+            left: 101px;
+        }
+        #cards #card3{
+            left: 188px;
+        } */
+
+
+
+/*         #seed{
+            width: 127px;
+            height: 127px;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%);
+            border: 1px solid blue;
+            display: none;
+        } */
+	
+
+        #plant{display: none;}
+        #plant img{
+            height: 180px;
+            width: 180px;
+            border: 1px solid blue;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        
+          #gauge{
+            width: 0px;
+            height : 11px;
+            background-color: red;
+            position: absolute;
+            top: 8px;
+            left: 16px;
+        }
+                #heart{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 1px;
+            left: 0px;
+            display : none;
+        }
+    	
+    	
+    	
+    	
     	
 		.screen-img{
 		    border: 1px solid red;
@@ -283,12 +495,15 @@
 		}
     	
     	#cards{
-            width: 90%;
-            height: 150px;
+            width: 80%;
+            height: 130px;
             border: 1px solid blue;
             margin: 0 auto;
             margin-top: 50px;
-            position: relative;           
+            position: relative; 
+            background-image: url('/resources/images/cards-bg2.png');  
+            background-size : contain; 
+            background-repeat : no-repeat;       
         }
 		
         #cards .card{
@@ -297,8 +512,9 @@
             top: 50%;
             transform: translate(0,-50%);
             left: 12px; */
-            width: 60px;
-            margin: 11px;
+            width: 50px;
+            margin: 13.7px;
+    		margin-top: 25px;
         }
         /* #cards #card2{
             left: 101px;

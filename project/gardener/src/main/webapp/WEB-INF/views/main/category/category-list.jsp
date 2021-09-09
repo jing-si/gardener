@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <!-- <script src="/resources/js/test.js"></script> -->
+    <script src="/resources/js/test.js"></script>
     <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/category.css"> --%>
     <!-- <link rel="stylesheet" href="/resources/css/category.css"> -->
     <script src="/resources/js/jquery.min.js"></script>
