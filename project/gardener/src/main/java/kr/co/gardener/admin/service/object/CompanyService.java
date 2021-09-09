@@ -23,4 +23,6 @@ public interface CompanyService {
 
 	List<Company> list();
 
+	Company productId(String productId);
+
 }

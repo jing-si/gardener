@@ -65,30 +65,14 @@ public class CategoryController {
 	
 	//해당 제품의 상세페이지
 	@RequestMapping("/product/{productId}")
-	public String productdetail(@PathVariable int productId, Model model) {
-		//uri로 받은 productId에 해당하는
-		//제품이미지
-		model.addAttribute("productImg","productImg");
-		//제품명
-		model.addAttribute("productName","productName");
-		//제품규격
-		model.addAttribute("productSize","productSize");
-		//제품 인증기간
-		model.addAttribute("productCertifySection","productCertifySection");
-		//제품 인증사유
-		model.addAttribute("productCertifyReason","productCertifyReason");
-		//환경표지 인증번호
-		model.addAttribute("markNumber","markNumber");
-		//환경표지 인증기간
-		model.addAttribute("markSession","markSession");
-		//기업명
-		model.addAttribute("companyName","companyName");
-		//기업 전화번호
-		model.addAttribute("companyPhone","companyPhone");
-		
+	public String productdetail(@PathVariable String productId, Model model) {
+
+		Company company = companyService.productId(productId);	
 		//uri로 받은 productId에 해당하는 productId(동일브랜드 제품의 아이디) sameBrandImg(동일브랜드 제품의 이미지), sameBrandName(동일브랜드 제품명)
 		//이 들어있는 리스트 구현해주세요.
-		model.addAttribute("sameBrandProductLIst",new ArrayList<String>());
+		Product item = company.getProduct(productId);
+		model.addAttribute("company",company);
+		model.addAttribute("item",item);
 		return path + "product-detail";
 	}
 	

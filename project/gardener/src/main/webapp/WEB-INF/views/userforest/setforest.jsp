@@ -10,48 +10,51 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap"
 	rel="stylesheet">
-<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/jquery.min.js"></script>
+
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="/resources/jq/jquery.js"></script>
 <script>
 
-if(localStorage.getItem('img')){
+/* if(localStorage.getItem('img')){
 	var lastData = localStorage.getItem('img');
 	console.log(lastData);
 	document.write("<img src=/resources/images/tree" + lastData + ">");
 }
-
+ */
 
     let arr = new Array();
     let item ;
 	$().ready(()=>{
-	/* 	
+	 
+		//세이
 	$(".save_btn").click(()=>{
-		let aaa = {
-			userId:"a"
-			};
-		
-		console.log("저장중")
-		
-		window.history.back(); // 이전 페이지로 돌아감 > 어떻게 반응할지 모름
-		
-		$.ajax({
-			type: "POST",
-			url:"../userforest/setforest/update",
-			data: JSON.stringify(aaa), // {data:arr},
-			contextType: 'application/json',
-			dataType:"json",
-			success:function(data){
-				console.log(data)
+      let aaa = [{
+         userId:"A"
+         }, {
+         userId:"B"
+         }, {
+         userId:"C"
+         }];
+      
+      console.log("저장중")
+      $.ajax({
+         method: "post",
+         url:"update",
+         data: JSON.stringify(aaa),
+         contentType: 'application/json',
+         dataType: 'json',
+         success:function(data){
+            console.log(data)
 
-			}
+         }
 
-		})
-	})
-	*/	
+      })
+   })
+		
 	$.ajax({
 		url:"../userforest/setforest/init2",
 		success:function(data){
@@ -292,7 +295,7 @@ if(localStorage.getItem('img')){
 		<div class="header">
 			<p class="header_text">숲 꾸미기</p>
 			<a href="/login/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a> 
-			<p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24" onclick="history.back()"></p>
+			<p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p>
 		</div>
 
 		<div id="image-container"></div>

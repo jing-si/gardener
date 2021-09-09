@@ -73,34 +73,12 @@ public class DataManagerController {
 		return list;
 	}
 	
-	@RequestMapping(value="product/bulkupdate", produces="application/json;charset=UTF-8", method=RequestMethod.POST)
+	@RequestMapping(value="product/bulkupdate")
 	@ResponseBody
-	public List<Product> bulkUpdate(@RequestBody String str) {		
-		List<Product> list = new ArrayList<Product>();
-//		Product[] p;
-		try {
-		            JsonParser jsonParser = new JsonParser();
-		            JsonElement jo = jsonParser.parse(str);		            
-		            JsonArray jsonArr = jo.getAsJsonArray();
-		            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-//		            p = gson.fromJson(jo, Product[].class);
-//		            jsonArr.forEach(data->{		            	
-//		            Product com = gson.fromJson(data, Product.class);
-//		            list.add(com);
-//		            System.out.println(data.getAsJsonObject().get("productId"));
-//		            });
-		            
-//		            @SuppressWarnings("serial")
-//					Type collectionType = new TypeToken<ArrayList<Product>>(){}.getType();
-//					ArrayList<Product> enums = gson.fromJson(jo, collectionType);
-//					System.out.println(enums.get(0).getProductName());
-		} catch (Exception e) {
-		e.printStackTrace();
-		}
+	public void bulkUpdate(@RequestBody Product[] data) {		
+		System.out.println(data[0].getCertId());
+		//service.bulkUpdate(list);
 		
-		System.out.println("사이즈" + list.size());
-		service.bulkUpdate(list);
-		
-		return list;
+		//return list;
 	}
 }

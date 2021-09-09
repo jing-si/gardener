@@ -11,6 +11,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/css/product-list.css">
+    <style type="text/css">
+    img{
+    	width: 100%;
+    	height: 100%;
+    }
+    </style>
 </head>
 <body>
     <div id="header">
@@ -28,17 +34,10 @@
         
         <c:forEach var="list" items="${productList}">
         	<a href="product/${list.productId}"><div class="brand">
-                <div class="brand-img">${list.productImage}</div>
+                <div class="brand-img"><img src="${list.productImage}"></div>
                 <p class="brand-name">${list.productName}</p>
             </div></a>
         </c:forEach>
-        
-<!-- 완성시 이부분 지우기 -->
-        <a href="product/${productId}"><div class="brand">
-                <div class="brand-img">${productImage}</div>
-                <p class="brand-name">${productName}</p>
-            </div></a>
-<!-- 여기까지 -->
         
         </div>
     </div>

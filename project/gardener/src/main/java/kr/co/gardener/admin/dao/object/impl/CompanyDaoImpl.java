@@ -54,6 +54,11 @@ public class CompanyDaoImpl implements CompanyDao {
 	public List<Company> list() {
 		return sql.selectList("company.listall");
 	}
+
+	@Override
+	public Company productId(String productId) {
+		return sql.selectOne("company.productId", productId);
+	}
 	
 
 }

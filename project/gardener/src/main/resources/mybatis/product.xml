@@ -54,10 +54,16 @@
 		where PRODUCT_ID = #{productId}
 	</delete>
 	
-	<select id="product_list_mid" resultType="Product">
+	<select id="list_mid" resultType="Product">
 		select * from PRODUCT p
 		where p.EL_ID in
 		(select b.BOT_CLASS_ID from BOT_CLASS b
-		where b.MID_CLASS_ID =  #(midClassId);
+		where b.MID_CLASS_ID =  #{midClassId})
+	</select>
+	
+	<select id="list_search" resultType="Product">	
+		select * from PRODUCT
+		where PRODUCT_NAME like #{search}
+	
 	</select>
 </mapper>

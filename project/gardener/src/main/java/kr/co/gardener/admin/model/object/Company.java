@@ -68,6 +68,16 @@ public class Company {
 				+ vendAddr + ", vendHome=" + vendHome + "]";
 	}
 
+	public Product getProduct(String productId) {
+		for(Product item : list) {
+			if(item.getProductId().equals(productId)) {
+				return item;
+			}
+		}
+		
+		return null;
+	}
+
 	
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,13 +59,14 @@ public class UserForestController {
 		return list;
 	}
 	
-	@RequestMapping("userforest/setforest/update")
 	@ResponseBody
-	public List<Location> update(List<Location> data){
-		System.out.println(data.size());
-		
-		return data;
-	}
+	   @RequestMapping("/setforest/update")
+	   public void update(@RequestBody List<Location> data){
+	      for(Location item : data)
+	         System.out.println(item.getUserId());
+	      
+	      // return data;
+	   }
 	
 	
 	/*
@@ -123,30 +125,7 @@ public class UserForestController {
 	 * return list; }
 	 */
 	
-
-	
-	
-	
-	
-	@RequestMapping("userforest/setforest/init2")
-	@ResponseBody
-	public List<Location> init2(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		List<Location> list = lService.list(user.getUserId());		
-		list.forEach((data)->{
-			System.out.println(data.toString());
-		});
-		return list;
-	}
-	
-	@RequestMapping(value="userforest/setforest/update")
-	@ResponseBody
-	public void update(@RequestBody String data){
-		System.out.println(data);
 		
-		// return data;
-	}
-	
-	
+		
 	
 }

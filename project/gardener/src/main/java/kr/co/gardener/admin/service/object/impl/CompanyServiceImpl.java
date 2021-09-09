@@ -74,6 +74,11 @@ public class CompanyServiceImpl implements CompanyService {
 	public List<Company> list() {
 		return dao.list();
 	}
+
+	@Override
+	public Company productId(String productId) {
+		return dao.productId(productId);
+	}
 	
 	
 }

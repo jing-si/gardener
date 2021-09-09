@@ -19,4 +19,6 @@ public interface ProductService {
 
 	List<Product> MidList(int midClassId);
 
+	List<Product> list(String search);
+
 }

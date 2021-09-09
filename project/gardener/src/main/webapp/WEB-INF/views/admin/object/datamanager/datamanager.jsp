@@ -335,7 +335,7 @@
 					data:JSON.stringify(productArr),
 					dataType:"json",
 					contentType: 'application/json',
-					type:"post",					
+					method:"POST",					
 					success: function(data){
 						$("#product_api_tbody").empty()
 						let tr = $('<tr class="selectRow">');

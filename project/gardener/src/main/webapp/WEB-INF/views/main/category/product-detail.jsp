@@ -11,6 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/resources/css/product-detail.css">
+    <style type="text/css">
+    	img{
+    		width: 100%;
+    		height: 100%;
+    	}
+    
+    </style>
+    
 </head>
 <body>
     <div id="header">
@@ -22,8 +30,8 @@
     <div id="align">
 
         <div id="product-title">
-            <div id="product-img">${productImg}</div>
-            <p id="product-name">${productName}</p>
+            <div id="product-img"><img alt="" src="${item.productImage}"> </div>
+            <p id="product-name">${item.productName}</p>
         </div>
 
 
@@ -35,37 +43,37 @@
             <ul>
                 <li>
                     <div class="product-chart-name">제품명
-                    </div><div class="product-chart-content">${productName}</div>
+                    </div><div class="product-chart-content">${item.productName}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">규격
-                    </div><div class="product-chart-content">${productSize}</div>
+                    </div><div class="product-chart-content">${item.productSize}</div>
                 </li>
                 <li class="blank"></li>
                 <li>
                     <div class="product-chart-name">인증구분
-                    </div><div class="product-chart-content">${productCertifySection}</div>
+                    </div><div class="product-chart-content">${item.certId}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">인증사유
-                    </div><div class="product-chart-content">${productCertifyReason}</div>
+                    </div><div class="product-chart-content"></div>
                 </li>
                 <li>
                     <div class="product-chart-name">환경표지 인증번호
-                    </div><div class="product-chart-content">${markNumber}</div>
+                    </div><div class="product-chart-content">${item.productCertId}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">환경표지 인증기간
-                    </div><div class="product-chart-content">${markSession}</div>
+                    </div><div class="product-chart-content">${item.productStartDate}~${item.productEndDate}</div>
                 </li>
                 <li class="blank"></li>
                 <li>
                     <div class="product-chart-name">기업명
-                    </div><div class="product-chart-content">${companyName}</div>
+                    </div><div class="product-chart-content">${company.companyName}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">전화번호
-                    </div><div class="product-chart-content">${companyPhone}</div>
+                    </div><div class="product-chart-content">${company.companyTel}</div>
                 </li>
             </ul>
             
@@ -82,28 +90,13 @@
                     	</li>
                 	</c:if>
                 	
-                	<c:forEach var="list" items="${sameBrandProductList}">
+                	<c:forEach var="list" items="${company.list}">
                 		<li>
-                       		<div class="same-brand-img">${list.sameBrandImg}</div>
-                       		<a href="product/${productId}"><p class="same-brand-name">${list.sameBrandName}</p></a>
+                       		<div class="same-brand-img"><img alt="" src="${list.productImage}"> </div>
+                       		<a href="product/${list.productId}"><p class="same-brand-name">${list.productName}</p></a>
                     	</li>
                 	</c:forEach>
                 	
-<!-- 완성시 이부분 지우기 -->
-                    <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-                     <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-                     <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-<!-- 여기까지 -->
-
                 </ul>
             </div>
 

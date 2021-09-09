@@ -21,4 +21,6 @@ public interface ProductDao {
 
 	List<Product> list(int midClassId);
 
+	List<Product> list(String search);
+
 }

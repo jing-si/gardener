@@ -7,14 +7,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.gardener.admin.model.SearchList;
+import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.object.ProductService;
 
 @Controller
 @RequestMapping("/login/search")
 public class SearchController {
 	final String path = "main/search/";
+	
+	@Autowired
+	ProductService  productService;
 	
 	//검색
 	@RequestMapping({"/",""})
@@ -49,4 +55,14 @@ public class SearchController {
 	public String delete(@PathVariable SearchList searchId) {
 		return "redirect:..";
 	}
+	
+	@PostMapping("/")
+	public String search(String q, Model model) {
+		List<Product> list = productService.list(q);
+		model.addAttribute("list", list);
+		model.addAttribute("word", q);
+		
+		return path + "search";		
+	}
+	
 }

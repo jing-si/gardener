@@ -49,5 +49,10 @@ public class ProductDaoImpl implements ProductDao {
 	public List<Product> list(int midClassId) {
 		return sql.selectList("product.list_mid", midClassId);
 	}
+	
+	@Override
+	public List<Product> list(String search) {
+		return sql.selectList("product.list_search",search);
+	}
 
 }

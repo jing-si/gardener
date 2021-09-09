@@ -35,4 +35,8 @@
 		WHERE USER_ID =#{userId} and PLANT_ID=#{plantId} 
 	</delete>
 
+	<select id="list_userId" resultType="Inven">
+		SELECT * FROM INVEN
+		where USER_ID = #{userId}
+	</select>
 </mapper>

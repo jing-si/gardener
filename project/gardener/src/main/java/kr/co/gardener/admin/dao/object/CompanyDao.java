@@ -23,4 +23,6 @@ public interface CompanyDao {
 
 	List<Company> list();
 
+	Company productId(String productId);
+
 }
