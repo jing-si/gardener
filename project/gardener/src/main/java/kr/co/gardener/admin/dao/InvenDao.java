@@ -16,4 +16,6 @@ public interface InvenDao {
 
 	void delete(int userId, int plantId);
 
+	List<Inven> list(String userId);
+
 }

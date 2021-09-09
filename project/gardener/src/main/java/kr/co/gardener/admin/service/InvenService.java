@@ -16,4 +16,6 @@ public interface InvenService {
 
 	void delete(int invenId, int userId);
 
+	List<Inven> list(String userId);
+
 }
