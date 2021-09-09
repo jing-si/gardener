@@ -19,6 +19,7 @@ import kr.co.gardener.admin.model.Inven;
 import kr.co.gardener.admin.model.Location;
 import kr.co.gardener.admin.model.User;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.InvenService;
 import kr.co.gardener.admin.service.LocationService;
 
 @Controller
@@ -29,69 +30,13 @@ public class UserForestController {
 	@Autowired
 	LocationService lService;
 	
+	@Autowired
+	InvenService invenService;
+	
 	@GetMapping({"","/"})
-	public String forest(Model model) {
-		List<Inven> list = new ArrayList<Inven>();
-		Inven l1 = new Inven();
-		l1.setInvenId(1);
-		l1.setPlantId(1);
-		l1.setInvenAmount(1);
-		list.add(l1);
-		
-		Inven l2 = new Inven();
-		l2.setInvenId(2);
-		l2.setPlantId(2);
-		l2.setInvenAmount(0);
-		list.add(l2);
-		
-		Inven l3 = new Inven();
-		l3.setInvenId(3);
-		l3.setPlantId(3);
-		l3.setInvenAmount(0);
-		list.add(l3);
-		
-		Inven l4 = new Inven();
-		l4.setInvenId(4);
-		l4.setPlantId(4);
-		l4.setInvenAmount(0);
-		list.add(l4);
-		
-		Inven l5 = new Inven();
-		l5.setInvenId(5);
-		l5.setPlantId(5);
-		l5.setInvenAmount(0);
-		list.add(l5);
-		
-		Inven l6 = new Inven();
-		l6.setInvenId(6);
-		l6.setPlantId(6);
-		l6.setInvenAmount(0);
-		list.add(l6);
-		
-		Inven l7 = new Inven();
-		l7.setInvenId(7);
-		l7.setPlantId(7);
-		l7.setInvenAmount(0);
-		list.add(l7);
-		
-		Inven l8 = new Inven();
-		l8.setInvenId(8);
-		l8.setPlantId(8);
-		l8.setInvenAmount(0);
-		list.add(l8);
-		
-		Inven l9 = new Inven();
-		l9.setInvenId(9);
-		l9.setPlantId(9);
-		l9.setInvenAmount(0);
-		list.add(l9);
-		
-		Inven l10 = new Inven();
-		l10.setInvenId(10);
-		l10.setPlantId(10);
-		l10.setInvenAmount(0);
-		list.add(l10);
-		
+	public String forest(Model model, HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		List<Inven> list = invenService.list(user.getUserId());
 		model.addAttribute("list",list);
 		
 		return path + "forest";
@@ -100,6 +45,25 @@ public class UserForestController {
 	@RequestMapping("/setforest")
 	public String setforest() {
 		return path + "/setforest";
+	}
+	
+	@RequestMapping("userforest/setforest/init2")
+	@ResponseBody
+	public List<Location> init2(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		List<Location> list = lService.list(user.getUserId());		
+		list.forEach((data)->{
+			System.out.println(data.toString());
+		});
+		return list;
+	}
+	
+	@RequestMapping("userforest/setforest/update")
+	@ResponseBody
+	public List<Location> update(List<Location> data){
+		System.out.println(data.size());
+		
+		return data;
 	}
 	
 	
@@ -133,90 +97,33 @@ public class UserForestController {
 	 * return list; }
 	 */
 
-	@RequestMapping("/userforest/init1")
-	@ResponseBody
-	public List<Location> init() {
-		List<Location> list = new ArrayList<Location>();
-		Location l1 = new Location();
-		l1.setLocationId(1);
-		l1.setLocationOrder(100);
-		l1.setLocationSize(150);
-		l1.setLocationX(300);
-		l1.setLocationY(500);
-		l1.setPlantId(1);
-		l1.setPlantImage("/resources/images/tree1.png");
-
-		list.add(l1);
+	/*
+	 * @RequestMapping("/userforest/init1")
+	 * 
+	 * @ResponseBody public List<Location> init() { List<Location> list = new
+	 * ArrayList<Location>(); Location l1 = new Location(); l1.setLocationId(1);
+	 * l1.setLocationOrder(100); l1.setLocationSize(150); l1.setLocationX(300);
+	 * l1.setLocationY(500); l1.setPlantId(1);
+	 * l1.setPlantImage("/resources/images/tree1.png");
+	 * 
+	 * list.add(l1);
+	 * 
+	 * Location l2 = new Location(); l2.setLocationId(1); l2.setLocationOrder(101);
+	 * l2.setLocationSize(50); l2.setLocationX(100); l2.setLocationY(500);
+	 * l2.setPlantId(1); l2.setPlantImage("/resources/images/tree2.png");
+	 * 
+	 * list.add(l2);
+	 * 
+	 * Location l3 = new Location(); l3.setLocationId(1); l3.setLocationOrder(102);
+	 * l3.setLocationSize(150); l3.setLocationX(20); l3.setLocationY(300);
+	 * l3.setPlantId(1); l3.setPlantImage("/resources/images/tree3.png");
+	 * 
+	 * list.add(l3);
+	 * 
+	 * return list; }
+	 */
 	
-		Location l2 = new Location();
-		l2.setLocationId(1);
-		l2.setLocationOrder(101);
-		l2.setLocationSize(50);
-		l2.setLocationX(100);
-		l2.setLocationY(500);
-		l2.setPlantId(1);
-		l2.setPlantImage("/resources/images/tree2.png");
 
-		list.add(l2);
-		
-		Location l3 = new Location();
-		l3.setLocationId(1);
-		l3.setLocationOrder(102);
-		l3.setLocationSize(150);
-		l3.setLocationX(20);
-		l3.setLocationY(300);
-		l3.setPlantId(1);
-		l3.setPlantImage("/resources/images/tree3.png");
-
-		list.add(l3);
-		
-		return list;
-	}
-	
-	/*@RequestMapping({"/", ""})
-	public String inven(Model model) {
-		
-		List<Inven> list = new ArrayList<Inven>();
-		Inven l1 = new Inven();
-		l1.setInvenId(1);
-		l1.setPlantId(1);
-		l1.setInvenAmount(1);
-		list.add(l1);
-		
-		Inven l2 = new Inven();
-		l2.setInvenId(2);
-		l2.setPlantId(2);
-		l2.setInvenAmount(0);
-		list.add(l2);
-		
-		Inven l3 = new Inven();
-		l3.setInvenId(3);
-		l3.setPlantId(3);
-		l3.setInvenAmount(0);
-		list.add(l3);
-		
-		Inven l4 = new Inven();
-		l4.setInvenId(4);
-		l4.setPlantId(4);
-		l4.setInvenAmount(0);
-		list.add(l4);
-		
-		Inven l5 = new Inven();
-		l5.setInvenId(5);
-		l5.setPlantId(5);
-		l5.setInvenAmount(0);
-		list.add(l5);
-		
-		Inven l6 = new Inven();
-		l6.setInvenId(6);
-		l6.setPlantId(6);
-		l6.setInvenAmount(0);
-		list.add(l6);
-		
-		model.addAttribute("list",list);
-		
-		return path + "forest";
-	}*/
 	
 	
 	
