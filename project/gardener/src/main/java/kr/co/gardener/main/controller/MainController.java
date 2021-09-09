@@ -29,6 +29,9 @@ public class MainController {
 	public String index(Model model,HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("img", imgSrc(user));
+		
+//		model.addAttribute("stateId",0);
+		
 		/*
 		 * model.addAttribute("userNick","userNick"); model.addAttribute("plantId","1");
 		 * model.addAttribute("stateId","0");
@@ -60,7 +63,7 @@ public class MainController {
 	@ResponseBody
 	public List<PlantLevel> init(Model model){
 		
-		model.addAttribute("stateId",0);
+		
 		
 		List<PlantLevel> list = new ArrayList<PlantLevel>();
 		PlantLevel l1 = new PlantLevel();

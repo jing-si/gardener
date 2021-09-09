@@ -13,7 +13,6 @@ public class Location {
 	private int plantShadow; //식물 실루엣(join으로 Plant에서 가지고 올것)
 	
 	
-	
 	public String getPlantImage() {
 		return plantImage;
 	}
@@ -73,5 +72,30 @@ public class Location {
 	}
 	public void setLocationOrder(int locationOrder) {
 		this.locationOrder = locationOrder;
+	}
+	
+	// 서버에 데이터 보낼때 사용?
+	// plantImage는 어디서 가져오는건지?
+	// float 타입은 != 0 이 부분을 어떻게 표기하는지?
+	public void save(Location item) {
+		if(item.getLocationId() != 0) {
+			locationId = item.getLocationId();
+		}
+		if(item.getLocationOrder() != 0) {
+			locationOrder = item.getLocationOrder();
+		}
+		if(item.getLocationSize() != 0) {
+			locationSize = item.getLocationSize();
+		}
+		if(item.getLocationX() != 0) {
+			locationX = item.getLocationX();
+		}
+		if(item.getLocationY() != 0) {
+			locationY = item.getLocationY();
+		}
+		if(item.getPlantId() != 0) {
+			plantId = item.getPlantId();
+		}
+			
 	}
 }
