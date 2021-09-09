@@ -95,10 +95,11 @@
 
     } */
     
-    let arr = new Array();
+    let arr = new Array();    
     
-    console.log(arr);
     $().ready(()=>{
+        	
+
     	//버튼 클릭 이벤트
 			$('#plantButton').click(function(){
 				console.log("plantButton 클릭 이벤트 실행")
@@ -117,36 +118,77 @@
 						$("#cards").removeClass("hide");
 					}
 				})
+                $(".go-certify").text("식물을 선택해 주세요.")
 			})
 			
+
 		//카드 클릭 이벤트 	
 		$('#cards').on("click",".card",function(data){  		
-	
-		$(".card").fadeOut();            
-			
-			$.ajax({
-				url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
-				success : function(data){
-					location.replace("/login/home")
-	
-				},		
-				error: function(data){
-					console.log(data);
-				}
-				
-			})         
+		    
+            if($("#cards").hasClass("cardsback")){
+                $(".card").fadeOut();
+                $(this).addClass("selectedCard")
+                $('#cards').removeClass("cardsback")
+                $(this).fadeIn();
+                $(".go-certify").data("select",$(this).attr("id"))
+                $(".go-certify").text("선택한 씨앗을 심습니다.")
+            } else{            
+            $(".card").fadeIn();
+            $(".card").removeClass("selectedCard")
+            $('#cards').addClass("cardsback")
+            $(".go-certify").data("select",0)
+            $(".go-certify").text("식물을 선택해 주세요.")
+            }
+
+            
+		    
 			
 		
 		})
 
+        //씨앗심을땐 확인버튼, 식물 키울땐 인증 버튼 행동을 위한 상태 값
+        $(".go-certify").data("select",0);
+        //씨앗심을땐 확인버튼, 식물 키울땐 인증 버튼
+        $(".go-certify").click(function(){
+            if($(this).data("select") > 0){
+                $.ajax({
+                    url:"/login/update?plantId="+$(this).data("select")+"&stateId="+1,
+                    success : function(data){
+                        location.replace("/login/home")
+        
+                    },		
+                    error: function(data){
+                        console.log(data);
+                    }
+                    
+                })         
+            }
+            if($(this).data("select") === 0){}
+            if($(this).data("select") < -1){
+            	
+            	
+            	
+            }
+        })
+
+
     	//상태값이 0일때 행동
 		if(${sessionScope.user.stateId} === 0){
 			
-			$('#plantButton');
-			$('#cards').addClass("hide");
+			$('#plantButton').removeClass("hide");
+			            
 			        
-		}//상태 0 끝
-
+		}
+        
+        //상태 0보다 큼		
+        if(${sessionScope.user.stateId} > 0){
+        	$(".go-certify").data("select",-1)
+        	let img = $("<img class='plantImg'>")
+        		img.attr("src","${sessionScope.user.plant}")
+        		
+        		$("#plant").append(img);
+            	$("#plant").removeClass("hide");
+		}
 
 
 		
@@ -280,6 +322,13 @@
 a{
     text-decoration: none;
     color: black;
+}
+.selectedCard{
+    scale: 2;
+    margin-left: 50%;
+    height: 100%;
+    
+
 }
 #align{
     width: 328px;
@@ -452,8 +501,8 @@ a{
         } */
 	
 
-        #plant{display: none;}
-        #plant img{
+        
+        /* #plant img{
             height: 180px;
             width: 180px;
             border: 1px solid blue;
@@ -461,7 +510,7 @@ a{
             top: 30px;
             left: 50%;
             transform: translate(-50%);
-        }
+        } */
         
           #gauge{
             width: 0px;
@@ -501,10 +550,13 @@ a{
             margin: 0 auto;
             margin-top: 50px;
             position: relative; 
-            background-image: url('/resources/images/cards-bg2.png');  
+            
             background-size : contain; 
             background-repeat : no-repeat; 
             display : none;      
+        }
+        .cardsback{
+            background-image: url('/resources/images/cards-bg2.png');  
         }
 		
         #cards .card{
@@ -526,7 +578,7 @@ a{
 
 
 
-        #plant{display: none;}
+        
         #plant img{
             height: 180px;
             width: 180px;
@@ -573,15 +625,15 @@ a{
                    <!--  <img src="/resources/images/home-screen-bg.png" id="screen-bg-img"> -->
                             <div class="screen-img">
                             
-                            	<div id="cards" class="">
+                            	<div id="cards" class="cardsback hide">
                             
                         		</div>
 
-                        		<div id="plantButton">
+                        		<div id="plantButton" class="hide">
                             		<img src="/resources/images/씨앗심기 버튼.png" id="seed">
                         		</div>
 
-                        		<div id="plant">
+                        		<div id="plant" class="hide">
                             		
                         		</div>
                         	

@@ -71,7 +71,7 @@ body{
 #product-title #product-img{
    width: 182px;
    height: 182px;
-   background-color: #e6e6e6;
+   
    border-radius: 8px; 
    margin: 0 auto;
    position : relative;
@@ -149,7 +149,7 @@ body{
 }
 #same-brand-title{
     display: inline-block;
-    width: 120px;
+    width: 130px;
     height: 19px;
     margin: 25.8px 5px 10px 0;
     font-family: Roboto;
@@ -175,14 +175,21 @@ body{
     width: 105px;
     height: 105px;
     margin: 0 20px 0 0;
-    opacity: 0.35;
+    opacity: 0.5;
     border-radius: 8px;
+<<<<<<< HEAD
     background-color: #e6e6e6;
     position : relative;
+=======
+}
+.same-brand-img:hover{
+    opacity: 1;
+>>>>>>> 8b8168411a159fa8fd6789938535d9793d006dbe
 }
 .same-brand-name{
     padding-top: 3px;
-    width: 10px;
+    width:100%;
+    text-align:center;
     font-family: NotoSansKR;
     font-size: 9px;
     font-weight: normal;
@@ -191,6 +198,10 @@ body{
     color: #646464;
     line-height: 1.11;
     word-wrap: break-word;
+    overflow: hidden;
+}
+.same-brand-li:hover .same-brand-name,.same-brand-name:hover{
+	overflow: visible;
 }
 #same-brand-list{
     width: 100%; overflow-x: scroll; white-space:nowrap;
@@ -228,6 +239,7 @@ body{
     /* margin-top: 28.3px; */
     margin-top: 0px;
 }
+<<<<<<< HEAD
 
 
 
@@ -239,6 +251,18 @@ body{
 	left : 50%;
 	transform : translate(-50%);
 }
+=======
+img{
+	max-width:100%;
+	max-height: 100%;
+	display: block;
+	border-radius: 10px;
+	margin: 0 auto;
+	
+}
+
+
+>>>>>>> 8b8168411a159fa8fd6789938535d9793d006dbe
     </style>
     
 </head>
@@ -320,9 +344,15 @@ body{
                 	</c:if>
                 	
                 	<c:forEach var="list" items="${company.list}">
+<<<<<<< HEAD
                 		<li>
                        		<div class="same-brand-img"><img alt="" src="${list.productImage}" class="img"> </div>
                        		<a href="product/${list.productId}"><p class="same-brand-name">${list.productName}</p></a>
+=======
+                		<li id="same-brand-li">
+                       		<div class="same-brand-img"><a href="${list.productId}"><img alt="" src="${list.productImage}"></a></div>
+                       		<a href="${list.productId}"><p class="same-brand-name">${list.productName}</p></a>
+>>>>>>> 8b8168411a159fa8fd6789938535d9793d006dbe
                     	</li>
                 	</c:forEach>
                 	
