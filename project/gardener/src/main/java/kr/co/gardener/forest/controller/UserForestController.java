@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.gardener.admin.model.Inven;
@@ -230,12 +232,12 @@ public class UserForestController {
 		return list;
 	}
 	
-	@RequestMapping("userforest/setforest/update")
+	@RequestMapping(value="userforest/setforest/update")
 	@ResponseBody
-	public List<Location> update(List<Location> data){
-		System.out.println(data.size());
+	public void update(@RequestBody String data){
+		System.out.println(data);
 		
-		return data;
+		// return data;
 	}
 	
 	

@@ -17,4 +17,6 @@ public interface ProductService {
 
 	List<Product> list(Pager pager);
 
+	List<Product> MidList(int midClassId);
+
 }

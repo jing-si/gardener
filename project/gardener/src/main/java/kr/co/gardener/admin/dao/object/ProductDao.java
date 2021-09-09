@@ -19,4 +19,6 @@ public interface ProductDao {
 
 	float total();
 
+	List<Product> list(int midClassId);
+
 }

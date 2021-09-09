@@ -14,6 +14,7 @@ import kr.co.gardener.admin.model.object.Product;
 import kr.co.gardener.admin.model.object.productCategoryList;
 import kr.co.gardener.admin.service.object.ClassifyService;
 import kr.co.gardener.admin.service.object.CompanyService;
+import kr.co.gardener.admin.service.object.ProductService;
 import kr.co.gardener.util.Pager;
 
 @Controller
@@ -25,7 +26,10 @@ public class CategoryController {
 	ClassifyService cs;
 	
 	@Autowired
-	CompanyService company;
+	CompanyService companyService;
+	
+	@Autowired
+	ProductService productService;
 	
 	//카테고리
 	@RequestMapping({"/",""})
@@ -38,7 +42,7 @@ public class CategoryController {
 		model.addAttribute("productCategoryList",list);
 		
 		//brandName(브랜드명),brandId(브랜드 아이디)가 들어있는 리스트 구현해주세요.		 
-		List<Company> companyList = company.list(new Pager()); 
+		List<Company> companyList = companyService.list(new Pager()); 
 		model.addAttribute("brandList",companyList);
 		
 		//markId(인증마크 아이디), markImg(인증마크 이미지), markName(인증마크명)이 들어있는 리스트 구형해주세요.
@@ -48,14 +52,14 @@ public class CategoryController {
 	}
 	
 	//품목별 카테고리
-	@RequestMapping("/{productId}")
-	public String productlist(Model model) {
-		//품목별 카테고리에서 소분류 제목
-		model.addAttribute("productCategoryList",new ArrayList<String>());
+	@RequestMapping("/{midClassId}")
+	public String productlist(Model model,@PathVariable int midClassId) {
+		
+		List<Product> list = productService.MidList(midClassId);		
 		
 		//productId(품목별 제품아이디), productImg(품목별 제품이미지), 
 		//productName(품목별 제품명)이 들어있는 리스트 구현해주세요.
-		model.addAttribute("productList",new ArrayList<String>());
+		model.addAttribute("productList",list);
 		return path + "product-list";
 	}
 	

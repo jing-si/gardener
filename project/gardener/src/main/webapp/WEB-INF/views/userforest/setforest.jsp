@@ -30,10 +30,17 @@ if(localStorage.getItem('img')){
 	$().ready(()=>{
 		
 	$(".save_btn").click(()=>{
+		let aaa = {
+			userId:"a"
+			};
+		
 		console.log("저장중")
 		$.ajax({
+			type: "POST",
 			url:"../userforest/setforest/update",
-			data:{data:arr},
+			data: JSON.stringify(aaa), // {data:arr},
+			contextType: 'application/json',
+			dataType:"json",
 			success:function(data){
 				console.log(data)
 
