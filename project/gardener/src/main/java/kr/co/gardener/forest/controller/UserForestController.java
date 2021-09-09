@@ -61,6 +61,30 @@ public class UserForestController {
 		l6.setInvenAmount(0);
 		list.add(l6);
 		
+		Inven l7 = new Inven();
+		l7.setInvenId(7);
+		l7.setPlantId(7);
+		l7.setInvenAmount(0);
+		list.add(l7);
+		
+		Inven l8 = new Inven();
+		l8.setInvenId(8);
+		l8.setPlantId(8);
+		l8.setInvenAmount(0);
+		list.add(l8);
+		
+		Inven l9 = new Inven();
+		l9.setInvenId(9);
+		l9.setPlantId(9);
+		l9.setInvenAmount(0);
+		list.add(l9);
+		
+		Inven l10 = new Inven();
+		l10.setInvenId(10);
+		l10.setPlantId(10);
+		l10.setInvenAmount(0);
+		list.add(l10);
+		
 		model.addAttribute("list",list);
 		
 		return path + "forest";
@@ -71,35 +95,35 @@ public class UserForestController {
 		return path + "/setforest";
 	}
 	
-	/*
-	 * // 유저가 저장한 숲 데이터 가져오기
-	 * 
-	 * @RequestMapping({"/userforest/init", "/userforest/setforest/init"})
-	 * 
-	 * @ResponseBody public List<Location> locationList() { User user =
-	 * (User)session.getAttribute("user"); List<Location> list =
-	 * service.locationList();
-	 * 
-	 * return list; }
-	 * 
-	 * // 유저가 숲 꾸미기를 완료하고 저장한 데이터를 DB에 업로드
-	 * 
-	 * @RequestMapping("/save")
-	 * 
-	 * @ResponseBody public String save(Location item, HttpSession session) {
-	 * Location location = (Location)session.getAttribute("location");
-	 * location.save(item); service.update(location); return "저장완료"; }
-	 * 
-	 * // 유저 인벤 데이터 가져오기
-	 * 
-	 * @RequestMapping({"/userforest/inven"})
-	 * @ResponseBody public List<Inven> invenList() {
-	 *  List<Inven> list = service.invenList();
-	 * 
-	 * return list; }
-	 */
+	
+	  // 유저가 저장한 숲 데이터 가져오기
+	  
+	  @RequestMapping({"/userforest/init", "/userforest/setforest/init"})
+	  
+	  @ResponseBody public List<Location> locationList() { User user =
+	  (User)session.getAttribute("user"); List<Location> list =
+	  service.locationList();
+	  
+	  return list; }
+	  
+	  // 유저가 숲 꾸미기를 완료하고 저장한 데이터를 DB에 업로드
+	  
+	  @RequestMapping("/save")
+	  
+	  @ResponseBody public String save(Location item, HttpSession session) {
+	  Location location = (Location)session.getAttribute("location");
+	  location.save(item); service.update(location); return "저장완료"; }
+	  
+	  // 유저 인벤 데이터 가져오기
+	  
+	  @RequestMapping({"/userforest/inven"})
+	  @ResponseBody public List<Inven> invenList() {
+	   List<Inven> list = service.invenList();
+	  
+	  return list; }
+	 
 
-	@RequestMapping("../userforest/init")
+	@RequestMapping("/userforest/init1")
 	@ResponseBody
 	public List<Location> init() {
 		List<Location> list = new ArrayList<Location>();
@@ -113,7 +137,7 @@ public class UserForestController {
 		l1.setPlantImage("/resources/images/tree1.png");
 
 		list.add(l1);
-		
+	
 		Location l2 = new Location();
 		l2.setLocationId(1);
 		l2.setLocationOrder(101);
@@ -204,7 +228,7 @@ public class UserForestController {
 		Location l2 = new Location();
 		l2.setLocationId(2);
 		l2.setLocationOrder(11);
-		l2.setLocationSize(1.7f);
+		l2.setLocationSize(0.7f);
 		l2.setLocationX(140);
 		l2.setLocationY(300);
 		l2.setPlantId(2);

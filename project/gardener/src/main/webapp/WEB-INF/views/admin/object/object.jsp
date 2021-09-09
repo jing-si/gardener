@@ -11,11 +11,12 @@
 		<ul>
 			<li><a href="classify/">분류</a></li>
 			<li><a href="reason/">인증사유</a></li>
+			<li><a href="productcertreason/">제품 인증 사유</a></li>
 			<li><a href="cert/">인증구분</a></li>
 			<li><a href="company/">기업</a></li>
 			<li><a href="product/">제품</a></li>
 			<li><a href="datamanager/">database 작성</a></li>
-			<li><a href="test/">test</a></li>
+			
 		</ul>
 	</div>
 </body>

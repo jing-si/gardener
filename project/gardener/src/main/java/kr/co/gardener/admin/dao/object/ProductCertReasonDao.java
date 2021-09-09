@@ -1,11 +1,11 @@
-package kr.co.gardener.admin.service.object;
+package kr.co.gardener.admin.dao.object;
 
 import java.util.List;
 
 import kr.co.gardener.admin.model.object.ProductCertReason;
 import kr.co.gardener.util.Pager;
 
-public interface ProductCertReasonService {
+public interface ProductCertReasonDao {
 
 	void list(Pager pager);
 
