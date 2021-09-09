@@ -316,6 +316,7 @@
 					url: "/admin/object/datamanager/productlist/" + companyId,
 					success: function (data) {
 						productArr = data;
+						console.log(data)
 						makeProductList();
 					},
 					error: function (data) {				
@@ -328,9 +329,13 @@
 
 			//제품 대량 등록
 			$("#bulk_product_update").click(()=>{
+				
 				$.ajax({
 					url:"/admin/object/datamanager/product/bulkupdate",
-					data:productArr,
+					data:JSON.stringify(productArr),
+					dataType:"json",
+					contentType: 'application/json',
+					type:"post",					
 					success: function(data){
 						$("#product_api_tbody").empty()
 						let tr = $('<tr class="selectRow">');
@@ -575,7 +580,7 @@
 		<!-- 중앙 기능 버튼 -->
 		<div id="function_btn" class="row">
 			<div class="col-5 ">
-				<button id="bulk_update">대량 등록</button>
+				<button id="bulk_update" type="button">대량 등록</button>
 			</div>
 			<div class="col-6 row">
 				<div >

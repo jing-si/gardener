@@ -1,15 +1,32 @@
 package kr.co.gardener.admin.controller.object;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import kr.co.gardener.admin.model.object.Company;
+import kr.co.gardener.admin.model.object.JsonProduct;
 import kr.co.gardener.admin.model.object.Product;
 import kr.co.gardener.admin.service.object.CompanyService;
 import kr.co.gardener.admin.service.object.DataManagerService;
@@ -65,11 +82,33 @@ public class DataManagerController {
 		return list;
 	}
 	
-	@RequestMapping("product/bulkupdate")
+	@RequestMapping(value="product/bulkupdate", produces="application/json;charset=UTF-8", method=RequestMethod.POST)
 	@ResponseBody
-	public String bulkUpdate(List<Product> list) {
+	public List<Product> bulkUpdate(@RequestBody String str) {		
+		List<Product> list = new ArrayList<Product>();
+//		Product[] p;
+		try {
+		            JsonParser jsonParser = new JsonParser();
+		            JsonElement jo = jsonParser.parse(str);		            
+		            JsonArray jsonArr = jo.getAsJsonArray();
+		            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+//		            p = gson.fromJson(jo, Product[].class);
+//		            jsonArr.forEach(data->{		            	
+//		            Product com = gson.fromJson(data, Product.class);
+//		            list.add(com);
+//		            System.out.println(data.getAsJsonObject().get("productId"));
+//		            });
+		            
+		            @SuppressWarnings("serial")
+					Type collectionType = new TypeToken<ArrayList<Product>>(){}.getType();
+					ArrayList<Product> enums = gson.fromJson(jo, collectionType);
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		
+		System.out.println("사이즈" + list.size());
 		service.bulkUpdate(list);
 		
-		return "성공";
+		return list;
 	}
 }
