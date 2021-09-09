@@ -14,7 +14,7 @@
 		select *, 
 		(select PLANT_IMAGE 
 		from PLANT_LEVEL P 
-		WHERE P.PLANT_LEVEL_ID = 5 AND P.PLANT_ID = U.PLANT_ID) 
+		WHERE P.PLANT_LEVEL_ID = #{stateId} AND P.PLANT_ID = U.PLANT_ID) 
 		PLANT 
 		from USER U
 		where U.USER_ID = #{userId} <!-- 알리아스 주의 -->

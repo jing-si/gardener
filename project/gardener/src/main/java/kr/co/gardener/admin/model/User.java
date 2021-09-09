@@ -78,12 +78,16 @@ public class User {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userNick=" + userNick + ", userPass=" + userPass + ", userBirth="
-				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId+ ", plnantId=" + plantId+ "]";
+				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId
+				+ ", plantId=" + plantId + ", plant=" + plant + "]";
 	}
-	
 	public void update(User user) {
 		if(user.getUserNick() != null) {
 			userNick = user.getUserNick();

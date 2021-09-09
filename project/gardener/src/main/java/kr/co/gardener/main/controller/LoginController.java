@@ -32,7 +32,7 @@ public class LoginController {
 	
 	@PostMapping({"","/"})
 	public String login(User item, HttpSession session) {
-		User user = loginService.item(item.getUserId());
+		User user = service.item(item.getUserId());
 		
 		if(user != null) {
 			String userId = user.getUserId();
