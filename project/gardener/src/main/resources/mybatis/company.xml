@@ -74,4 +74,11 @@
 		<id property="productId" column="PRODUCT_ID"/>
 		</collection>
 	</resultMap>
+	
+	<select id="include_prouduct(productId)" resultMap="icProdMap">
+		select * from COMPANY C
+		JOIN PRODUCT P ON P.COMPANY_ID = C.COMPANY_ID
+		WHERE C.COMPANY_ID = 
+		(SELECT P2.COMPANY_ID FROM PRODUCT P2 WHERE P2.PRODUCT_ID = '216084' LIMIT 1);
+	</select>
 </mapper>

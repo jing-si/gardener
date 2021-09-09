@@ -39,6 +39,11 @@ public class InvenServiceImpl implements InvenService {
 		
 	}
 
+	@Override
+	public List<Inven> list(String userId) {
+		return dao.list(userId);
+	}
+
 
 
 }

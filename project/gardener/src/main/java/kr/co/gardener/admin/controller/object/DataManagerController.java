@@ -1,32 +1,23 @@
 package kr.co.gardener.admin.controller.object;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import kr.co.gardener.admin.model.object.Company;
-import kr.co.gardener.admin.model.object.JsonProduct;
 import kr.co.gardener.admin.model.object.Product;
 import kr.co.gardener.admin.service.object.CompanyService;
 import kr.co.gardener.admin.service.object.DataManagerService;
@@ -99,9 +90,10 @@ public class DataManagerController {
 //		            System.out.println(data.getAsJsonObject().get("productId"));
 //		            });
 		            
-		            @SuppressWarnings("serial")
-					Type collectionType = new TypeToken<ArrayList<Product>>(){}.getType();
-					ArrayList<Product> enums = gson.fromJson(jo, collectionType);
+//		            @SuppressWarnings("serial")
+//					Type collectionType = new TypeToken<ArrayList<Product>>(){}.getType();
+//					ArrayList<Product> enums = gson.fromJson(jo, collectionType);
+//					System.out.println(enums.get(0).getProductName());
 		} catch (Exception e) {
 		e.printStackTrace();
 		}

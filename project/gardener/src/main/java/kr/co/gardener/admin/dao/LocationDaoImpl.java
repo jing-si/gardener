@@ -38,4 +38,9 @@ public class LocationDaoImpl implements LocationDao {
 		sql.delete("location.delete", locationId);
 	}
 
+	@Override
+	public List<Location> list(String userId) {
+		return sql.selectList("location.list_userId", userId);
+	}
+
 }

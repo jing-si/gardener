@@ -29,8 +29,7 @@
 		BOT_CLASS_NAME as "name",
 		cast('3' as signed) as "table"
 		from
-		BOT_CLASS;	
-		
+		BOT_CLASS;
 	</select>
 	
 	<select id="topClassList" resultType="Classify">
@@ -136,8 +135,7 @@
 		<result column="TOP_CLASS_NAME" property="productCategoryName"/>
 		<collection property="midList"  column="TOP_CLASS_ID" ofType="Classify" javaType="ArrayList">
 		<id column="MID_CLASS_ID" property="primaryId"/>
-		<result column="MID_CLASS_NAME" property="name"/>
-				
+		<result column="MID_CLASS_NAME" property="name"/>				
 	</collection>	
 	</resultMap>
 	

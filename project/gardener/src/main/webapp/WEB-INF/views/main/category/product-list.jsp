@@ -28,14 +28,14 @@
         
         <c:forEach var="list" items="${productList}">
         	<a href="product/${list.productId}"><div class="brand">
-                <div class="brand-img">${list.productImg}</div>
+                <div class="brand-img">${list.productImage}</div>
                 <p class="brand-name">${list.productName}</p>
             </div></a>
         </c:forEach>
         
 <!-- 완성시 이부분 지우기 -->
         <a href="product/${productId}"><div class="brand">
-                <div class="brand-img">${productImg}</div>
+                <div class="brand-img">${productImage}</div>
                 <p class="brand-name">${productName}</p>
             </div></a>
 <!-- 여기까지 -->

@@ -45,4 +45,9 @@ public class ProductDaoImpl implements ProductDao {
 		return sql.selectOne("product.total");
 	}
 
+	@Override
+	public List<Product> list(int midClassId) {
+		return sql.selectList("product.list_mid", midClassId);
+	}
+
 }

@@ -28,6 +28,30 @@ if(localStorage.getItem('img')){
     let arr = new Array();
     let item ;
 	$().ready(()=>{
+	/* 	
+	$(".save_btn").click(()=>{
+		let aaa = {
+			userId:"a"
+			};
+		
+		console.log("저장중")
+		
+		window.history.back(); // 이전 페이지로 돌아감 > 어떻게 반응할지 모름
+		
+		$.ajax({
+			type: "POST",
+			url:"../userforest/setforest/update",
+			data: JSON.stringify(aaa), // {data:arr},
+			contextType: 'application/json',
+			dataType:"json",
+			success:function(data){
+				console.log(data)
+
+			}
+
+		})
+	})
+	*/	
 	$.ajax({
 		url:"../userforest/setforest/init2",
 		success:function(data){
@@ -42,11 +66,12 @@ if(localStorage.getItem('img')){
 				div1.attr("id", 'userPlant'+value.plantId);
 				div1.data("index",index);
 				
-				img.attr("id", value.PlantId);
+				img.attr("id", value.PlantId);				
 				img.attr("src",value.plantImage);
-								
-				div1.css("z-index",value.locationOrder);
-				div1.css("transform : scale", value.locationSize);
+				
+				console.log("z인덱스 : " + value.locationOrder);
+				div1.css("zindex",value.locationOrder);
+				div1.css("zoom", value.locationSize);
 			
 				
 				
@@ -92,8 +117,10 @@ if(localStorage.getItem('img')){
 		imgZoom += zoomLevel;
 		console.log(imgZoom);
 		
-		if( imgZoom > 0.6 && imgZoom < 1.5 ){
-			$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
+		if( imgZoom > 0.5 && imgZoom < 1.5 ){
+			$("#"+userPlantId).css( {'zoom' : imgZoom });
+		} else {
+			imgZoom = 1.4;
 		}
 		
 		imgInfo.locationSize = imgZoom;
@@ -109,9 +136,11 @@ if(localStorage.getItem('img')){
 		imgZoom -= zoomLevel;
 		console.log(imgZoom);
 		
-		if( imgZoom > 0.6 && imgZoom < 1.5 ){
-			$("#"+userPlantId).css( {'transform' : 'scale(' + imgZoom + ' )'});
-		} 
+		if( imgZoom > 0.5 && imgZoom < 1.5 ){
+			$("#"+userPlantId).css( {'zoom' : imgZoom });
+		} else {
+			imgZoom = 0.6;
+		}
 		
 		imgInfo.locationSize = imgZoom;
 	})
@@ -121,7 +150,7 @@ if(localStorage.getItem('img')){
 	$('#btn-front').click(function() { 
 		
 		let imgInfo = arr[$(item).data("index")];
-		let imgZindex = imgInfo.locationOrder;
+		let imgZindex = Number(imgInfo.locationOrder);
 		let userPlantId = 'userPlant'+imgInfo.plantId;
 		
 		/* console.log(imgInfo);
@@ -129,25 +158,33 @@ if(localStorage.getItem('img')){
 		console.log('imgZindex: ' + imgInfo.locationOrder);
 		console.log(userPlantId); */
 		
-		for(let i=0; i<=arr.length; i++) {
-			
-			
-			
-			if(arr[i].locationOrder == (imgZindex-1)) {
+		for(let i=0; i<arr.length; i++) {	
+			if(Number(arr[i].locationOrder) === (imgZindex+1)) {
+				
+				arrZindex = Number(arr[i].locationOrder);
 				
 				let temp = imgZindex;
-				imgZindex = arr[i].locationOrder;
-				arr[i].locationOrder = temp;
+				imgZindex = arrZindex;
+				arrZindex = String(temp);
 				
-				$("#"+userPlantId).css({Zindex: imgZindex});
-				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
+				$("#"+userPlantId).css("z-index", imgZindex);
+				$("#userPlant"+arr[i].userPlantId).css("z-index", arr[i].locationOrder); 
+				
+				imgInfo.locationOrder = imgZindex;
+				arr[i].locationOrder = arrZindex;
+				
+				
+				console.log(imgInfo.locationOrder);
+				console.log(arr[i].locationOrder);
+				console.log(arr[i]);
+				
 			}
 			else {
 				continue;
 			}
 		}
 		
-		imgInfo.locationOrder = imgZindex;
+		
 		
 	})
 	
@@ -163,18 +200,29 @@ if(localStorage.getItem('img')){
 		console.log('imgZindex: ' + imgInfo.locationOrder);
 		console.log(userPlantId); */
 		
-		for(let i=0; i<=arr.length; i++) {
-			if((arr[i].locationOrder) === (imgZindex - 1)) {
+		for(let i=0; i<arr.length; i++) {
+			if(Number(arr[i].locationOrder) === (imgZindex - 1)) {
+				
+				arrZindex = Number(arr[i].locationOrder);
+				
 				let temp = imgZindex;
-				imgZindex = arr[i].locationOrder;
-				arr[i].locationOrder = temp;
+				imgZindex = arrZindex;
+				arrZindex = temp;
 				
 				/* console.log(i);
 				console.log('arr[i].locationOrder: ' + arr[i].locationOrder);
 				console.log('imgZindex: ' + imgZindex); */
 				
-				$("#"+userPlantId).css({Zindex: imgZindex});
-				$("#"+userPlantId).css({Zindex: arr[i].locationOrder}); 
+				$("#"+userPlantId).css("zindex", imgZindex);
+				$("#"+userPlantId).css("zindex", arr[i].locationOrder); 
+				
+				imgInfo.locationOrder = imgZindex;
+				arr[i].locationOrder = arrZindex;
+				
+				
+				console.log(imgInfo.locationOrder);
+				console.log(arr[i].locationOrder);
+				console.log(arr[i]);
 			}
 			else {
 				continue;
@@ -182,6 +230,7 @@ if(localStorage.getItem('img')){
 		}
 		
 		imgInfo.locationOrder = imgZindex;
+		
 		
 	})
 	
@@ -243,7 +292,7 @@ if(localStorage.getItem('img')){
 		<div class="header">
 			<p class="header_text">숲 꾸미기</p>
 			<a href="/login/userforest/"><p class="close_btn"><img src="/resources/images/icon_close.png" width="18" height="18"></p></a> 
-			<a href="/login/userforest/"><p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24"></p></a>
+			<p class="save_btn"><img src="/resources/images/icon_save.png" width="24" height="24" onclick="history.back()"></p>
 		</div>
 
 		<div id="image-container"></div>
