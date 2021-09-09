@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
-	private String userId;
+	private String userId;  //이메일주소
 	private String userNick;
 	private String userPass;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
