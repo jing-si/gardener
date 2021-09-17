@@ -38,4 +38,9 @@ public class LocationServiceImpl implements LocationService {
 		dao.delete(locationId);
 	}
 
+	@Override
+	public List<Location> list(String userId) {
+		return dao.list(userId);
+	}
+
 }

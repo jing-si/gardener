@@ -1,5 +1,7 @@
 package kr.co.gardener.admin.model.object;
 
+import java.util.List;
+
 public class Company {
 	private String vendVcod;
 	private String vendVcnm;
@@ -7,7 +9,19 @@ public class Company {
 	private String vendAddr;
 	private String vendHome;
 	
+	private List<Product> list;
 	
+	
+	
+	
+	public List<Product> getList() {
+		return list;
+	}
+
+	public void setList(List<Product> list) {
+		this.list = list;
+	}
+
 	public String getCompanyId() {
 		return vendVcod;
 	}
@@ -52,6 +66,16 @@ public class Company {
 	public String toString() {
 		return "Company [vendVcod=" + vendVcod + ", vendVcnm=" + vendVcnm + ", vendTel=" + vendTel + ", vendAddr="
 				+ vendAddr + ", vendHome=" + vendHome + "]";
+	}
+
+	public Product getProduct(String productId) {
+		for(Product item : list) {
+			if(item.getProductId().equals(productId)) {
+				return item;
+			}
+		}
+		
+		return null;
 	}
 
 	

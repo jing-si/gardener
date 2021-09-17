@@ -5,11 +5,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>사업자 관리</title>
 <jsp:include page="../include/header.jsp"></jsp:include>
 <script type="text/javascript">
-	
+$(function(){
+	$("thead .form-check-input").click(function(){
+		if($(this).is(":checked"))
+			$("tbody .form-check-input").prop("checked",true);
+		else
+			$("tbody .form-check-input").prop("checked",false);
+	})
+});
 </script>
 </head>
 <body>
@@ -19,10 +25,10 @@
 		</div>
 		<div>
 		<form id="autoUpdate" action="autoupdate" method="post">
-			<table>
+			<table class="table">
 				<thead>
 					<tr>
-						<th><input type="checkBox"><th>
+						<th><input type="checkbox" class="form-check-input"><th>
 						<th>사업자 ID</th>
 						<th>사업자 이름</th>
 						<th>사업자 전화번호</th>
@@ -33,8 +39,8 @@
 				</thead>
 				<tbody>
 					<c:forEach var="item" items="${list}">
-						<tr>
-							<td><input type="checkBox" value="${item.companyId }" name="companyIds"><td>
+						<tr>						
+							<td><input type="checkBox" class="form-check-input" value="${item.companyId }" name="companyIds"><td>
 							<td>${item.companyId }</td>
 							<td>${item.companyName }</td>
 							<td>${item.companyTel }</td>

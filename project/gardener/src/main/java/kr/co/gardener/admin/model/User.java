@@ -1,10 +1,11 @@
 package kr.co.gardener.admin.model;
 import java.util.Date;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class User {
-	private String userId;
+	private String userId;  //이메일주소
 	private String userNick;
 	private String userPass;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -77,10 +78,15 @@ public class User {
 	public void setPlantId(int plantId) {
 		this.plantId = plantId;
 	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userNick=" + userNick + ", userPass=" + userPass + ", userBirth="
-				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId+ ", plnantId=" + plantId+ "]";
+				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId
+				+ ", plantId=" + plantId + ", plant=" + plant + "]";
 	}
 	
 	public void update(User user) {
@@ -105,7 +111,14 @@ public class User {
 		if(user.getForestId() != 0) {
 			forestId = user.getForestId();
 		}
-		
+	}
+	
+	//비밀번호 일치여부 검증
+	public boolean pwcheck(String userPass) {
+		if(this.userPass.equals(userPass)) {
+			return true;
+		}
+		return false;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package kr.co.gardener.admin.service.object;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.gardener.admin.model.object.Cert;
 
@@ -15,5 +16,7 @@ public interface CertService {
 	void delete(int certId);
 
 	void add(Cert item);
+
+	Map<String, Integer> listMap();
 
 }

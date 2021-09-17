@@ -10,20 +10,261 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/resources/css/product-detail.css">
+    <!-- <link rel="stylesheet" href="/resources/css/product-detail.css"> -->
+    
+    <style>
+    	*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+/* 헤더 */
+#header{
+    width: 100%;
+    height: 45px;
+    border-bottom: 5px solid #f5f5f5;
+    position: relative;
+}
+#header p{
+    width: 200px;
+    text-align: center;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c2c2c;
+    margin: 0px auto;
+    padding: 10px;
+}
+#header svg{
+    position: absolute;
+    top: 9px;
+    left: 9px;
+}
+body{
+    height: 100%;
+}
+
+/* 정렬 */
+#align{
+    width: 328px;
+    height: 100%;
+    /* height: calc(100vh - 45px - 56px); height: 120vh; */
+    /* 100 - 헤더 - 공통메뉴 */
+    margin: 0 auto;
+    position: relative;
+}
+
+#product-title{
+    /* /border: 1px solid red; */
+    width: 100%;
+    height: 227px;
+    margin-bottom: 24px;
+    margin-top: 30px;
+}
+#product-title #product-img{
+   width: 182px;
+   height: 182px;
+   
+   border-radius: 8px; 
+   margin: 0 auto;
+}
+#product-title #product-name{
+    width: 100;
+    height: 26px;
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    margin-top: 19px;
+    text-align: center;
+
+}
+
+ #product-chart{
+    width: 100%;
+    height: 260.8px;
+}
+#product-chart-title{
+    width: 88px;
+    height: 19px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    margin-bottom: 7.8px;
+}
+#product-chart li{
+    width: 100%;
+    height: 28px;
+    border-bottom: 0.5px solid #e6e6e6;
+}
+#product-chart .blank{
+    width: 100%;
+    height: 4.3px;
+}
+.product-chart-name{
+    display: inline-block;
+    width: 104px;
+    height: 28px;
+    background-color: #f5f5f5;
+    font-family: NotoSansKR;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    padding: 6px 0 9px 10px;
+    color: #979797;
+    padding: 6px auto 9px 10px;
+}
+.product-chart-content{
+    display: inline-block;
+    width: 224px;
+    height: 28px;
+    font-family: NotoSansKR;
+    font-size: 10px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #646464;
+    padding: 6px 0 8px 10px;
+}
+
+#same-brand{
+    height: 250px;
+}
+#same-brand li{
+    display: inline-block;
+    width: 105px;
+    margin-right: 10px;
+}
+#same-brand-title{
+    display: inline-block;
+    width: 130px;
+    height: 19px;
+    margin: 25.8px 5px 10px 0;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+}
+#same-brand-more{
+    width: 50px;
+    font-family: NotoSansKR;
+    font-size: 9px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #646464;
+    float: right;
+    margin-top: 28.8px;
+    margin-bottom: 13px;
+}
+.same-brand-img{
+    display: inline-block;
+    width: 105px;
+    height: 105px;
+    margin: 0 20px 0 0;
+    opacity: 0.5;
+    border-radius: 8px;
+}
+.same-brand-img:hover{
+    opacity: 1;
+}
+.same-brand-name{
+    padding-top: 3px;
+    width:100%;
+    text-align:center;
+    font-family: NotoSansKR;
+    font-size: 9px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #646464;
+    line-height: 1.11;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.same-brand-li:hover .same-brand-name,.same-brand-name:hover{
+	overflow: visible;
+}
+#same-brand-list{
+    width: 100%; overflow-x: scroll; white-space:nowrap;
+}
+
+
+
+/* 공통메뉴바 */
+.sticky{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #66bb6a;
+}
+.sticky div{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+}
+.sticky svg{
+    /* position: absolute; */
+    /* top: 6.3px; */
+    /* left: 25px; */
+    margin: auto 0;
+    margin-top: 6.3px;
+}
+.sticky p{
+    margin: auto 0;
+    /* margin-top: 28.3px; */
+    margin-top: 0px;
+}
+img{
+	max-width:100%;
+	max-height: 100%;
+	display: block;
+	border-radius: 10px;
+	margin: 0 auto;
+	
+}
+
+
+    </style>
+    
 </head>
 <body>
+<script type="text/javascript">
+	function goBack(){
+		history.back();
+	}
+	
+	$("#header").on("click","#back",goBack()));
+</script>
     <div id="header">
     	<!-- 진짜 직전 상태로 보내기 -->
-        <a href=""><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
+        <div id="back"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></div>
         <p>제품상세</p>
     </div>
 
     <div id="align">
 
         <div id="product-title">
-            <div id="product-img">${productImg}</div>
-            <p id="product-name">${productName}</p>
+            <div id="product-img"><img alt="" src="${item.productImage}"> </div>
+            <p id="product-name">${item.productName}</p>
         </div>
 
 
@@ -35,37 +276,37 @@
             <ul>
                 <li>
                     <div class="product-chart-name">제품명
-                    </div><div class="product-chart-content">${productName}</div>
+                    </div><div class="product-chart-content">${item.productName}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">규격
-                    </div><div class="product-chart-content">${productSize}</div>
+                    </div><div class="product-chart-content">${item.productSize}</div>
                 </li>
                 <li class="blank"></li>
                 <li>
                     <div class="product-chart-name">인증구분
-                    </div><div class="product-chart-content">${productCertifySection}</div>
+                    </div><div class="product-chart-content">${item.certId}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">인증사유
-                    </div><div class="product-chart-content">${productCertifyReason}</div>
+                    </div><div class="product-chart-content"></div>
                 </li>
                 <li>
                     <div class="product-chart-name">환경표지 인증번호
-                    </div><div class="product-chart-content">${markNumber}</div>
+                    </div><div class="product-chart-content">${item.productCertId}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">환경표지 인증기간
-                    </div><div class="product-chart-content">${markSession}</div>
+                    </div><div class="product-chart-content">${item.productStartDate}~${item.productEndDate}</div>
                 </li>
                 <li class="blank"></li>
                 <li>
                     <div class="product-chart-name">기업명
-                    </div><div class="product-chart-content">${companyName}</div>
+                    </div><div class="product-chart-content">${company.companyName}</div>
                 </li>
                 <li>
                     <div class="product-chart-name">전화번호
-                    </div><div class="product-chart-content">${companyPhone}</div>
+                    </div><div class="product-chart-content">${company.companyTel}</div>
                 </li>
             </ul>
             
@@ -82,28 +323,13 @@
                     	</li>
                 	</c:if>
                 	
-                	<c:forEach var="list" items="${sameBrandProductList}">
-                		<li>
-                       		<div class="same-brand-img">${list.sameBrandImg}</div>
-                       		<a href="product/${productId}"><p class="same-brand-name">${list.sameBrandName}</p></a>
+                	<c:forEach var="list" items="${company.list}">
+                		<li id="same-brand-li">
+                       		<div class="same-brand-img"><a href="${list.productId}"><img alt="" src="${list.productImage}"></a></div>
+                       		<a href="${list.productId}"><p class="same-brand-name">${list.productName}</p></a>
                     	</li>
                 	</c:forEach>
                 	
-<!-- 완성시 이부분 지우기 -->
-                    <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-                     <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-                     <li>
-                        <div class="same-brand-img"></div>
-                        <a href="제품상세페이지.html"><p class="same-brand-name">슈가버블 친환경 주방세제 스위트베리 470ml</p></a>
-                     </li>
-<!-- 여기까지 -->
-
                 </ul>
             </div>
 

@@ -42,4 +42,15 @@ public class ProductServiceImpl implements ProductService {
 		return dao.list(pager);
 	}
 
+	@Override
+	public List<Product> MidList(int midClassId) {
+		return dao.list(midClassId);
+	}
+
+	@Override
+	public List<Product> list(String search) {
+		search = "%" + search.replaceAll(" ", "%") + "%";
+		return dao.list(search);
+	}
+
 }

@@ -52,4 +52,9 @@ public class InvenDaoImpl implements InvenDao {
 		sql.delete("inven.delete", map);
 	}
 
+	@Override
+	public List<Inven> list(String userId) {
+		return sql.selectList("inven.list_userId", userId);
+	}
+
 }

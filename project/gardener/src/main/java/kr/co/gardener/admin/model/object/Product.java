@@ -7,7 +7,15 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Product {
+	
+	
+	public Product() {
+		super();
+	}
+
 	private String prodProd; // 환경표지 제품ID(PK)
 	private String prodPrnm; // 제품명
 	private String prodEcos; // 일반분류코드(미사용)
@@ -71,9 +79,13 @@ public class Product {
 	private String productImage;
 	private int certId;
 	private int productCertId;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date productStartDate;
+	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
 	private Date productEndDate;
 	private String companyId;
 	private int g2bId;
@@ -82,6 +94,8 @@ public class Product {
 	// 추가 필드
 	private List<CertReason> certReasons;
 	private Cert cert;
+	//유틸성
+	 
 
 	// api용 get,seet
 	public String getProdProd() {
@@ -554,8 +568,8 @@ public class Product {
 			return productName;
 		}
 
-		if (!StringUtils.isEmpty(prodPrnm)) {
-			return prodPrnm;
+		if (!StringUtils.isEmpty(prodMdel)) {
+			return prodMdel;
 		}
 
 		if (!StringUtils.isEmpty(epdpMdel)) {
@@ -581,9 +595,12 @@ public class Product {
 
 	// productImage -> 제품 이미지
 	public String getProductImage() {
+		String url = "http://data.greenproduct.go.kr/openProductImage.do?prodProd=" + productId +"&prod_img_size=250";
+		
 		if (!StringUtils.isEmpty(productImage)) {
 			return productImage;
 		}
+		
 		if (!StringUtils.isEmpty(prodImg)) {
 			return prodImg;
 		}
@@ -591,7 +608,7 @@ public class Product {
 		if (!StringUtils.isEmpty(epdpImg1)) {
 			return epdpImg1;
 		}
-		return null;
+		return url;
 	}
 
 	// certId -> 인증ID //여기서 저탄소와 환경표지등

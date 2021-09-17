@@ -15,5 +15,6 @@ public interface CertReasonDao {
 	void update(CertReason item);
 
 	void delete(int certReasonId);
+	
 
 }

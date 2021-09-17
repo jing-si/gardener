@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,23 @@
     <script src="/resources/js/test.js"></script>
 </head>
 <body>
+
+<script>
+	$().ready(()=>{
+		
+		//라디오 버튼 디폴트값
+		if(${sessionScope.user.userGender} === "여"){
+			$("#select").attr("checked","checked");
+		}
+		else{
+			$("#select2").attr("checked","'checked'");
+		}
+		
+	})//레디 끝
+</script>
+
+
+
 <form method="post">
     <div id="header">
         <a href="/login/setting/myinfo/"><svg id="back" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"/></svg></a>
@@ -25,18 +44,18 @@
 
     <div id="email" class="info">
         <p class="title">이메일</p>
-        <input value="${useriId}" readonly>
+        <input value="${SessionScope.user.useriId}" readonly>
         <p id="certification">계정이 인증되었습니다.</p>
     </div>
     
     <div id="nickName" class="info">
         <p class="title">닉네임</p>
-        <input value="${userNick}" type="text" name="userNick">
+        <input value="${SessionScope.user.userNick}" type="text" name="userNick">
     </div>
     
     <div id="birth" class="info">
         <p class="title">생년월일</p>
-        <input value="${userBirth}" type="text" name="userBirth" maxlength="8">
+        <input value="${SessionScope.user.userBirth}" type="text" name="userBirth" maxlength="8">
     </div>
     
         <div class="select info">

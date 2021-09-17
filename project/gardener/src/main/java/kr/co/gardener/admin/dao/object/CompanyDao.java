@@ -21,4 +21,8 @@ public interface CompanyDao {
 
 	float total();
 
+	List<Company> list();
+
+	Company productId(String productId);
+
 }

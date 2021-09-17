@@ -16,5 +16,7 @@ public interface LocationService {
 
 	void delete(int locationId);
 
+	List<Location> list(String userId);
+
 
 }

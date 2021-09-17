@@ -11,11 +11,236 @@
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
 
     <script src="/resources/js/test.js"></script>
-    <link rel="stylesheet" href="/resources/css/category.css">
+    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/category.css"> --%>
+    <!-- <link rel="stylesheet" href="/resources/css/category.css"> -->
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/js/indigo.min.js"></script>
+    
+    
+    <style>
+.hide{
+	display:none;
+}
+
+
+
+
+
+
+*{margin:0; padding:0;}
+
+#title{width: 72px;
+    position: absolute;
+    height: 28px;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%);
+    font-family: NotoSansKR;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;}
+ul{list-style:none;}
+a{text-decoration:none; color:#333;}
+.wrap{padding:15px; letter-spacing:-0.5px; padding-top: 55px;}
+.tab_menu{position:relative;}
+.tab_menu .list{overflow:hidden;}
+.tab_menu .list li{display: inline-block;
+    height: 100%;
+    width: 33%;}
+/* .tab_menu .list li p{width: 100px;
+    margin: 0 auto;
+    padding-bottom: 8.5px;
+    font-size: 15px;} */
+.tab_menu .list li .btn-title{
+    text-align: center;
+    padding-bottom: 9px;
+}
+.tab_menu .list .btn{font-size:13px;}
+.tab_menu .list .cont{display:none; position:absolute; left:0; width:100%;}
+.tab_menu .list li.is_on .btn{font-weight:bold; color:green;}
+.tab_menu .list li.is_on .cont{display:block;}
+.tab_menu .list li.is_on span{
+    display: block;
+    margin: 5px 0 0 0;
+    width: 100%;
+    height: 5px;
+    background: black;
+}
+
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+#product-body{
+    /* border: 1px solid red; */
+    width: 330px;
+    height: calc(100vh - 45px - 56px - 9px);
+    /* 100 - 헤더 - 공통메뉴 - btn-title 밑마진 */
+    margin: 0 auto;
+    position: relative;
+    /* position: absolute; */
+    /* left: 50%; */
+    /* transform: translate(-50%); */
+}
+#product-subtitle{
+    width: 100%;
+    height: 48px;
+    position: relative;
+    border-bottom: 1px solid #f5f5f5;
+    margin-top: 10px;
+}
+#product-subtitle p{
+    text-align: left;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-size: 14px;
+}
+#product-subtitle svg{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    opacity: 0.5;
+}
+.product-subtitle-sub-box{
+    width: 100%;
+}
+.product-subtitle-sub{
+    width: 100%;
+    background-color: #f5f5f5;
+    padding-top: 10px;
+    padding-left: 28px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+
+
+#brand-body{
+    /* border: 1px solid red; */
+    width: 330px;
+    height: calc(100vh - 45px - 56px - 9px);
+    /* 100 - 헤더 - 공통메뉴 - btn-title 밑마진 */
+    margin: 0 auto;
+    position: relative;
+}
+.brand-subtitle{
+    width: 100%;
+    height: 48px;
+    position: relative;
+    border-bottom: 1px solid #f5f5f5;
+    margin-top: 10px;
+}
+.brand-subtitle p{
+    text-align: left;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    font-size: 14px;
+}
+.brand-subtitle svg{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    opacity: 0.5;
+}
+
+
+#mark-body{
+    width: 321px;
+            height: calc(100vh - 83.5px - 56px);
+            /* 100 - 헤더 - 공통메뉴바 */
+            margin: 0 auto;
+            position: relative;
+}
+/* 리스트 한상자 */
+.mark{
+    width: 62px;
+    height: 88px;
+    display: inline-block;
+    margin: 22.5px;
+}
+.mark .mark-img{
+    width: 62px;
+    height: 62px;
+    background-color: #afafaf;
+    border-radius: 20px;
+    
+}
+.mark .mark-name{
+    margin: 2px;
+    text-align: center;
+    font-family: NotoSansKR;
+    color: #afb3bc;
+    font-size: 13px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+}
+
+
+
+
+
+/* #product-body a{
+	display : none;
+} */
+
+
+
+
+
+/* 공통메뉴바 */
+.sticky{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #66bb6a;
+}
+.sticky div{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+}
+.sticky svg{
+    /* position: absolute; */
+    /* top: 6.3px; */
+    /* left: 25px; */
+    margin: auto 0;
+    margin-top: 6.3px;
+}
+.sticky p{
+    margin: auto 0;
+    /* margin-top: 28.3px; */
+    margin-top: 0px;
+}
+</style>
+    
 </head>
 <body>
+<script>
+
+$().ready(()=>{
+	$(".menu-toggle-btn").click(function(){
+		$(".gnb").addClass("hide");
+		$(".i"+$(this).data("index")).removeClass("hide")
+	})
+})
+</script>
+
   <div id="title"><p>카테고리</p></div>
     <div class="wrap">
         <div class="tab_menu">
@@ -27,27 +252,17 @@
                 <div id="product-body">
                   
                   	<c:forEach var="list" items="${productCategoryList}">
-                  		<div id="product-subtitle" class="menu-toggle-btn">
+                  	<div id="categoryBundle">
+                  		<div id="product-subtitle" class="menu-toggle-btn" data-index="${list.productCategoryId}">
                   			<p>${list.productCategoryName}</p>
                   			<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
                   		</div>
-                  		<c:forEach var="item" items="${subProductCategoryList}">
-                  			<a href="product/${item.productId}"><div id="product-subtitle-sub-box" class="gnb">
-                      		<div class="product-subtitle-sub">${item.subProductCategoryName}</div>
+                  		<c:forEach var="item" items="${list.midList}">
+							<a href="/login/category/${item.primaryId}"><div id="product-subtitle-sub-box" class="gnb hide i${list.productCategoryId }">                      		<div class="product-subtitle-sub">${item.name}</div>
                   			</div></a>
                   		</c:forEach>
                   	</c:forEach>
-
-<!-- 완성시 이부분 지우기 -->
-					<div id="product-subtitle" class="menu-toggle-btn">
-                      <p>Subtitle 1</p>
-                      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M24 24H0V0h24v24z" fill="none" opacity=".87"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
-                  </div>
-                  
-                  <a href="product"><div id="product-subtitle-sub-box" class="gnb">
-                      <div class="product-subtitle-sub">전체</div>
-                  </div></a>
-<!-- 여기까지 -->                  
+               		</div>
                   </div>
               </div>
            
@@ -58,8 +273,8 @@
                 <div id="tab3" class="cont">
                 <div id="brand-body">
                 	<c:forEach var="list" items="${brandList}">
-                		<a href="brand/${list.brandId}/"><div class="brand-subtitle">
-                      		<p>${list.brandName}</p>
+                		<a href="brand/${list.companyId}/"><div class="brand-subtitle">
+                      		<p>${list.companyName}</p>
                       		<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"/></svg>        
                   		</div></a>
                 	</c:forEach>

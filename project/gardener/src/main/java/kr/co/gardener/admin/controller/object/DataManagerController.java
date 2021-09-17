@@ -1,16 +1,25 @@
 package kr.co.gardener.admin.controller.object;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import kr.co.gardener.admin.model.object.Company;
 import kr.co.gardener.admin.model.object.Product;
+import kr.co.gardener.admin.service.object.CompanyService;
 import kr.co.gardener.admin.service.object.DataManagerService;
 
 @Controller
@@ -20,6 +29,9 @@ public class DataManagerController {
 
 	@Autowired
 	DataManagerService service;
+	
+	@Autowired
+	CompanyService companyService;
 	
 	@RequestMapping("/")
 	public String list() {
@@ -51,5 +63,22 @@ public class DataManagerController {
 		List<Product> list = service.productList(start,end);		
 		
 		return list;
+	}
+	
+	@RequestMapping("/companylist/db")
+	@ResponseBody
+	public List<Company> companylist(){
+		List<Company> list = companyService.list();
+		
+		return list;
+	}
+	
+	@RequestMapping(value="product/bulkupdate")
+	@ResponseBody
+	public void bulkUpdate(@RequestBody Product[] data) {		
+		System.out.println(data[0].getCertId());
+		//service.bulkUpdate(list);
+		
+		//return list;
 	}
 }

@@ -11,6 +11,11 @@
 		
 	</select>
 	
+	<select id="listall" resultType="Company">
+		select * from COMPANY
+		
+	</select>
+	
 	<select id="item" resultType="Company">
 		select * from COMPANY
 		where COMPANY_ID = #{companyId}
@@ -55,5 +60,25 @@
 	
 	<select id="total" resultType="float">
 		select count(*) from COMPANY
+	</select>
+	
+	<select id="include_product" resultMap="icProdMap">
+		select * from COMPANY C
+		join PRODUCT P on C.COMPANY_ID = P.COMPANY_ID
+		WHERE C.COMPANY_ID = #{companyId}		
+	</select>
+	
+	<resultMap type="Company" id="icProdMap" autoMapping="true">
+		<id property="companyId" column="company_id"/>
+		<collection property="list" ofType="Product" column="PRODUCT_ID" javaType="ArrayList" autoMapping="true">
+		<id property="productId" column="PRODUCT_ID"/>
+		</collection>
+	</resultMap>
+	
+	<select id="productId" resultMap="icProdMap">
+		select * from COMPANY C
+		JOIN PRODUCT P ON P.COMPANY_ID = C.COMPANY_ID
+		WHERE C.COMPANY_ID = 
+		(SELECT P2.COMPANY_ID FROM PRODUCT P2 WHERE P2.PRODUCT_ID = #{productId} LIMIT 1);
 	</select>
 </mapper>

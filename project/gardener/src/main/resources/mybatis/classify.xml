@@ -29,8 +29,7 @@
 		BOT_CLASS_NAME as "name",
 		cast('3' as signed) as "table"
 		from
-		BOT_CLASS;	
-		
+		BOT_CLASS;
 	</select>
 	
 	<select id="topClassList" resultType="Classify">
@@ -121,4 +120,34 @@
 		delete from BOT_CLASS
 		where BOT_CLASS_ID = #{primaryId}
 	</delete>
+	
+	<select id="category" resultMap="classifyMap">
+		select 
+		t.*,
+		m.MID_CLASS_ID,
+		m.MID_CLASS_NAME from TOP_CLASS t
+		left join MID_CLASS m 
+		on m.TOP_CLASS_ID = t.TOP_CLASS_ID
+	</select>
+	
+	<resultMap type="productCategoryList" id="classifyMap" autoMapping="true">
+		<id column="TOP_CLASS_ID" property="productCategoryId"/>
+		<result column="TOP_CLASS_NAME" property="productCategoryName"/>
+		<collection property="midList"  column="TOP_CLASS_ID" ofType="Classify" javaType="ArrayList">
+		<id column="MID_CLASS_ID" property="primaryId"/>
+		<result column="MID_CLASS_NAME" property="name"/>				
+	</collection>	
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>

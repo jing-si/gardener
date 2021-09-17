@@ -19,4 +19,8 @@ public interface ProductDao {
 
 	float total();
 
+	List<Product> list(int midClassId);
+
+	List<Product> list(String search);
+
 }

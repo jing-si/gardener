@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link rel="stylesheet" href="/resources/css/home.css">
+    <!-- <link rel="stylesheet" href="/resources/css/home.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR&display=swap" rel="stylesheet">
@@ -95,15 +95,114 @@
 
     } */
     
-    let arr = new Array();
+    let arr = new Array();    
+    
     $().ready(()=>{
-    	$(function(){
-    	if(${state})
+        	
+
+    	//버튼 클릭 이벤트
+			$('#plantButton').click(function(){
+				console.log("plantButton 클릭 이벤트 실행")
+				$.ajax({
+					url : "/login/init",
+					success : function(data){
+						arr = data;
+						console.log(data);
+						arr.forEach((value,index)=>{								
+							let img = $("<img class='card'>");        	                
+							img.attr("id",value.plantId);
+							img.attr("src",value.plantImage);							
+							$("#cards").append(img);							
+						})
+						$("#plantButton").addClass("hide");
+						$("#cards").removeClass("hide");
+					}
+				})
+                $(".go-certify").text("식물을 선택해 주세요.")
+			})
+			
+
+		//카드 클릭 이벤트 	
+		$('#cards').on("click",".card",function(data){  		
+		    
+            if($("#cards").hasClass("cardsback")){
+                $(".card").fadeOut();
+                $(this).addClass("selectedCard")
+                $('#cards').removeClass("cardsback")
+                $(this).fadeIn();
+                $(".go-certify").data("select",$(this).attr("id"))
+                $(".go-certify").text("선택한 씨앗을 심습니다.")
+            } else{            
+            $(".card").fadeIn();
+            $(".card").removeClass("selectedCard")
+            $('#cards').addClass("cardsback")
+            $(".go-certify").data("select",0)
+            $(".go-certify").text("식물을 선택해 주세요.")
+            }
+
+            
+		    
+			
+		
+		})
+
+        //씨앗심을땐 확인버튼, 식물 키울땐 인증 버튼 행동을 위한 상태 값
+        $(".go-certify").data("select",0);
+        //씨앗심을땐 확인버튼, 식물 키울땐 인증 버튼
+        $(".go-certify").click(function(){
+            if($(this).data("select") > 0){
+                $.ajax({
+                    url:"/login/update?plantId="+$(this).data("select")+"&stateId="+1,
+                    success : function(data){
+                        location.replace("/login/home")
+        
+                    },		
+                    error: function(data){
+                        console.log(data);
+                    }
+                    
+                })         
+            }
+            if($(this).data("select") === 0){}
+            if($(this).data("select") < -1){
+            	
+            	
+            	
+            }
+        })
+
+
+    	//상태값이 0일때 행동
+		if(${sessionScope.user.stateId} === 0){
+			
+			$('#plantButton').removeClass("hide");
+			            
+			        
+		}
+        
+        //상태 0보다 큼		
+        if(${sessionScope.user.stateId} > 0){
+        	$(".go-certify").data("select",-1)
+        	let img = $("<img class='plantImg'>")
+        		img.attr("src","${sessionScope.user.plant}")
+        		
+        		$("#plant").append(img);
+            	$("#plant").removeClass("hide");
+		}
+
+
+		
+	})//onreday 끝
+    
+    	
+    	/*  
+    	//키우고 있는 나무가 없을 떄
+    		if(stateId == 0){
     	//plantButton 클릭시 plantButton은 css에 display : block;이 추가, cards는 css에 display : none;이 추가
 /*     	${".screen-img"}.on("click","#plantButton",function(){
     		 $('#plantButton').css({"display" : "none"});
     		 $('#cards').css({"display" : "block"});
-    	}) */
+    	}) 
     	
     	$('#plantButton').click(function(){
     		
@@ -131,7 +230,8 @@
     	
     	$('#cards').on("click",".card",function(data){  		
     		
-    		$(".card").fadeOut();            
+    		$(".card").fadeOut();
+    		$(".card").empty();
             
             $.ajax({
             	url:"/login/update?plantId="+$(this).attr("id")+"&stateId="+1,
@@ -146,35 +246,231 @@
             })         
     		
     		
-    	})
-    	})
+    	})}
+    		//키우고 있는 나무가 있을때
+    	else if(stateId > 0){
+    		$('#plantButton').css('display', 'none');
+				let certData = "인증"
+				let img = $("<img class='tree'>");            
+                
+                img.attr("src",${sessionScope.user.plant});
+                
+                $(".plant").append(img);
+                
+                //나무가 1단계일떄
+                if(stateId===1){
+                	$("#gauge").css('width','0px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','9px');
+                }
+              	//나무가 2단계일떄
+              	else if(stateId===2){
+                	$("#gauge").css('width','50px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','59px');
+                }
+              	//나무가 3단계일떄
+              	else if(stateId===3){
+                	$("#gauge").css('width','100px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','109px');
+                }
+              	//나무가 4단계일떄
+              	else if(stateId===4){
+                	$("#gauge").css('width','150px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','159px');
+                }
+              	//나무가 5단계일떄
+              	else if(stateId===5){
+                	$("#gauge").css('width','200px');
+                	$("#heart").css('display','block');
+                	$("#heart").css('left','209px');
+                }
+                
+                
+                $.ajax({
+            		url : "/login/dlswmd",
+            		data: certData,
+            		success : function(data){
+            			if(data === "인증성공"){
+            			console.log(data);
+            			location.replace("/login/home")            		
+            			}else{
+            				$("#id").text("인증실패입니다.")
+            			}
+            			
+            	}
+            })
+	
+    	}
     	
-    })
+    	
+    	
+    }) */
 
     </script>
     
     <style>
+    	*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.selectedCard{
+    scale: 2;
+    margin-left: 50%;
+    height: 100%;
     
-    	
-		.screen-img{
-		    border: 1px solid red;
-		    position: absolute;
-		    top: 50%;
-		    left: 50%;
-		    transform: translate(-50%,-50%);
-		    width: 90%;
-		    height: 200px;
-		}
-    	
-    #cards{
+
+}
+#align{
+    width: 328px;
+    height: calc(100vh - 56px - 35px);
+    /* 100 - 하단메뉴바 - 타이틀 상단 마진*/
+    margin: 0 auto;
+}
+
+
+.title{
+    width: 100%;
+    height: 51px;
+    margin-top: 35px;
+    margin-bottom: 44px;
+    /* border: 1px solid red; */
+}
+.title p{
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.53px;
+}
+
+
+/* .home-screen{
+    width: 328px;
+    height: 320.54px;
+    background-color: blue;
+    margin: 0 auto;
+} */
+.home-screen .screen-bg{
+    width: 100%;
+    height: 292.44px;
+    /* border: 1px solid red; */
+    position: relative;
+}
+.home-screen .screen-bg img{
+    width: 100%;
+}
+.home-screen #seed{
+    width: 127px;
+    height: 127px;
+    /* background-color: #b1eab2; */
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
+    /* border-radius: 50%; */
+    /* position: relative; */
+    /* margin: 0 auto; */
+    /* padding-top: 20px; */
+    position: absolute;
+    /* top: 100px; */
+    top : 60px;
+    left: 145px;
+    transform: translate(-50%);
+    border : 1px solid blue;
+}
+.home-screen .process{
+    position: absolute;
+    top: 255px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 232.9px;
+    height: 28.1px;
+    
+}
+
+.home-button{
+    width: 193px;
+    height: 82px;
+    margin: 0 auto;
+    margin-top: 16.6px;
+}
+.home-button .go-certify{
+    width: 100%;
+    height: 38px;
+    padding: 9px;
+    text-align: center;
+    background-color: #94d3ac;
+    border-radius: 20px;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #fff;
+}
+.home-button .go-forest{
+    width: 100%;
+    height: 38px;
+    padding: 9px;
+    margin-top: 6px;
+    text-align: center;
+    background-color: #085955;
+    border-radius: 20px;
+    font-family: NotoSansKR;
+    font-size: 15px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #fff;
+}
+
+
+/* 공통메뉴바 */
+.sticky{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    background-color: #66bb6a;
+}
+.sticky div{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    width: 20%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+}
+.sticky svg{
+    margin: auto 0;
+    margin-top: 6.3px;
+}
+.sticky p{
+    margin: auto 0;
+    margin-top: 0px;
+}
+
+
+/*         #cards{
             width: 90%;
             height: 150px;
             border: 1px solid blue;
             margin: 0 auto;
             margin-top: 50px;
             position: relative;
-            display: none;
-        }
+            
+        } */
         #cards .card{
             /* position: absolute;
             width: 60px;
@@ -193,7 +489,7 @@
 
 
 
-        #seed{
+/*         #seed{
             width: 127px;
             height: 127px;
             position: absolute;
@@ -201,12 +497,87 @@
             left: 50%;
             transform: translate(-50%);
             border: 1px solid blue;
-            /* display: none; */
+            display: none;
+        } */
+	
+
+        
+        /* #plant img{
+            height: 180px;
+            width: 180px;
+            border: 1px solid blue;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translate(-50%);
+        } */
+        
+          #gauge{
+            width: 0px;
+            height : 11px;
+            background-color: red;
+            position: absolute;
+            top: 8px;
+            left: 16px;
         }
+                #heart{
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 1px;
+            left: 0px;
+            display : none;
+        }
+    	
+    	
+    	
+    	
+    	
+		.screen-img{
+		    border: 1px solid red;
+		    position: relative;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%,-50%);
+		    width: 90%;
+		    height: 200px;
+		}
+    	
+    	#cards{
+            width: 80%;
+            height: 130px;
+            border: 1px solid blue;
+            margin: 0 auto;
+            margin-top: 50px;
+            position: relative; 
+            
+            background-size : contain; 
+            background-repeat : no-repeat;       
+        }
+        .cardsback{
+            background-image: url('/resources/images/cards-bg2.png');  
+        }
+		
+        #cards .card{
+            /* position: absolute;
+            width: 60px;
+            top: 50%;
+            transform: translate(0,-50%);
+            left: 12px; */
+            width: 50px;
+            margin: 13.7px;
+    		margin-top: 25px;
+        }
+        /* #cards #card2{
+            left: 101px;
+        }
+        #cards #card3{
+            left: 188px;
+        } */
 
 
 
-        #plant{display: none;}
+        
         #plant img{
             height: 180px;
             width: 180px;
@@ -226,20 +597,26 @@
         	position: relative;
         }
         
-        #cards,#plantButtion,#plant{
+/*         #cards,#plantButtion,#plant{
             margin: auto auto;
-        	
-        
-          
-        }
+        } */
+
+		#plantButton{
+			position: absolute;
+			top: 0;
+		}
+		.hide{
+			display:none;
+		}
+		
     </style>
 
 </head>
 <body>
     <div id="align">
         <div class="title">
-            <p>${userNick} 님, 반가워요!</p>
-            <p style="font-weight: bold;">새로운 씨앗을 심어보세요 :)</p>
+            <p>${sessionScope.user.userNick} 님, 반가워요!</p>
+            <p style="font-weight: bold;" id="hi">새로운 씨앗을 심어보세요 :)</p>
             <a href="/"><p style="font-size: 2em;">로그인 확인</p></a>
         </div>
 
@@ -248,26 +625,30 @@
                    <!--  <img src="/resources/images/home-screen-bg.png" id="screen-bg-img"> -->
                             <div class="screen-img">
                             
-                            	<div id="cards">
+                            	<div id="cards" class="cardsback hide">
                             
                         		</div>
 
-                        		<div id="plantButton">
+                        		<div id="plantButton" class="hide">
                             		<img src="/resources/images/씨앗심기 버튼.png" id="seed">
                         		</div>
 
-                        		<div id="plant">
+                        		<div id="plant" class="hide">
                             		
                         		</div>
                         	
                         	</div>
-                    <div class="process"><img src="/resources/images/home-screen-process.png"></div>
+                    <div class="process">
+                    <img src="/resources/images/home-screen-process.png">
+                    <div id="gauge"></div>
+                    </div>
                 </div>
         </div>
 
         <div class="home-button">
             <a href="certify"></a><div class="go-certify">친환경 소비 인증하기
             </div></a><a href="userforest"><div class="go-forest">숲으로 가기</div></a>
+        	<img src="/resources/images/heart.png" id="heart">
         </div>
     </div>
 

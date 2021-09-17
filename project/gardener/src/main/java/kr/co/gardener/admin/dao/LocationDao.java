@@ -16,6 +16,8 @@ public interface LocationDao {
 
 	void delete(int locationId);
 
+	List<Location> list(String userId);
+
 
 
 }
