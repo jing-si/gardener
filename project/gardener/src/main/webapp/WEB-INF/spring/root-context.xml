@@ -15,7 +15,7 @@
 	<context:property-placeholder location="file:///c:/key/config.properties" />
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
 		<property name="url" value="${spring.datasource.url}"></property>
 		<property name="username" value="${spring.datasource.username}"></property>
 		<property name="password" value="${spring.datasource.password}"></property>
