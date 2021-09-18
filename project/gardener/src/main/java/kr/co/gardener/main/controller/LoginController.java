@@ -32,8 +32,8 @@ public class LoginController {
 	
 	@PostMapping({"","/"})
 	public String login(User item, HttpSession session) {
-		User user = service.item(item.getUserId());
-		System.out.println(user.toString());
+		User user = loginService.item(item.getUserId());
+		
 		if(user != null) {
 			String userId = user.getUserId();
 			String userPass = user.getUserPass();
@@ -62,11 +62,10 @@ public class LoginController {
 		return "redirect:..";
 	}
 	
-	//비밀번호 재설정
-	//미구현. 인증번호 담은 인증메일 발송 후 코드입력 후 비밀번호 재설정 가능
+	//비밀번호 재설정 메일발송
+	//당장 구현 불가
 	@RequestMapping("/pwupdate")
 	public String pwupdate(User user) {
-		
 		return path + "pwupdate";
 	}
 	

@@ -5,12 +5,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import kr.co.gardener.admin.model.PlantLevel;
 import kr.co.gardener.admin.model.User;
@@ -29,9 +29,6 @@ public class MainController {
 	public String index(Model model,HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("img", imgSrc(user));
-		
-//		model.addAttribute("stateId",0);
-		
 		/*
 		 * model.addAttribute("userNick","userNick"); model.addAttribute("plantId","1");
 		 * model.addAttribute("stateId","0");
@@ -63,7 +60,7 @@ public class MainController {
 	@ResponseBody
 	public List<PlantLevel> init(Model model){
 		
-		
+		model.addAttribute("stateId",0);
 		
 		List<PlantLevel> list = new ArrayList<PlantLevel>();
 		PlantLevel l1 = new PlantLevel();
@@ -84,25 +81,12 @@ public class MainController {
 		return list;
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/update") //홈에서 카드선택해서 심었을때
 	@ResponseBody
 	public String update(User item, HttpSession session) {
 		User user = (User)session.getAttribute("user");
-		user.update(item);
+		user.update(item); //유저모델에서 검증해서 두개값만 update되게함
 		service.update(user);		
 		return "수정완료";
-	}
-	
-	@RequestMapping("/dlswmd")
-	@ResponseBody
-	public String dlswmd(String data, HttpSession session) {
-		if(!StringUtils.isEmpty(data)) {
-			User user = (User)session.getAttribute("user");
-			user.setStateId(user.getStateId()+1);
-			return "인증성공";
-		}else {
-			return "인증실패";
-		}
-		
 	}
 }

@@ -9,7 +9,7 @@
 <body>
 	<div>							
 		<h3>식물 변경</h3>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<div>
 				<label>식물ID: </label> ${item.plantId}
 			</div>
@@ -27,7 +27,7 @@
 			</div>
 			<div>
 				<label>식물실루엣: </label> 
-				<input type="file" name="plantShadow" value="${item.plantShadow}">
+				<input type="file" name="uploadFile" value="${item.plantShadow}">
 			<div>
 				<input type="submit" value="변경">
 			</div>
