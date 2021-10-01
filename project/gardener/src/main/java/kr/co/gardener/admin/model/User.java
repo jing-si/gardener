@@ -88,6 +88,7 @@ public class User {
 				+ userBirth + ", userGender=" + userGender + ", stateId=" + stateId + ", forestId=" + forestId
 				+ ", plantId=" + plantId + ", plant=" + plant + "]";
 	}
+	
 	public void update(User user) {
 		if(user.getUserNick() != null) {
 			userNick = user.getUserNick();
